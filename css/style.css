@@ -95,7 +95,7 @@ h5, h6 {
   display: inline-block;
   position: relative; }
   #photoHolder01 div img + span.photoTimestamp {
-    font-size: 0.75em;
+    font-size: 0.75rem;
     left: 0;
     position: absolute;
     background-color: rgba(255, 255, 255, 0.8); }
@@ -125,48 +125,112 @@ h5, h6 {
       position: relative;
       font-size: 0.75em; }
   #photoHolder01 div a.comments {
-    top: 0.625em;
-    width: 2.063em;
-    height: 2.063em; }
+    top: 0.625rem;
+    width: 2.063rem;
+    height: 2.063rem; }
     #photoHolder01 div a.comments:before {
-      width: 2.063em;
-      height: 2.063em;
+      width: 2.063rem;
+      height: 2.063rem;
       background-position: 0 0; }
     #photoHolder01 div a.comments:hover:before {
       background-position: -36px 0; }
   #photoHolder01 div a.likes {
-    top: 2.8em;
-    width: 2em;
-    height: 1.75em; }
+    top: 2.8rem;
+    width: 2rem;
+    height: 1.75rem; }
     #photoHolder01 div a.likes:before {
-      width: 2em;
-      height: 1.75em;
+      width: 2rem;
+      height: 1.75rem;
       background-position: 0 -39px; }
     #photoHolder01 div a.likes:hover:before {
       background-position: -36px -39px; }
 #photoHolder01 div:nth-child(2), #photoHolder01 div:nth-child(3) {
-  padding-bottom: 1.25em; }
+  padding-bottom: 1.25rem; }
 
 #photoPaginationHolder {
   clear: both;
   text-align: center; }
 
-#instagramCommentModal .imageArea {
-  width: 50%;
-  height: auto; }
-#instagramCommentModal .commentsArea {
-  width: 50%;
-  height: auto; }
-  #instagramCommentModal .commentsArea .commentsInner {
-    padding: 0 1em; }
-    #instagramCommentModal .commentsArea .commentsInner .profileThumb {
+#instagramCommentModal .commentsArea .credits {
+  height: auto;
+  overflow: hidden; }
+  #instagramCommentModal .commentsArea .credits .profileThumbHolder .profileThumb {
+    display: block;
+    border: 1px solid #f3f3f3;
+    border-radius: 3px; }
+  #instagramCommentModal .commentsArea .credits .creditHolder p {
+    line-height: 1.25 !important;
+    margin-bottom: 0.25rem !important; }
+    #instagramCommentModal .commentsArea .credits .creditHolder p span {
+      color: #aaaaaa;
+      font-size: 0.75rem; }
+#instagramCommentModal .commentsArea .likesArea {
+  clear: both;
+  overflow: hidden;
+  height: auto;
+  padding: 1rem 0;
+  margin: 1rem 0 0 0;
+  border-style: solid;
+  border-width: 1px 0;
+  border-color: #f3f3f3; }
+  #instagramCommentModal .commentsArea .likesArea p {
+    line-height: 1.25 !important;
+    margin-bottom: 0.25rem !important; }
+#instagramCommentModal .commentsArea .comments {
+  clear: both;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  width: 100%; }
+  #instagramCommentModal .commentsArea .comments .commentContainer {
+    clear: both;
+    height: auto;
+    padding: 0.75rem 0; }
+    #instagramCommentModal .commentsArea .comments .commentContainer .profileThumb {
       display: block;
-      width: 3.75em;
-      height: 3.75em;
-      float: left;
       border: 1px solid #f3f3f3;
       border-radius: 3px;
-      margin-right: 1.25em; }
+      height: 2.5rem;
+      width: 2.5rem; }
+    #instagramCommentModal .commentsArea .comments .commentContainer p {
+      line-height: 1.25 !important;
+      margin-bottom: 0.25rem !important;
+      font-size: 0.83rem; }
+#instagramCommentModal .commentsArea .commentBar {
+  position: absolute;
+  bottom: -50px;
+  height: 50px;
+  width: 100%;
+  outline: 1px solid red; }
+
+.likes {
+  width: 2rem;
+  height: 1.75rem;
+  position: relative;
+  display: inline-block; }
+  .likes:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 1.75rem;
+    background-image: url("img/icons.png");
+    background-position: -72px -39px; }
+
+.likes.userLikes:before {
+  background-position: -36px -39px; }
+
+.likes.small {
+  width: 1.438rem;
+  height: 1.25rem; }
+  .likes.small:before {
+    width: 1.438rem;
+    height: 1.25rem;
+    background-position: -50px -93px; }
+
+.likes.small.userLikes:before {
+  background-position: -25px -93px; }
 
 .systemError {
   border: 2px solid #e00b2e;

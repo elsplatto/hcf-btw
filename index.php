@@ -1,6 +1,7 @@
 <?php
 include 'includes/db.php';
 include 'includes/Mobile_Detect.php';
+include 'includes/global-functions.php';
 $device = new Mobile_Detect;
 
 
@@ -24,6 +25,7 @@ if($_GET['id']=='logout')
 if (!empty($_SESSION['userdetails']))
 {
     $instagramUserLoggedIn = true;
+
 }
 else{
     $instagramUserLoggedIn = false;
@@ -333,9 +335,9 @@ if ($device->isMobile()) {
 <?php
 if (!empty($_SESSION['userdetails']))
 {
-    //echo 'Welcome ' . $_SESSION['userdetails']['user'];
     $data=$_SESSION['userdetails'];
     $instagramUsername = $data->user->username;
+
     $instagramLogoutURL = '?id=logout';
 } else {
     // Login URL
@@ -362,104 +364,133 @@ if (!empty($_SESSION['userdetails']))
   </div>
 
   <div id="photoHolder01" class="row marginBottomStandard">
+    <?php
+    /*
+    $instagramJSONFilename = 'json/results.json';
+    $currentTime = time();
+    //Interval in seconds
+    $fileRewriteInterval = 180;
 
-      <?php
+    $fileAge = 0;
 
-      $instagramJSONFilename = 'json/results.json';
-      $currentTime = time();
-      //Interval in seconds
-      $fileRewriteInterval = 180;
+    if (file_exists($instagramJSONFilename))
+    {
+        $instagramJSONFileExists = true;
+        $instagramFileTimestamp =  filemtime($instagramJSONFilename);
+        $fileAge =  $currentTime - $instagramFileTimestamp;
+    }
+    else
+    {
+        $instagramJSONFileExists = false;
+    }
 
-      $fileAge = 0;
+    /*
+    if (!$instagramJSONFileExists || ($fileAge > $fileRewriteInterval))
+    {
+        //echo 'writing from api<br />';
+        //Use Instagram API
 
-      if (file_exists($instagramJSONFilename))
-      {
-          $instagramJSONFileExists = true;
-          $instagramFileTimestamp =  filemtime($instagramJSONFilename);
-          $fileAge =  $currentTime - $instagramFileTimestamp;
-          //echo 'Last modified['.$instagramFileTimestamp.']';
-          //echo 'Current time['.$currentTime.']';
-          //echo 'File Age['.$fileAge.']';
-      }
-      else
-      {
-          $instagramJSONFileExists = false;
-      }
+        $instagram->setAccessToken($data);
 
-      if (!$instagramJSONFileExists || ($fileAge > $fileRewriteInterval))
-      {
-          echo 'writing from api';
-          //Use Instagram API
-          $instagramResults = $instagram->getTagMedia('beyondthewharf',5);
-          //write JSON results to file
-          $instagram->writeTaggedMediaJSON($instagramResults, $instagramJSONFilename);
+        $token = $instagram->getAccessToken();
 
-      } else {
-          echo 'writing from file';
-          //Get JSON from file
-          $instagramResults = json_decode(file_get_contents($instagramJSONFilename, true));
+        if (isset($token))
+        {
+            $tokenSet = true;
+        }
+        else{
+            $tokenSet = false;
+        }
 
-          //echo '['.strlen(serialize($instagramResults)).']';
-          echo '['.count($instagramResults->data).']';
-      }
+        $instagramResults = $instagram->getTagMedia('beyondthewharf',$tokenSet, 5);
+        //$instagramResults = $instagram->getUserMedia();
+        //write JSON results to file
+        $instagram->writeTaggedMediaJSON($instagramResults, $instagramJSONFilename);
 
-      $instagramLoginURL = $instagram->getLoginUrl();
+    } else {
+        echo 'writing from file';
+        //Get JSON from file
+        $instagramResults = json_decode(file_get_contents($instagramJSONFilename, true));
+    }
+    */
 
-      if ($instagramUserLoggedIn)
-      {
-        $instagramCommentURL = 'overlays/instagram-comment.php';
-        $instagramCommentOverlaySize = 'large';
-      } else {
-        $instagramCommentURL = 'overlays/instagram-login.php';
-        $instagramCommentOverlaySize = 'small';
-      }
+    /*
+    echo '<script>';
+    echo 'console.dir('.json_encode($instagramResults).')';
+    echo '</script>';
+    */
 
-      if ($instagramResults->meta->code == 200)
-      {
-          foreach ($instagramResults->data as $post) {
-              if ($count == 0)
-              {
-                  echo '<div class="small-6 large-6 columns">';
-                  echo '<img src="'.$post->images->standard_resolution->url.'" />';
-                  echo '<a href="'.$instagramCommentURL.'?media_id='.$post->id.'" class="comments reveal-init" data-size="'.$instagramCommentOverlaySize.'"><span>'.$post->comments->count.'</span></a>';
-                  echo '<a href="#" class="likes"><span>'.$post->likes->count.'</span></a>';
-                  echo '</div>';
-              }
-              else
-              {
-                  echo '<div class="small-3 large-3 columns">';
-                  echo '<img src="'.$post->images->low_resolution->url.'" alt="'.$post->caption->text.'" />';
-                  echo '<a href="'.$instagramCommentURL.'?media_id='.$post->id.'" class="comments reveal-init" data-size="'.$instagramCommentOverlaySize.'"><span>'.$post->comments->count.'</span></a>';
-                  echo '<a href="#" class="likes"><span>'.$post->likes->count.'</span></a>';
-                  echo '</div>';
-              }
+    $instagram->setAccessToken($data);
 
-              $count++;
+    $token = $instagram->getAccessToken();
+
+    if (isset($token))
+    {
+        $tokenSet = true;
+    }
+    else{
+        $tokenSet = false;
+    }
+
+    $instagramResults = $instagram->getTagMedia('beyondthewharf',$tokenSet, 5);
+
+    $instagramLoginURL = $instagram->getLoginUrl();
+
+    if ($instagramUserLoggedIn)
+    {
+    $instagramCommentURL = 'overlays/instagram-comment.php';
+    $instagramCommentOverlaySize = 'large';
+    } else {
+    $instagramCommentURL = 'overlays/instagram-login.php';
+    $instagramCommentOverlaySize = 'small';
+    }
+
+    if ($instagramResults->meta->code == 200)
+    {
+      foreach ($instagramResults->data as $post) {
+          if ($count == 0)
+          {
+              echo '<div class="small-6 large-6 columns">';
+              echo '<img src="'.$post->images->standard_resolution->url.'" />';
+              echo '<a href="'.$instagramCommentURL.'?media_id='.$post->id.'" class="comments reveal-init" data-size="'.$instagramCommentOverlaySize.'"><span>'.$post->comments->count.'</span></a>';
+              echo '<a href="#" class="likes"><span>'.$post->likes->count.'</span></a>';
+              echo '</div>';
           }
+          else
+          {
+              echo '<div class="small-3 large-3 columns">';
+              echo '<img src="'.$post->images->low_resolution->url.'" alt="'.$post->caption->text.'" />';
+              echo '<a href="'.$instagramCommentURL.'?media_id='.$post->id.'" class="comments reveal-init" data-size="'.$instagramCommentOverlaySize.'"><span>'.$post->comments->count.'</span></a>';
+              echo '<a href="#" class="likes"><span>'.$post->likes->count.'</span></a>';
+              echo '</div>';
+          }
+
+          $count++;
       }
-      else {
+    }
+    else {
 
-          $to = 'jason.taikato@tobiasandtobias.com';
-          $subject = 'System error mail';
-          $message = '<html><head></head><body><p><strong>Type:</strong> '.$instagramResults->error_type.'</p><p><strong>Msg:</strong> '.$instagramResults->error_message.'</p><p><strong>URL:</strong> '.$_SERVER['REQUEST_URI'].'</p></body></html>';
-
-
-          //$message = 'Error:\rType: '.$instagramResults->error_type.'\rMsg: '.$instagramResults->error_message.'\rURL: '.$_SERVER['REQUEST_URI'];
-          $from = 'website@harbourcityferries.com.au';
-          $headers = 'MIME-Version: 1.0\r\n';
-          $headers .= 'Content-type: text/html; charset=iso-8859-1\r\n';
-          $headers  .= 'From:' .$from.'\r\n';
-          //mail($to,$subject,$message,$headers);
+      $to = 'jason.taikato@tobiasandtobias.com';
+      $subject = 'System error mail';
+      $message = '<html><head></head><body><p><strong>Type:</strong> '.$instagramResults->error_type.'</p><p><strong>Msg:</strong> '.$instagramResults->error_message.'</p><p><strong>URL:</strong> '.$_SERVER['REQUEST_URI'].'</p></body></html>';
 
 
-          echo '<div class="systemError"><h2>Error:</h2>';
-          echo '<p>An email with the following message has been sent to the webmaster - sorry for any inconvenience.</a></p>';
-          echo '<p><strong>Type:</strong> '.$instagramResults->error_type.'</p>';
-          echo '<p><strong>Msg:</strong> '.$instagramResults->error_message.'</p>';
-          echo '<p><strong>URL:</strong> '.$_SERVER['REQUEST_URI'].'</p>';
-          echo '</div>';
-      }
-      ?>
+      //$message = 'Error:\rType: '.$instagramResults->error_type.'\rMsg: '.$instagramResults->error_message.'\rURL: '.$_SERVER['REQUEST_URI'];
+      $from = 'website@harbourcityferries.com.au';
+      $headers = 'MIME-Version: 1.0\r\n';
+      $headers .= 'Content-type: text/html; charset=iso-8859-1\r\n';
+      $headers  .= 'From:' .$from.'\r\n';
+      //mail($to,$subject,$message,$headers);
+
+
+      echo '<div class="systemError"><h2>Error:</h2>';
+      echo '<p>An email with the following message has been sent to the webmaster - sorry for any inconvenience.</a></p>';
+      echo '<p><strong>Type:</strong> '.$instagramResults->error_type.'</p>';
+      echo '<p><strong>Msg:</strong> '.$instagramResults->error_message.'</p>';
+      echo '<p><strong>URL:</strong> '.$_SERVER['REQUEST_URI'].'</p>';
+      echo '</div>';
+    }
+    ?>
   </div>
 </section>
 
@@ -482,7 +513,7 @@ $(document).foundation();
 
 $(function() {
 
-  $('.reveal-init').click(function(e)
+  $('body').on('click', '.reveal-init', function(e)
   {
       e.preventDefault();
       var size = 'small';

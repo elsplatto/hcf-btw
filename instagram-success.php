@@ -19,6 +19,7 @@ if (true === isset($code))
     }
     else
     {
+        $instagram->setAccessToken($data);
         session_start();
 // Storing instagram user data into session
         $_SESSION['userdetails']=$data;
