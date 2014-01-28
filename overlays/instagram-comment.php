@@ -48,8 +48,6 @@ foreach ($instagramMediaResults as $post) {
     }
 }
 
-
-
 if ($blnUserLiked) {
     $userLikedClass = ' userLikes';
 }
@@ -60,10 +58,11 @@ else
 
 
 echo '<script>';
-echo 'console.dir('.json_encode($objImgComments).')';
+//echo 'console.log('.$blnUserLiked.')';
+echo 'console.dir('.json_encode($objImgLikes).')';
+//echo 'console.dir('.json_encode($objImgComments).')';
+//echo 'console.dir('.json_encode($instagramMediaResults).')';
 echo '</script>';
-
-
 
 ?>
 
@@ -104,72 +103,12 @@ echo '</script>';
         ?>
             <div id="likesArea" class="likesArea large-12">
                 <div class="large-1 left text-center">
-                    <span class="likes small<?=$userLikedClass?>"></span>
+                    <span class="likes small"></span>
                 </div>
                 <div class="large-11 columns">
-                    <p>
+                    <p class="commentsShoutout">
                     <?php
-                    $limit = 3;
-
-
-                    //@todo: Fix the exception language for likes
-
-                    if ($blnUserLiked) {
-                        echo '<a href="http://instagram.com/'.$creatorUsername.'" target="_blank" rel="nofollow">You</a>';
-
-                        if ($likesCount == 2)
-                        {
-                            echo ' and ';
-                        }
-                        else if ($likesCount > 2)
-                        {
-                            echo ', ';
-                        }
-                        $i = 1;
-                        $remainder = 0;
-                    }
-                    else
-                    {
-                        $i = 0;
-                        $remainder = 1;
-                    }
-
-                    foreach ($objImgLikes->data as $likes)
-                    {
-                        echo '<a href="http://instagram.com/'.$likes->username.'" target="_blank" rel="nofollow">'.$likes->username.'</a>';
-                        if (($i+1) === $limit) {
-
-                            if (($likesCount - ($i+1)) > 0)
-                            {
-                                echo ' and ' . number_format(($likesCount - ($i+1)));
-                            }
-
-                            if (($likesCount - ($i+1)) === 1)
-                            {
-                                echo ' other';
-                            }
-                            else if (($likesCount - ($i+1)) > 1)
-                            {
-                                echo ' others';
-                            }
-
-                            echo ' like this.';
-                            break;
-                        }
-                        else if ($i === $likesCount)
-                        {
-                            echo ' like this.';
-                        }
-                        else if (($likesCount-($i+1)) === 1)
-                        {
-                            echo ' and ';
-                        }
-                        else
-                        {
-                            echo ', ';
-                        }
-                        $i++;
-                    }
+                    echo buildLikesString($likesCount, $blnUserLiked, $objImgLikes, $creatorUsername,$userInstagramId, 3);
                     ?>
                     </p>
                 </div>
@@ -189,15 +128,36 @@ echo '</script>';
             $commentHTML .= '<p>'.$comment->text.'</p>';
             $commentHTML .= '</div>';
             $commentHTML .= '</div>';
-
-
             echo $commentHTML;
         }
         ?>
         </div>
-
+        <?php
+        if (isset($blnUserLiked)) {
+            $likeURL = $mediaLikeURL.'?media_id='.$media_id;
+            $unLikeURL = $mediaUnLikeURL.'?media_id='.$media_id;
+            if ($blnUserLiked)
+            {
+                $heartURL = $unLikeURL;
+                $likeText = 'You like this media - click to unlike.';
+            }
+            else
+            {
+                $heartURL = $likeURL;
+                $likeText = 'Click to like.';
+            }
+        }
+        ?>
         <div id="commentBar" class="commentBar" class="large-12">
-        here
+            <form id="frmInstagramComment" method="POST" action="services/instagram-post-comment.php">
+            <div class="large-12 left">
+                <a href="#" data-url="<?=$heartURL?>" data-likesCount="<?=$likesCount?>" data-mediaId="<?=$media_id?>" class="left likes<?=$userLikedClass?>" title="<?=$likeText?>"></a>
+
+                <input type="text" class="left" id="txtInstagramComment" placeholder="Leave a comment..." />
+
+                <input type="submit" id="btnSubmitComment" class="button left" value="Go" disabled="disabled" data-mediaId="<?=$media_id?>" />
+            </div>
+            </form>
         </div>
 
     </div>
@@ -206,34 +166,125 @@ echo '</script>';
 
 </div>
 <script>
-    $(function() {
-        $('body').on('click', '.reveal-modal-bg, .reveal-close',function(e){
-            e.preventDefault();
+
+$(function() {
+
+    var targetHeight = 572; //$('#imageArea img').height();
+    var likesHeight = $('#likesArea').outerHeight(true);
+    var creditsHeight = $('#credits').outerHeight(true);
+    var commentBarHeight = $('#commentBar').outerHeight(true);
+    var topHeight = (likesHeight + creditsHeight + commentBarHeight);
+    $('#comments').height((targetHeight-topHeight));
+
+    $('body').on('submit', '#frmInstagramComment', function(e) {
+        e.preventDefault();
+        var url = $(this).attr('action');
+        var submitBtn = $(e.target).find('input[type="submit"]');
+        var mediaId = submitBtn.attr('data-mediaId');
+        var commentInput = $(e.target).find('input[type="text"]');
+        var comment = commentInput.val();
+        //console.log('['+mediaId+']['+comment+']');
+        $.ajax({
+            type: 'POST',
+            url: url + '?media_id=' + mediaId + '&comment=' + comment,
+            beforeSend: function()
+            {
+                beforeCommentSendHandler();
+            },
+            success: function(data)
+            {
+                commentSuccessHandler(data);
+            }
+        });
+    });
+
+    function beforeCommentSendHandler()
+    {
+
+    }
+
+    function commentSuccessHandler(data) {
+        console.log(data);
+
+        if (data != 'null')
+        {
+            var obj = JSON.parse(data);
+
+            if (obj.hasOwnProperty('meta'))
+            {
+                if (obj.meta.code === 200)
+                {
+                    console.log('post comment server response successful');
+                }
+                else
+                {
+
+                    console.log('post comment server response error');
+                    console.dir(obj);
+                }
+            }
+            else
+            {
+                console.log('data problems');
+            }
+        }
+        else
+        {
+            console.log('data is null');
+        }
+    }
+
+    $('body').on('keyup', '#txtInstagramComment', function(e){
+        e.preventDefault();
+        var submitButton = $('#btnSubmitComment');
+        var btnIsDisabled;
+        submitButton.attr('disabled') === 'disabled'?btnIsDisabled=true:btnIsDisabled=false;
+        if ($(this).val() === '')
+        {
+            if (!btnIsDisabled)
+            {
+                submitButton.attr('disabled','disabled');
+            }
+        }
+        else
+        {
+            if (btnIsDisabled)
+            {
+                submitButton.removeAttr('disabled');
+            }
+        }
+    });
+
+    /*
+    $('body').on('click', '.reveal-modal-bg, .reveal-close',function(e){
+        e.preventDefault();
+        $('.reveal-modal').foundation('reveal','close');
+        $('.reveal-modal-bg').hide();
+        $('.reveal-modal').remove();
+    });
+
+    $(document).keyup(function(e) {
+
+        if (e.keyCode == 27) {
+            //user hit esc key
             $('.reveal-modal').foundation('reveal','close');
             $('.reveal-modal-bg').hide();
             $('.reveal-modal').remove();
-        })
-        $(document).keyup(function(e) {
-
-            if (e.keyCode == 27) {
-                //user hit esc key
-                $('.reveal-modal').foundation('reveal','close');
-                $('.reveal-modal-bg').hide();
-                $('.reveal-modal').remove();
-            }
-        });
-        var targetHeight = $('#imageArea').height();
-        var likesHeight = $('#likesArea').outerHeight(true);
-        var creditsHeight = $('#credits').outerHeight(true);
-        var commentBarHeight = $('#commentBar').outerHeight(true);
-        var topHeight = (likesHeight + creditsHeight + commentBarHeight);
-        $('#comments').height((targetHeight-topHeight));
-        /*
-        console.log('targetHeight['+targetHeight+']');
-        console.log('likesHeight['+likesHeight+']');
-        console.log('creditsHeight['+creditsHeight+']');
-        console.log('topHeight['+topHeight+']');
-         */
+        }
     });
+    */
+
+
+
+
+    /*
+    console.log('targetHeight['+targetHeight+']');
+    console.log('likesHeight['+likesHeight+']');
+    console.log('creditsHeight['+creditsHeight+']');
+    console.log('topHeight['+topHeight+']');
+    console.log('make comment height['+(targetHeight-topHeight)+']');
+    */
+
+});
 </script>
 

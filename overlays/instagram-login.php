@@ -5,9 +5,8 @@ require '../includes/instagram.class.php';
 require '../includes/instagram.config.php';
 
 $device = new Mobile_Detect;
-$instagramLoginURL = $instagram->getLoginUrl();
+$instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
 ?>
-
 <div id="instagramLoginModal" class="white">
     <h3>Instagram Login</h3>
     <p>To Like or Comment on an Instagram image or video we will need you to sign in.</p>
