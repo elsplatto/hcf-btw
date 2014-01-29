@@ -33,6 +33,8 @@ foreach ($instagramMediaResults as $post) {
     if ($media_id == $post->id)
     {
         $instagramImg = $post->images->standard_resolution->url;
+        $imgWidth = $post->images->standard_resolution->width;
+        $imgHeight = $post->images->standard_resolution->height;
         $caption = $post->caption->text;
         $captionCreated = $post->caption->created_time;
         $creatorUsername = $post->user->username;
@@ -59,16 +61,16 @@ else
 
 echo '<script>';
 //echo 'console.log('.$blnUserLiked.')';
-echo 'console.dir('.json_encode($objImgLikes).')';
+//echo 'console.dir('.json_encode($objImgLikes).')';
 //echo 'console.dir('.json_encode($objImgComments).')';
-//echo 'console.dir('.json_encode($instagramMediaResults).')';
+echo 'console.dir('.json_encode($instagramMediaResults).')';
 echo '</script>';
 
 ?>
 
 <div id="instagramCommentModal" class="white large-12">
     <div id="imageArea" class="imageArea large-6 left">
-        <img src="<?=$instagramImg?>" />
+        <img src="<?=$instagramImg?>" id="mediaFeatureImage" />
     </div>
 
     <div id="commentsArea" class="commentsArea large-6 columns">
@@ -169,7 +171,7 @@ echo '</script>';
 
 $(function() {
 
-    var targetHeight = 572; //$('#imageArea img').height();
+    var targetHeight = $('#imageArea img').outerHeight();
     var likesHeight = $('#likesArea').outerHeight(true);
     var creditsHeight = $('#credits').outerHeight(true);
     var commentBarHeight = $('#commentBar').outerHeight(true);
@@ -204,7 +206,7 @@ $(function() {
     }
 
     function commentSuccessHandler(data) {
-        console.log(data);
+        //console.log(data);
 
         if (data != 'null')
         {
@@ -214,23 +216,23 @@ $(function() {
             {
                 if (obj.meta.code === 200)
                 {
-                    console.log('post comment server response successful');
+                    //console.log('post comment server response successful');
                 }
                 else
                 {
 
-                    console.log('post comment server response error');
-                    console.dir(obj);
+                    //console.log('post comment server response error');
+                    //console.dir(obj);
                 }
             }
             else
             {
-                console.log('data problems');
+                //console.log('data problems');
             }
         }
         else
         {
-            console.log('data is null');
+            //console.log('data is null');
         }
     }
 
@@ -277,13 +279,14 @@ $(function() {
 
 
 
-    /*
+
     console.log('targetHeight['+targetHeight+']');
+    console.log('img['+$('#mediaFeatureImage').height()+']');
     console.log('likesHeight['+likesHeight+']');
     console.log('creditsHeight['+creditsHeight+']');
     console.log('topHeight['+topHeight+']');
     console.log('make comment height['+(targetHeight-topHeight)+']');
-    */
+
 
 });
 </script>

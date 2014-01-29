@@ -261,18 +261,46 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
-<?php
-if ($device->isMobile()) {
-  // Your code here.
-  echo "Im a mobile";
-}
-?>
+<section class="featureImgHolder marginBottomStandard">
+    <img src="img/featureImages/harbourPano-2.jpg" />
+    <section class="promoHolder">
+        <div class="row">
+            <div class="large-12">
+                <div class="large-3 columns">
+                    <div>
+
+                    </div>
+                </div>
+
+                <div class="large-3 columns">
+                    <div>
+
+                    </div>
+                </div>
+
+                <div class="large-3 columns">
+                    <div>
+
+                    </div>
+                </div>
+
+                <div class="large-3 columns">
+                    <div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+</section>
+
 <section class="mapHolder">
   <div class="row marginBottomStandard">
-      <div class="large-12 columns">
-          <div id="map-canvas"></div>
+          <div class="large-12 columns" id="map-canvas"></div>
 
-          <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
+          <!--a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
 
           <div id="mapControlPanelHolder" class="controlPanelHolder">
               <div id="mapControlPanel" class="controlPanel">
@@ -285,7 +313,7 @@ if ($device->isMobile()) {
                       <li><a href="#" class="routeController" data-target="mosmanTrip" data-visible="true"><span><span></span></span>Mosman</a></li>
                   </ul>
               </div>
-          </div>
+          </div-->
       </div>
   </div>
 </section>
@@ -632,13 +660,13 @@ $(function() {
         {
             if (obj.meta.code === 200)
             {
-                console.log('unlike server response successful');
+                //console.log('unlike server response successful');
             }
             else
             {
 
-                console.log('unlike server response error');
-                console.dir(obj);
+                //console.log('unlike server response error');
+                //console.dir(obj);
             }
         }
     }
@@ -650,12 +678,12 @@ $(function() {
         {
             if (obj.meta.code === 200)
             {
-                console.log('like server response successful');
+                //console.log('like server response successful');
             }
             else
             {
-                console.log('like server response error');
-                console.dir(obj);
+                //console.log('like server response error');
+                //console.dir(obj);
             }
         }
     }

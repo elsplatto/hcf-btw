@@ -37,13 +37,13 @@
                 <section class="top-bar-section second">
                     <ul class="routes">
                         <li>Routes:</li>
-                        <li><a href="#">Manly</a></li>
-                        <li><a href="#">Taronga</a></li>
-                        <li><a href="#">Parramatta River</a></li>
-                        <li><a href="#">Darling Harbour</a></li>
-                        <li><a href="#">Neutral Bay</a></li>
-                        <li><a href="#">Mosman Bay</a></li>
-                        <li><a href="#">Eastern Suburbs</a></li>
+                        <li><a href="#" class="manly">Manly</a></li>
+                        <li><a href="#" class="taronga">Taronga Zoo</a></li>
+                        <li><a href="#" class="parramatta">Parramatta River</a></li>
+                        <li><a href="#" class="darling">Darling Harbour</a></li>
+                        <li><a href="#" class="neutral">Neutral Bay</a></li>
+                        <li><a href="#" class="mosman">Mosman Bay</a></li>
+                        <li><a href="#" class="eastern">Eastern Suburbs</a></li>
                     </ul>
                 </section>
 

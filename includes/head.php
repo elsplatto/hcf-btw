@@ -60,8 +60,10 @@ echo '$_SESSION[\'userdetails\']->user->username['. $_SESSION['userdetails']->us
     <?php
     if (($_SERVER['SERVER_NAME'] == 'beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'www.beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'localhost')){
         ?>
-        <script type="text/javascript" src="http://fast.fonts.net/jsapi/e2583fea-ee60-464a-b468-73d1756802b0.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6681852/609364/css/fonts.css" />
+        <script type="text/javascript" src="//use.typekit.net/ipr3pdx.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <?php
     }
     ?>
