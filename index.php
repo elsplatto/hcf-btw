@@ -267,25 +267,32 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <div class="row">
             <div class="large-12">
                 <div class="large-3 columns">
-                    <div>
+
+                </div>
+
+                <div class="large-3 columns">
+                    <div class="imgHolder">
+                        <a href="#"><img src="img/promoImages/promo1.jpg" /></a>
+                    </div>
+                    <div class="textHolder">
 
                     </div>
                 </div>
 
                 <div class="large-3 columns">
-                    <div>
+                    <div class="imgHolder">
+                        <a href="#"><img src="img/promoImages/promo2.jpg" /></a>
+                    </div>
+                    <div class="textHolder">
 
                     </div>
                 </div>
 
                 <div class="large-3 columns">
-                    <div>
-
+                    <div class="imgHolder">
+                        <a href="#"><img src="img/promoImages/promo3.jpg" /></a>
                     </div>
-                </div>
-
-                <div class="large-3 columns">
-                    <div>
+                    <div class="textHolder">
 
                     </div>
                 </div>
@@ -296,13 +303,42 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </section>
 </section>
 
+<section class="themeFeature">
+    <div class="row marginBottomStandard">
+        <h3 class="text-center">Explore our harbour through the eyes of locals</h3>
+        <div class="large-12 columns">
+            <div class="large-6 left">
+                <div class="imgHolder">
+                    <img src="img/themedPromos/history-med.jpg" alt="Promo Image" />
+                    <a href="#" class="button">Explore Our Harbour History<span></span></a>
+                </div>
+                <div class="large-6 route darling opacity">
+                    <div class="inner">
+
+                    </div>
+                </div>
+
+                <div class="large-6 route manly opacity">
+                    <div class="inner">
+
+                    </div>
+                </div>
+            </div>
+            <div class="large-6 standardDarkGrey">
+
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="mapHolder">
   <div class="row marginBottomStandard">
-          <div class="large-12 columns" id="map-canvas"></div>
+      <h3 class="text-center">Find a Journey</h3>
+      <div class="large-12 columns">
+        <div class="large-12" id="map-canvas"></div>
+          <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
 
-          <!--a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
-
-          <div id="mapControlPanelHolder" class="controlPanelHolder">
+          <div id="mapControlPanelHolder" class="controlPanelHolder large-3">
               <div id="mapControlPanel" class="controlPanel">
                   <h5>FILTER JOURNEYS</h5>
                   <h6 class="marginTop20">SELECT ROUTE/S:</h6>
@@ -313,7 +349,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                       <li><a href="#" class="routeController" data-target="mosmanTrip" data-visible="true"><span><span></span></span>Mosman</a></li>
                   </ul>
               </div>
-          </div-->
+          </div>
       </div>
   </div>
 </section>

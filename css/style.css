@@ -1,5 +1,7 @@
 /* Start - font-family variables */
 /* End - font-family variables */
+/*Start - colors */
+/*End - colors */
 /* Start - Override classes */
 .row {
   max-width: 75rem !important; }
@@ -21,10 +23,67 @@ html {
     margin: 0;
     padding: 0; }
 
+h3 {
+  font-family: "adobe-garamond-pro", sans-serif !important;
+  font-size: 1.875rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #59acb3;
+  margin-bottom: 1.4rem; }
+
 h5, h6 {
   font-size: 1em;
   font-weight: 500; }
 
+/*Start - color classes */
+.standardDarkGrey {
+  background-color: #272e35; }
+
+/*Start - Route colors */
+.manly {
+  background-color: #bf5757; }
+
+.taronga {
+  background-color: #30bda1; }
+
+.parramatta {
+  background-color: #e2b076; }
+
+.darling {
+  background-color: #59acb3; }
+
+.neutral {
+  background-color: #798fa7; }
+
+.mosman {
+  background-color: #c98abf; }
+
+.eastern {
+  background-color: #eee8c0; }
+
+.manly.opacity {
+  background-color: rgba(191, 87, 87, 0.9); }
+
+.taronga.opacity {
+  background-color: rgba(48, 189, 161, 0.9); }
+
+.parramatta.opacity {
+  background-color: rgba(226, 176, 118, 0.9); }
+
+.darling.opacity {
+  background-color: rgba(89, 172, 179, 0.9); }
+
+.neutral.opacity {
+  background-color: rgba(121, 143, 167, 0.9); }
+
+.mosman.opacity {
+  background-color: rgba(201, 138, 191, 0.9); }
+
+.eastern.opacity {
+  background-color: rgba(238, 232, 192, 0.9); }
+
+/*End - Route colors */
+/*End - color classes */
 /*Start - nav */
 .navHolder {
   width: 100%;
@@ -114,6 +173,7 @@ h5, h6 {
         padding: 0 0.938rem 0 1.5rem; }
 
 .routes a {
+  background-color: none !important;
   position: relative; }
   .routes a:before {
     position: absolute;
@@ -160,12 +220,67 @@ h5, h6 {
       float: left;
       position: relative;
       display: inline-block;
-      height: 220px; }
-      .featureImgHolder .promoHolder .large-3 div {
+      height: 13.75rem; }
+      .featureImgHolder .promoHolder .large-3 .imgHolder {
         background-color: red;
-        height: 220px; }
+        width: 16.25rem;
+        height: 8.75rem; }
+      .featureImgHolder .promoHolder .large-3 .textHolder {
+        background-color: #272e35;
+        width: 16.25rem;
+        height: 5rem; }
 
 /*End - Feature Area */
+/*Start - Theme feature */
+.themeFeature {
+  position: relative; }
+  .themeFeature .large-6 {
+    height: 36.25rem;
+    overflow: hidden; }
+    .themeFeature .large-6 .imgHolder {
+      position: relative;
+      max-height: 21.125rem;
+      position: relative; }
+      .themeFeature .large-6 .imgHolder .button {
+        position: absolute;
+        width: 50%;
+        height: 2.5rem;
+        z-index: 10;
+        bottom: 0;
+        right: 0;
+        margin: 0 !important;
+        font-family: "Inconsolata", sans-serif !important;
+        font-size: 0.938rem;
+        font-weight: 700 !important;
+        color: #272e35;
+        background-color: #eeedec;
+        display: inline-block;
+        vertical-align: middle;
+        text-transform: uppercase; }
+        .themeFeature .large-6 .imgHolder .button span {
+          float: right;
+          height: 100%;
+          width: 2.5rem; }
+    .themeFeature .large-6 .route {
+      height: 15.125rem;
+      float: left;
+      position: relative; }
+    .themeFeature .large-6 .manly {
+      background-image: url("img/manlyBackground.jpg");
+      background-position: 0 0; }
+      .themeFeature .large-6 .manly .inner {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(191, 87, 87, 0.9); }
+    .themeFeature .large-6 .darling {
+      background-image: url("img/darlingBackground.jpg");
+      background-position: 0 0; }
+      .themeFeature .large-6 .darling .inner {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(89, 172, 179, 0.9); }
+
+/*End - Theme feature */
 #map-canvas {
   height: 480px;
   position: relative; }
@@ -298,7 +413,7 @@ h5, h6 {
   #photoHolder01 div a.likes.userLikes:before {
     background-position: -41px -33px !important; }
 #photoHolder01 div:nth-child(2), #photoHolder01 div:nth-child(3) {
-  padding-bottom: 1.25rem; }
+  padding-bottom: 2.5rem; }
 
 #photoPaginationHolder {
   clear: both;
@@ -314,7 +429,10 @@ h5, h6 {
     display: block;
     border: 1px solid #f3f3f3;
     border-radius: 3px; }
+  #instagramCommentModal .commentsArea .credits .creditHolder .credit {
+    font-size: 1rem; }
   #instagramCommentModal .commentsArea .credits .creditHolder p {
+    font-size: 0.83rem;
     line-height: 1.25 !important;
     margin-bottom: 0.25rem !important; }
     #instagramCommentModal .commentsArea .credits .creditHolder p span {
@@ -330,6 +448,7 @@ h5, h6 {
   border-width: 1px 0;
   border-color: #f3f3f3; }
   #instagramCommentModal .commentsArea .likesArea p {
+    font-size: 0.83rem;
     line-height: 1.25 !important;
     margin-bottom: 0.25rem !important; }
 #instagramCommentModal .commentsArea .comments {
@@ -408,7 +527,7 @@ h5, h6 {
 
 /* spacers */
 .marginBottomStandard {
-  margin-bottom: 2.5em; }
+  margin-bottom: 2.5rem; }
 
 .marginTop10 {
   margin-top: 0.625em !important; }

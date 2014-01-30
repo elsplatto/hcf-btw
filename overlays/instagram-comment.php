@@ -80,7 +80,7 @@ echo '</script>';
             </div>
 
             <div class="creditHolder large-11 columns">
-                <p>
+                <p class="credit">
                     <a href="http://instagram.com/<?=$creatorUsername?>" target="_blank" rel="nofollow"><?=$creatorUsername?></a>
                 </p>
 
@@ -195,7 +195,11 @@ $(function() {
             },
             success: function(data)
             {
-                commentSuccessHandler(data);
+                commentSuccessHandler(data,submitBtn,commentInput);
+            },
+            error: function(data)
+            {
+                commentErrorHandler(data,submitBtn,commentInput)
             }
         });
     });
@@ -205,8 +209,8 @@ $(function() {
 
     }
 
-    function commentSuccessHandler(data) {
-        //console.log(data);
+    function commentSuccessHandler(data,btn,input) {
+        console.log(data);
 
         if (data != 'null')
         {
@@ -216,13 +220,13 @@ $(function() {
             {
                 if (obj.meta.code === 200)
                 {
-                    //console.log('post comment server response successful');
+                    console.log('post comment server response successful');
                 }
                 else
                 {
 
-                    //console.log('post comment server response error');
-                    //console.dir(obj);
+                    console.log('post comment server response error');
+                    console.dir(obj);
                 }
             }
             else
@@ -235,6 +239,12 @@ $(function() {
             //console.log('data is null');
         }
     }
+
+    function commentErrorHandler(data,btn,input)
+    {
+        console.log('error handler called');
+    }
+
 
     $('body').on('keyup', '#txtInstagramComment', function(e){
         e.preventDefault();
