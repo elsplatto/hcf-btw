@@ -8,7 +8,6 @@ require 'instagram.config.php';
 $device = new Mobile_Detect;
 
 session_start();
-$sessionVar = $_SESSION['userdetails'];
 
 
 // User session data availability check
@@ -21,7 +20,7 @@ if(isset($_GET['id']))
     $instagramUserLoggedIn = false;
 }
 
-if (isset($sessionVar))
+if (isset($_SESSION['userdetails']))
 {
     session_start();
     $instagramData = $_SESSION['userdetails'];

@@ -23,6 +23,17 @@ html {
     margin: 0;
     padding: 0; }
 
+h2 {
+  font-family: "Tungsten A", "Tungsten B" !important;
+  font-size: 5.625rem;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center; }
+
+h2.sub {
+  font-size: 2.875rem; }
+
 h3 {
   font-family: "adobe-garamond-pro", sans-serif !important;
   font-size: 1.875rem;
@@ -172,10 +183,10 @@ h5, h6 {
         line-height: 1em;
         padding: 0 0.938rem 0 1.5rem; }
 
-.routes a {
+.routes a, .routes span {
   background-color: none !important;
   position: relative; }
-  .routes a:before {
+  .routes a:before, .routes span:before {
     position: absolute;
     content: "";
     top: 0.025rem;
@@ -201,6 +212,7 @@ h5, h6 {
 /*End - nav */
 /*Start - Feature Area */
 .featureImgHolder {
+  position: relative;
   width: 100%;
   display: inline-block;
   position: relative;
@@ -209,6 +221,155 @@ h5, h6 {
   .featureImgHolder img {
     width: 100%;
     text-align: center; }
+  .featureImgHolder .headerHolder {
+    position: absolute;
+    top: 25%;
+    text-align: center;
+    z-index: 20;
+    width: 100%;
+    height: auto; }
+    .featureImgHolder .headerHolder h2 {
+      line-height: 7rem;
+      margin-top: -1.5rem; }
+    .featureImgHolder .headerHolder h2.sub {
+      line-height: 4.5rem;
+      margin-top: -2rem; }
+    .featureImgHolder .headerHolder h3 {
+      color: white; }
+    .featureImgHolder .headerHolder hr {
+      position: relative;
+      border: none;
+      margin: 1rem auto;
+      width: 10.063rem;
+      height: 0.688rem; }
+      .featureImgHolder .headerHolder hr:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 10.063rem;
+        height: 0.688rem;
+        background-image: url("img/icons.png");
+        background-position: -18px -113px; }
+  .featureImgHolder .triggerContainer {
+    z-index: 20;
+    display: block;
+    width: 3.125rem;
+    height: 3.125rem;
+    position: absolute;
+    right: -3.125rem;
+    top: 35%; }
+    .featureImgHolder .triggerContainer .flip-container {
+      width: 3.125rem;
+      height: 3.125rem; }
+      .featureImgHolder .triggerContainer .flip-container .flipper {
+        position: relative;
+        -webkit-transition: 0.6s;
+        -webkit-transform-style: preserve-3d;
+        -moz-transition: 0.6s;
+        -moz-transform: perspective(1000px);
+        -moz-transform-style: preserve-3d;
+        transition: 0.6s;
+        transform-style: preserve-3d; }
+        .featureImgHolder .triggerContainer .flip-container .flipper .cameraIcon, .featureImgHolder .triggerContainer .flip-container .flipper .closeIcon {
+          position: absolute;
+          -webkit-backface-visibility: hidden;
+          -moz-backface-visibility: hidden;
+          backface-visibility: hidden;
+          -webkit-transition: 0.6s;
+          -webkit-transform-style: preserve-3d;
+          -moz-transition: 0.6s;
+          -moz-transform-style: preserve-3d;
+          -o-transition: 0.6s;
+          -o-transform-style: preserve-3d;
+          -ms-transition: 0.6s;
+          -ms-transform-style: preserve-3d;
+          transition: 0.6s;
+          transform-style: preserve-3d;
+          top: 0;
+          left: 0;
+          width: 3.125rem;
+          height: 3.125rem;
+          background-color: rgba(39, 46, 53, 0.75); }
+          .featureImgHolder .triggerContainer .flip-container .flipper .cameraIcon:before, .featureImgHolder .triggerContainer .flip-container .flipper .closeIcon:before {
+            position: absolute;
+            content: "";
+            background-image: url("img/icons.png"); }
+        .featureImgHolder .triggerContainer .flip-container .flipper .cameraIcon {
+          -webkit-transform: rotateY(0deg); }
+          .featureImgHolder .triggerContainer .flip-container .flipper .cameraIcon:before {
+            background-position: 0 -237px;
+            top: 0.75rem;
+            left: 0.75rem;
+            width: 3.125rem;
+            height: 3.125rem; }
+        .featureImgHolder .triggerContainer .flip-container .flipper .closeIcon {
+          -webkit-transform: rotateY(180deg);
+          -moz-transform: rotateY(180deg);
+          transform: rotateY(180deg); }
+          .featureImgHolder .triggerContainer .flip-container .flipper .closeIcon:before {
+            background-position: -209px -113px;
+            top: 0.75rem;
+            left: 0.75rem;
+            width: 1.625rem;
+            height: 1.438rem; }
+    .featureImgHolder .triggerContainer:hover {
+      background-color: rgba(39, 46, 53, 0.75); }
+  .featureImgHolder .flip .flip-container .flipper {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    filter: FlipH;
+    -ms-filter: "FlipH"; }
+  .featureImgHolder .creditPanel {
+    padding: 1.25rem;
+    width: 16.25rem;
+    height: auto;
+    background-color: #272e35;
+    position: absolute;
+    right: 0;
+    top: 35%;
+    display: none; }
+    .featureImgHolder .creditPanel p, .featureImgHolder .creditPanel span {
+      display: block;
+      color: white;
+      font-family: "Inconsolata", sans-serif !important;
+      font-size: 0.875rem;
+      margin: 0 1rem 0.4rem 0; }
+      .featureImgHolder .creditPanel p a, .featureImgHolder .creditPanel span a {
+        color: #59acb3; }
+    .featureImgHolder .creditPanel .location {
+      font-weight: 700;
+      text-transform: uppercase; }
+    .featureImgHolder .creditPanel .credit {
+      color: #879bb1;
+      margin-bottom: 1rem !important; }
+    .featureImgHolder .creditPanel span.routes {
+      background-color: transparent !important;
+      position: relative;
+      padding-left: 1.5rem; }
+      .featureImgHolder .creditPanel span.routes:before {
+        position: absolute;
+        content: "";
+        top: 0.025rem;
+        left: 0;
+        width: 1.125rem;
+        height: 0.75rem;
+        background-image: url("img/icons.png"); }
+    .featureImgHolder .creditPanel .routes.manly:before {
+      background-position: 0 -113px; }
+    .featureImgHolder .creditPanel .routes.taronga:before {
+      background-position: 0 -125px; }
+    .featureImgHolder .creditPanel .routes.parramatta:before {
+      background-position: 0 -137px; }
+    .featureImgHolder .creditPanel .routes.darling:before {
+      background-position: 0 -149px; }
+    .featureImgHolder .creditPanel .routes.neutral:before {
+      background-position: 0 -161px; }
+    .featureImgHolder .creditPanel .routes.mosman:before {
+      background-position: 0 -173px; }
+    .featureImgHolder .creditPanel .routes.eastern:before {
+      background-position: 0 -185px; }
   .featureImgHolder .promoHolder {
     position: absolute;
     bottom: 0;
@@ -222,13 +383,49 @@ h5, h6 {
       display: inline-block;
       height: 13.75rem; }
       .featureImgHolder .promoHolder .large-3 .imgHolder {
-        background-color: red;
+        background-color: #272e35;
         width: 16.25rem;
-        height: 8.75rem; }
+        height: 8.75rem;
+        position: relative; }
+      .featureImgHolder .promoHolder .large-3 .imgHolder.social:before {
+        position: absolute;
+        content: "";
+        width: 6.25rem;
+        height: 6.25rem;
+        left: 5rem;
+        top: 1.43rem;
+        background-image: url("img/icons.png"); }
+      .featureImgHolder .promoHolder .large-3 .imgHolder.social a {
+        width: 100%;
+        height: 100%;
+        display: block; }
+      .featureImgHolder .promoHolder .large-3 .imgHolder.social.facebook:before {
+        background-position: -18px -137px; }
       .featureImgHolder .promoHolder .large-3 .textHolder {
         background-color: #272e35;
         width: 16.25rem;
-        height: 5rem; }
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center; }
+        .featureImgHolder .promoHolder .large-3 .textHolder span {
+          font-family: "Inconsolata", sans-serif !important;
+          color: #59acb3;
+          display: block; }
+        .featureImgHolder .promoHolder .large-3 .textHolder a, .featureImgHolder .promoHolder .large-3 .textHolder .button {
+          font-size: 1.875rem;
+          text-transform: uppercase;
+          font-family: "Tungsten A", "Tungsten B" !important;
+          font-weight: 700 !important;
+          color: white; }
+        .featureImgHolder .promoHolder .large-3 .textHolder .button {
+          max-width: 100%;
+          padding: 0.45rem 0.65rem;
+          background-color: #59acb3;
+          margin: 0.625rem 0 0 0; }
+          .featureImgHolder .promoHolder .large-3 .textHolder .button:hover {
+            text-decoration: none; }
 
 /*End - Feature Area */
 /*Start - Theme feature */
@@ -288,13 +485,14 @@ h5, h6 {
     max-width: inherit; }
 
 .toggleControlPanel {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   display: block;
   background-color: rgba(27, 27, 27, 0.5);
   position: absolute;
   top: 0px;
-  right: 230px;
+  left: 76%;
+  margin-right: 2.5rem;
   z-index: 20;
   color: rgba(255, 255, 255, 0.5);
   font-size: 2em;
@@ -308,15 +506,15 @@ h5, h6 {
   display: block;
   position: absolute;
   top: 0px;
-  right: 10px;
+  left: 100%;
   z-index: 20;
-  width: 220px;
-  height: 480px; }
+  height: 100%;
+  width: 20%; }
   .controlPanelHolder .controlPanel {
     background-color: #1b1b1b;
-    width: 220px;
-    height: 480px;
-    padding: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 1.25rem;
     position: absolute; }
     .controlPanelHolder .controlPanel h5 {
       color: white; }

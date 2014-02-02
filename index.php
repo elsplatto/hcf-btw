@@ -219,14 +219,28 @@ function initialize() {
             }
         });
 
+
+
+
         $('#toggleMapControlPanel').on('click', function(e) {
             e.preventDefault();
-            var panelWidth = $('#mapControlPanelHolder').outerWidth() + 10;
-            //console.log('['+panelWidth+']')
+
+            var variant = 20;
+            var mapCanvasWidth = $('#map-canvas').outerWidth();
+            var controlPanelWidth =  $('#mapControlPanelHolder').outerWidth();
+            var controlPanelTargetLeft = (mapCanvasWidth - controlPanelWidth) + variant;
+            var toggleMapControlPanelWidth = $('#toggleMapControlPanel').outerWidth();
+            var toggleTargetIn = (mapCanvasWidth - controlPanelWidth) - toggleMapControlPanelWidth + variant
+            var toggleTargetOut = (mapCanvasWidth - toggleMapControlPanelWidth) + variant;
+
+            console.log('toggleTargetIn['+toggleTargetIn+']');
+            console.log('controlPanelTargetLeft['+controlPanelTargetLeft+']');
+
             if ($('#mapControlPanelHolder').is(':visible'))
             {
+                //hide
                 $('#mapControlPanel').animate({
-                        right: '-'+panelWidth+'px'
+                        left: controlPanelWidth
                     }, 500,
                     function() {
                         $('#mapControlPanelHolder').css({'display': 'none'});
@@ -234,7 +248,7 @@ function initialize() {
                 );
 
                 $('#toggleMapControlPanel').animate({
-                    right: '15px'
+                    left: toggleTargetOut
                 }, 500).html('&lt;');
             }
             else
@@ -242,17 +256,16 @@ function initialize() {
                 $('#mapControlPanelHolder').css({'display': 'block'});
                 $('#mapControlPanelHolder').show();
                 $('#mapControlPanel').animate({
-                        right: '0px'
+                        left: 0
                     }, 500
                 );
 
                 $('#toggleMapControlPanel').animate({
-                    right: panelWidth+'px'
+                    left: toggleTargetIn
                 }, 500).html('&gt;');
             }
 
-        })
-
+        });
 
 
     });
@@ -263,11 +276,37 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <section class="featureImgHolder marginBottomStandard">
     <img src="img/featureImages/harbourPano-2.jpg" />
+    <div class="headerHolder">
+        <h2 class="sub">Secrets</h2>
+        <h2>Beyond the Wharf</h2>
+        <hr />
+        <h3>Discover. Share. Contribute.</h3>
+    </div>
+    <a href="#" id="creditToggle" data-target="featureCreditPanel" class="triggerContainer" title="Click here for photo credits">
+        <div class="flip-container">
+            <div class="flipper">
+                <div class="cameraIcon"></div>
+                <div class="closeIcon"></div>
+            </div>
+        </div>
+    </a>
+    <div id="featureCreditPanel" class="creditPanel">
+        <span class="latLng">33.8368 S, 151.2811 E</span>
+        <span class="location">MINER'S POINT</span>
+        <span class="routes darling">Darling Harbour</span>
+        <span class="credit">Photo by David Jones</span>
+        <span><a href="#" target="_blank" rel="nofollow">Visit David's Gallery</a></span>
+    </div>
     <section class="promoHolder">
         <div class="row">
             <div class="large-12">
                 <div class="large-3 columns">
-
+                    <div class="imgHolder social facebook">
+                        <a href="#"></a>
+                    </div>
+                    <div class="textHolder">
+                        <a href="#" class="button">Follow Us</a>
+                    </div>
                 </div>
 
                 <div class="large-3 columns">
@@ -275,7 +314,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
                         <a href="#"><img src="img/promoImages/promo1.jpg" /></a>
                     </div>
                     <div class="textHolder">
-
+                        <span>On the Harbour<span>
+                        <a href="#">Event Diary</a>
                     </div>
                 </div>
 
@@ -284,7 +324,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
                         <a href="#"><img src="img/promoImages/promo2.jpg" /></a>
                     </div>
                     <div class="textHolder">
-
+                       <span>Promotion<span>
+                        <a href="#">Music on the Boat</a>
                     </div>
                 </div>
 
@@ -293,7 +334,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
                         <a href="#"><img src="img/promoImages/promo3.jpg" /></a>
                     </div>
                     <div class="textHolder">
-
+                       <span>Beyond the Wharf<span>
+                        <a href="#">Foodies Guide</a>
                     </div>
                 </div>
 
@@ -529,7 +571,10 @@ echo 'Page['.substr(strrchr($_SERVER['PHP_SELF'], "/"), 1).']';
 include 'includes/db.php';
 ?>
     
-<script src="js/jquery.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery.js"><\/script>')</script>
+<!--script src="js/jquery.js"></script-->
 <script src="js/foundation.min.js"></script>
 <script src="js/foundation/foundation.reveal.js"></script>
 <script src="js/global-functions.js"></script>
@@ -540,12 +585,53 @@ include 'includes/db.php';
 <script>
 
 
-$(function() {
+$(document).ready(function() {
+
+    //console.log('map-canvas width['+$('#map-canvas').outerWidth()+']');
+
+    if ($('#creditToggle').length > 0)
+    {
+        $('#creditToggle').animate({
+            right: 0,
+            easing: 'easeOut'
+        }, 200);
+    }
+
+    if ($('#mapControlPanelHolder').length > 0) {
+        var variant = 20;
+        var mapCanvasWidth = $('#map-canvas').outerWidth();
+        var controlPanelWidth =  $('#mapControlPanelHolder').outerWidth();
+        var controlPanelTargetLeft = (mapCanvasWidth - controlPanelWidth) + variant;
+        var toggleMapControlPanelWidth = $('#toggleMapControlPanel').outerWidth();
+        var toggleTargetLeft = controlPanelTargetLeft - toggleMapControlPanelWidth;
+
+        $('#mapControlPanelHolder').css({
+            left: controlPanelTargetLeft
+        });
+
+        $('#toggleMapControlPanel').css({
+            left: toggleTargetLeft
+        });
+    }
+
+    $('body').on('click', '#creditToggle', function(e)
+    {
+        e.preventDefault();
+        var target = $('#'+$(this).attr('data-target'));
+        if (target.is(':hidden'))
+        {
+            target.show();
+            $(this).addClass('flip');
+        }else{
+            target.hide();
+            $(this).removeClass('flip');
+        }
+    });
 
     $('body').on('click', '.reveal-init', function(e)
     {
         e.preventDefault();
-        console.log('overlay');
+        //console.log('overlay');
         var url = $(this).attr('href');
         $('#modalShell').html('<div id="canvasLoader"></div>');
 
