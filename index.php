@@ -1,6 +1,7 @@
 <?php
 include 'includes/head.php';
 include 'includes/nav.php';
+include 'includes/db.php';
 ?>
 <body>
 <script type="text/javascript">
@@ -78,7 +79,7 @@ function initialize() {
         geodesic: true,
         strokeColor: '#ff5857',
         strokeOpacity: 1.0,
-        strokeWeight: 2
+        strokeWeight: 4
     });
 
     var parramattaTrip = new google.maps.Polyline({
@@ -199,6 +200,37 @@ function initialize() {
     manlyTrip.setMap(map);
     parramattaTrip.setMap(map);
     mosmanTrip.setMap(map);
+
+
+
+    google.maps.event.addListener(manlyTrip, 'click', function(event) {
+        var latLng = new google.maps.LatLng(event.latLng.lat(),event.latLng.lng());
+
+        var infoBubble = new InfoBubble({
+            map: map,
+            content: '<div class="infoBubble routes manly"><h5>Manly</h5><a href="#">Go to route</a><a href="#" class="close"></a></div>',
+            position: latLng,
+            shadowStyle: 1,
+            padding: 0,
+            backgroundColor: '#bf5758',
+            borderRadius: 0,
+            arrowSize: 10,
+            borderWidth: 1,
+            borderColor: '#bf5758',
+            disableAutoPan: true,
+            hideCloseButton: true,
+            arrowPosition: 25,
+            backgroundClassName: 'infoBubbleWrapper',
+            arrowStyle: 0,
+            disableAutoPan: true,
+            minWidth: 130,
+            minHeight: 70
+        })
+
+
+        infoBubble.setPosition(latLng);
+        infoBubble.open(map);
+    });
 
 
     $(function() {
@@ -377,6 +409,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <div class="row marginBottomStandard">
       <h3 class="text-center">Find a Journey</h3>
       <div class="large-12 columns">
+
+
         <div class="large-12" id="map-canvas"></div>
           <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
 
@@ -414,7 +448,7 @@ echo 'Page['.substr(strrchr($_SERVER['PHP_SELF'], "/"), 1).']';
 
 ?>
 
-<section class="photoSection">
+<section class="photoSection marginBottomStandard">
 
   <div class="row marginBottom20">
       <div class="large-12 columns">
@@ -432,7 +466,7 @@ echo 'Page['.substr(strrchr($_SERVER['PHP_SELF'], "/"), 1).']';
       </div>
   </div>
 
-  <div id="photoHolder01" class="row marginBottomStandard">
+  <div id="photoHolder01" class="row">
     <?php
 
     if (isset($instagramData))
@@ -552,27 +586,53 @@ echo 'Page['.substr(strrchr($_SERVER['PHP_SELF'], "/"), 1).']';
     echo '</script>';
     */
     ?>
-  </div>
 
 
+
+    </div>
+    <div class="row marginTop20">
+        <div class="large-12 columns text-center">
+            <h3 class="block">
+                Share your experience
+            </h3>
+            <h4>Tag your instagram photos with <span class="tag">#beyondthewharf</span></h4>
+            <a href="#" class="button stdDarkGrey">Follow us on <span class="social instagram small"></span> Instagram</a>
+        </div>
+    </div>
 </section>
+
+<footer>
+    <section class="socialBar">
+        <div class="row paddingTopBottom20">
+            <div class="large-12 text-center barHolder">
+                <h4>Follow Beyond the Wharf</h4>
+                <ul>
+                    <li><a href="#" class="social twitter medium">twitter</a></li>
+                    <li><a href="#" class="social facebook medium">facebook</a></li>
+                    <li><a href="#" class="social instagram medium">instagram</a></li>
+                    <li><a href="#" class="social googlePlus medium">google plus</a></li>
+                    <li><a href="#" class="social youtube medium">youtube</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="standard">
+        <div class="row paddingTopBottom20">
+            <span>Beyond the Wharf <?=date('Y')?></span>
+            <a hef="http://www.harbourcityferries.com.au/" target="_blank">About Us</a>
+        </div>
+    </section>
+</footer>
 
 <div id="modalShell" class="reveal-modal <?=$instagramCommentOverlaySize?>" data-reveal="">
 
 </div>
 
-<section class="photoPaginationHolder">
-  <div id="photoPagination" class="row marginBottomStandard">
 
-  </div>
-</section>
 
-<?php
-include 'includes/db.php';
-?>
-    
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js" />
 <script>window.jQuery || document.write('<script src="js/jquery.js"><\/script>')</script>
 <!--script src="js/jquery.js"></script-->
 <script src="js/foundation.min.js"></script>

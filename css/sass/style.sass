@@ -5,6 +5,10 @@ $hover-dark-grey-background-opacity: rgba(39, 46, 53, 0.35)
 $std-dark-grey-background: rgba(39, 46, 53, 1)
 
 $std-dark-grey: rgba(39, 46, 53, 1)
+$std-light-grey: #333b43
+
+
+$grey-button-hover-bg: #727577
 
 /* Start - font-family variables
 $garamond: 'adobe-garamond-pro', sans-serif !important //Adobe Typekit
@@ -50,6 +54,85 @@ a
 /* End - Override classes*/
 
 
+/* Start - Social icon classes*/
+.social
+  position: relative
+  text-indent: -10000px
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    background-image: url('img/icons.png')
+.instagram.small
+  width: 1rem
+  height: 0.938rem
+  display: inline-block
+  &:before
+    width: 1rem
+    height: 0.938rem
+    background-position: -447px 0px
+
+.social.medium
+  position: relative
+  height: 1.625rem
+  width: 1.688rem
+  display: inline-block
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    height: 1.625rem
+    width: 1.688rem
+    background-image: url('img/icons.png')
+
+.social.medium.twitter
+  &:before
+    background-position: -409px -17px
+.social.medium.facebook
+  &:before
+    background-position: -441px -17px
+.social.medium.instagram
+  &:before
+    background-position: -483px -17px
+.social.medium.googlePlus
+  &:before
+    background-position: -524px -17px
+
+.social.medium.youtube
+  &:before
+    background-position: -564px -17px
+
+/* End - Social icon classes*/
+
+/*Start - button overrides*/
+.button
+  font-family: $inconsolata
+  padding: 0.75rem 1rem
+  font-weight: 700 !important
+  border-radius: 2px
+  transition:
+    property: background-color
+    duration: 0.5s
+    timing-function: ease-out
+  -webkit-transition:
+    property: background-color
+    duration: 0.5s
+    timing-function: ease-out
+  &:hover
+    text-decoration: none !important
+
+.button.stdDarkGrey
+  background-color: $std-dark-grey
+  color: #fff
+  text-transform: uppercase
+  font-size: 0.938rem
+  &:hover
+    background-color: $grey-button-hover-bg
+  .social
+    margin-bottom: -0.1rem
+/*End - button overrides*/
 
 
 html
@@ -78,6 +161,28 @@ h3
   font-weight: 400
   color: $header-green
   margin-bottom: 1.4rem
+
+h3.block
+  font-family: $tungsten
+  font-size: 1.875rem
+  font-weight: 700
+  color: $std-dark-grey
+  margin-bottom: -0.25rem
+  font-style: normal !important
+  text-transform: uppercase
+
+
+h4
+  font-family: $garamond
+  color: $std-light-grey
+  font-size: 1.5rem
+  font-style: italic
+  .tag
+    font-family: $tungsten
+    text-transform: uppercase
+    color: $header-green
+    font-style: normal !important
+    font-weight: 700
 
 
 h5, h6
@@ -122,6 +227,7 @@ h5, h6
 /*End - Route colors*/
 
 /*End - color classes*/
+
 
 /*Start - nav*/
 .navHolder
@@ -813,6 +919,115 @@ h5, h6
     background-position: -25px -93px
 
 
+footer
+  .socialBar
+    background-color: $std-dark-grey-background
+    .barHolder
+      text-align: center
+      width: 100%
+      overflow: hidden
+      h4
+        font-family: $tungsten
+        font-weight: 700
+        font-style: normal
+        color: #fff
+        font-size: 1.5rem
+        text-transform: uppercase
+      ul
+        list-style: none
+        position: relative
+        float: left
+        display: block
+        left: 50%
+        li
+          position: relative
+          display: block
+          right: 60%
+          float: left
+          margin-left: 1.875em
+          &:first-child
+            margin-left: 0 !important
+          a
+            text-indent: -10000px
+            display: inline-block
+  .standard
+    background-color: #fff
+    text-align: center
+    width: 100%
+    overflow: hidden
+    height: auto
+    a, span
+      color: $std-dark-grey
+      font-family: $inconsolata
+      font-weight: 400
+      font-size: 0.75rem
+      display: inline-block
+      text-transform: uppercase
+    span
+      margin-left: -5rem
+      padding-right: 2rem
+      border-right: 1px solid $std-dark-grey
+    a
+      margin-left: 2rem
+
+.infoBubbleWrapper
+  width: 8.125rem
+  padding: 0
+  overflow: hidden
+  padding: 0
+  .infoBubble
+    position: relative
+    width: 8.125rem
+    height: auto
+    padding: 0.6rem
+    h5
+      font-family: $tungsten
+      color: #fff
+      font-size: 2rem
+      font-weight: 700
+      line-height: 1.5rem
+    a
+      font-family: $inconsolata
+      font-size: 0.875rem
+      color: #fff
+      background-image: none !important
+      padding: 0 1.25rem 0 0 !important
+      font-weight: 700
+      &:before
+        background-image: none !important
+      &:after
+        position: absolute
+        content: ''
+        top: 0.075rem
+        right: 0
+        width: 0.813rem
+        height: 0.813rem
+        background-image: url('img/icons.png')
+        background-position: -135px 0px
+    a.close
+      position: absolute
+      top: 1rem
+      right: 1rem
+      width: 0.813rem
+      height: 0.813rem
+      &:before
+        position: absolute
+        content: ''
+        top: 0.25rem
+        left: 0
+        width: 0.813rem
+        height: 0.813rem
+        background-image: url('img/icons.png') !important
+        background-position: -151px 0px
+      &:after
+        background-image: none !important
+
+
+
+
+
+
+
 .systemError
   border: 2px solid #e00b2e
   padding: 10px
@@ -846,3 +1061,48 @@ h5, h6
 
 .marginBottom60
   margin-bottom: 5em !important
+
+
+
+.paddingTop10
+  padding-top: 0.625em !important
+
+.paddingTop20
+  padding-top: 1.25em !important
+
+.paddingTop40
+  padding-top: 2.5em !important
+
+.paddingTop60
+  padding-top: 5em !important
+
+
+.paddingBottom10
+  padding-bottom: 0.625em !important
+
+.paddingBottom20
+  padding-bottom: 1.25 !important
+
+.paddingBottom40
+  padding-bottom: 2.5em !important
+
+.paddingBottom60
+  margin-bottom: 5em !important
+
+
+
+.paddingTopBottom10
+  padding-top: 0.625em !important
+  padding-bottom: 0.625em !important
+
+.paddingTopBottom20
+  padding-top: 1.25em !important
+  padding-bottom: 1.25em !important
+
+.paddingTopBottom40
+  padding-top: 2.5em !important
+  padding-bottom: 2.5em !important
+
+.paddingTopBottom60
+  padding-top: 5em !important
+  padding-bottom: 5em !important

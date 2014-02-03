@@ -14,6 +14,82 @@ a:hover {
   text-decoration: underline; }
 
 /* End - Override classes */
+/* Start - Social icon classes */
+.social {
+  position: relative;
+  text-indent: -10000px; }
+  .social:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("img/icons.png"); }
+
+.instagram.small {
+  width: 1rem;
+  height: 0.938rem;
+  display: inline-block; }
+  .instagram.small:before {
+    width: 1rem;
+    height: 0.938rem;
+    background-position: -447px 0px; }
+
+.social.medium {
+  position: relative;
+  height: 1.625rem;
+  width: 1.688rem;
+  display: inline-block; }
+  .social.medium:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.625rem;
+    width: 1.688rem;
+    background-image: url("img/icons.png"); }
+
+.social.medium.twitter:before {
+  background-position: -409px -17px; }
+
+.social.medium.facebook:before {
+  background-position: -441px -17px; }
+
+.social.medium.instagram:before {
+  background-position: -483px -17px; }
+
+.social.medium.googlePlus:before {
+  background-position: -524px -17px; }
+
+.social.medium.youtube:before {
+  background-position: -564px -17px; }
+
+/* End - Social icon classes */
+/*Start - button overrides */
+.button {
+  font-family: "Inconsolata", sans-serif !important;
+  padding: 0.75rem 1rem;
+  font-weight: 700 !important;
+  border-radius: 2px;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+  -webkit-transition-property: background-color;
+  -webkit-transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out; }
+  .button:hover {
+    text-decoration: none !important; }
+
+.button.stdDarkGrey {
+  background-color: #272e35;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.938rem; }
+  .button.stdDarkGrey:hover {
+    background-color: #727577; }
+  .button.stdDarkGrey .social {
+    margin-bottom: -0.1rem; }
+
+/*End - button overrides */
 html {
   height: 100%;
   -webkit-font-smoothing: antialiased !important; }
@@ -41,6 +117,27 @@ h3 {
   font-weight: 400;
   color: #59acb3;
   margin-bottom: 1.4rem; }
+
+h3.block {
+  font-family: "Tungsten A", "Tungsten B" !important;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #272e35;
+  margin-bottom: -0.25rem;
+  font-style: normal !important;
+  text-transform: uppercase; }
+
+h4 {
+  font-family: "adobe-garamond-pro", sans-serif !important;
+  color: #333b43;
+  font-size: 1.5rem;
+  font-style: italic; }
+  h4 .tag {
+    font-family: "Tungsten A", "Tungsten B" !important;
+    text-transform: uppercase;
+    color: #59acb3;
+    font-style: normal !important;
+    font-weight: 700; }
 
 h5, h6 {
   font-size: 1em;
@@ -718,6 +815,108 @@ h5, h6 {
 .likes.small.userLikes:before {
   background-position: -25px -93px; }
 
+footer .socialBar {
+  background-color: #272e35; }
+  footer .socialBar .barHolder {
+    text-align: center;
+    width: 100%;
+    overflow: hidden; }
+    footer .socialBar .barHolder h4 {
+      font-family: "Tungsten A", "Tungsten B" !important;
+      font-weight: 700;
+      font-style: normal;
+      color: white;
+      font-size: 1.5rem;
+      text-transform: uppercase; }
+    footer .socialBar .barHolder ul {
+      list-style: none;
+      position: relative;
+      float: left;
+      display: block;
+      left: 50%; }
+      footer .socialBar .barHolder ul li {
+        position: relative;
+        display: block;
+        right: 60%;
+        float: left;
+        margin-left: 1.875em; }
+        footer .socialBar .barHolder ul li:first-child {
+          margin-left: 0 !important; }
+        footer .socialBar .barHolder ul li a {
+          text-indent: -10000px;
+          display: inline-block; }
+footer .standard {
+  background-color: white;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  height: auto; }
+  footer .standard a, footer .standard span {
+    color: #272e35;
+    font-family: "Inconsolata", sans-serif !important;
+    font-weight: 400;
+    font-size: 0.75rem;
+    display: inline-block;
+    text-transform: uppercase; }
+  footer .standard span {
+    margin-left: -5rem;
+    padding-right: 2rem;
+    border-right: 1px solid #272e35; }
+  footer .standard a {
+    margin-left: 2rem; }
+
+.infoBubbleWrapper {
+  width: 8.125rem;
+  padding: 0;
+  overflow: hidden;
+  padding: 0; }
+  .infoBubbleWrapper .infoBubble {
+    position: relative;
+    width: 8.125rem;
+    height: auto;
+    padding: 0.6rem; }
+    .infoBubbleWrapper .infoBubble h5 {
+      font-family: "Tungsten A", "Tungsten B" !important;
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.5rem; }
+    .infoBubbleWrapper .infoBubble a {
+      font-family: "Inconsolata", sans-serif !important;
+      font-size: 0.875rem;
+      color: white;
+      background-image: none !important;
+      padding: 0 1.25rem 0 0 !important;
+      font-weight: 700; }
+      .infoBubbleWrapper .infoBubble a:before {
+        background-image: none !important; }
+      .infoBubbleWrapper .infoBubble a:after {
+        position: absolute;
+        content: "";
+        top: 0.075rem;
+        right: 0;
+        width: 0.813rem;
+        height: 0.813rem;
+        background-image: url("img/icons.png");
+        background-position: -135px 0px; }
+    .infoBubbleWrapper .infoBubble a.close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 0.813rem;
+      height: 0.813rem; }
+      .infoBubbleWrapper .infoBubble a.close:before {
+        position: absolute;
+        content: "";
+        top: 0.25rem;
+        left: 0;
+        width: 0.813rem;
+        height: 0.813rem;
+        background-image: url("img/icons.png") !important;
+        background-position: -151px 0px; }
+      .infoBubbleWrapper .infoBubble a.close:after {
+        background-image: none !important; }
+
 .systemError {
   border: 2px solid #e00b2e;
   padding: 10px;
@@ -750,3 +949,43 @@ h5, h6 {
 
 .marginBottom60 {
   margin-bottom: 5em !important; }
+
+.paddingTop10 {
+  padding-top: 0.625em !important; }
+
+.paddingTop20 {
+  padding-top: 1.25em !important; }
+
+.paddingTop40 {
+  padding-top: 2.5em !important; }
+
+.paddingTop60 {
+  padding-top: 5em !important; }
+
+.paddingBottom10 {
+  padding-bottom: 0.625em !important; }
+
+.paddingBottom20 {
+  padding-bottom: 1.25 !important; }
+
+.paddingBottom40 {
+  padding-bottom: 2.5em !important; }
+
+.paddingBottom60 {
+  margin-bottom: 5em !important; }
+
+.paddingTopBottom10 {
+  padding-top: 0.625em !important;
+  padding-bottom: 0.625em !important; }
+
+.paddingTopBottom20 {
+  padding-top: 1.25em !important;
+  padding-bottom: 1.25em !important; }
+
+.paddingTopBottom40 {
+  padding-top: 2.5em !important;
+  padding-bottom: 2.5em !important; }
+
+.paddingTopBottom60 {
+  padding-top: 5em !important;
+  padding-bottom: 5em !important; }
