@@ -140,8 +140,9 @@ h4 {
     font-weight: 700; }
 
 h5, h6 {
+  font-family: "Inconsolata", sans-serif !important;
   font-size: 1em;
-  font-weight: 500; }
+  font-weight: 700; }
 
 /*Start - color classes */
 .standardDarkGrey {
@@ -487,7 +488,7 @@ h5, h6 {
       .featureImgHolder .promoHolder .large-3 .imgHolder.social:before {
         position: absolute;
         content: "";
-        width: 6.25rem;
+        width: 6.375rem;
         height: 6.25rem;
         left: 5rem;
         top: 1.43rem;
@@ -498,6 +499,8 @@ h5, h6 {
         display: block; }
       .featureImgHolder .promoHolder .large-3 .imgHolder.social.facebook:before {
         background-position: -18px -137px; }
+      .featureImgHolder .promoHolder .large-3 .imgHolder.social.instagram:before {
+        background-position: -275px -137px; }
       .featureImgHolder .promoHolder .large-3 .textHolder {
         background-color: #272e35;
         width: 16.25rem;
@@ -608,7 +611,7 @@ h5, h6 {
   height: 100%;
   width: 20%; }
   .controlPanelHolder .controlPanel {
-    background-color: #1b1b1b;
+    background-color: #272e35;
     width: 100%;
     height: 100%;
     padding: 1.25rem;
@@ -618,8 +621,10 @@ h5, h6 {
     .controlPanelHolder .controlPanel h6 {
       color: #29a1ba; }
     .controlPanelHolder .controlPanel ul {
+      list-style: none !important;
       margin-left: 0px; }
       .controlPanelHolder .controlPanel ul li {
+        font-family: "Inconsolata", sans-serif !important;
         margin: 3px 0;
         padding: 3px 0; }
         .controlPanelHolder .controlPanel ul li a {
@@ -642,11 +647,11 @@ h5, h6 {
               top: 1px;
               left: 1px; }
         .controlPanelHolder .controlPanel ul li [data-target='manlyTrip'] span span {
-          background-color: #ff5857; }
+          background-color: #bf5757; }
         .controlPanelHolder .controlPanel ul li [data-target='parramattaTrip'] span span {
-          background-color: #fed555; }
+          background-color: #e2b076; }
         .controlPanelHolder .controlPanel ul li [data-target='mosmanTrip'] span span {
-          background-color: #29a1ba; }
+          background-color: #c98abf; }
 
 #photoHolder01 div {
   float: left;
@@ -901,14 +906,14 @@ footer .standard {
         background-position: -135px 0px; }
     .infoBubbleWrapper .infoBubble a.close {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: -0.5rem;
+      right: -0.25rem;
       width: 0.813rem;
       height: 0.813rem; }
       .infoBubbleWrapper .infoBubble a.close:before {
         position: absolute;
         content: "";
-        top: 0.25rem;
+        top: 0.75rem;
         left: 0;
         width: 0.813rem;
         height: 0.813rem;
@@ -916,6 +921,15 @@ footer .standard {
         background-position: -151px 0px; }
       .infoBubbleWrapper .infoBubble a.close:after {
         background-image: none !important; }
+
+.locationBubbleWrapper .textHolder {
+  padding: 1rem; }
+  .locationBubbleWrapper .textHolder h5 {
+    font-family: "Tungsten A", "Tungsten B" !important;
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.5rem; }
 
 .systemError {
   border: 2px solid #e00b2e;

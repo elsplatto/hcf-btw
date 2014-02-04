@@ -31,12 +31,6 @@ else
 {
     $instagramUserLoggedIn = false;
 }
-/*
-echo '$instagramUserLoggedIn['.$instagramUserLoggedIn.']<br />';
-echo '$instagramData->user-username['.$instagramData->user->username.']<br />';
-echo '$_SESSION[\'userdetails\']->user->username['. $_SESSION['userdetails']->user->username.']<br />';
-*/
-
 ?>
 <!doctype html>
 <html class="no-js" lang="en">

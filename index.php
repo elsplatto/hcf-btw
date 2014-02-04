@@ -1,311 +1,11 @@
 <?php
 include 'includes/head.php';
-include 'includes/nav.php';
 include 'includes/db.php';
 ?>
 <body>
-<script type="text/javascript">
-function initialize() {
-    var mapOptions = {
-        center: new google.maps.LatLng(-33.830088, 151.226978),
-        zoom: 13,
-        mapTypeControlOptions: {
-            mapTypeIds: [google.maps.MapTypeId.TERRAIN, 'map_style'],
-            position: google.maps.ControlPosition.BOTTOM_CENTER
-        }
-    };
-    var map = new google.maps.Map(document.getElementById("map-canvas"),
-        mapOptions);
-
-    var manlyTripCoords = [
-        new google.maps.LatLng(-33.860616,151.21155),
-        new google.maps.LatLng(-33.854933,151.21346),
-        new google.maps.LatLng(-33.854987,151.247149),
-        new google.maps.LatLng(-33.824475,151.275301),
-        new google.maps.LatLng(-33.800514,151.283884)
-    ];
-
-    var parramattaTripCoords = [
-        new google.maps.LatLng(-33.860345,151.210552),
-        new google.maps.LatLng(-33.853436,151.211057),
-        new google.maps.LatLng(-33.849943,151.199813),
-        new google.maps.LatLng(-33.84474,151.185908),
-        new google.maps.LatLng(-33.845025,151.170287),
-        new google.maps.LatLng(-33.845381,151.158271),
-        new google.maps.LatLng(-33.840747,151.153636),
-        new google.maps.LatLng(-33.843741,151.141877),
-        new google.maps.LatLng(-33.84645,151.135268),
-        new google.maps.LatLng(-33.842815,151.13029),
-        new google.maps.LatLng(-33.844153,151.123896),
-        new google.maps.LatLng(-33.840043,151.121128),
-        new google.maps.LatLng(-33.837155,151.111515),
-        new google.maps.LatLng(-33.831202,151.100271),
-        new google.maps.LatLng(-33.824278,151.0957),
-        new google.maps.LatLng(-33.821755,151.090615),
-        new google.maps.LatLng(-33.820543,151.075981),
-        new google.maps.LatLng(-33.819651,151.072934),
-        new google.maps.LatLng(-33.82425,151.064265),
-        new google.maps.LatLng(-33.823823,151.049244),
-        new google.maps.LatLng(-33.818225,151.044052),
-        new google.maps.LatLng(-33.818047,151.039031),
-        new google.maps.LatLng(-33.819188,151.03667),
-        new google.maps.LatLng(-33.817298,151.026757),
-        new google.maps.LatLng(-33.814767,151.026113),
-        new google.maps.LatLng(-33.814196,151.021907),
-        new google.maps.LatLng(-33.815658,151.018689),
-        new google.maps.LatLng(-33.816157,151.016243),
-        new google.maps.LatLng(-33.815765,151.013839),
-        new google.maps.LatLng(-33.815016,151.011908),
-        new google.maps.LatLng(-33.813982,151.010664)
-    ];
-
-    var mosmanTripCoords = [
-        new google.maps.LatLng(-33.86038,151.211003),
-        new google.maps.LatLng(-33.854505,151.212087),
-        new google.maps.LatLng(-33.85308,151.228566),
-        new google.maps.LatLng(-33.848304,151.230798),
-        new google.maps.LatLng(-33.850799,151.232257),
-        new google.maps.LatLng(-33.850799,151.233888),
-        new google.maps.LatLng(-33.848731,151.235518),
-        new google.maps.LatLng(-33.844258,151.232536),
-        new google.maps.LatLng(-33.843255,151.232611),
-        new google.maps.LatLng(-33.840867,151.230401),
-        new google.maps.LatLng(-33.838746,151.230894),
-        new google.maps.LatLng(-33.838692,151.232547)
-    ]
-
-    var manlyTrip = new google.maps.Polyline({
-        path: manlyTripCoords,
-        geodesic: true,
-        strokeColor: '#ff5857',
-        strokeOpacity: 1.0,
-        strokeWeight: 4
-    });
-
-    var parramattaTrip = new google.maps.Polyline({
-        path: parramattaTripCoords,
-        geodesic: true,
-        strokeColor: '#fed555',
-        strokeOpacity: 1.0,
-        strokeWeight: 2
-    });
-
-    var mosmanTrip = new google.maps.Polyline({
-        path: mosmanTripCoords,
-        geodesic: true,
-        strokeColor: '#29a1ba',
-        strokeOpacity: 1.0,
-        strokeWeight: 2
-    });
-
-
-    var styles = [
-        {
-            "featureType": "transit.line",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {"visibility": "off" }
-            ]
-        },
-        {
-            "featureType":"water",
-            "stylers": [
-                {"visibility":"on"},
-                {"color":"#acbcc9"}
-            ]
-        },
-        {
-            "featureType":"landscape",
-            "stylers":[
-                {"color":"#f2e5d4"}
-            ]
-        },
-        {
-            "featureType":"road.highway",
-            "elementType":"geometry",
-            "stylers": [
-                {"color":"#c5c6c6"}
-            ]
-        },
-        {
-            "featureType":"road.arterial",
-            "elementType":"geometry",
-            "stylers": [
-                {"color":"#e4d7c6"}
-            ]
-        },
-        {
-            "featureType":"road.local",
-            "elementType":"geometry",
-            "stylers": [
-                {
-                    "color":"#fbfaf7"
-                }
-            ]
-        },
-        {
-            "featureType":"poi.park",
-            "elementType":"geometry",
-            "stylers": [
-                {
-                    "color":"#c5dac6"
-                }
-            ]
-        },
-        {
-            "featureType":"administrative",
-            "stylers": [
-                {
-                    "visibility":"on"
-                },
-                {
-                    "lightness":33
-                }
-            ]
-        },
-        {
-            "featureType":"road"
-        },
-        {
-            "featureType":"poi.park",
-            "elementType":"labels",
-            "stylers": [
-                {
-                    "visibility":"on"
-                },
-                {
-                    "lightness":20
-                }
-            ]
-        }
-        ,
-        {
-
-        },
-        {
-            "featureType":"road",
-            "stylers": [
-                {
-                    "lightness":20
-                }
-            ]
-        }
-    ]
-
-
-    var styledMap = new google.maps.StyledMapType(styles, {name: "Map"});
-
-    map.mapTypes.set('map_style', styledMap);
-    map.setMapTypeId('map_style');
-    manlyTrip.setMap(map);
-    parramattaTrip.setMap(map);
-    mosmanTrip.setMap(map);
-
-
-
-    google.maps.event.addListener(manlyTrip, 'click', function(event) {
-        var latLng = new google.maps.LatLng(event.latLng.lat(),event.latLng.lng());
-
-        var infoBubble = new InfoBubble({
-            map: map,
-            content: '<div class="infoBubble routes manly"><h5>Manly</h5><a href="#">Go to route</a><a href="#" class="close"></a></div>',
-            position: latLng,
-            shadowStyle: 1,
-            padding: 0,
-            backgroundColor: '#bf5758',
-            borderRadius: 0,
-            arrowSize: 10,
-            borderWidth: 1,
-            borderColor: '#bf5758',
-            disableAutoPan: true,
-            hideCloseButton: true,
-            arrowPosition: 25,
-            backgroundClassName: 'infoBubbleWrapper',
-            arrowStyle: 0,
-            disableAutoPan: true,
-            minWidth: 130,
-            minHeight: 70
-        })
-
-
-        infoBubble.setPosition(latLng);
-        infoBubble.open(map);
-    });
-
-
-    $(function() {
-
-        $('.routeController').on('click', function(e) {
-            e.preventDefault();
-            if ($(this).attr('data-visible') === 'true')
-            {
-                $(this).children('span').children('span').css({'display': 'none'});
-                $(this).attr('data-visible','false');
-                eval('{'+$(this).attr('data-target')+'}').setMap(null);
-            }
-            else
-            {
-                $(this).children('span').children('span').css({'display': 'block'});
-                $(this).attr('data-visible','true');
-                eval('{'+$(this).attr('data-target')+'}').setMap(map);
-            }
-        });
-
-
-
-
-        $('#toggleMapControlPanel').on('click', function(e) {
-            e.preventDefault();
-
-            var variant = 20;
-            var mapCanvasWidth = $('#map-canvas').outerWidth();
-            var controlPanelWidth =  $('#mapControlPanelHolder').outerWidth();
-            var controlPanelTargetLeft = (mapCanvasWidth - controlPanelWidth) + variant;
-            var toggleMapControlPanelWidth = $('#toggleMapControlPanel').outerWidth();
-            var toggleTargetIn = (mapCanvasWidth - controlPanelWidth) - toggleMapControlPanelWidth + variant
-            var toggleTargetOut = (mapCanvasWidth - toggleMapControlPanelWidth) + variant;
-
-            console.log('toggleTargetIn['+toggleTargetIn+']');
-            console.log('controlPanelTargetLeft['+controlPanelTargetLeft+']');
-
-            if ($('#mapControlPanelHolder').is(':visible'))
-            {
-                //hide
-                $('#mapControlPanel').animate({
-                        left: controlPanelWidth
-                    }, 500,
-                    function() {
-                        $('#mapControlPanelHolder').css({'display': 'none'});
-                    }
-                );
-
-                $('#toggleMapControlPanel').animate({
-                    left: toggleTargetOut
-                }, 500).html('&lt;');
-            }
-            else
-            {
-                $('#mapControlPanelHolder').css({'display': 'block'});
-                $('#mapControlPanelHolder').show();
-                $('#mapControlPanel').animate({
-                        left: 0
-                    }, 500
-                );
-
-                $('#toggleMapControlPanel').animate({
-                    left: toggleTargetIn
-                }, 500).html('&gt;');
-            }
-
-        });
-
-
-    });
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
-</script>
+<?php
+include 'includes/nav.php';
+?>
 <section class="featureImgHolder marginBottomStandard">
     <img src="img/featureImages/harbourPano-2.jpg" />
     <div class="headerHolder">
@@ -333,7 +33,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <div class="row">
             <div class="large-12">
                 <div class="large-3 columns">
-                    <div class="imgHolder social facebook">
+                    <div class="imgHolder social instagram">
                         <a href="#"></a>
                     </div>
                     <div class="textHolder">
@@ -417,7 +117,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
           <div id="mapControlPanelHolder" class="controlPanelHolder large-3">
               <div id="mapControlPanel" class="controlPanel">
                   <h5>FILTER JOURNEYS</h5>
-                  <h6 class="marginTop20">SELECT ROUTE/S:</h6>
+                  <h6 class="marginTop20">Select Route/s:</h6>
 
                   <ul>
                       <li><a href="#" class="routeController" data-target="manlyTrip" data-visible="true"><span><span></span></span>Manly Route</a></li>
@@ -431,6 +131,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </section>
 
 <?php
+$instagramUsername = "";
 if (isset($instagramData))
 {
     $instagramUsername = $instagramData->user->username;
@@ -439,12 +140,6 @@ if (isset($instagramData))
     // Login URL
     $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
 }
-/*
-echo 'REQUEST_URI['.$_SERVER['REQUEST_URI'].']<br />';
-echo 'SCRIPT_FILENAME['.$_SERVER['SCRIPT_FILENAME'].']<br />';
-echo 'PHP_SELF['.$_SERVER['PHP_SELF'].']<br />';
-echo 'Page['.substr(strrchr($_SERVER['PHP_SELF'], "/"), 1).']';
-*/
 
 ?>
 
@@ -453,7 +148,7 @@ echo 'Page['.substr(strrchr($_SERVER['PHP_SELF'], "/"), 1).']';
   <div class="row marginBottom20">
       <div class="large-12 columns">
       <?php
-      if (!empty($_SESSION['userdetails']))
+      if (isset($instagramData))
       {
         echo '<h4>Welcome ' . $instagramUsername . '</h4>';
         echo '<a href="'.$instagramLogoutURL.'" class="button">Logout of Instagram</a>';
@@ -632,16 +327,489 @@ echo 'Page['.substr(strrchr($_SERVER['PHP_SELF'], "/"), 1).']';
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="//google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble.js" />
+<script src="js/vendor/google/maps/infoBubble.js" />
 <script>window.jQuery || document.write('<script src="js/jquery.js"><\/script>')</script>
-<!--script src="js/jquery.js"></script-->
 <script src="js/foundation.min.js"></script>
 <script src="js/foundation/foundation.reveal.js"></script>
 <script src="js/global-functions.js"></script>
-
 <script src="js/vendor/plugins/indie/heartcode-canvasloader-min-0.9.1.js"></script>
 
+<script type="text/javascript">
+function initialize() {
 
+    var manlyColor = '#bf5757';
+    var parramattaColor = '#e2b076';
+    var mosmanColor = '#c98abf';
+    var tarongaColor = '#30bda1';
+    var darlingColor = '#59acb3';
+    var neutralColor = '#798fa7';
+    var easternColor = '#eee8c0';
+    var stdGrey = '#272e35';
+
+
+
+    var mapOptions = {
+        center: new google.maps.LatLng(-33.81221,151.176853),
+        zoom: 12,
+        mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.TERRAIN, 'map_style'],
+            position: google.maps.ControlPosition.BOTTOM_CENTER
+        }
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
+
+    var manlyTripCoords = [
+        new google.maps.LatLng(-33.860616,151.21155),
+        new google.maps.LatLng(-33.854933,151.21346),
+        new google.maps.LatLng(-33.854987,151.247149),
+        new google.maps.LatLng(-33.824475,151.275301),
+        new google.maps.LatLng(-33.800514,151.283884)
+    ];
+
+    var parramattaTripCoords = [
+        new google.maps.LatLng(-33.860345,151.210552),
+        new google.maps.LatLng(-33.853436,151.211057),
+        new google.maps.LatLng(-33.849943,151.199813),
+        new google.maps.LatLng(-33.84474,151.185908),
+        new google.maps.LatLng(-33.845025,151.170287),
+        new google.maps.LatLng(-33.845381,151.158271),
+        new google.maps.LatLng(-33.840747,151.153636),
+        new google.maps.LatLng(-33.843741,151.141877),
+        new google.maps.LatLng(-33.84645,151.135268),
+        new google.maps.LatLng(-33.842815,151.13029),
+        new google.maps.LatLng(-33.844153,151.123896),
+        new google.maps.LatLng(-33.840043,151.121128),
+        new google.maps.LatLng(-33.837155,151.111515),
+        new google.maps.LatLng(-33.831202,151.100271),
+        new google.maps.LatLng(-33.824278,151.0957),
+        new google.maps.LatLng(-33.821755,151.090615),
+        new google.maps.LatLng(-33.820543,151.075981),
+        new google.maps.LatLng(-33.819651,151.072934),
+        new google.maps.LatLng(-33.82425,151.064265),
+        new google.maps.LatLng(-33.823823,151.049244),
+        new google.maps.LatLng(-33.818225,151.044052),
+        new google.maps.LatLng(-33.818047,151.039031),
+        new google.maps.LatLng(-33.819188,151.03667),
+        new google.maps.LatLng(-33.817298,151.026757),
+        new google.maps.LatLng(-33.814767,151.026113),
+        new google.maps.LatLng(-33.814196,151.021907),
+        new google.maps.LatLng(-33.815658,151.018689),
+        new google.maps.LatLng(-33.816157,151.016243),
+        new google.maps.LatLng(-33.815765,151.013839),
+        new google.maps.LatLng(-33.815016,151.011908),
+        new google.maps.LatLng(-33.813982,151.010664)
+    ];
+
+    var mosmanTripCoords = [
+        new google.maps.LatLng(-33.86038,151.211003),
+        new google.maps.LatLng(-33.854505,151.212087),
+        new google.maps.LatLng(-33.85308,151.228566),
+        new google.maps.LatLng(-33.848304,151.230798),
+        new google.maps.LatLng(-33.850799,151.232257),
+        new google.maps.LatLng(-33.850799,151.233888),
+        new google.maps.LatLng(-33.848731,151.235518),
+        new google.maps.LatLng(-33.844258,151.232536),
+        new google.maps.LatLng(-33.843255,151.232611),
+        new google.maps.LatLng(-33.840867,151.230401),
+        new google.maps.LatLng(-33.838746,151.230894),
+        new google.maps.LatLng(-33.838692,151.232547)
+    ]
+
+    var manlyTrip = new google.maps.Polyline({
+        path: manlyTripCoords,
+        geodesic: true,
+        strokeColor: manlyColor,
+        strokeOpacity: 1.0,
+        strokeWeight: 3
+    });
+
+    var parramattaTrip = new google.maps.Polyline({
+        path: parramattaTripCoords,
+        geodesic: true,
+        strokeColor: parramattaColor,
+        strokeOpacity: 1.0,
+        strokeWeight: 3
+    });
+
+    var mosmanTrip = new google.maps.Polyline({
+        path: mosmanTripCoords,
+        geodesic: true,
+        strokeColor: mosmanColor,
+        strokeOpacity: 1.0,
+        strokeWeight: 3
+    });
+
+
+    var styles = [
+        {
+            "featureType": "transit.line",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {"visibility": "off" }
+            ]
+        },
+        {
+            "featureType":"water",
+            "stylers": [
+                {"visibility":"on"},
+                {"color":"#acbcc9"}
+            ]
+        },
+        {
+            "featureType":"landscape",
+            "stylers":[
+                {"color":"#f2e5d4"}
+            ]
+        },
+        {
+            "featureType":"road.highway",
+            "elementType":"geometry",
+            "stylers": [
+                {"color":"#c5c6c6"}
+            ]
+        },
+        {
+            "featureType":"road.arterial",
+            "elementType":"geometry",
+            "stylers": [
+                {"color":"#e4d7c6"}
+            ]
+        },
+        {
+            "featureType":"road.local",
+            "elementType":"geometry",
+            "stylers": [
+                {
+                    "color":"#fbfaf7"
+                }
+            ]
+        },
+        {
+            "featureType":"poi.park",
+            "elementType":"geometry",
+            "stylers": [
+                {
+                    "color":"#c5dac6"
+                }
+            ]
+        },
+        {
+            "featureType":"administrative",
+            "stylers": [
+                {
+                    "visibility":"on"
+                },
+                {
+                    "lightness":33
+                }
+            ]
+        },
+        {
+            "featureType":"road"
+        },
+        {
+            "featureType":"poi.park",
+            "elementType":"labels",
+            "stylers": [
+                {
+                    "visibility":"on"
+                },
+                {
+                    "lightness":20
+                }
+            ]
+        }
+        ,
+        {
+
+        },
+        {
+            "featureType":"road",
+            "stylers": [
+                {
+                    "lightness":20
+                }
+            ]
+        }
+    ]
+
+
+    var styledMap = new google.maps.StyledMapType(styles, {name: "Map"});
+
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
+    manlyTrip.setMap(map);
+    parramattaTrip.setMap(map);
+    mosmanTrip.setMap(map);
+
+    var infoBubble;
+
+    google.maps.event.addListener(manlyTrip, 'click', function(event) {
+        var latLng = new google.maps.LatLng(event.latLng.lat(),event.latLng.lng());
+
+        if(infoBubble)
+        {
+            infoBubble.close(map);
+            infoBubble.setMap(null);
+        }
+
+        infoBubble = new InfoBubble({
+            map: map,
+            content: '<div class="infoBubble routes manly"><h5>Manly</h5><a href="#">Go to route</a></div>',
+            position: latLng,
+            shadowStyle: 1,
+            padding: 0,
+            backgroundColor: manlyColor,
+            borderRadius: 0,
+            arrowSize: 10,
+            borderWidth: 1,
+            borderColor: manlyColor,
+            disableAutoPan: true,
+            hideCloseButton: false,
+            arrowPosition: 25,
+            backgroundClassName: 'infoBubbleWrapper',
+            arrowStyle: 0,
+            disableAutoPan: true,
+            minWidth: 130,
+            minHeight: 70
+        });
+
+        infoBubble.setPosition(latLng);
+        infoBubble.open(map);
+    });
+
+    google.maps.event.addListener(parramattaTrip, 'click', function(event) {
+        var latLng = new google.maps.LatLng(event.latLng.lat(),event.latLng.lng());
+
+        if(infoBubble)
+        {
+            infoBubble.close(map);
+            infoBubble.setMap(null);
+        }
+
+        infoBubble = new InfoBubble({
+            map: map,
+            content: '<div class="infoBubble routes parramatta"><h5>Parramatta River</h5><a href="#">Go to route</a></div>',
+            position: latLng,
+            shadowStyle: 1,
+            padding: 0,
+            backgroundColor: parramattaColor,
+            borderRadius: 0,
+            arrowSize: 10,
+            borderWidth: 1,
+            borderColor: parramattaColor,
+            disableAutoPan: true,
+            hideCloseButton: false,
+            arrowPosition: 25,
+            backgroundClassName: 'infoBubbleWrapper',
+            arrowStyle: 0,
+            disableAutoPan: true,
+            minWidth: 190,
+            minHeight: 100
+        });
+
+        infoBubble.setPosition(latLng);
+        infoBubble.open(map);
+    });
+
+
+
+    google.maps.event.addListener(mosmanTrip, 'click', function(event) {
+        var latLng = new google.maps.LatLng(event.latLng.lat(),event.latLng.lng());
+
+        if(infoBubble)
+        {
+            infoBubble.close(map);
+            infoBubble.setMap(null);
+        }
+
+        infoBubble = new InfoBubble({
+            map: map,
+            content: '<div class="infoBubble routes mosman"><h5>Mosman</h5><a href="#">Go to route</a></div>',
+            position: latLng,
+            shadowStyle: 1,
+            padding: 0,
+            backgroundColor: mosmanColor,
+            borderRadius: 0,
+            arrowSize: 10,
+            borderWidth: 1,
+            borderColor: mosmanColor,
+            disableAutoPan: true,
+            hideCloseButton: false,
+            arrowPosition: 25,
+            backgroundClassName: 'infoBubbleWrapper',
+            arrowStyle: 0,
+            disableAutoPan: true,
+            minWidth: 130,
+            minHeight: 70
+        });
+
+        infoBubble.setPosition(latLng);
+        infoBubble.open(map);
+    });
+
+    var iconBase = 'img/';
+    var thmbBase = 'img/locations/thumbnails/'
+    var markerLocations = [
+        {
+            locationName: 'Manly Wharf',
+            lat: -33.800432,
+            lng: 151.283906,
+            icon: iconBase + 'lightAnchorMarker.png',
+            thumb: thmbBase + 'cockatooIsland.jpg'
+        },
+        {
+            locationName: 'North Head',
+            lat: -33.817076,
+            lng: 151.286845,
+            icon: iconBase + 'lightStarMarker.png' ,
+            thumb: thmbBase + 'cockatooIsland.jpg'
+        },
+        {
+            locationName: 'Cockatoo Island',
+            lat: -33.846949,
+            lng: 151.17209,
+            icon: iconBase + 'lightAnchorMarker.png',
+            thumb: thmbBase + 'cockatooIsland.jpg'
+        },
+        {
+            locationName: 'Circular Quay',
+            lat: -33.861218,
+            lng: 151.210874,
+            icon: iconBase + 'lightAnchorMarker.png',
+            thumb: thmbBase + 'circularQuay.jpg'
+        },
+        {
+            locationName: 'Darling Point',
+            lat: -33.867724,
+            lng: 151.237246,
+            icon: iconBase + 'lightCameraMarker.png',
+            thumb: thmbBase + 'cockatooIsland.jpg'
+        }
+    ]
+
+    showLocations(markerLocations);
+
+    function showLocations(locations)
+    {
+        for (var i=0; i<locations.length;i++)
+        {
+            (function(location){
+                var latLng = new google.maps.LatLng(location.lat,location.lng)
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    icon: location.icon,
+                    map: map
+                });
+
+                var locationContent = '';
+                locationContent += '<div class="imgHolder">';
+                locationContent += '<img src="'+location.thumb+'" alt="'+location.locationName+'" />';
+                locationContent += '</div>';
+                locationContent += '<div class="textHolder">';
+                locationContent += '<h5>'+location.locationName+'</h5>';
+                locationContent += '</div>';
+
+                var locationBubble = new InfoBubble({
+                    map: map,
+                    content: locationContent,
+                    position: latLng,
+                    shadowStyle: 1,
+                    padding: 0,
+                    backgroundColor: stdGrey,
+                    borderRadius: 0,
+                    arrowSize: 10,
+                    borderWidth: 0,
+                    borderColor: stdGrey,
+                    disableAutoPan: false,
+                    hideCloseButton: false,
+                    arrowPosition: 25,
+                    backgroundClassName: 'locationBubbleWrapper',
+                    arrowStyle: 0,
+                    disableAutoPan: true,
+                    minWidth: 260,
+                    minHeight: 260
+                });
+
+                google.maps.event.addListener(marker, 'click', function(){
+                    locationBubble.open(map, marker)
+                });
+
+            }(locations[i]));
+        }
+    }
+
+    $(function() {
+
+        $('.routeController').on('click', function(e) {
+            e.preventDefault();
+            if ($(this).attr('data-visible') === 'true')
+            {
+                $(this).children('span').children('span').css({'display': 'none'});
+                $(this).attr('data-visible','false');
+                eval('{'+$(this).attr('data-target')+'}').setMap(null);
+            }
+            else
+            {
+                $(this).children('span').children('span').css({'display': 'block'});
+                $(this).attr('data-visible','true');
+                eval('{'+$(this).attr('data-target')+'}').setMap(map);
+            }
+        });
+
+        $('#toggleMapControlPanel').on('click', function(e) {
+            e.preventDefault();
+
+            var variant = 20;
+            var mapCanvasWidth = $('#map-canvas').outerWidth();
+            var controlPanelWidth =  $('#mapControlPanelHolder').outerWidth();
+            var controlPanelTargetLeft = (mapCanvasWidth - controlPanelWidth) + variant;
+            var toggleMapControlPanelWidth = $('#toggleMapControlPanel').outerWidth();
+            var toggleTargetIn = (mapCanvasWidth - controlPanelWidth) - toggleMapControlPanelWidth + variant
+            var toggleTargetOut = (mapCanvasWidth - toggleMapControlPanelWidth) + variant;
+
+            console.log('toggleTargetIn['+toggleTargetIn+']');
+            console.log('controlPanelTargetLeft['+controlPanelTargetLeft+']');
+
+            if ($('#mapControlPanelHolder').is(':visible'))
+            {
+                //hide
+                $('#mapControlPanel').animate({
+                        left: controlPanelWidth
+                    }, 500,
+                    function() {
+                        $('#mapControlPanelHolder').css({'display': 'none'});
+                    }
+                );
+
+                $('#toggleMapControlPanel').animate({
+                    left: toggleTargetOut
+                }, 500).html('&lt;');
+            }
+            else
+            {
+                $('#mapControlPanelHolder').css({'display': 'block'});
+                $('#mapControlPanelHolder').show();
+                $('#mapControlPanel').animate({
+                        left: 0
+                    }, 500
+                );
+
+                $('#toggleMapControlPanel').animate({
+                    left: toggleTargetIn
+                }, 500).html('&gt;');
+            }
+
+        });
+
+
+    });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
 <script>
 
 
