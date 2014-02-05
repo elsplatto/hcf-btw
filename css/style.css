@@ -228,7 +228,7 @@ h5, h6 {
     .navHolder nav.top-bar .top-bar-section {
       clear: right;
       float: left;
-      width: 90%; }
+      width: 91.2%; }
       .navHolder nav.top-bar .top-bar-section ul {
         display: block;
         overflow: hidden;
@@ -266,6 +266,50 @@ h5, h6 {
           -webkit-transition-timing-function: ease-out; }
           .navHolder nav.top-bar .top-bar-section.first ul li a:hover {
             background-color: rgba(39, 46, 53, 0.35) !important; }
+    .navHolder nav.top-bar .top-bar-section.first ul.right li {
+      height: 2.813rem;
+      width: auto;
+      overflow: hidden; }
+      .navHolder nav.top-bar .top-bar-section.first ul.right li form {
+        margin: 0;
+        padding: 0.313rem;
+        width: 100%;
+        height: auto; }
+        .navHolder nav.top-bar .top-bar-section.first ul.right li form label {
+          display: none; }
+        .navHolder nav.top-bar .top-bar-section.first ul.right li form input[type="search"] {
+          position: relative;
+          border: none;
+          height: 2rem;
+          color: white;
+          background-color: #272e35;
+          font-family: "Inconsolata", sans-serif !important;
+          padding: 0 0.25rem !important;
+          margin: -0.25rem 0 0 0 !important;
+          display: block;
+          float: left;
+          transition: width 0.5s ease-in-out;
+          -webkit-transition: width 0.5s ease-in-out; }
+        .navHolder nav.top-bar .top-bar-section.first ul.right li form button[type="submit"] {
+          background-color: #272e35;
+          border: none;
+          text-indent: -10000px;
+          position: absolute;
+          right: 0.313rem;
+          top: 0.5rem;
+          width: 1.875rem;
+          height: 2rem;
+          margin: 0 !important;
+          padding: 0 !important; }
+          .navHolder nav.top-bar .top-bar-section.first ul.right li form button[type="submit"]:before {
+            position: absolute;
+            content: "";
+            top: 0.6rem;
+            left: 0.5rem;
+            width: 0.813rem;
+            height: 0.75rem;
+            background-image: url("img/icons.png");
+            background-position: 0px -261px; }
     .navHolder nav.top-bar .top-bar-section.second ul li {
       font-family: "Inconsolata", sans-serif !important;
       font-weight: 700;
@@ -356,7 +400,8 @@ h5, h6 {
     height: 3.125rem;
     position: absolute;
     right: -3.125rem;
-    top: 35%; }
+    top: 35%;
+    cursor: pointer; }
     .featureImgHolder .triggerContainer .flip-container {
       width: 3.125rem;
       height: 3.125rem; }
@@ -399,8 +444,8 @@ h5, h6 {
             background-position: 0 -237px;
             top: 0.75rem;
             left: 0.75rem;
-            width: 3.125rem;
-            height: 3.125rem; }
+            width: 1.563rem;
+            height: 1.5rem; }
         .featureImgHolder .triggerContainer .flip-container .flipper .closeIcon {
           -webkit-transform: rotateY(180deg);
           -moz-transform: rotateY(180deg);
@@ -425,9 +470,8 @@ h5, h6 {
     height: auto;
     background-color: #272e35;
     position: absolute;
-    right: 0;
-    top: 35%;
-    display: none; }
+    left: 100%;
+    top: 35%; }
     .featureImgHolder .creditPanel p, .featureImgHolder .creditPanel span {
       display: block;
       color: white;
@@ -588,7 +632,7 @@ h5, h6 {
   width: 2.5rem;
   height: 2.5rem;
   display: block;
-  background-color: rgba(27, 27, 27, 0.5);
+  background-color: rgba(39, 46, 53, 0.75);
   position: absolute;
   top: 0px;
   left: 76%;
@@ -598,7 +642,7 @@ h5, h6 {
   font-size: 2em;
   text-align: center; }
   .toggleControlPanel:hover {
-    background-color: rgba(27, 27, 27, 0.75);
+    background-color: #272e35;
     color: white; }
 
 .controlPanelHolder {
@@ -606,7 +650,7 @@ h5, h6 {
   display: block;
   position: absolute;
   top: 0px;
-  left: 100%;
+  left: 78.33333%;
   z-index: 20;
   height: 100%;
   width: 20%; }
@@ -719,77 +763,79 @@ h5, h6 {
   clear: both;
   text-align: center; }
 
-#instagramCommentModal .imageArea img {
-  width: 100%;
-  height: 100%; }
-#instagramCommentModal .commentsArea .credits {
-  height: auto;
+#instagramCommentModal {
   overflow: hidden; }
-  #instagramCommentModal .commentsArea .credits .profileThumbHolder .profileThumb {
-    display: block;
-    border: 1px solid #f3f3f3;
-    border-radius: 3px; }
-  #instagramCommentModal .commentsArea .credits .creditHolder .credit {
-    font-size: 1rem; }
-  #instagramCommentModal .commentsArea .credits .creditHolder p {
-    font-size: 0.83rem;
-    line-height: 1.25 !important;
-    margin-bottom: 0.25rem !important; }
-    #instagramCommentModal .commentsArea .credits .creditHolder p span {
-      color: #aaaaaa;
-      font-size: 0.75rem; }
-#instagramCommentModal .commentsArea .likesArea {
-  clear: both;
-  overflow: hidden;
-  height: auto;
-  padding: 1rem 0;
-  margin: 1rem 0 0 0;
-  border-style: solid;
-  border-width: 1px 0;
-  border-color: #f3f3f3; }
-  #instagramCommentModal .commentsArea .likesArea p {
-    font-size: 0.83rem;
-    line-height: 1.25 !important;
-    margin-bottom: 0.25rem !important; }
-#instagramCommentModal .commentsArea .comments {
-  clear: both;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-  width: 100%; }
-  #instagramCommentModal .commentsArea .comments .commentContainer {
-    clear: both;
+  #instagramCommentModal .imageArea img {
+    width: 100%;
+    height: 100%; }
+  #instagramCommentModal .commentsArea .credits {
     height: auto;
-    padding: 0.75rem 0; }
-    #instagramCommentModal .commentsArea .comments .commentContainer .profileThumb {
+    overflow: hidden; }
+    #instagramCommentModal .commentsArea .credits .profileThumbHolder .profileThumb {
       display: block;
       border: 1px solid #f3f3f3;
-      border-radius: 3px;
-      height: 2.5rem;
-      width: 2.5rem; }
-    #instagramCommentModal .commentsArea .comments .commentContainer p {
+      border-radius: 3px; }
+    #instagramCommentModal .commentsArea .credits .creditHolder .credit {
+      font-size: 1rem; }
+    #instagramCommentModal .commentsArea .credits .creditHolder p {
+      font-size: 0.83rem;
       line-height: 1.25 !important;
-      margin-bottom: 0.25rem !important;
-      font-size: 0.83rem; }
-#instagramCommentModal .commentsArea .commentBar {
-  position: absolute;
-  bottom: -3.125rem;
-  height: 3.125rem;
-  width: 100%; }
-  #instagramCommentModal .commentsArea .commentBar .likes {
-    border: 2px solid #b7b7b7;
-    border-radius: 3px;
-    width: 3.125rem;
+      margin-bottom: 0.25rem !important; }
+      #instagramCommentModal .commentsArea .credits .creditHolder p span {
+        color: #aaaaaa;
+        font-size: 0.75rem; }
+  #instagramCommentModal .commentsArea .likesArea {
+    clear: both;
+    overflow: hidden;
+    height: auto;
+    padding: 1rem 0;
+    margin: 1rem 0 0 0;
+    border-style: solid;
+    border-width: 1px 0;
+    border-color: #f3f3f3; }
+    #instagramCommentModal .commentsArea .likesArea p {
+      font-size: 0.83rem;
+      line-height: 1.25 !important;
+      margin-bottom: 0.25rem !important; }
+  #instagramCommentModal .commentsArea .comments {
+    clear: both;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    width: 100%; }
+    #instagramCommentModal .commentsArea .comments .commentContainer {
+      clear: both;
+      height: auto;
+      padding: 0.75rem 0; }
+      #instagramCommentModal .commentsArea .comments .commentContainer .profileThumb {
+        display: block;
+        border: 1px solid #f3f3f3;
+        border-radius: 3px;
+        height: 2.5rem;
+        width: 2.5rem; }
+      #instagramCommentModal .commentsArea .comments .commentContainer p {
+        line-height: 1.25 !important;
+        margin-bottom: 0.25rem !important;
+        font-size: 0.83rem; }
+  #instagramCommentModal .commentsArea .commentBar {
+    position: absolute;
+    bottom: -3.125rem;
     height: 3.125rem;
-    background-color: #e9e9e9; }
-    #instagramCommentModal .commentsArea .commentBar .likes:before {
-      top: 0.5rem;
-      left: 0.42rem; }
-  #instagramCommentModal .commentsArea .commentBar input[type="text"] {
-    padding: 1.5rem 0.5rem;
-    width: 70%; }
-  #instagramCommentModal .commentsArea .commentBar input[type="text"] + .button {
-    padding-top: 1rem; }
+    width: 100%; }
+    #instagramCommentModal .commentsArea .commentBar .likes {
+      border: 2px solid #b7b7b7;
+      border-radius: 3px;
+      width: 3.125rem;
+      height: 3.125rem;
+      background-color: #e9e9e9; }
+      #instagramCommentModal .commentsArea .commentBar .likes:before {
+        top: 0.5rem;
+        left: 0.42rem; }
+    #instagramCommentModal .commentsArea .commentBar input[type="text"] {
+      padding: 1.5rem 0.5rem;
+      width: 70%; }
+    #instagramCommentModal .commentsArea .commentBar input[type="text"] + .button {
+      padding-top: 1rem; }
 
 .likes {
   width: 2rem;
@@ -929,7 +975,52 @@ footer .standard {
     color: white;
     font-size: 2rem;
     font-weight: 700;
-    line-height: 1.5rem; }
+    line-height: 2.3rem; }
+    .locationBubbleWrapper .textHolder h5 a {
+      color: white !important; }
+  .locationBubbleWrapper .textHolder span {
+    font-family: "Inconsolata", sans-serif !important;
+    font-weight: 700;
+    color: #59acb3;
+    font-size: 0.839rem; }
+
+span {
+  font-family: "Inconsolata", sans-serif !important;
+  font-weight: 700;
+  color: #59acb3;
+  font-size: 0.839rem; }
+
+.panelFlyout h3, .panelFlyout h4 {
+  font-family: "Tungsten A", "Tungsten B" !important;
+  font-weight: 700;
+  font-style: normal;
+  color: white; }
+.panelFlyout h3 {
+  font-size: 3rem; }
+.panelFlyout h4 {
+  font-size: 1.875rem; }
+.panelFlyout h4.loading {
+  margin-top: 1.25rem;
+  margin-left: 1.25rem; }
+.panelFlyout .flyoutPanelClose {
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #59acb3;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  text-indent: -10000px; }
+  .panelFlyout .flyoutPanelClose:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 1.625rem;
+    height: 1.438rem;
+    z-index: 20;
+    background-image: url("img/icons.png");
+    background-position: -113px -209px; }
 
 .systemError {
   border: 2px solid #e00b2e;

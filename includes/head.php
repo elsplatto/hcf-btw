@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Australia/NSW');
 include 'db.php';
 include 'Mobile_Detect.php';
 include 'global-functions.php';
@@ -22,7 +23,7 @@ if(isset($_GET['id']))
 
 if (isset($_SESSION['userdetails']))
 {
-    session_start();
+
     $instagramData = $_SESSION['userdetails'];
     $instagramUserLoggedIn = true;
 
@@ -37,7 +38,7 @@ else
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beyond the Wharf | Welcome</title>
+    <title><?=$pageMetaTitle?></title>
 
     <link rel="apple-touch-icon" href="apple-icons/beyond-the-wharf-icon.png" />
     <link rel="apple-touch-icon" sizes="76x76" href="apple-icons/beyond-the-wharf-76x76.png" />

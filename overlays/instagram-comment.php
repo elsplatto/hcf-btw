@@ -30,23 +30,29 @@ $instagramMediaResults = $instagram->getMedia($media_id, $tokenSet);
 
 
 foreach ($instagramMediaResults as $post) {
-    if ($media_id == $post->id)
+    if (isset($post->id))
     {
-        $instagramImg = $post->images->standard_resolution->url;
-        $imgWidth = $post->images->standard_resolution->width;
-        $imgHeight = $post->images->standard_resolution->height;
-        $caption = $post->caption->text;
-        $captionCreated = $post->caption->created_time;
-        $creatorUsername = $post->user->username;
-        $creatorProfilePic = $post->user->profile_picture;
-        $captionDateGap = getGap($captionCreated);
-        $imageCreated = $post->created_time;
-        $imageDateGap = getGap($imageCreated);
-        $locationName = $post->location->name;
+        if ($media_id == $post->id)
+        {
+            $instagramImg = $post->images->standard_resolution->url;
+            $imgWidth = $post->images->standard_resolution->width;
+            $imgHeight = $post->images->standard_resolution->height;
+            $caption = $post->caption->text;
+            $captionCreated = $post->caption->created_time;
+            $creatorUsername = $post->user->username;
+            $creatorProfilePic = $post->user->profile_picture;
+            $captionDateGap = getGap($captionCreated);
+            $imageCreated = $post->created_time;
+            $imageDateGap = getGap($imageCreated);
+            if (isset($post->location->name))
+            {
+                $locationName = $post->location->name;
+            }
 
-        $blnUserLiked = $post->user_has_liked;
-        $objImgLikes = $post->likes;
-        $objImgComments = $instagram->getMediaComments($media_id);
+            $blnUserLiked = $post->user_has_liked;
+            $objImgLikes = $post->likes;
+            $objImgComments = $instagram->getMediaComments($media_id);
+        }
     }
 }
 
@@ -59,12 +65,12 @@ else
 }
 
 
-echo '<script>';
+//echo '<script>';
 //echo 'console.log('.$blnUserLiked.')';
 //echo 'console.dir('.json_encode($objImgLikes).')';
 //echo 'console.dir('.json_encode($objImgComments).')';
-echo 'console.dir('.json_encode($instagramMediaResults).')';
-echo '</script>';
+//echo 'console.dir('.json_encode($instagramMediaResults).')';
+//echo '</script>';
 
 ?>
 
@@ -171,7 +177,7 @@ echo '</script>';
 
 $(function() {
 
-    var targetHeight = $('#imageArea img').outerHeight();
+    var targetHeight = $('#instagramCommentModal').outerHeight();
     var likesHeight = $('#likesArea').outerHeight(true);
     var creditsHeight = $('#credits').outerHeight(true);
     var commentBarHeight = $('#commentBar').outerHeight(true);
@@ -242,7 +248,7 @@ $(function() {
 
     function commentErrorHandler(data,btn,input)
     {
-        console.log('error handler called');
+        //console.log('error handler called');
     }
 
 

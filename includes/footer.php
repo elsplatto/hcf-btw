@@ -1,23 +1,23 @@
-<?php
-/**
- * Created by IntelliJ IDEA.
- * User: jasontaikato
- * Date: 20/01/2014
- * Time: 4:34 PM
- */
-?>
+
 <footer>
-
+    <section class="socialBar">
+        <div class="row paddingTopBottom20">
+            <div class="large-12 text-center barHolder">
+                <h4>Follow Beyond the Wharf</h4>
+                <ul>
+                    <li><a href="#" class="social twitter medium">twitter</a></li>
+                    <li><a href="#" class="social facebook medium">facebook</a></li>
+                    <li><a href="#" class="social instagram medium">instagram</a></li>
+                    <li><a href="#" class="social googlePlus medium">google plus</a></li>
+                    <li><a href="#" class="social youtube medium">youtube</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="standard">
+        <div class="row paddingTopBottom20">
+            <span>Beyond the Wharf <?=date('Y')?></span>
+            <a hef="http://www.harbourcityferries.com.au/" target="_blank">About Us</a>
+        </div>
+    </section>
 </footer>
-
-<div class="reveal-modal-bg" style="display: none"></div>
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-47305282-1', 'beyondthewharf.com.au');
-    ga('send', 'pageview');
-
-</script>

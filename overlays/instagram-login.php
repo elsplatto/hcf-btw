@@ -17,13 +17,3 @@ $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationship
     <a href="<?php echo $instagramLoginURL ?>" class="button">Log into Instagram</a>
     <a class="close-reveal-modal reveal-close">x</a>
 </div>
-<script>
-    $(function() {
-        $('.reveal-modal-bg, .reveal-close').click(function(e){
-            e.preventDefault();
-            $('.reveal-modal').foundation('reveal','close');
-            $('.reveal-modal-bg').hide();
-            $('.reveal-modal').remove();
-        })
-    });
-</script>

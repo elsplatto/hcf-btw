@@ -17,6 +17,8 @@ $tungsten: 'Tungsten A', 'Tungsten B' !important  //Typography.com normal weight
 /* End - font-family variables
 
 $header-green: #59acb3
+$std-text-green: #59acb3
+$std-green-background: #59acb3
 
 /*Start - colors*/
 $manly: rgba(191, 87, 87, 1)
@@ -269,7 +271,7 @@ h5, h6
     .top-bar-section
       clear: right
       float: left
-      width: 90%
+      width: 91.2%
       ul
         display: block
         overflow: hidden
@@ -311,6 +313,54 @@ h5, h6
               timing-function: ease-out
             &:hover
               background-color: $hover-dark-grey-background-opacity !important
+      ul.right
+        li
+          height: 2.813rem
+          width: auto
+          overflow: hidden
+          form
+            margin: 0
+            padding: 0.313rem
+            width: 100%
+            height: auto
+            label
+              display: none
+            input[type="search"]
+              position: relative
+              border: none
+              height: 2rem
+              color: #fff
+              background-color: $std-dark-grey
+              font-family: $inconsolata
+              padding: 0 0.25rem !important
+              margin: -0.25rem 0 0 0 !important
+              display: block
+              float: left
+              transition: width 0.5s ease-in-out
+              -webkit-transition: width 0.5s ease-in-out
+              //&:focus
+                //width: 20rem
+            button[type="submit"]
+              background-color: $std-dark-grey
+              border: none
+              text-indent: -10000px
+              position: absolute
+              right: 0.313rem
+              top: 0.5rem
+              width: 1.875rem
+              height: 2rem
+              margin: 0 !important
+              padding: 0 !important
+              &:before
+                position: absolute
+                content: ''
+                top: 0.6rem
+                left: 0.5rem
+                width: 0.813rem
+                height: 0.75rem
+                background-image: url('img/icons.png')
+                background-position: 0px -261px
+
 
     .top-bar-section.second
       ul
@@ -417,6 +467,7 @@ h5, h6
     position: absolute
     right: -3.125rem
     top: 35%
+    cursor: pointer
     .flip-container
       width: 3.125rem
       height: 3.125rem
@@ -460,8 +511,8 @@ h5, h6
             background-position: 0 -237px
             top: 0.75rem
             left: 0.75rem
-            width: 3.125rem
-            height: 3.125rem
+            width: 1.563rem
+            height: 1.5rem
         .closeIcon
           -webkit-transform: rotateY(180deg)
           -moz-transform: rotateY(180deg)
@@ -489,9 +540,9 @@ h5, h6
     height: auto
     background-color: $std-dark-grey-background
     position: absolute
-    right: 0
+    left: 100%
     top: 35%
-    display: none
+    //display: none
     p, span
       display: block
       color: #fff
@@ -499,7 +550,7 @@ h5, h6
       font-size: 0.875rem
       margin: 0 1rem 0.4rem 0
       a
-        color: #59acb3
+        color: $std-text-green
     .location
       font-weight: 700
       text-transform: uppercase
@@ -587,7 +638,7 @@ h5, h6
         text-align: center
         span
           font-family: $inconsolata
-          color: #59acb3
+          color: $std-text-green
           display: block
         a, .button
           font-size: 1.875rem
@@ -598,7 +649,7 @@ h5, h6
         .button
           max-width: 100%
           padding: 0.45rem 0.65rem
-          background-color: #59acb3
+          background-color: $std-text-green
           margin: 0.625rem 0 0 0
           &:hover
             text-decoration: none
@@ -668,7 +719,7 @@ h5, h6
   width: 2.5rem
   height: 2.5rem
   display: block
-  background-color: rgba(27,27,27, 0.5)
+  background-color: $std-dark-grey-background-opacity
   position: absolute
   top: 0px
   left: 76%
@@ -678,7 +729,7 @@ h5, h6
   font-size: 2em
   text-align: center
   &:hover
-    background-color: rgba(27,27,27, 0.75)
+    background-color: $std-dark-grey-background
     color: rgba(255, 255, 255, 1)
 
 
@@ -687,7 +738,7 @@ h5, h6
   display: block
   position: absolute
   top: 0px
-  left: 100%
+  left: 78.33333333333333%
   z-index: 20
   height: 100%
   width:  20%
@@ -817,6 +868,7 @@ h5, h6
   text-align: center
 
 #instagramCommentModal
+  overflow: hidden
   .imageArea
     img
       width: 100%
@@ -1036,8 +1088,53 @@ footer
       color: #fff
       font-size: 2rem
       font-weight: 700
-      line-height: 1.5rem
+      line-height: 2.3rem
+      a
+        color: #fff !important
+    span
+      font-family: $inconsolata
+      font-weight: 700
+      color: $std-text-green
+      font-size: 0.839rem
 
+span
+  font-family: $inconsolata
+  font-weight: 700
+  color: $std-text-green
+  font-size: 0.839rem
+
+.panelFlyout
+  h3, h4
+    font-family: $tungsten
+    font-weight: 700
+    font-style: normal
+    color: #fff
+  h3
+    font-size: 3rem
+  h4
+    font-size: 1.875rem
+  h4.loading
+    margin-top: 1.25rem
+    margin-left: 1.25rem
+  .flyoutPanelClose
+    position: absolute
+    width: 2.5rem
+    height: 2.5rem
+    background-color: $std-green-background
+    top: 0
+    right: 0
+    z-index: 10
+    text-indent: -10000px
+    &:before
+      position: absolute
+      content: ''
+      top: 0
+      left: 0
+      width: 1.625rem
+      height: 1.438rem
+      z-index: 20
+      background-image: url('img/icons.png')
+      background-position: -113px -209px
 
 
 

@@ -1,6 +1,9 @@
 <?php
+$pageMetaTitle = "Beyond the Wharf - The Sydney Harbour Ferry Experience";
+$pageSection = "home";
 include 'includes/head.php';
 include 'includes/db.php';
+
 ?>
 <body>
 <?php
@@ -34,16 +37,16 @@ include 'includes/nav.php';
             <div class="large-12">
                 <div class="large-3 columns">
                     <div class="imgHolder social instagram">
-                        <a href="#"></a>
+                        <a href="#" title="Click to follow us on Instagram"></a>
                     </div>
                     <div class="textHolder">
-                        <a href="#" class="button">Follow Us</a>
+                        <a href="#" class="button" title="Click to follow us on Instagram">Follow Us</a>
                     </div>
                 </div>
 
                 <div class="large-3 columns">
                     <div class="imgHolder">
-                        <a href="#"><img src="img/promoImages/promo1.jpg" /></a>
+                        <a href="#"><img src="img/promoImages/promo1.jpg" alt="Image of fireworks over Sydney Opera House on New Years Eve" /></a>
                     </div>
                     <div class="textHolder">
                         <span>On the Harbour<span>
@@ -53,7 +56,7 @@ include 'includes/nav.php';
 
                 <div class="large-3 columns">
                     <div class="imgHolder">
-                        <a href="#"><img src="img/promoImages/promo2.jpg" /></a>
+                        <a href="#"><img src="img/promoImages/promo2.jpg" alt="Image of Musicians" /></a>
                     </div>
                     <div class="textHolder">
                        <span>Promotion<span>
@@ -63,7 +66,7 @@ include 'includes/nav.php';
 
                 <div class="large-3 columns">
                     <div class="imgHolder">
-                        <a href="#"><img src="img/promoImages/promo3.jpg" /></a>
+                        <a href="#"><img src="img/promoImages/promo3.jpg" alt="" /></a>
                     </div>
                     <div class="textHolder">
                        <span>Beyond the Wharf<span>
@@ -108,7 +111,7 @@ include 'includes/nav.php';
 <section class="mapHolder">
   <div class="row marginBottomStandard">
       <h3 class="text-center">Find a Journey</h3>
-      <div class="large-12 columns">
+      <div class="large-12 columns" id="mapContainer">
 
 
         <div class="large-12" id="map-canvas"></div>
@@ -296,28 +299,9 @@ if (isset($instagramData))
     </div>
 </section>
 
-<footer>
-    <section class="socialBar">
-        <div class="row paddingTopBottom20">
-            <div class="large-12 text-center barHolder">
-                <h4>Follow Beyond the Wharf</h4>
-                <ul>
-                    <li><a href="#" class="social twitter medium">twitter</a></li>
-                    <li><a href="#" class="social facebook medium">facebook</a></li>
-                    <li><a href="#" class="social instagram medium">instagram</a></li>
-                    <li><a href="#" class="social googlePlus medium">google plus</a></li>
-                    <li><a href="#" class="social youtube medium">youtube</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <section class="standard">
-        <div class="row paddingTopBottom20">
-            <span>Beyond the Wharf <?=date('Y')?></span>
-            <a hef="http://www.harbourcityferries.com.au/" target="_blank">About Us</a>
-        </div>
-    </section>
-</footer>
+<?php
+include 'includes/footer.php';
+?>
 
 <div id="modalShell" class="reveal-modal <?=$instagramCommentOverlaySize?>" data-reveal="">
 
@@ -653,39 +637,59 @@ function initialize() {
     var thmbBase = 'img/locations/thumbnails/'
     var markerLocations = [
         {
-            locationName: 'Manly Wharf',
+            id: 1,
+            location_name: 'Manly Wharf',
             lat: -33.800432,
             lng: 151.283906,
             icon: iconBase + 'lightAnchorMarker.png',
-            thumb: thmbBase + 'cockatooIsland.jpg'
+            image_thumb: thmbBase + 'cockatooIsland.jpg',
+            alt: 'Image of Manly Wharf',
+            category: 'history',
+            sub_heading: 'Destination'
         },
         {
-            locationName: 'North Head',
+            id: 1,
+            location_name: 'North Head',
             lat: -33.817076,
             lng: 151.286845,
             icon: iconBase + 'lightStarMarker.png' ,
-            thumb: thmbBase + 'cockatooIsland.jpg'
+            image_thumb: thmbBase + 'cockatooIsland.jpg',
+            alt: 'Image of North Head',
+            category: 'attraction',
+            sub_heading: 'Attraction'
         },
         {
-            locationName: 'Cockatoo Island',
+            id: 2,
+            location_name: 'Cockatoo Island',
             lat: -33.846949,
             lng: 151.17209,
             icon: iconBase + 'lightAnchorMarker.png',
-            thumb: thmbBase + 'cockatooIsland.jpg'
+            image_thumb: thmbBase + 'cockatooIsland.jpg',
+            alt: 'Image of Cockatoo Island',
+            category: 'history',
+            sub_heading: 'Destination'
         },
         {
-            locationName: 'Circular Quay',
+            id: 1,
+            location_name: 'Circular Quay',
             lat: -33.861218,
             lng: 151.210874,
             icon: iconBase + 'lightAnchorMarker.png',
-            thumb: thmbBase + 'circularQuay.jpg'
+            image_thumb: thmbBase + 'circularQuay.jpg',
+            alt: 'Image of Circular Quay',
+            category: 'history',
+            sub_heading: 'Destination'
         },
         {
-            locationName: 'Darling Point',
+            id: 1,
+            location_name: 'Darling Point',
             lat: -33.867724,
             lng: 151.237246,
             icon: iconBase + 'lightCameraMarker.png',
-            thumb: thmbBase + 'cockatooIsland.jpg'
+            image_thumb: thmbBase + 'cockatooIsland.jpg',
+            alt: 'Image of Darling Point',
+            category: 'secret',
+            sub_heading: 'Photography Spot'
         }
     ]
 
@@ -702,13 +706,15 @@ function initialize() {
                     icon: location.icon,
                     map: map
                 });
+                //console.dir(marker);
 
                 var locationContent = '';
-                locationContent += '<div class="imgHolder">';
-                locationContent += '<img src="'+location.thumb+'" alt="'+location.locationName+'" />';
+                locationContent += '<div class="imgHolder" data-category="'+location.category+'">';
+                locationContent += '<img src="'+location.image_thumb+'" alt="'+location.alt+'" />';
                 locationContent += '</div>';
                 locationContent += '<div class="textHolder">';
-                locationContent += '<h5>'+location.locationName+'</h5>';
+                locationContent += '<span>'+location.sub_heading+'</span>';
+                locationContent += '<h5><a href="#" class="panelFlyoutTrigger" data-location="'+location.id+'" data-target="mapContainer">'+location.location_name+'</a></h5>';
                 locationContent += '</div>';
 
                 var locationBubble = new InfoBubble({
@@ -736,12 +742,94 @@ function initialize() {
                     locationBubble.open(map, marker)
                 });
 
+                google.maps.event.addListener(locationBubble,'domready', function(){
+                    $('.panelFlyoutTrigger').on('click', function(e) {
+                        e.preventDefault();
+                        //console.log('here');
+                        var target = $('#'+$(this).attr('data-target'));
+                        var id = $(this).attr('data-location');
+                        var url = 'services/get-location.php?id='+id;
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            beforeSend: function()
+                            {
+                                beforeLocationRetrieveHandler(target);
+                            },
+                            success: function(data)
+                            {
+                                locationRetrieveSuccessHandler(data);
+                            },
+                            error: function()
+                            {
+                                locationRetrieveErrorHandler(target);
+                            }
+                        });
+                    });
+
+                    $('body').on('click', '.flyoutPanelClose', function(e){
+                        e.preventDefault();
+                        //$('#flyoutPanel').hide();
+                        $('#flyoutPanel').remove();
+                    })
+
+                    function beforeLocationRetrieveHandler(target) {
+                        var panelFlyout = '';
+                        panelFlyout += '<div id="flyoutPanel" class="panelFlyout large-12 columns left">';
+                        panelFlyout += '<div class="large-12 columns standardDarkGrey">';
+                        panelFlyout += '<div id="flyoutCanvas" class="paddingTopBottom20 left"></div>';
+                        panelFlyout += '<h4 class="left loading">Loading...</h4>';
+                        panelFlyout += '<div class="left"></div>';
+                        panelFlyout += '</div>';
+                        panelFlyout += '</div>';
+                        $(panelFlyout).insertAfter(target);
+                        var cl = new CanvasLoader('flyoutCanvas');
+                        cl.setColor('#ffffff');
+                        cl.setShape('square'); // default is 'oval'
+                        cl.setDiameter(42); // default is 40
+                        cl.setDensity(90); // default is 40
+                        cl.setRange(1); // default is 1.3
+                        cl.setSpeed(3); // default is 2
+                        cl.setFPS(24); // default is 24
+                        cl.show(); // Hidden by default
+                    }
+
+                    function locationRetrieveSuccessHandler(data) {
+                        //var obj = JSON.parse(data);
+                        var obj = data;
+                        //console.dir(obj);
+                        var locationHTML = '';
+                        var closeHTML = '<a href="#" class="flyoutPanelClose">Close panel</a>';
+                        if (obj[0].hasOwnProperty('location_name'))
+                        {
+                            locationHTML += '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
+                            locationHTML += closeHTML;
+                            locationHTML += '<span>'+obj[0]['sub_heading']+'</span>';
+                            locationHTML += '<h3>'+obj[0]['location_name']+'</h3>';
+                            locationHTML += '<img src="img/locations/medium/'+obj[0]['image_med']+'" alt="'+obj[0]['location_name']+'" />';
+                            locationHTML += '</div>';
+                        }
+                        else
+                        {
+                            locationHTML += '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
+                            locationHTML += closeHTML;
+                            locationHTML += '<h4>'+obj[0]['error_display_msg']+'</div>';
+                            locationHTML += '</div>';
+                        }
+                        //console.log('data: '+obj[0]['image_med']);
+                        $('#flyoutPanel').html(locationHTML);
+                        var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
+                        $('html,body').animate({
+                                scrollTop: scrollHeight
+                        },'slow');
+                    }
+                });
+
             }(locations[i]));
         }
     }
 
     $(function() {
-
         $('.routeController').on('click', function(e) {
             e.preventDefault();
             if ($(this).attr('data-visible') === 'true')
@@ -769,8 +857,8 @@ function initialize() {
             var toggleTargetIn = (mapCanvasWidth - controlPanelWidth) - toggleMapControlPanelWidth + variant
             var toggleTargetOut = (mapCanvasWidth - toggleMapControlPanelWidth) + variant;
 
-            console.log('toggleTargetIn['+toggleTargetIn+']');
-            console.log('controlPanelTargetLeft['+controlPanelTargetLeft+']');
+            //console.log('toggleTargetIn['+toggleTargetIn+']');
+            //console.log('controlPanelTargetLeft['+controlPanelTargetLeft+']');
 
             if ($('#mapControlPanelHolder').is(':visible'))
             {
@@ -825,6 +913,8 @@ $(document).ready(function() {
         }, 200);
     }
 
+
+
     if ($('#mapControlPanelHolder').length > 0) {
         var variant = 20;
         var mapCanvasWidth = $('#map-canvas').outerWidth();
@@ -846,12 +936,19 @@ $(document).ready(function() {
     {
         e.preventDefault();
         var target = $('#'+$(this).attr('data-target'));
-        if (target.is(':hidden'))
+        var targetLeft = target.offset().left;
+        var targetWidth = target.outerWidth();
+        var windowWidth = $(document).width();
+        if (targetLeft >= windowWidth)
         {
-            target.show();
+            target.animate({
+                left: windowWidth - targetWidth
+            });
             $(this).addClass('flip');
         }else{
-            target.hide();
+            target.animate({
+                left: windowWidth + targetWidth
+            });
             $(this).removeClass('flip');
         }
     });
@@ -1051,5 +1148,9 @@ $(document).ready(function() {
 
 });
 </script>
+
+<?php
+include 'includes/analytics.php';
+?>
 </body>
 </html>

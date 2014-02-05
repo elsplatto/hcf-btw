@@ -14,15 +14,21 @@
 
                 <section class="top-bar-section first">
                     <!-- Right Nav Section -->
-                    <!--ul class="right">
-                        <li class="active"><a href="#">Right Button Active</a></li>
-                        <li class="has-dropdown">
+                    <ul class="right">
+                        <li>
+                            <form id="frmSearch" action="#" method="POST">
+                                <label for="txtSearch">Search</label>
+                                <input type="search" name="txtSearch" id="txtSearch" placeholder="Enter keywords" />
+                                <button type="submit" id="searchSubmit" name="searchSubmit">Submit</button>
+                            </form>
+                        </li>
+                        <!--li class="has-dropdown">
                             <a href="#">Right Button with Dropdown</a>
                             <ul class="dropdown">
                                 <li><a href="#">First link in dropdown</a></li>
                             </ul>
-                        </li>
-                    </ul-->
+                        </li-->
+                    </ul>
 
                     <!-- Left Nav Section -->
                     <ul class="left">
