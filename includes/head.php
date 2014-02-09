@@ -11,6 +11,8 @@ $device = new Mobile_Detect;
 session_start();
 
 
+
+
 // User session data availability check
 
 if(isset($_GET['id']))
@@ -39,6 +41,7 @@ else
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?=$pageMetaTitle?></title>
+    <meta name="description" content="<?=$pageMetaDesc?>" />
 
     <link rel="apple-touch-icon" href="apple-icons/beyond-the-wharf-icon.png" />
     <link rel="apple-touch-icon" sizes="76x76" href="apple-icons/beyond-the-wharf-76x76.png" />

@@ -165,8 +165,29 @@ function likeNumberFormatter($num)
     return $handled . $suffix;
 }
 
-function numberRounder($num)
-{
+function getJsonConents($pathToFile) {
+    $string = file_get_contents($pathToFile);
+    $json=json_decode($string,true);
+    //$json = file_get_contents($pathToFile);
+    return $json;
+}
 
+function getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
+
+    $query = '';
+    $query .= 'SELECT tiles.id, tiles.location_name, tiles.lat, tiles.lng, tiles.image_thumb, ';
+    $query .= 'tiles.image_med, tiles.image_large, tiles.alt, tiles.trip_plan, tiles.intro_text, ';
+    $query .= 'tiles.address_text, types.title AS type_title, categories.title AS category_title ';
+    $query .= 'FROM (tiles, types, categories) ';
+    $query .= 'INNER JOIN map_tile ON (tiles.id = map_tile.tile_id) ';
+    $query .= 'INNER JOIN pages ON (map_tile.page_id = pages.id) ';
+    $query .= 'WHERE types.id = tiles.type_id AND tiles.category_id = categories.id AND map_tile.page_id = ?';
+    $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param('i', $pageId);
+    $stmt->execute();
+    $results = $stmt->get_result();
+    $mysqli->close();
+    return $results;
 }
 ?>

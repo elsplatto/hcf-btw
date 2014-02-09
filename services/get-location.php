@@ -7,7 +7,7 @@ $locationId = $_GET['id'];
 if (isset($locationId))
 {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->prepare('SELECT location_name, image_med, alt, sub_heading, intro_text, category FROM locations WHERE id = ?');
+    $stmt = $mysqli->prepare('SELECT location_name, image_med, alt, sub_heading, intro_text, category FROM tiles WHERE id = ?');
     $stmt->bind_param('i', $locationId);
 
     $stmt->execute();

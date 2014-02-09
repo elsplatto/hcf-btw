@@ -1,8 +1,9 @@
 <?php
-$pageMetaTitle = "Beyond the Wharf - The Sydney Harbour Ferry Experience";
+$pageMetaTitle = "Beyond the Wharf - Sydney Harbour, Sydney Activities, Sydney Ferries";
 $pageSection = "home";
+$pageMetaDesc = "Beyond the Wharf provides local and international insights to Sydney Harbour.";
 include 'includes/head.php';
-include 'includes/db.php';
+/*global includes in head.php*/
 
 ?>
 <body>
@@ -49,8 +50,9 @@ include 'includes/nav.php';
                         <a href="#"><img src="img/promoImages/promo1.jpg" alt="Image of fireworks over Sydney Opera House on New Years Eve" /></a>
                     </div>
                     <div class="textHolder">
-                        <span>On the Harbour<span>
-                        <a href="#">Event Diary</a>
+                        <span>On the Harbour</span>
+                        <h5><a href="#">Event Diary</a></h5>
+                        <a href="#" class="directive">Read More</a>
                     </div>
                 </div>
 
@@ -59,8 +61,9 @@ include 'includes/nav.php';
                         <a href="#"><img src="img/promoImages/promo2.jpg" alt="Image of Musicians" /></a>
                     </div>
                     <div class="textHolder">
-                       <span>Promotion<span>
-                        <a href="#">Music on the Boat</a>
+                       <span>Promotion</span>
+                        <h5><a href="#">Music on the Boat</a></h5>
+                        <a href="#" class="directive">Read More</a>
                     </div>
                 </div>
 
@@ -69,8 +72,9 @@ include 'includes/nav.php';
                         <a href="#"><img src="img/promoImages/promo3.jpg" alt="" /></a>
                     </div>
                     <div class="textHolder">
-                       <span>Beyond the Wharf<span>
-                        <a href="#">Foodies Guide</a>
+                       <span>Beyond the Wharf</span>
+                        <h5><a href="#">Foodies Guide</a></h5>
+                        <a href="#" class="directive">Read More</a>
                     </div>
                 </div>
 
@@ -84,25 +88,23 @@ include 'includes/nav.php';
     <div class="row marginBottomStandard">
         <h3 class="text-center">Explore our harbour through the eyes of locals</h3>
         <div class="large-12 columns">
-            <div class="large-6 left">
-                <div class="imgHolder">
-                    <img src="img/themedPromos/history-med.jpg" alt="Promo Image" />
-                    <a href="#" class="button">Explore Our Harbour History<span></span></a>
-                </div>
-                <div class="large-6 route darling opacity">
-                    <div class="inner">
 
-                    </div>
-                </div>
-
-                <div class="large-6 route manly opacity">
-                    <div class="inner">
-
-                    </div>
-                </div>
+            <div class="large-6 themedPromoText standardDarkGrey left">
+                <span>The Mariner</span>
+                <h3 class="block">Sydney Harbour History</h3>
+                <a href="#" class="button wire white">Read the Article</a>
+                <p>
+                    Our harbour history told by Andrew Callager. A tale of explorers, settlers, invaders, soldiers, merchant ships, pirates and stowaways.
+                </p>
+                <img src="img/themedPromos/profile.jpg" class="profile" alt="Picture of Andrew Callager." />
+                <p>Andrew Callager</p>
+                <span class="purple">Master Sailor, Queenscliff</span>
             </div>
-            <div class="large-6 standardDarkGrey">
-
+            <div class="large-6 themedPromoImage">
+                <img src="img/themedPromos/sailor.jpg" alt="Image of salty old captain." />
+                <div class="large-6 themedPromoOverlay">
+                    <a href="#" class="button red play tungsten small">Watch the video</a>
+                </div>
             </div>
         </div>
     </div>
@@ -113,19 +115,23 @@ include 'includes/nav.php';
       <h3 class="text-center">Find a Journey</h3>
       <div class="large-12 columns" id="mapContainer">
 
-
         <div class="large-12" id="map-canvas"></div>
           <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
 
           <div id="mapControlPanelHolder" class="controlPanelHolder large-3">
               <div id="mapControlPanel" class="controlPanel">
-                  <h5>FILTER JOURNEYS</h5>
-                  <h6 class="marginTop20">Select Route/s:</h6>
+                  <h6 class="white">FILTER:</h6>
+                  <!--h6 class="marginTop20">Select Route/s:</h6-->
 
                   <ul>
-                      <li><a href="#" class="routeController" data-target="manlyTrip" data-visible="true"><span><span></span></span>Manly Route</a></li>
-                      <li><a href="#" class="routeController" data-target="parramattaTrip" data-visible="true"><span><span></span></span>Parramatta River</a></li>
-                      <li><a href="#" class="routeController" data-target="mosmanTrip" data-visible="true"><span><span></span></span>Mosman</a></li>
+
+                      <li><a href="#" class="mapFilter" data-category="attractions" data-visible="true"><span><span></span></span>Attractions</a></li>
+                      <li><a href="#" class="mapFilter" data-category="shopping" data-visible="true"><span><span></span></span>Shopping</a></li>
+                      <li><a href="#" class="mapFilter" data-category="adventure" data-visible="true"><span><span></span></span>Adventure</a></li>
+                      <li><a href="#" class="mapFilter" data-category="nature" data-visible="true"><span><span></span></span>Nature</a></li>
+                      <li><a href="#" class="mapFilter" data-category="food" data-visible="true"><span><span></span></span>Food &amp; Drink</a></li>
+                      <li><a href="#" class="mapFilter" data-category="family" data-visible="true"><span><span></span></span>Family</a></li>
+                      <li><a href="#" class="mapFilter" data-category="secret" data-visible="true"><span><span></span></span>Local Secrets</a></li>
                   </ul>
               </div>
           </div>
@@ -237,7 +243,7 @@ if (isset($instagramData))
           if ($count === 0)
           {
               echo '<div class="small-6 large-6 columns">';
-              echo '<img src="'.$post->images->standard_resolution->url.'" />';
+              echo '<img src="'.$post->images->standard_resolution->url.'" alt="'.$post->caption->text.'" />';
               echo '<a href="'.$instagramCommentURL.'?media_id='.$post->id.'" data-reveal-ajax="true" class="comments reveal-init" data-size="'.$instagramCommentOverlaySize.'" data-mediaId="'.$post->id.'" role="button"><span>'.$post->comments->count.'</span></a>';
               echo '<a href="'.$instagramLikeURL.'" data-url="'.$likeURL.'" class="likes'.$userLikedClass.'" title="'.$likeText.'" data-mediaId="'.$post->id.'" role="button"'.$instagramLikeOverlaySettings.'><span data-mediaId="'.$post->id.'" data-likesCount="'.$post->likes->count.'" data-displayCount>'.likeNumberFormatter($post->likes->count).'</span></a>';
               echo '</div>';
@@ -256,33 +262,25 @@ if (isset($instagramData))
     }
     else {
 
-      $to = 'jason.taikato@tobiasandtobias.com';
+      /*$to = 'jason.taikato@tobiasandtobias.com';
       $subject = 'System error mail';
       $message = '<html><head></head><body><p><strong>Type:</strong> '.$instagramResults->error_type.'</p><p><strong>Msg:</strong> '.$instagramResults->error_message.'</p><p><strong>URL:</strong> '.$_SERVER['REQUEST_URI'].'</p></body></html>';
 
-
-      //$message = 'Error:\rType: '.$instagramResults->error_type.'\rMsg: '.$instagramResults->error_message.'\rURL: '.$_SERVER['REQUEST_URI'];
       $from = 'website@harbourcityferries.com.au';
       $headers = 'MIME-Version: 1.0\r\n';
       $headers .= 'Content-type: text/html; charset=iso-8859-1\r\n';
-      $headers  .= 'From:' .$from.'\r\n';
+      $headers  .= 'From:' .$from.'\r\n';*/
       //mail($to,$subject,$message,$headers);
 
 
       echo '<div class="systemError"><h2>Error:</h2>';
-      echo '<p>An email with the following message has been sent to the webmaster - sorry for any inconvenience.</a></p>';
+      //echo '<p>An email with the following message has been sent to the webmaster - sorry for any inconvenience.</a></p>';
       echo '<p><strong>Type:</strong> '.$instagramResults->error_type.'</p>';
       echo '<p><strong>Msg:</strong> '.$instagramResults->error_message.'</p>';
       echo '<p><strong>URL:</strong> '.$_SERVER['REQUEST_URI'].'</p>';
       echo '</div>';
     }
 
-
-    /*
-    echo '<script>';
-    echo 'console.dir('.json_encode($instagramResults).')';
-    echo '</script>';
-    */
     ?>
 
 
@@ -308,7 +306,89 @@ include 'includes/footer.php';
 </div>
 
 
+<?php
 
+function placeMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
+    $results = getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    $numRows =  mysqli_num_rows($results);
+    $counter = 0;
+    $markerJS = '';
+    if ($numRows > 0)
+    {
+
+
+        $markerJS .= 'var iconBase = \'img/\';';
+        $markerJS .= "\r\n";
+        $markerJS .= 'var icons = {';
+        $markerJS .= "\r\n";
+        $markerJS .= 'history: {';
+        $markerJS .= "\r\n";
+        $markerJS .= 'icon: iconBase + \'lightAnchorMarker.png\'';
+        $markerJS .= "\r\n";
+        $markerJS .= '},';
+        $markerJS .= "\r\n";
+        $markerJS .= 'attraction: {';
+        $markerJS .= "\r\n";
+        $markerJS .= 'icon: iconBase + \'lightStarMarker.png\'';
+        $markerJS .= "\r\n";
+        $markerJS .= '},';
+        $markerJS .= "\r\n";
+        $markerJS .= 'secret: {';
+        $markerJS .= "\r\n";
+        $markerJS .= 'icon: iconBase + \'lightStarMarker.png\'';
+        $markerJS .= "\r\n";
+        $markerJS .= '}';
+        $markerJS .= "\r\n";
+        $markerJS .= '};';
+        $markerJS .= "\r\n";
+        $markerJS .= 'var thmbBase = \'img/locations/thumbnails/\';';
+        $markerJS .= "\r\n";
+
+
+        $markerJS .= 'var markerLocations = [';
+        $markerJS .= "\r\n";
+        while ($row = $results->fetch_assoc())
+        {
+            $counter++;
+
+            $markerJS .= '{';
+            $markerJS .= "\r\n";
+            $markerJS .= 'id: ' . $row['id'] . ', ';
+            $markerJS .= "\r\n";
+            $markerJS .= 'location_name: "' . $row['location_name'] . '", ';
+            $markerJS .= "\r\n";
+            $markerJS .= 'lat: ' . $row['lat'] . ', ';
+            $markerJS .= "\r\n";
+            $markerJS .= 'lng: ' . $row['lng'] . ', ';
+            $markerJS .= "\r\n";
+            $markerJS .= 'icon: iconBase + \'lightAnchorMarker.png\', ';
+            $markerJS .= "\r\n";
+            $markerJS .= 'image_thumb: thmbBase + \''.$row['image_thumb'].'\', ';
+            $markerJS .= "\r\n";
+            $markerJS .= 'alt: \''.$row['alt'].'\', ';
+            $markerJS .= "\r\n";
+            $markerJS .= 'category: \''.$row['category_title'].'\', ';
+            $markerJS .= "\r\n";
+            $markerJS .= 'sub_heading: \''.$row['type_title'].'\'';
+            $markerJS .= "\r\n";
+            $markerJS .= '}';
+            if ($counter < $numRows)
+            {
+                $markerJS .= ',';
+            }
+            $markerJS .= "\r\n";
+
+        }
+        $markerJS .= '];';
+        $markerJS .= "\r\n";
+        $markerJS .= "\r\n";
+    }
+
+    echo $markerJS;
+}
+
+
+?>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="js/vendor/google/maps/infoBubble.js" />
@@ -321,16 +401,7 @@ include 'includes/footer.php';
 <script type="text/javascript">
 function initialize() {
 
-    var manlyColor = '#bf5757';
-    var parramattaColor = '#e2b076';
-    var mosmanColor = '#c98abf';
-    var tarongaColor = '#30bda1';
-    var darlingColor = '#59acb3';
-    var neutralColor = '#798fa7';
-    var easternColor = '#eee8c0';
     var stdGrey = '#272e35';
-
-
 
     var mapOptions = {
         center: new google.maps.LatLng(-33.81221,151.176853),
@@ -343,86 +414,148 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
 
-    var manlyTripCoords = [
-        new google.maps.LatLng(-33.860616,151.21155),
-        new google.maps.LatLng(-33.854933,151.21346),
-        new google.maps.LatLng(-33.854987,151.247149),
-        new google.maps.LatLng(-33.824475,151.275301),
-        new google.maps.LatLng(-33.800514,151.283884)
-    ];
+<?php
+$coordsJson = getJsonConents('json/routeCoords.json');
 
-    var parramattaTripCoords = [
-        new google.maps.LatLng(-33.860345,151.210552),
-        new google.maps.LatLng(-33.853436,151.211057),
-        new google.maps.LatLng(-33.849943,151.199813),
-        new google.maps.LatLng(-33.84474,151.185908),
-        new google.maps.LatLng(-33.845025,151.170287),
-        new google.maps.LatLng(-33.845381,151.158271),
-        new google.maps.LatLng(-33.840747,151.153636),
-        new google.maps.LatLng(-33.843741,151.141877),
-        new google.maps.LatLng(-33.84645,151.135268),
-        new google.maps.LatLng(-33.842815,151.13029),
-        new google.maps.LatLng(-33.844153,151.123896),
-        new google.maps.LatLng(-33.840043,151.121128),
-        new google.maps.LatLng(-33.837155,151.111515),
-        new google.maps.LatLng(-33.831202,151.100271),
-        new google.maps.LatLng(-33.824278,151.0957),
-        new google.maps.LatLng(-33.821755,151.090615),
-        new google.maps.LatLng(-33.820543,151.075981),
-        new google.maps.LatLng(-33.819651,151.072934),
-        new google.maps.LatLng(-33.82425,151.064265),
-        new google.maps.LatLng(-33.823823,151.049244),
-        new google.maps.LatLng(-33.818225,151.044052),
-        new google.maps.LatLng(-33.818047,151.039031),
-        new google.maps.LatLng(-33.819188,151.03667),
-        new google.maps.LatLng(-33.817298,151.026757),
-        new google.maps.LatLng(-33.814767,151.026113),
-        new google.maps.LatLng(-33.814196,151.021907),
-        new google.maps.LatLng(-33.815658,151.018689),
-        new google.maps.LatLng(-33.816157,151.016243),
-        new google.maps.LatLng(-33.815765,151.013839),
-        new google.maps.LatLng(-33.815016,151.011908),
-        new google.maps.LatLng(-33.813982,151.010664)
-    ];
+//get the route coordinates and create latlng objects in javascript
+prepRoutes($coordsJson);
+drawRoutes($coordsJson);
 
-    var mosmanTripCoords = [
-        new google.maps.LatLng(-33.86038,151.211003),
-        new google.maps.LatLng(-33.854505,151.212087),
-        new google.maps.LatLng(-33.85308,151.228566),
-        new google.maps.LatLng(-33.848304,151.230798),
-        new google.maps.LatLng(-33.850799,151.232257),
-        new google.maps.LatLng(-33.850799,151.233888),
-        new google.maps.LatLng(-33.848731,151.235518),
-        new google.maps.LatLng(-33.844258,151.232536),
-        new google.maps.LatLng(-33.843255,151.232611),
-        new google.maps.LatLng(-33.840867,151.230401),
-        new google.maps.LatLng(-33.838746,151.230894),
-        new google.maps.LatLng(-33.838692,151.232547)
-    ]
+drawRouteInfoBubbles($coordsJson);
+setRoutes($coordsJson);
 
-    var manlyTrip = new google.maps.Polyline({
-        path: manlyTripCoords,
-        geodesic: true,
-        strokeColor: manlyColor,
-        strokeOpacity: 1.0,
-        strokeWeight: 3
-    });
+placeMapMarkers(1, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
-    var parramattaTrip = new google.maps.Polyline({
-        path: parramattaTripCoords,
-        geodesic: true,
-        strokeColor: parramattaColor,
-        strokeOpacity: 1.0,
-        strokeWeight: 3
-    });
+function prepRoutes($coordsJson) {
+    $coordsJS = '';
 
-    var mosmanTrip = new google.maps.Polyline({
-        path: mosmanTripCoords,
-        geodesic: true,
-        strokeColor: mosmanColor,
-        strokeOpacity: 1.0,
-        strokeWeight: 3
-    });
+    foreach ($coordsJson['routes'] as $route)
+    {
+        $count = 0;
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'var '. strtolower($route['class']).'TripCoords = [';
+        $coordsJS .= "\r\n";
+        foreach ($route['coords'] as $coords)
+        {
+            $count++;
+            $coordsJS .= 'new google.maps.LatLng('.$coords['lat'].','.$coords['lng'].')';
+            if ($count < count($route['coords']))
+            {
+                $coordsJS .= ',';
+                $coordsJS .= "\r\n";
+            }
+        }
+        $coordsJS .= "\r\n";
+        $coordsJS .= ']; ';
+        $coordsJS .= "\r\n";
+        $coordsJS .= "\r\n";
+    }
+    echo $coordsJS;
+}
+
+function drawRoutes($coordsJson){
+    $coordsJS = '';
+    foreach ($coordsJson['routes'] as $route)
+    {
+        $coordsJS .= 'var '. strtolower($route['class']).'Trip = new google.maps.Polyline({';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'path: '. strtolower($route['class']).'TripCoords,';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'geodesic: true,';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'strokeColor: "'. $route['colour'].'",';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'strokeOpacity: 1,';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'strokeWeight: 3';
+        $coordsJS .= "\r\n";
+        $coordsJS .= '}); ';
+        $coordsJS .= "\r\n";
+        $coordsJS .= "\r\n";
+    }
+    echo $coordsJS;
+}
+
+function drawRouteInfoBubbles($coordsJson){
+    $bubbleJS = 'var infoBubble;';
+    foreach ($coordsJson['routes'] as $route)
+    {
+        $bubbleJS .= 'google.maps.event.addListener('.strtolower($route['class']).'Trip, \'click\', function(event) {';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'var latLng = new google.maps.LatLng(event.latLng.lat(),event.latLng.lng());';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'if(infoBubble)';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= '{';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'infoBubble.close(map);';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'infoBubble.setMap(null);';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= '}';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'infoBubble = new InfoBubble({';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'map: map,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'content: \'<div class="infoBubble routes '.strtolower($route['class']).'"><h5>'.$route['title'].'</h5><a href="#" class="directive">Go to route</a></div>\',';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'position: latLng,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'shadowStyle: 1,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'padding: 0,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'backgroundColor: \''.$route['colour'].'\',';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'borderRadius: 0,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'arrowSize: 10,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'borderWidth: 1,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'borderColor: \''.$route['colour'].'\',';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'disableAutoPan: true,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'hideCloseButton: false,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'arrowPosition: 25,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'backgroundClassName: \'infoBubbleWrapper\',';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'arrowStyle: 0,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'disableAutoPan: true,';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'minWidth: '.$route['info_bubble_width'].',';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'minHeight: '.$route['info_bubble_height'].'';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= '});';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= 'infoBubble.setPosition(latLng);';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= ' infoBubble.open(map);';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= '});';
+        $bubbleJS .= "\r\n";
+        $bubbleJS .= "\r\n";
+
+    }
+    echo $bubbleJS;
+}
+
+function setRoutes($coordsJson){
+    $mapJS = '';
+    foreach ($coordsJson['routes'] as $route)
+    {
+        $mapJS .= strtolower($route['class']).'Trip.setMap(map);';
+        $mapJS .= "\r\n";
+    }
+    echo $mapJS;
+}
+?>
 
 
     var styles = [
@@ -523,177 +656,41 @@ function initialize() {
 
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
-    manlyTrip.setMap(map);
-    parramattaTrip.setMap(map);
-    mosmanTrip.setMap(map);
-
-    var infoBubble;
-
-    google.maps.event.addListener(manlyTrip, 'click', function(event) {
-        var latLng = new google.maps.LatLng(event.latLng.lat(),event.latLng.lng());
-
-        if(infoBubble)
-        {
-            infoBubble.close(map);
-            infoBubble.setMap(null);
-        }
-
-        infoBubble = new InfoBubble({
-            map: map,
-            content: '<div class="infoBubble routes manly"><h5>Manly</h5><a href="#">Go to route</a></div>',
-            position: latLng,
-            shadowStyle: 1,
-            padding: 0,
-            backgroundColor: manlyColor,
-            borderRadius: 0,
-            arrowSize: 10,
-            borderWidth: 1,
-            borderColor: manlyColor,
-            disableAutoPan: true,
-            hideCloseButton: false,
-            arrowPosition: 25,
-            backgroundClassName: 'infoBubbleWrapper',
-            arrowStyle: 0,
-            disableAutoPan: true,
-            minWidth: 130,
-            minHeight: 70
-        });
-
-        infoBubble.setPosition(latLng);
-        infoBubble.open(map);
-    });
-
-    google.maps.event.addListener(parramattaTrip, 'click', function(event) {
-        var latLng = new google.maps.LatLng(event.latLng.lat(),event.latLng.lng());
-
-        if(infoBubble)
-        {
-            infoBubble.close(map);
-            infoBubble.setMap(null);
-        }
-
-        infoBubble = new InfoBubble({
-            map: map,
-            content: '<div class="infoBubble routes parramatta"><h5>Parramatta River</h5><a href="#">Go to route</a></div>',
-            position: latLng,
-            shadowStyle: 1,
-            padding: 0,
-            backgroundColor: parramattaColor,
-            borderRadius: 0,
-            arrowSize: 10,
-            borderWidth: 1,
-            borderColor: parramattaColor,
-            disableAutoPan: true,
-            hideCloseButton: false,
-            arrowPosition: 25,
-            backgroundClassName: 'infoBubbleWrapper',
-            arrowStyle: 0,
-            disableAutoPan: true,
-            minWidth: 190,
-            minHeight: 100
-        });
-
-        infoBubble.setPosition(latLng);
-        infoBubble.open(map);
-    });
 
 
 
-    google.maps.event.addListener(mosmanTrip, 'click', function(event) {
-        var latLng = new google.maps.LatLng(event.latLng.lat(),event.latLng.lng());
 
-        if(infoBubble)
-        {
-            infoBubble.close(map);
-            infoBubble.setMap(null);
-        }
 
-        infoBubble = new InfoBubble({
-            map: map,
-            content: '<div class="infoBubble routes mosman"><h5>Mosman</h5><a href="#">Go to route</a></div>',
-            position: latLng,
-            shadowStyle: 1,
-            padding: 0,
-            backgroundColor: mosmanColor,
-            borderRadius: 0,
-            arrowSize: 10,
-            borderWidth: 1,
-            borderColor: mosmanColor,
-            disableAutoPan: true,
-            hideCloseButton: false,
-            arrowPosition: 25,
-            backgroundClassName: 'infoBubbleWrapper',
-            arrowStyle: 0,
-            disableAutoPan: true,
-            minWidth: 130,
-            minHeight: 70
-        });
-
-        infoBubble.setPosition(latLng);
-        infoBubble.open(map);
-    });
-
-    var iconBase = 'img/';
-    var thmbBase = 'img/locations/thumbnails/'
-    var markerLocations = [
-        {
-            id: 1,
-            location_name: 'Manly Wharf',
-            lat: -33.800432,
-            lng: 151.283906,
-            icon: iconBase + 'lightAnchorMarker.png',
-            image_thumb: thmbBase + 'cockatooIsland.jpg',
-            alt: 'Image of Manly Wharf',
-            category: 'history',
-            sub_heading: 'Destination'
-        },
-        {
-            id: 1,
-            location_name: 'North Head',
-            lat: -33.817076,
-            lng: 151.286845,
-            icon: iconBase + 'lightStarMarker.png' ,
-            image_thumb: thmbBase + 'cockatooIsland.jpg',
-            alt: 'Image of North Head',
-            category: 'attraction',
-            sub_heading: 'Attraction'
-        },
-        {
-            id: 2,
-            location_name: 'Cockatoo Island',
-            lat: -33.846949,
-            lng: 151.17209,
-            icon: iconBase + 'lightAnchorMarker.png',
-            image_thumb: thmbBase + 'cockatooIsland.jpg',
-            alt: 'Image of Cockatoo Island',
-            category: 'history',
-            sub_heading: 'Destination'
-        },
-        {
-            id: 1,
-            location_name: 'Circular Quay',
-            lat: -33.861218,
-            lng: 151.210874,
-            icon: iconBase + 'lightAnchorMarker.png',
-            image_thumb: thmbBase + 'circularQuay.jpg',
-            alt: 'Image of Circular Quay',
-            category: 'history',
-            sub_heading: 'Destination'
-        },
-        {
-            id: 1,
-            location_name: 'Darling Point',
-            lat: -33.867724,
-            lng: 151.237246,
-            icon: iconBase + 'lightCameraMarker.png',
-            image_thumb: thmbBase + 'cockatooIsland.jpg',
-            alt: 'Image of Darling Point',
-            category: 'secret',
-            sub_heading: 'Photography Spot'
-        }
-    ]
-
+    var markerArray= [];
     showLocations(markerLocations);
+
+    //console.dir(markerArray);
+
+    $('.mapFilter').on('click', function(e){
+        e.preventDefault();
+        var targetCategory = $(this).attr('data-category');
+        for (var i = 0; i < markerArray.length; i++) {
+            console.log('targetCategory['+targetCategory+']markerArray[i].category['+markerArray[i].category+']');
+            console.log('visibility['+markerArray[i].visible+']');
+            console.log('type of var ['+typeof markerArray[i].visible+']');
+            if (markerArray[i].category === targetCategory)
+            {
+                console.log('same category');
+                if(markerArray[i].visible)
+                {
+                    console.log('hide marker');
+                    markerArray[i].setVisible(false);
+                }
+                else
+                {
+                    console.log('show marker');
+                    markerArray[i].setVisible(true);
+                }
+            }
+
+            console.dir(markerArray[i]);
+        }
+    });
 
     function showLocations(locations)
     {
@@ -704,17 +701,25 @@ function initialize() {
                 var marker = new google.maps.Marker({
                     position: latLng,
                     icon: location.icon,
-                    map: map
+                    map: map,
+                    id: 'marker-'+i,
+                    category: location.category
                 });
                 //console.dir(marker);
+                //console.log('marker-'+i);
+                markerArray.push(marker);
+
+
 
                 var locationContent = '';
                 locationContent += '<div class="imgHolder" data-category="'+location.category+'">';
+                locationContent += '<div class="closeBg"></div>';
                 locationContent += '<img src="'+location.image_thumb+'" alt="'+location.alt+'" />';
                 locationContent += '</div>';
                 locationContent += '<div class="textHolder">';
                 locationContent += '<span>'+location.sub_heading+'</span>';
                 locationContent += '<h5><a href="#" class="panelFlyoutTrigger" data-location="'+location.id+'" data-target="mapContainer">'+location.location_name+'</a></h5>';
+                locationContent += '<a href="#" class="panelFlyoutTrigger directive" data-location="'+location.id+'" data-target="mapContainer">Read More</a>';
                 locationContent += '</div>';
 
                 var locationBubble = new InfoBubble({
@@ -735,11 +740,11 @@ function initialize() {
                     arrowStyle: 0,
                     disableAutoPan: true,
                     minWidth: 260,
-                    minHeight: 260
+                    minHeight: 270
                 });
 
                 google.maps.event.addListener(marker, 'click', function(){
-                    locationBubble.open(map, marker)
+                    locationBubble.open(map, marker);
                 });
 
                 google.maps.event.addListener(locationBubble,'domready', function(){
@@ -769,11 +774,15 @@ function initialize() {
 
                     $('body').on('click', '.flyoutPanelClose', function(e){
                         e.preventDefault();
-                        //$('#flyoutPanel').hide();
                         $('#flyoutPanel').remove();
-                    })
+                    });
 
                     function beforeLocationRetrieveHandler(target) {
+                        //console.log('panel length['+$('#flyoutPanel').length+']');
+                        if ($('#flyoutPanel').length > 0)
+                        {
+                            $('#flyoutPanel').remove();
+                        }
                         var panelFlyout = '';
                         panelFlyout += '<div id="flyoutPanel" class="panelFlyout large-12 columns left">';
                         panelFlyout += '<div class="large-12 columns standardDarkGrey">';
@@ -795,9 +804,7 @@ function initialize() {
                     }
 
                     function locationRetrieveSuccessHandler(data) {
-                        //var obj = JSON.parse(data);
                         var obj = data;
-                        //console.dir(obj);
                         var locationHTML = '';
                         var closeHTML = '<a href="#" class="flyoutPanelClose">Close panel</a>';
                         if (obj[0].hasOwnProperty('location_name'))
@@ -819,12 +826,11 @@ function initialize() {
                         //console.log('data: '+obj[0]['image_med']);
                         $('#flyoutPanel').html(locationHTML);
                         var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
-                        $('html,body').animate({
+                        $('html').animate({
                                 scrollTop: scrollHeight
                         },'slow');
                     }
                 });
-
             }(locations[i]));
         }
     }

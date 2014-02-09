@@ -89,7 +89,90 @@ a:hover {
   .button.stdDarkGrey .social {
     margin-bottom: -0.1rem; }
 
+.button.red {
+  background-color: #c0565a;
+  color: white; }
+  .button.red:hover {
+    background-color: #e85050; }
+
+.button.play {
+  padding-left: 3rem !important; }
+  .button.play:before {
+    position: absolute;
+    content: "";
+    width: 1.563rem;
+    height: 1.5rem;
+    background-image: url("img/icons.png");
+    background-position: -26px -237px; }
+
+.button.play.small:before {
+  top: 1.075rem;
+  left: 0.75rem; }
+
+.button.tungsten {
+  font-family: "Tungsten A", "Tungsten B" !important;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.button.tungsten.small {
+  font-size: 1.5rem; }
+
+.button.tungsten.medium {
+  font-size: 2.5rem; }
+
+.button.wire {
+  text-transform: uppercase;
+  border-style: solid;
+  border-width: 2px;
+  background-color: transparent; }
+
+.button.wire.white {
+  border-color: white; }
+
 /*End - button overrides */
+/*Start - some consistent patterns */
+h5 {
+  font-family: "Tungsten A", "Tungsten B" !important;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.3rem; }
+  h5 a {
+    color: white !important;
+    font-size: inherit !important; }
+
+span {
+  font-family: "Inconsolata", sans-serif !important;
+  font-weight: 700;
+  color: #59acb3;
+  font-size: 0.839rem; }
+
+.directive {
+  position: relative;
+  font-family: "Inconsolata", sans-serif !important;
+  font-size: 0.875rem;
+  color: white;
+  background-image: none !important;
+  padding: 0 1.25rem 0 0 !important;
+  font-weight: 700; }
+  .directive:hover {
+    color: white !important; }
+  .directive:before {
+    background-image: none !important; }
+  .directive:after {
+    position: absolute;
+    content: "";
+    top: 0.075rem;
+    right: 0;
+    width: 0.813rem;
+    height: 0.813rem;
+    background-image: url("img/icons.png");
+    background-position: -135px 0px; }
+
+.purple {
+  color: #879bb1; }
+
+/*End - some consistent patterns */
 html {
   height: 100%;
   -webkit-font-smoothing: antialiased !important; }
@@ -139,10 +222,15 @@ h4 {
     font-style: normal !important;
     font-weight: 700; }
 
-h5, h6 {
+h6 {
   font-family: "Inconsolata", sans-serif !important;
   font-size: 1em;
   font-weight: 700; }
+
+p {
+  font-family: "adobe-garamond-pro", sans-serif !important;
+  font-size: 1.125rem;
+  color: #272e35; }
 
 /*Start - color classes */
 .standardDarkGrey {
@@ -549,15 +637,12 @@ h5, h6 {
         background-color: #272e35;
         width: 16.25rem;
         height: 5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: block;
+        padding: 0.25rem 0;
         text-align: center; }
-        .featureImgHolder .promoHolder .large-3 .textHolder span {
-          font-family: "Inconsolata", sans-serif !important;
-          color: #59acb3;
-          display: block; }
-        .featureImgHolder .promoHolder .large-3 .textHolder a, .featureImgHolder .promoHolder .large-3 .textHolder .button {
+        .featureImgHolder .promoHolder .large-3 .textHolder h5 {
+          margin-bottom: -0.25rem; }
+        .featureImgHolder .promoHolder .large-3 .textHolder .button {
           font-size: 1.875rem;
           text-transform: uppercase;
           font-family: "Tungsten A", "Tungsten B" !important;
@@ -578,48 +663,39 @@ h5, h6 {
   .themeFeature .large-6 {
     height: 36.25rem;
     overflow: hidden; }
-    .themeFeature .large-6 .imgHolder {
-      position: relative;
-      max-height: 21.125rem;
-      position: relative; }
-      .themeFeature .large-6 .imgHolder .button {
-        position: absolute;
-        width: 50%;
-        height: 2.5rem;
-        z-index: 10;
-        bottom: 0;
-        right: 0;
-        margin: 0 !important;
-        font-family: "Inconsolata", sans-serif !important;
-        font-size: 0.938rem;
-        font-weight: 700 !important;
-        color: #272e35;
-        background-color: #eeedec;
-        display: inline-block;
-        vertical-align: middle;
-        text-transform: uppercase; }
-        .themeFeature .large-6 .imgHolder .button span {
-          float: right;
-          height: 100%;
-          width: 2.5rem; }
-    .themeFeature .large-6 .route {
-      height: 15.125rem;
-      float: left;
-      position: relative; }
-    .themeFeature .large-6 .manly {
-      background-image: url("img/manlyBackground.jpg");
-      background-position: 0 0; }
-      .themeFeature .large-6 .manly .inner {
-        width: 100%;
-        height: 100%;
-        background-color: rgba(191, 87, 87, 0.9); }
-    .themeFeature .large-6 .darling {
-      background-image: url("img/darlingBackground.jpg");
-      background-position: 0 0; }
-      .themeFeature .large-6 .darling .inner {
-        width: 100%;
-        height: 100%;
-        background-color: rgba(89, 172, 179, 0.9); }
+  .themeFeature .themedPromoText {
+    padding: 3rem 1.5rem;
+    text-align: center; }
+    .themeFeature .themedPromoText span {
+      font-size: 1.125rem; }
+    .themeFeature .themedPromoText h3.block {
+      color: white;
+      font-size: 3rem;
+      margin: 0 0 1.6rem 0; }
+    .themeFeature .themedPromoText p {
+      color: white;
+      font-size: 1.875rem;
+      font-style: italic;
+      line-height: 2.7rem;
+      margin: 0.625rem 0; }
+    .themeFeature .themedPromoText .profile {
+      border: 1px solid transparent;
+      border-radius: 49%; }
+    .themeFeature .themedPromoText .purple {
+      font-family: "Inconsolata", sans-serif !important;
+      text-transform: uppercase;
+      font-size: 0.938rem; }
+  .themeFeature .themedPromoImage .themedPromoOverlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(39, 46, 53, 0.5);
+    top: 0;
+    left: 0; }
+    .themeFeature .themedPromoImage .themedPromoOverlay .button {
+      position: absolute !important;
+      top: 45% !important;
+      left: 35% !important; }
 
 /*End - Theme feature */
 #map-canvas {
@@ -660,7 +736,7 @@ h5, h6 {
     height: 100%;
     padding: 1.25rem;
     position: absolute; }
-    .controlPanelHolder .controlPanel h5 {
+    .controlPanelHolder .controlPanel h6.white {
       color: white; }
     .controlPanelHolder .controlPanel h6 {
       color: #29a1ba; }
@@ -689,7 +765,8 @@ h5, h6 {
               height: 9px;
               position: absolute;
               top: 1px;
-              left: 1px; }
+              left: 1px;
+              background-color: #59acb3; }
         .controlPanelHolder .controlPanel ul li [data-target='manlyTrip'] span span {
           background-color: #bf5757; }
         .controlPanelHolder .controlPanel ul li [data-target='parramattaTrip'] span span {
@@ -917,39 +994,18 @@ footer .standard {
     margin-left: 2rem; }
 
 .infoBubbleWrapper {
-  width: 8.125rem;
+  width: 100%;
   padding: 0;
   overflow: hidden;
   padding: 0; }
   .infoBubbleWrapper .infoBubble {
     position: relative;
-    width: 8.125rem;
+    width: 100%;
     height: auto;
     padding: 0.6rem; }
     .infoBubbleWrapper .infoBubble h5 {
-      font-family: "Tungsten A", "Tungsten B" !important;
-      color: white;
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 1.5rem; }
-    .infoBubbleWrapper .infoBubble a {
-      font-family: "Inconsolata", sans-serif !important;
-      font-size: 0.875rem;
-      color: white;
-      background-image: none !important;
-      padding: 0 1.25rem 0 0 !important;
-      font-weight: 700; }
-      .infoBubbleWrapper .infoBubble a:before {
-        background-image: none !important; }
-      .infoBubbleWrapper .infoBubble a:after {
-        position: absolute;
-        content: "";
-        top: 0.075rem;
-        right: 0;
-        width: 0.813rem;
-        height: 0.813rem;
-        background-image: url("img/icons.png");
-        background-position: -135px 0px; }
+      margin-bottom: -0.05rem;
+      margin-top: -0.25rem; }
     .infoBubbleWrapper .infoBubble a.close {
       position: absolute;
       top: -0.5rem;
@@ -968,27 +1024,17 @@ footer .standard {
       .infoBubbleWrapper .infoBubble a.close:after {
         background-image: none !important; }
 
+.locationBubbleWrapper .imgHolder .closeBg {
+  background-color: rgba(39, 46, 53, 0.35);
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0; }
 .locationBubbleWrapper .textHolder {
-  padding: 1rem; }
+  padding: 0.75rem 1rem; }
   .locationBubbleWrapper .textHolder h5 {
-    font-family: "Tungsten A", "Tungsten B" !important;
-    color: white;
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 2.3rem; }
-    .locationBubbleWrapper .textHolder h5 a {
-      color: white !important; }
-  .locationBubbleWrapper .textHolder span {
-    font-family: "Inconsolata", sans-serif !important;
-    font-weight: 700;
-    color: #59acb3;
-    font-size: 0.839rem; }
-
-span {
-  font-family: "Inconsolata", sans-serif !important;
-  font-weight: 700;
-  color: #59acb3;
-  font-size: 0.839rem; }
+    margin-bottom: -0.075rem; }
 
 .panelFlyout h3, .panelFlyout h4 {
   font-family: "Tungsten A", "Tungsten B" !important;
@@ -1014,13 +1060,13 @@ span {
   .panelFlyout .flyoutPanelClose:before {
     position: absolute;
     content: "";
-    top: 0;
-    left: 0;
+    top: 0.5rem;
+    left: 0.45rem;
     width: 1.625rem;
     height: 1.438rem;
     z-index: 20;
     background-image: url("img/icons.png");
-    background-position: -113px -209px; }
+    background-position: -209px -113px; }
 
 .systemError {
   border: 2px solid #e00b2e;

@@ -72,6 +72,7 @@ else
 //echo 'console.dir('.json_encode($instagramMediaResults).')';
 //echo '</script>';
 
+//var_dump(json_encode($instagramMediaResults));
 ?>
 
 <div id="instagramCommentModal" class="white large-12">
