@@ -355,7 +355,7 @@ function placeMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DA
             $markerJS .= "\r\n";
             $markerJS .= 'id: ' . $row['id'] . ', ';
             $markerJS .= "\r\n";
-            $markerJS .= 'location_name: "' . $row['location_name'] . '", ';
+            $markerJS .= 'title: "' . $row['title'] . '", ';
             $markerJS .= "\r\n";
             $markerJS .= 'lat: ' . $row['lat'] . ', ';
             $markerJS .= "\r\n";
@@ -718,7 +718,7 @@ function setRoutes($coordsJson){
                 locationContent += '</div>';
                 locationContent += '<div class="textHolder">';
                 locationContent += '<span>'+location.sub_heading+'</span>';
-                locationContent += '<h5><a href="#" class="panelFlyoutTrigger" data-location="'+location.id+'" data-target="mapContainer">'+location.location_name+'</a></h5>';
+                locationContent += '<h5><a href="#" class="panelFlyoutTrigger" data-location="'+location.id+'" data-target="mapContainer">'+location.title+'</a></h5>';
                 locationContent += '<a href="#" class="panelFlyoutTrigger directive" data-location="'+location.id+'" data-target="mapContainer">Read More</a>';
                 locationContent += '</div>';
 
@@ -807,13 +807,13 @@ function setRoutes($coordsJson){
                         var obj = data;
                         var locationHTML = '';
                         var closeHTML = '<a href="#" class="flyoutPanelClose">Close panel</a>';
-                        if (obj[0].hasOwnProperty('location_name'))
+                        if (obj[0].hasOwnProperty('title'))
                         {
                             locationHTML += '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
                             locationHTML += closeHTML;
                             locationHTML += '<span>'+obj[0]['sub_heading']+'</span>';
-                            locationHTML += '<h3>'+obj[0]['location_name']+'</h3>';
-                            locationHTML += '<img src="img/locations/medium/'+obj[0]['image_med']+'" alt="'+obj[0]['location_name']+'" />';
+                            locationHTML += '<h3>'+obj[0]['title']+'</h3>';
+                            locationHTML += '<img src="img/locations/medium/'+obj[0]['image_med']+'" alt="'+obj[0]['title']+'" />';
                             locationHTML += '</div>';
                         }
                         else

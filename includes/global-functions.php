@@ -175,7 +175,7 @@ function getJsonConents($pathToFile) {
 function getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
 
     $query = '';
-    $query .= 'SELECT tiles.id, tiles.location_name, tiles.lat, tiles.lng, tiles.image_thumb, ';
+    $query .= 'SELECT tiles.id, tiles.title, tiles.lat, tiles.lng, tiles.image_thumb, ';
     $query .= 'tiles.image_med, tiles.image_large, tiles.alt, tiles.trip_plan, tiles.intro_text, ';
     $query .= 'tiles.address_text, types.title AS type_title, categories.title AS category_title ';
     $query .= 'FROM (tiles, types, categories) ';
