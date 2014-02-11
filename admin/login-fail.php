@@ -2,7 +2,11 @@
 
 ?>
 <html>
-<head></head>
+<head>
+    <?php
+    include 'includes/head.php';
+    ?>
+</head>
 <body>
 <p>Login Failed:</p>
 <?php

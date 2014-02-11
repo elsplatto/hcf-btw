@@ -21,7 +21,15 @@ if (!empty($_POST))
     $intro_text = $_POST['txtIntroText'];
     $content = $_POST['txtContent'];
     $address_text = $_POST['txtAddressText'];
-    $is_live = $_POST['chkLive'];
+    if (!empty($_POST['chkLive']))
+    {
+        $is_live = $_POST['chkLive'];
+    }
+    else
+    {
+        $is_live = 0;
+    }
+
     if (!empty($_POST['tileID']))
     {
         $tile_id = $_POST['tileID'];
@@ -57,5 +65,5 @@ if (!empty($_POST))
     echo '$tile_id['.$tile_id.']<br />';
 }
 
-//header('Location: tiles-list.php');
+header('Location: tiles-list.php');
 ?>

@@ -36,6 +36,9 @@ $categoriesCount = mysqli_num_rows($categories);
 <html>
 <head>
     <title>Add Tile</title>
+    <?php
+    include 'includes/head.php';
+    ?>
     <style>
         label {
             clear: left;
@@ -67,6 +70,7 @@ $categoriesCount = mysqli_num_rows($categories);
         {
             ?>
             <select id="selType" name="selType">
+                <option value="0">Select</option>
                 <?php
                 foreach ($types as $type)
                 {

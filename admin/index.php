@@ -16,6 +16,9 @@ if (isset($logout))
 <html>
 <head>
     <title>Admin - Homepage</title>
+    <?php
+    include 'includes/head.php';
+    ?>
 </head>
 <body>
 <?php

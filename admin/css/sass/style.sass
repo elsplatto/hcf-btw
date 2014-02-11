@@ -1,0 +1,45 @@
+html, body
+  font-size: 100%
+
+label
+  clear: left
+  display: block
+  margin-top: 1rem
+
+input
+  clear: left
+  display: block
+
+input[type=text]
+  width: 28rem
+  height: 2rem
+
+
+
+
+
+.tileList
+  list-style: none
+  li
+    float: left
+    cursor: pointer
+    display: inline-block
+    position: relative
+  [data-map-tile-selected], [data-page-tile-selected]
+    &:before
+      position: absolute
+      content: ''
+      width: 2rem
+      height: 2rem
+      top: 0.5rem
+      right: 0.5rem
+      background-image: url('img/adminIcons.png')
+      background-position: 0 0
+
+
+.mapTiles, .pageTiles
+  width: 90%
+  height: auto
+  padding: 1rem
+  outline: 2px solid grey
+  overflow: hidden

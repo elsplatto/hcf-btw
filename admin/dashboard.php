@@ -4,7 +4,11 @@ include 'includes/global-admin-functions.php';
 assessLogin()
 ?>
 <html>
-<head></head>
+<head>
+<?php
+include 'includes/head.php';
+?>
+</head>
 <body>
 <p>
 Dashboard
