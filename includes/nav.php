@@ -1,5 +1,28 @@
 <?php
+function getTopNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
+{
+    $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    $stmt = $mysqli->prepare('SELECT id, nav_title, friendly_url FROM pages WHERE parent_id = 0 AND is_nav = 1 AND is_live = 1 ORDER BY pages.order');
 
+    $stmt->execute();
+
+    $results = $stmt->get_result();
+    return $results;
+}
+
+function getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
+{
+    $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    $stmt = $mysqli->prepare('SELECT id, nav_title, friendly_url, css_class FROM route WHERE is_live = 1 ORDER BY nav_order');
+
+    $stmt->execute();
+
+    $results = $stmt->get_result();
+    return $results;
+}
+
+$navPages = getTopNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+$routeNavPages = getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 ?>
 <section id="navHolder" class="navHolder">
     <div class="row">
@@ -7,7 +30,7 @@
             <nav class="top-bar" data-topbar>
                 <ul class="title-area">
                     <li class="name">
-                        <h1><a href="index.php">Beyond the Wharf</a></h1>
+                        <h1><a href="home">Beyond the Wharf</a></h1>
                     </li>
                     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
                 </ul>
@@ -22,19 +45,18 @@
                                 <button type="submit" id="searchSubmit" name="searchSubmit">Submit</button>
                             </form>
                         </li>
-                        <!--li class="has-dropdown">
-                            <a href="#">Right Button with Dropdown</a>
-                            <ul class="dropdown">
-                                <li><a href="#">First link in dropdown</a></li>
-                            </ul>
-                        </li-->
                     </ul>
 
                     <!-- Left Nav Section -->
                     <ul class="left">
-                        <li><a href="#">Explore Our Harbour</a></li>
-                        <li><a href="#">Harbour Event Diary</a></li>
-                        <li><a href="#">Gallery</a></li>
+                        <?php
+                        foreach ($navPages as $navPage)
+                        {
+                        ?>
+                            <li><a href="page/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
+                        <?php
+                        }
+                        ?>
                     </ul>
 
 
@@ -43,13 +65,14 @@
                 <section class="top-bar-section second">
                     <ul class="routes">
                         <li>Routes:</li>
-                        <li><a href="#" class="manly">Manly</a></li>
-                        <li><a href="#" class="taronga">Taronga Zoo</a></li>
-                        <li><a href="#" class="parramatta">Parramatta River</a></li>
-                        <li><a href="#" class="darling">Darling Harbour</a></li>
-                        <li><a href="#" class="neutral">Neutral Bay</a></li>
-                        <li><a href="#" class="mosman">Mosman Bay</a></li>
-                        <li><a href="#" class="eastern">Eastern Suburbs</a></li>
+                        <?php
+                        foreach ($routeNavPages as $routeNavPage)
+                        {
+                        ?>
+                            <li><a href="route/<?=$routeNavPage['friendly_url']?>" class="<?=$routeNavPage['css_class']?>"><?=$routeNavPage['nav_title']?></a></li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </section>
 

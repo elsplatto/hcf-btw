@@ -1,1 +1,14 @@
 php_value short_open_tag 1
+
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+#RewriteRule ^page/(\d+)*$ ./page.php?id=$1
+#RewriteRule ^page/([0-9]+)\$ page.php
+#RewriteBase /~jasontaikato/hcf-btw
+
+RewriteRule page/(.*)$ page.php
+RewriteRule home(.*)$ index.php
+RewriteRule home/(.*)$ index.php

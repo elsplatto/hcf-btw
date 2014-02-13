@@ -13,5 +13,8 @@ include 'includes/head.php';
 <p>
 Dashboard
 </p>
+
+<p><a href="page-list.php">Pages</a></p>
+<p><a href="tiles-list.php">Tiles</a></p>
 </body>
 </html>

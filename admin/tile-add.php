@@ -124,6 +124,13 @@ $categoriesCount = mysqli_num_rows($categories);
         }
         ?>
 
+        <label for="selTileSize">Size:</label>
+        <select id="selTileSize" name="selTileSize">
+            <option value="">Select</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+        </select>
+
         <label for="txtLat">Lat:</label>
         <input type="text" id="txtLat" name="txtLat" value="" />
 

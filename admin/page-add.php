@@ -21,24 +21,10 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     <?php
     include 'includes/head.php';
     ?>
-    <style>
-        label {
-            clear: left;
-            display: block;
-            margin-top: 1rem;
-        }
-        input {
-            clear: left;
-            display: block;
-        }
-        input[type=text] {
-            width: 28rem;
-        }
-    </style>
 </head>
 <body>
 <section>
-    <h1>Tiles</h1>
+    <h1>Page - Add</h1>
     <a href="page-list.php">< Back to Page List</a>
 </section>
 
@@ -69,6 +55,9 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
         <label for="chkNav">Show in Nav:</label>
         <input type="checkbox" id="chkNav" name="chkNav" value="1"/>
+
+        <label for="chkLanding">Is Landing Page:</label>
+        <input type="checkbox" id="chkLanding" name="chkLanding" value="1" />
 
         <label for="txtNavTitle">Nav Title:</label>
         <input type="text" id="txtNavTitle" name="txtNavTitle" value="" />
@@ -109,6 +98,8 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
         <label for="txtOrder">Order:</label>
         <input type="text" id="txtOrder" name="txtOrder" value="" />
 
+        <label for="chkHasMap">Has Map:</label>
+        <input type="checkbox" id="chkHasMap" name="chkHasMap" value="1" />
 
         <label for="chkLive">Live:</label>
         <input type="checkbox" id="chkLive" name="chkLive" value="1" />

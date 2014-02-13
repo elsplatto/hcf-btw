@@ -6,6 +6,7 @@ $hover-dark-grey-background-opacity: rgba(39, 46, 53, 0.35)
 $std-dark-grey-background: rgba(39, 46, 53, 1)
 
 $std-dark-grey: rgba(39, 46, 53, 1)
+$std-mid-grey: #3c4856
 $std-light-grey: #333b43
 
 
@@ -186,6 +187,7 @@ h5
   font-size: 2rem
   font-weight: 700
   line-height: 2.3rem
+  text-transform: uppercase
   a
     color: #fff !important
     font-size: inherit !important
@@ -239,6 +241,8 @@ h2
 h2.sub
   font-size: 2.875rem
 
+
+
 h3
   font-family: $garamond
   font-size: 1.875rem
@@ -247,14 +251,20 @@ h3
   color: $header-green
   margin-bottom: 1.4rem
 
-h3.block
+h3.block, h2.block
   font-family: $tungsten
-  font-size: 1.875rem
   font-weight: 700
   color: $std-dark-grey
   margin-bottom: -0.25rem
   font-style: normal !important
   text-transform: uppercase
+
+h2.block
+  font-size: 3rem
+
+
+h3.block
+  font-size: 1.875rem
 
 
 h4
@@ -268,6 +278,7 @@ h4
     color: $header-green
     font-style: normal !important
     font-weight: 700
+    font-size: 1.5rem
 
 
 h6
@@ -283,6 +294,11 @@ p
 /*Start - color classes*/
 .standardDarkGrey
   background-color: $std-dark-grey-background
+.standardMidGrey
+  background-color: $std-mid-grey
+  h3
+    color: #fff !important
+
 
 /*Start - Route colors*/
 .manly
@@ -323,9 +339,10 @@ p
 .navHolder
   width: 100%
   background-color: $std-dark-grey-background-opacity
-  height: auto
+  height: 6.25rem
   position: fixed
   z-index: 100
+  top: 0
   nav.top-bar
     position: relative
     background: none !important
@@ -449,6 +466,7 @@ p
                 background-position: 0px -261px
 
 
+
     .top-bar-section.second
       ul
         li
@@ -465,6 +483,9 @@ p
             font-size: 0.938rem
             line-height: 1em
             padding: 0 0.938rem 0 1.5rem
+
+
+
 
 .routes
   a, span
@@ -505,6 +526,32 @@ p
 /*End - nav*/
 
 
+
+
+
+
+.breadcrumbsHolder
+  position: relative
+  margin-top: 6.25rem !important
+  background-color: $std-dark-grey-background
+  width: 100%
+  float: none !important
+  .breadcrumbs
+    background-color: $std-dark-grey-background
+    border: none
+    border-radius: 0
+    color: $std-purple
+    font-size: 0.83rem !important
+    font-family: $inconsolata
+    text-transform: capitalize !important
+    a, span
+      color: inherit !important
+      font-size: inherit !important
+      font-family: inherit !important
+      text-transform: inherit !important
+
+
+
 /*Start - Feature Area*/
 .featureImgHolder
   position: relative
@@ -535,17 +582,17 @@ p
       position: relative
       border: none
       margin: 1rem auto
-      width: 10.063rem
-      height: 0.688rem
+      width: 12.5rem
+      height: 0.938rem
       &:after
         position: absolute
         content: ''
         top: 0
         left: 0
-        width: 10.063rem
-        height: 0.688rem
+        width: 12.5rem
+        height: 0.938rem
         background-image: url('img/icons.png')
-        background-position: -18px -113px
+        background-position: -82px -88px
   .triggerContainer
     z-index: 20
     display: block
@@ -785,6 +832,33 @@ p
 /*End - Theme feature*/
 
 
+/*Start - Tile Styles*/
+.tile
+  width: 100%
+  margin-top: 2.5rem
+  .imageHolder
+    width: 100%
+    height: 11.25rem
+.textHolder
+  width: 100%
+  background-color: $std-dark-grey-background
+  height: 5rem
+  padding: 0.75rem 1rem
+  span
+    text-transform: capitalize
+  h5
+    white-space: nowrap
+    overflow: hidden
+    width: 80%
+    text-overflow: ellipsis
+    margin-bottom: -0.075rem
+
+.tile.social
+  padding: 1.563rem
+  height: 16.25rem
+.tile.social.blue
+  background-color: #4374b6
+
 
 #map-canvas
   height: 480px
@@ -838,6 +912,7 @@ p
         padding: 3px 0
         a
           color: #fff
+          text-transform: capitalize
           span
             display: inline-block
             width: 13px
@@ -847,6 +922,7 @@ p
             padding: 2px
             margin: 0 10px 0 0
             position: relative
+            top: 3px
             span
               padding: 0
               margin: 0px
@@ -1198,71 +1274,71 @@ footer
   margin-bottom: $standard-bottom-margin
 
 .marginTop10
-  margin-top: 0.625em !important
+  margin-top: 0.625rem!important
 
 .marginTop20
-  margin-top: 1.25em !important
+  margin-top: 1.25rem!important
 
 .marginTop40
-  margin-top: 2.5em !important
+  margin-top: 2.5rem!important
 
 .marginTop60
-  margin-top: 5em !important
+  margin-top: 5rem!important
 
 
 .marginBottom10
-  margin-bottom: 0.625em !important
+  margin-bottom: 0.625rem !important
 
 .marginBottom20
-  margin-bottom: 1.25 !important
+  margin-bottom: 1.25rem !important
 
 .marginBottom40
-  margin-bottom: 2.5em !important
+  margin-bottom: 2.5rem !important
 
 .marginBottom60
-  margin-bottom: 5em !important
+  margin-bottom: 5rem !important
 
 
 
 .paddingTop10
-  padding-top: 0.625em !important
+  padding-top: 0.625rem !important
 
 .paddingTop20
-  padding-top: 1.25em !important
+  padding-top: 1.25rem !important
 
 .paddingTop40
-  padding-top: 2.5em !important
+  padding-top: 2.5rem !important
 
 .paddingTop60
-  padding-top: 5em !important
+  padding-top: 5rem !important
 
 
 .paddingBottom10
-  padding-bottom: 0.625em !important
+  padding-bottom: 0.625rem !important
 
 .paddingBottom20
-  padding-bottom: 1.25 !important
+  padding-bottom: 1.25rem !important
 
 .paddingBottom40
-  padding-bottom: 2.5em !important
+  padding-bottom: 2.5rem !important
 
 .paddingBottom60
-  margin-bottom: 5em !important
+  margin-bottom: 5rem!important
 
 
 
 .paddingTopBottom10
-  padding-top: 0.625em !important
-  padding-bottom: 0.625em !important
+  padding-top: 0.625rem!important
+  padding-bottom: 0.625rem!important
 
 .paddingTopBottom20
-  padding-top: 1.25em !important
-  padding-bottom: 1.25em !important
+  padding-top: 1.25rem!important
+  padding-bottom: 1.25rem!important
 
 .paddingTopBottom40
-  padding-top: 2.5em !important
-  padding-bottom: 2.5em !important
+  padding-top: 2.5rem!important
+  padding-bottom: 2.5rem!important
 
 .paddingTopBottom60
-  padding-top: 5em !important
-  padding-bottom: 5em !important
+  padding-top: 5rem!important
+  padding-bottom: 5rem!important

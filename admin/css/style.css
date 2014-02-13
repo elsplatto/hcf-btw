@@ -1,5 +1,6 @@
 html, body {
-  font-size: 100%; }
+  font-size: 100%;
+  background: transparent !important; }
 
 label {
   clear: left;
@@ -10,9 +11,16 @@ input {
   clear: left;
   display: block; }
 
-input[type=text] {
+input[type="text"], input[type="password"] {
   width: 28rem;
   height: 2rem; }
+
+input[type="checkbox"] + label, input[type="radio"] + label {
+  margin-left: 0 !important;
+  margin-bottom: 0.5rem !important; }
+
+select {
+  width: 28rem; }
 
 .tileList {
   list-style: none; }
@@ -21,18 +29,18 @@ input[type=text] {
     cursor: pointer;
     display: inline-block;
     position: relative; }
-  .tileList [data-map-tile-selected]:before, .tileList [data-page-tile-selected]:before {
+  .tileList [data-map-tile-selected] .imgHolder:before, .tileList [data-page-tile-selected] .imgHolder:before {
     position: absolute;
     content: "";
     width: 2rem;
     height: 2rem;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 3rem;
+    right: 1.5rem;
     background-image: url("img/adminIcons.png");
     background-position: 0 0; }
 
 .mapTiles, .pageTiles {
-  width: 90%;
+  width: 100%;
   height: auto;
   padding: 1rem;
   outline: 2px solid grey;

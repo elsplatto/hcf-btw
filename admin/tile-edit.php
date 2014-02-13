@@ -151,6 +151,13 @@ $categoriesCount = mysqli_num_rows($categories);
         }
         ?>
 
+        <label for="selTileSize">Size:</label>
+        <select id="selTileSize" name="selTileSize">
+            <option value="">Select</option>
+            <option value="small"<?php echo ($tile['tile_size'] == 'small'?' selected="selected"':'')?>>Small</option>
+            <option value="medium"<?php echo ($tile['tile_size'] == 'medium'?' selected="selected"':'')?>>Medium</option>
+        </select>
+
         <label for="txtLat">Lat:</label>
         <input type="text" id="txtLat" name="txtLat" value="<?=$tile['lat']?>" />
 
@@ -189,7 +196,7 @@ $categoriesCount = mysqli_num_rows($categories);
         <textarea id="txtAddressText" name="txtAddressText" cols="100" rows="5"><?=$tile['address_text']?></textarea>
 
         <label for="chkLive">Live:</label>
-        <input type="checkbox" id="chkLive" name="chkLive" value="1"<?php if ($tile['is_live'] == 1) { echo ' checked="checked"';}?> />
+        <input type="checkbox" id="chkLive" name="chkLive" value="1"<?php echo ($tile['is_live'] == 1?' checked="checked"':'')?> />
 
         <input type="submit" value="Submit" />
         <?php

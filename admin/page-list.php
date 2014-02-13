@@ -30,7 +30,7 @@ $pages = getPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 <body>
 <section>
     <h1>Pages</h1>
-    <a href="tile-add.php">Add Page</a>
+    <a href="page-add.php">Add Page</a>
 </section>
 
 <section>
