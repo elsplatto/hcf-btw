@@ -92,8 +92,13 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
 </section>
 
 
-<section class="mapHolder standardMidGrey paddingTopBottom20">
+<section class="mapHolder standardLightGrey paddingTopBottom20">
+
     <div class="row marginBottomStandard">
+        <?php
+        if ($hasMap > 0)
+        {
+        ?>
         <h3 class="text-center">Find a Journey</h3>
         <div class="large-12 columns" id="mapContainer">
 
@@ -109,8 +114,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
                         $filters = getFilters($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
                         for ($i = 0; $i < count($filters); $i++)
                         {
-
-                            ?>
+                        ?>
                             <li><a href="#" class="mapFilter" data-category="<?=$filters[$i]?>" data-visible="true"><span><span></span></span><?=$filters[$i]?></a></li>
                         <?php
                         }
@@ -119,7 +123,9 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
                 </div>
             </div>
         </div>
-
+        <?php
+        }
+        ?>
 
         <div class="large-12" id="pageTileContainer">
 
@@ -153,7 +159,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
                         </div>
                         <div class="textHolder">
                             <span><?=$categoryTitle?></span>
-                            <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$pageTile['id']?>" data-target="pageTileContainer" title="<?=$pageTile['title']?>"><?=$pageTile['title']?></a></h5>
+                            <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$pageTile['tile_id']?>" data-target="pageTileContainer" title="<?=$pageTile['title']?>"><?=$pageTile['title']?></a></h5>
                         </div>
                     </div>
                 </div>
@@ -162,129 +168,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
             }
             ?>
 
-
-            <!--
-
-            <div class="large-3 small-3 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/cockatooIsland2.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <span>Museum</span>
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="pageTileContainer">Cockatoo Island</a></h5>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="large-3 small-3 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/sharkIsland.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <span>Park</span>
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="pageTileContainer">Shark Island</a></h5>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="large-3 small-3 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/harbourBridge.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <span>Attraction</span>
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="pageTileContainer">The Harbour Bridge</a></h5>
-                    </div>
-                </div>
-            </div>
-
-            <div class="large-3 small-3 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/nationalPark.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <span>Park</span>
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="pageTileContainer">National Park</a></h5>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="large-3 small-3 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/fortDenison.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <span>Park</span>
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="pageTileContainer">Fort Denison</a></h5>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="large-6 small-6 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnail-med/qStation.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <span>Attraction</span>
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="pageTileContainer">North Head Quarantine Station</a></h5>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="large-6 small-6 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnail-med/maritimeMuseum.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <span>Museum</span>
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="pageTileContainer">Maritime Museum</a></h5>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="large-3 small-3 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/bennelongPoint.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <span>Park</span>
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="pageTileContainer">Bennelong Point</a></h5>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="large-3 small-3 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/shopping.png" />
-                    </div>
-                    <div class="textHolder">
-                        <span>Shopping</span>
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="pageTileContainer">Balmain Wharf</a></h5>
-                    </div>
-                </div>
-            </div>-->
-
-
         </div>
-
     </div>
 </section>
 

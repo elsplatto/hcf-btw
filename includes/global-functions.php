@@ -3,9 +3,6 @@ function getGap($stamp) {
     $currentStamp = time();
 
     $gap = $currentStamp - $stamp;
-    //echo 'stamp['.$stamp.']<br />';
-    //echo 'currentStamp['.$currentStamp.']<br />';
-    //echo 'gap['.$gap.']<br />';
 
     if ($gap <= 120)
     {
@@ -95,7 +92,6 @@ function buildLikesString($likesCount, $blnUserLiked = false, $objImgLikes, $cre
 
     foreach ($objImgLikes->data as $likes)
     {
-        //echo '$userInstagramId['.$userInstagramId.']$likes->id['.$likes->id.']';
         if ($userInstagramId !== $likes->id)
         {
             if ($i > $limit)
@@ -137,7 +133,6 @@ function buildLikesString($likesCount, $blnUserLiked = false, $objImgLikes, $cre
                 $whoLikesString .= ' like this.';
                 break;
             }
-            //$whoLikesString .= '$i['.$i.']$limit['.$limit.']['.$likesCount.']';
             $i++;
         }
     }
@@ -204,7 +199,6 @@ function getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
         $results[$i]['map_icon'] = $map_icon;
         $i++;
     }
-
     $mysqli->close();
     return $results;
 }
@@ -224,7 +218,7 @@ function getFilters($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABAS
     return $filterArray;
 }
 
-function getPagesSelectedTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
+function getPagesSelectedTiles($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $query = 'SELECT tiles.title, types.title as type_title, categories.title AS category_title, ';
     $query .= 'tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size, tiles.alt, tile_id FROM page_tile ';

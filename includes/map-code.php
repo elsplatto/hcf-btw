@@ -22,7 +22,6 @@ function placeMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DA
 
         $markerJS .= 'var markerLocations = [';
         $markerJS .= "\r\n";
-        //while ($row = $results->fetch_assoc())
         foreach($results as $row)
         {
             $counter++;
@@ -389,7 +388,7 @@ function initialize() {
                 locationContent += '<div class="textHolder">';
                 locationContent += '<span>'+location.sub_heading+'</span>';
                 locationContent += '<h5><a href="#" class="panelFlyoutTrigger" data-location="'+location.id+'" data-target="mapContainer">'+location.title+'</a></h5>';
-                locationContent += '<a href="#" class="panelFlyoutTrigger directive" data-location="'+location.id+'" data-target="mapContainer">Read More</a>';
+                //locationContent += '<a href="#" class="panelFlyoutTrigger directive" data-location="'+location.id+'" data-target="mapContainer">Read More</a>';
                 locationContent += '</div>';
 
                 var locationBubble = new InfoBubble({
@@ -423,22 +422,13 @@ function initialize() {
                         //console.log('here');
                         var target = $('#'+$(this).attr('data-target'));
                         var id = $(this).attr('data-location');
-                        var url = '<?=$relPath?>services/get-location.php?id='+id;
-                        $.ajax({
-                            type: 'POST',
-                            url: url,
-                            beforeSend: function()
-                            {
-                                beforeLocationRetrieveHandler(target);
-                            },
-                            success: function(data)
-                            {
-                                locationRetrieveSuccessHandler(data);
-                            },
-                            error: function()
-                            {
-                                locationRetrieveErrorHandler(target);
-                            }
+
+                        beforeLocationRetrieveHandler(target);
+                        $('#flyoutPanel').load('<?=$relPath?>services/load-location.php?id='+id +'&relPath=<?=$relPath?>', function(){
+                            var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
+                            $('html').animate({
+                                scrollTop: scrollHeight
+                            },'slow');
                         });
                     });
 
@@ -448,7 +438,6 @@ function initialize() {
                     });
 
                     function beforeLocationRetrieveHandler(target) {
-                        //console.log('panel length['+$('#flyoutPanel').length+']');
                         if ($('#flyoutPanel').length > 0)
                         {
                             $('#flyoutPanel').remove();
@@ -473,65 +462,7 @@ function initialize() {
                         cl.show(); // Hidden by default
                     }
 
-                    function locationRetrieveSuccessHandler(data) {
-                        var obj = data;
-                        var locationHTML = '';
-                        var subHeading = '';
-                        var closeHTML = '<a href="#" class="flyoutPanelClose">Close panel</a>';
-                        if (obj.hasOwnProperty('title'))
-                        {
-                            if (obj['category_title'] === null)
-                            {
-                                subHeading = obj['type_title'];
-                            }
-                            else
-                            {
-                                if (obj['category_title'].length === 0)
-                                {
-                                    subHeading = obj['category_title'];
-                                }
-                                else
-                                {
-                                    subHeading = obj['type_title'];
-                                }
-                            }
 
-
-                            locationHTML += '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
-                            locationHTML += closeHTML;
-                            locationHTML += '<span>'+subHeading+'</span>';
-                            locationHTML += '<h3>'+obj['title']+'</h3>';
-                            if (obj['intro_text'] !== null)
-                            {
-                                locationHTML += '<p>'+obj['intro_text']+'</p>';
-                            }
-                            if (obj['trip_plan'] !== null)
-                            {
-                                if (obj['trip_plan'].length > 0)
-                                {
-                                    locationHTML += '<div class="ferryInfo large-12 columns ultraDarkGrey">';
-                                    locationHTML += '<h4>Ferry Information</h4>';
-                                    locationHTML += obj['trip_plan'];
-                                    locationHTML += '</div>';
-                                }
-                            }
-                            locationHTML += '<img src="<?=$relPath?>img/locations/medium/'+obj['image_med']+'" alt="'+obj['alt']+'" />';
-                            locationHTML += '</div>';
-                        }
-                        else
-                        {
-                            locationHTML += '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
-                            locationHTML += closeHTML;
-                            locationHTML += '<h4>'+obj['error_display_msg']+'</div>';
-                            locationHTML += '</div>';
-                        }
-                        //console.log('data: '+obj[0]['image_med']);
-                        $('#flyoutPanel').html(locationHTML);
-                        var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
-                        $('html').animate({
-                            scrollTop: scrollHeight
-                        },'slow');
-                    }
 
                     function locationRetrieveErrorHandler(target) {
                         var locationHTML = '';
@@ -542,6 +473,8 @@ function initialize() {
                         locationHTML += '</div>';
                         $('#flyoutPanel').html(locationHTML);
                     }
+
+
 
                 });
             }(locations[i]));

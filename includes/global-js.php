@@ -33,25 +33,15 @@ $(function(){
 
     $('.panelFlyoutTrigger').on('click', function(e) {
         e.preventDefault();
-        //console.log('here');
         var target = $('#'+$(this).attr('data-target'));
         var id = $(this).attr('data-location');
-        var url = '<?=$relPath?>services/get-location.php?id='+id;
-        $.ajax({
-            type: 'POST',
-            url: url,
-            beforeSend: function()
-            {
-                beforeLocationRetrieveHandler(target);
-            },
-            success: function(data)
-            {
-                locationRetrieveSuccessHandler(data);
-            },
-            error: function()
-            {
-                locationRetrieveErrorHandler(target);
-            }
+
+        beforeLocationRetrieveHandler(target);
+        $('#flyoutPanel').load('<?=$relPath?>services/load-location.php?id='+id +'&relPath=<?=$relPath?>', function(){
+            var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
+            $('html').animate({
+                scrollTop: scrollHeight
+            },'slow');
         });
     });
 
@@ -61,13 +51,12 @@ $(function(){
     });
 
     function beforeLocationRetrieveHandler(target) {
-        //console.log('panel length['+$('#flyoutPanel').length+']');
         if ($('#flyoutPanel').length > 0)
         {
             $('#flyoutPanel').remove();
         }
         var panelFlyout = '';
-        panelFlyout += '<div id="flyoutPanel" class="panelFlyout large-12 columns left">';
+        panelFlyout += '<div id="flyoutPanel" class="panelFlyout  large-12 columns left">';
         panelFlyout += '<div class="large-12 columns standardDarkGrey">';
         panelFlyout += '<div id="flyoutCanvas" class="paddingTopBottom20 left"></div>';
         panelFlyout += '<h4 class="left loading">Loading...</h4>';
@@ -86,33 +75,7 @@ $(function(){
         cl.show(); // Hidden by default
     }
 
-    function locationRetrieveSuccessHandler(data) {
-        var obj = data;
-        var locationHTML = '';
-        var closeHTML = '<a href="#" class="flyoutPanelClose">Close panel</a>';
-        if (obj[0].hasOwnProperty('title'))
-        {
-            locationHTML += '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
-            locationHTML += closeHTML;
-            locationHTML += '<span>'+obj[0]['sub_heading']+'</span>';
-            locationHTML += '<h3>'+obj[0]['title']+'</h3>';
-            locationHTML += '<img src="<?=$relPath?>img/locations/medium/'+obj[0]['image_med']+'" alt="'+obj[0]['title']+'" />';
-            locationHTML += '</div>';
-        }
-        else
-        {
-            locationHTML += '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
-            locationHTML += closeHTML;
-            locationHTML += '<h4>'+obj[0]['error_display_msg']+'</h4>';
-            locationHTML += '</div>';
-        }
-        //console.log('data: '+obj[0]['image_med']);
-        $('#flyoutPanel').html(locationHTML);
-        var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
-        $('html').animate({
-            scrollTop: scrollHeight
-        },'slow');
-    }
+
 
     function locationRetrieveErrorHandler(target) {
         var locationHTML = '';

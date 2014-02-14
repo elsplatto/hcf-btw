@@ -157,7 +157,7 @@ if (isset($instagramData))
 
 <section class="photoSection marginBottomStandard">
 
-  <div class="row marginBottom20">
+  <div class="row marginTop20 marginBottom20">
       <div class="large-12 columns">
       <?php
       if (isset($instagramData))

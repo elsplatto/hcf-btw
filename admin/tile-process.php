@@ -35,19 +35,19 @@ if (!empty($_POST))
     {
         $tile_id = $_POST['tileID'];
         $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-        $stmt = $mysqli->prepare('UPDATE tiles SET title = ?, type_id = ?, category_id = ?, tile_size = ?, lat = ?, lng = ?, image_thumb = ?, image_thumb_med = ?, image_med = ?, image_large = ?, alt = ?, directive_text = ?, trip_plan = ?, content = ?, address_text = ?, is_live = ? WHERE id = ?');
-        $stmt->bind_param('siisddsssssssssii', $title, $type_id, $category_id, $tile_size, $lat, $lng, $image_thumb, $image_thumb_med, $image_med, $image_large, $alt, $directive_text, $trip_plan, $content, $address_text, $is_live, $tile_id);
+        $stmt = $mysqli->prepare('UPDATE tiles SET title = ?, type_id = ?, category_id = ?, tile_size = ?, lat = ?, lng = ?, image_thumb = ?, image_thumb_med = ?, image_med = ?, image_large = ?, alt = ?, directive_text = ?, intro_text = ?, trip_plan = ?, content = ?, address_text = ?, is_live = ? WHERE id = ?');
+        $stmt->bind_param('siisddssssssssssii', $title, $type_id, $category_id, $tile_size, $lat, $lng, $image_thumb, $image_thumb_med, $image_med, $image_large, $alt, $directive_text, $intro_text, $trip_plan, $content, $address_text, $is_live, $tile_id);
     }
     else
     {
         $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-        $stmt = $mysqli->prepare('INSERT INTO tiles (title, type_id, category_id, tile_size, lat, lng, image_thumb, image_thumb_med, image_med, image_large, alt, directive_text, trip_plan, content, address_text, is_live) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-        $stmt->bind_param('siisddsssssssssi', $title, $type_id, $category_id, $tile_size, $lat, $lng, $image_thumb, $image_thumb_med, $image_med, $image_large, $alt, $directive_text, $trip_plan, $content, $address_text, $is_live);
+        $stmt = $mysqli->prepare('INSERT INTO tiles (title, type_id, category_id, tile_size, lat, lng, image_thumb, image_thumb_med, image_med, image_large, alt, directive_text, intro_text, trip_plan, content, address_text, is_live) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+        $stmt->bind_param('siisddssssssssssi', $title, $type_id, $category_id, $tile_size, $lat, $lng, $image_thumb, $image_thumb_med, $image_med, $image_large, $alt, $directive_text, $intro_text, $trip_plan, $content, $address_text, $is_live);
         $tile_id = $mysqli->insert_id;
     }
     $stmt->execute();
     $stmt->close();
-   /* echo '$title['.$title.']<br />';
+    echo '$title['.$title.']<br />';
     echo '$type_id['.$type_id.']<br />';
     echo '$category_id['.$category_id.']<br />';
     echo '$lat['.$lat.']<br />';
@@ -63,8 +63,8 @@ if (!empty($_POST))
     echo '$content['.$content.']<br />';
     echo '$address_text['.$address_text.']<br />';
     echo '$is_live['.$is_live.']<br />';
-    echo '$tile_id['.$tile_id.']<br />';*/
+    echo '$tile_id['.$tile_id.']<br />';
 }
 
-header('Location: tiles-list.php');
+//header('Location: tiles-list.php');
 ?>

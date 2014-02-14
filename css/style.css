@@ -773,6 +773,9 @@ p {
   #map-canvas img {
     max-width: inherit; }
 
+#flyoutMap img {
+  max-width: inherit; }
+
 .toggleControlPanel {
   width: 2.5rem;
   height: 2.5rem;
@@ -1109,12 +1112,33 @@ footer .standard {
 
 .panelFlyout {
   color: white; }
+  .panelFlyout .large-12 {
+    overflow: hidden; }
   .panelFlyout .ferryInfo {
     padding: 1.25rem;
     height: auto;
     margin-bottom: 2.5rem; }
   .panelFlyout p {
-    color: white; }
+    color: white;
+    font-weight: 400 !important; }
+    .panelFlyout p .purple {
+      font-family: inherit !important;
+      font-size: inherit; }
+      .panelFlyout p .purple a {
+        font-family: inherit !important;
+        font-size: inherit !important;
+        color: inherit !important;
+        text-decoration: underline;
+        text-transform: lowercase; }
+  .panelFlyout .map + p, .panelFlyout .address {
+    font-family: "Inconsolata", sans-serif !important;
+    color: white;
+    font-size: 0.938rem; }
+  .panelFlyout .map {
+    widht: 100%;
+    height: 11.875rem;
+    outline: 1px solid grey;
+    margin-bottom: 2rem; }
   .panelFlyout h3, .panelFlyout h4 {
     font-family: "Tungsten A", "Tungsten B" !important;
     font-weight: 700;
@@ -1128,6 +1152,8 @@ footer .standard {
   .panelFlyout h4.loading {
     margin-top: 1.25rem;
     margin-left: 1.25rem; }
+  .panelFlyout span {
+    text-transform: capitalize !important; }
   .panelFlyout .flyoutPanelClose {
     position: absolute;
     width: 2.5rem;
