@@ -5,9 +5,11 @@ $std-dark-grey-background-med-opacity: rgba(39, 46, 53, 0.5)
 $hover-dark-grey-background-opacity: rgba(39, 46, 53, 0.35)
 $std-dark-grey-background: rgba(39, 46, 53, 1)
 
+
+$ultra-dark-grey: #222528
 $std-dark-grey: rgba(39, 46, 53, 1)
-$std-mid-grey: #3c4856
-$std-light-grey: #333b43
+
+$std-light-grey: #3c4855
 
 
 $grey-button-hover-bg: #727577
@@ -294,8 +296,12 @@ p
 /*Start - color classes*/
 .standardDarkGrey
   background-color: $std-dark-grey-background
-.standardMidGrey
-  background-color: $std-mid-grey
+.ultraDarkGrey
+  background-color: $ultra-dark-grey
+  h3
+    color: #fff !important
+.standardLightGrey
+  background-color: $std-light-grey
   h3
     color: #fff !important
 
@@ -847,11 +853,13 @@ p
   span
     text-transform: capitalize
   h5
+    font-family: $tungsten
     white-space: nowrap
     overflow: hidden
     width: 80%
     text-overflow: ellipsis
     margin-bottom: -0.075rem
+    color: #fff !important
 
 .tile.social
   padding: 1.563rem
@@ -1229,6 +1237,13 @@ footer
 
 
 .panelFlyout
+  color: #fff
+  .ferryInfo
+    padding: 1.25rem
+    height: auto
+    margin-bottom: 2.5rem
+  p
+    color: #fff
   h3, h4
     font-family: $tungsten
     font-weight: 700
@@ -1236,6 +1251,7 @@ footer
     color: #fff
   h3
     font-size: 3rem
+    margin-bottom: 0.1rem
   h4
     font-size: 1.875rem
   h4.loading

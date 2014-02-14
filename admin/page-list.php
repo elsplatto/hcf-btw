@@ -8,8 +8,17 @@ function getPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
     $stmt = $mysqli->prepare('SELECT pages.id, pages.title, is_live FROM pages ORDER BY pages.order');
 
     $stmt->execute();
+    $stmt->bind_result($id, $title, $is_live);
 
-    $results = $stmt->get_result();
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['id'] = $id;
+        $results[$i]['title'] = $title;
+        $results[$i]['is_live'] = $is_live;
+        $i++;
+    }
     return $results;
 }
 
@@ -29,36 +38,45 @@ $pages = getPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 </head>
 <body>
 <section>
-    <h1>Pages</h1>
-    <a href="page-add.php">Add Page</a>
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Pages</h1>
+            <a href="page-add.php">Add Page</a>
+        </div>
+    </div>
 </section>
 
 <section>
-    <table class="list" border="0">
-        <thead>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Parent Page</th>
-        <th>Status</th>
-        <th>Action</th>
-        </thead>
-        <tbody>
-        <?php
-        foreach ($pages as $page)
-        {
-            ?>
-            <tr>
-                <td><?=$page['id']?></td>
-                <td><?=$page['title']?></td>
-                <td></td>
-                <td><?php echo ($page['is_live'] == 1 ? 'Live' :  'Not Live') ?></td>
-                <td><a href="page-edit.php?id=<?=$page['id']?>">edit</a></td>
-            </tr>
-        <?php
-        }
-        ?>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="large-12 columns">
+            <table class="list" border="0">
+                <thead>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Parent Page</th>
+                <th>Status</th>
+                <th>Action</th>
+                </thead>
+                <tbody>
+                <?php
+                foreach ($pages as $page)
+                {
+                    ?>
+                    <tr>
+                        <td><?=$page['id']?></td>
+                        <td><?=$page['title']?></td>
+                        <td></td>
+                        <td><?php echo ($page['is_live'] == 1 ? 'Live' :  'Not Live') ?></td>
+                        <td><a href="page-edit.php?id=<?=$page['id']?>">edit</a></td>
+                    </tr>
+                <?php
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>
+
 </body>
 </html>

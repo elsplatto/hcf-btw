@@ -8,14 +8,29 @@ $stmt = $mysqli->prepare('SELECT id, nav_title, css_class, route_colour, friendl
 
 $stmt->execute();
 
-$result = $stmt->get_result();
-$numRows =  mysqli_num_rows($result);
+//$result = $stmt->get_result();
+$stmt->bind_result($id, $nav_title, $css_class, $route_colour, $friendly_url, $info_bubble_width, $info_bubble_height);
 
 $first = true;
 $innerLoopFirst = true;
 
 $json = '';
 
+$results = array();
+$i = 0;
+while($stmt->fetch())
+{
+    $results[$i]['id'] = $id;
+    $results[$i]['nav_title'] = $nav_title;
+    $results[$i]['css_class'] = $css_class;
+    $results[$i]['route_colour'] = $route_colour;
+    $results[$i]['friendly_url'] = $friendly_url;
+    $results[$i]['info_bubble_width'] = $info_bubble_width;
+    $results[$i]['info_bubble_height'] = $info_bubble_height;
+    $i++;
+}
+
+$numRows =  count($results);
 
 
 if ($numRows > 0)
@@ -23,14 +38,13 @@ if ($numRows > 0)
 
     $json .= '{"routes": [';
 
-    while ($row = $result->fetch_assoc())
+    foreach ($results as $row)
     {
         if($first) {
             $first = false;
         } else {
             $json .= ',';
         }
-        //$json .= json_encode($row);
 
         $json .= '{';
         $rowID = $row["id"];
@@ -47,14 +61,26 @@ if ($numRows > 0)
         $innerStmt->bind_param('i', $rowID);
         $innerStmt->execute();
 
-        $innerResult = $innerStmt->get_result();
-        $innerNumRows =  mysqli_num_rows($innerResult);
+        $innerStmt->bind_result($lat, $lng);
+
+        //$innerResult = $innerStmt->get_result();
+        $innerResult = array();
+
+        $i = 0;
+        while ($innerStmt->fetch())
+        {
+            $innerResult[$i]['lat'] = $lat;
+            $innerResult[$i]['lng'] = $lng;
+            $i++;
+        }
+
+        $innerNumRows = count($innerResult);
         $innerJson = array();
         $innerCount = 0;
         if ($numRows > 0)
         {
             $json .= ',"coords": [';
-            while ($innerRow = $innerResult->fetch_assoc())
+            foreach ($innerResult as $innerRow)
             {
                 $json .= json_encode($innerRow);
                 $innerCount++;
@@ -70,8 +96,6 @@ if ($numRows > 0)
             }
             $json .= ']}';
         }
-        //$json .= '}';
-
     }
 
     $json .= ']}';

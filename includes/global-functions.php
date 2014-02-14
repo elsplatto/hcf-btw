@@ -176,8 +176,7 @@ function getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
 
     $query = '';
     $query .= 'SELECT tiles.id, tiles.title, tiles.lat, tiles.lng, tiles.image_thumb, ';
-    $query .= 'tiles.image_med, tiles.image_large, tiles.alt, tiles.trip_plan, tiles.intro_text, ';
-    $query .= 'tiles.address_text, types.title AS type_title, categories.id AS category_id, categories.title AS category_title , ';
+    $query .= 'tiles.alt, types.title AS type_title, categories.id AS category_id, categories.title AS category_title , ';
     $query .= 'categories.map_icon ';
     $query .= 'FROM (tiles, types, categories) ';
     $query .= 'INNER JOIN map_tile ON (tiles.id = map_tile.tile_id) ';
@@ -187,7 +186,25 @@ function getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param('i', $pageId);
     $stmt->execute();
-    $results = $stmt->get_result();
+    $stmt->bind_result($id, $title, $lat, $lng, $image_thumb, $alt, $type_title, $category_id, $category_title, $map_icon);
+
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['id'] = $id;
+        $results[$i]['title'] = $title;
+        $results[$i]['lat'] = $lat;
+        $results[$i]['lng'] = $lng;
+        $results[$i]['image_thumb'] = $image_thumb;
+        $results[$i]['alt'] = $alt;
+        $results[$i]['type_title'] = $type_title;
+        $results[$i]['category_id'] = $category_id;
+        $results[$i]['category_title'] = $category_title;
+        $results[$i]['map_icon'] = $map_icon;
+        $i++;
+    }
+
     $mysqli->close();
     return $results;
 }
@@ -195,21 +212,22 @@ function getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
 function getFilters($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $filterArray = array();
-    $results = getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    while ($row = $results->fetch_assoc())
+    $categories = getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    foreach($categories as $category)
     {
-        if ( !in_array($row['category_title'], $filterArray) )
+        if (!in_array($category['category_title'], $filterArray))
         {
-            array_push($filterArray, $row['category_title']);
+            array_push($filterArray, $category['category_title']);
         }
     }
+
     return $filterArray;
 }
 
 function getPagesSelectedTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $query = 'SELECT tiles.title, types.title as type_title, categories.title AS category_title, ';
-    $query .= 'tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size, tile_id, page_tile.order FROM page_tile ';
+    $query .= 'tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size, tiles.alt, tile_id FROM page_tile ';
     $query .= 'JOIN tiles ON (tiles.id = page_tile.tile_id) ';
     $query .= 'JOIN types ON (tiles.type_id = types.id) ';
     $query .= 'LEFT OUTER JOIN categories ON (tiles.category_id = categories.id) ';
@@ -219,7 +237,22 @@ function getPagesSelectedTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_D
     $stmt->bind_param('i', $id);
     $stmt->execute();
 
-    $results = $stmt->get_result();
+    $stmt->bind_result($title, $type_title, $category_title, $image_thumb, $image_thumb_med, $tile_size, $alt, $tile_id);
+
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['title'] = $title;
+        $results[$i]['type_title'] = $type_title;
+        $results[$i]['category_title'] = $category_title;
+        $results[$i]['image_thumb'] = $image_thumb;
+        $results[$i]['image_thumb_med'] = $image_thumb_med;
+        $results[$i]['tile_size'] = $tile_size;
+        $results[$i]['alt'] = $alt;
+        $results[$i]['tile_id'] = $tile_id;
+        $i++;
+    }
     return $results;
 }
 

@@ -57,7 +57,28 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
     } else {
         $stmt->bind_param('s', strtolower($friendly_url));
         $stmt->execute();
-        $results = $stmt->get_result();
+        $stmt->bind_result($id, $title, $is_landing_page, $has_map, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $content, $meta_keywords, $meta_desc);
+
+        $results = array();
+        $i = 0;
+        while($stmt->fetch())
+        {
+            $results[$i]['id'] = $id;
+            $results[$i]['title'] = $title;
+            $results[$i]['is_landing_page'] = $is_landing_page;
+            $results[$i]['has_map'] = $has_map;
+            $results[$i]['heading'] = $heading;
+            $results[$i]['heading_pullout'] = $heading_pullout;
+            $results[$i]['sub_heading'] = $sub_heading;
+            $results[$i]['header_image'] = $header_image;
+            $results[$i]['header_mp4'] = $header_mp4;
+            $results[$i]['header_webm'] = $header_webm;
+            $results[$i]['content'] = $content;
+            $results[$i]['meta_keywords'] = $meta_keywords;
+            $results[$i]['meta_desc'] = $meta_desc;
+            $i++;
+        }
+        return $results;
     }
     $mysqli->close();
     return $results;

@@ -218,7 +218,7 @@ h3.block {
 
 h4 {
   font-family: "adobe-garamond-pro", sans-serif !important;
-  color: #333b43;
+  color: #3c4855;
   font-size: 1.5rem;
   font-style: italic; }
   h4 .tag {
@@ -243,9 +243,14 @@ p {
 .standardDarkGrey {
   background-color: #272e35; }
 
-.standardMidGrey {
-  background-color: #3c4856; }
-  .standardMidGrey h3 {
+.ultraDarkGrey {
+  background-color: #222528; }
+  .ultraDarkGrey h3 {
+    color: white !important; }
+
+.standardLightGrey {
+  background-color: #3c4855; }
+  .standardLightGrey h3 {
     color: white !important; }
 
 /*Start - Route colors */
@@ -747,11 +752,13 @@ p {
   .textHolder span {
     text-transform: capitalize; }
   .textHolder h5 {
+    font-family: "Tungsten A", "Tungsten B" !important;
     white-space: nowrap;
     overflow: hidden;
     width: 80%;
     text-overflow: ellipsis;
-    margin-bottom: -0.075rem; }
+    margin-bottom: -0.075rem;
+    color: white !important; }
 
 .tile.social {
   padding: 1.563rem;
@@ -1100,37 +1107,46 @@ footer .standard {
   .locationBubbleWrapper .textHolder h5 {
     margin-bottom: -0.075rem; }
 
-.panelFlyout h3, .panelFlyout h4 {
-  font-family: "Tungsten A", "Tungsten B" !important;
-  font-weight: 700;
-  font-style: normal;
+.panelFlyout {
   color: white; }
-.panelFlyout h3 {
-  font-size: 3rem; }
-.panelFlyout h4 {
-  font-size: 1.875rem; }
-.panelFlyout h4.loading {
-  margin-top: 1.25rem;
-  margin-left: 1.25rem; }
-.panelFlyout .flyoutPanelClose {
-  position: absolute;
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: #59acb3;
-  top: 0;
-  right: 0;
-  z-index: 10;
-  text-indent: -10000px; }
-  .panelFlyout .flyoutPanelClose:before {
+  .panelFlyout .ferryInfo {
+    padding: 1.25rem;
+    height: auto;
+    margin-bottom: 2.5rem; }
+  .panelFlyout p {
+    color: white; }
+  .panelFlyout h3, .panelFlyout h4 {
+    font-family: "Tungsten A", "Tungsten B" !important;
+    font-weight: 700;
+    font-style: normal;
+    color: white; }
+  .panelFlyout h3 {
+    font-size: 3rem;
+    margin-bottom: 0.1rem; }
+  .panelFlyout h4 {
+    font-size: 1.875rem; }
+  .panelFlyout h4.loading {
+    margin-top: 1.25rem;
+    margin-left: 1.25rem; }
+  .panelFlyout .flyoutPanelClose {
     position: absolute;
-    content: "";
-    top: 0.5rem;
-    left: 0.45rem;
-    width: 1.625rem;
-    height: 1.438rem;
-    z-index: 20;
-    background-image: url("img/icons.png");
-    background-position: -209px -113px; }
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #59acb3;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    text-indent: -10000px; }
+    .panelFlyout .flyoutPanelClose:before {
+      position: absolute;
+      content: "";
+      top: 0.5rem;
+      left: 0.45rem;
+      width: 1.625rem;
+      height: 1.438rem;
+      z-index: 20;
+      background-image: url("img/icons.png");
+      background-position: -209px -113px; }
 
 .systemError {
   border: 2px solid #e00b2e;

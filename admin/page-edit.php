@@ -7,11 +7,43 @@ $page_id = $_GET['id'];
 
 function getPage($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
+    $query = 'SELECT title, is_nav, is_landing_page, has_map, nav_title, heading, heading_pullout, sub_heading, header_image, header_mp4, ';
+    $query .= 'header_webm, tags, friendly_url, content, meta_keywords, meta_desc, parent_id, pages.order, is_live FROM pages WHERE id = ?';
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->prepare('SELECT * FROM pages WHERE id = ?');
+    $stmt = $mysqli->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
-    $results = $stmt->get_result();
+    //$results = $stmt->get_result();
+
+    $stmt->bind_result($title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $tags, $friendly_url, $content, $meta_keywords, $meta_desc, $parent_id, $order, $is_live);
+
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['title'] = $title;
+        $results[$i]['is_nav'] = $is_nav;
+        $results[$i]['is_landing_page'] = $is_landing_page;
+        $results[$i]['has_map'] = $has_map;
+        $results[$i]['nav_title'] = $nav_title;
+        $results[$i]['heading'] = $heading;
+        $results[$i]['heading_pullout'] = $heading_pullout;
+        $results[$i]['sub_heading'] = $sub_heading;
+        $results[$i]['header_image'] = $header_image;
+        $results[$i]['header_mp4'] = $header_mp4;
+        $results[$i]['header_webm'] = $header_webm;
+        $results[$i]['tags'] = $tags;
+        $results[$i]['friendly_url'] = $friendly_url;
+        $results[$i]['content'] = $content;
+        $results[$i]['meta_keywords'] = $meta_keywords;
+        $results[$i]['meta_desc'] = $meta_desc;
+        $results[$i]['parent_id'] = $parent_id;
+        $results[$i]['order'] = $order;
+        $results[$i]['is_live'] = $is_live;
+        $i++;
+    }
+
+
     $mysqli->close();
     return $results;
 }
@@ -22,18 +54,35 @@ function getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
 
     $stmt->execute();
 
-    $results = $stmt->get_result();
+    $stmt->bind_result($id, $title);
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['id'] = $id;
+        $results[$i]['title'] = $title;
+        $i++;
+    }
     return $results;
 }
 
 function getSelectedMapTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->prepare('SELECT page_id, tile_id, map_tile.order FROM map_tile WHERE page_id = ? ORDER BY map_tile.order');
+    $stmt = $mysqli->prepare('SELECT page_id, tile_id, map_tile.order, tiles.title FROM map_tile JOIN tiles ON tile_id = tiles.id WHERE page_id = ? ORDER BY map_tile.order');
     $stmt->bind_param('i', $id);
     $stmt->execute();
-
-    $results = $stmt->get_result();
+    $stmt->bind_result($page_id, $tile_id, $order, $title);
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['page_id'] = $page_id;
+        $results[$i]['tile_id'] = $tile_id;
+        $results[$i]['order'] = $order;
+        $results[$i]['title'] = $title;
+        $i++;
+    }
     return $results;
 }
 
@@ -42,8 +91,16 @@ function getAllMapTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     $stmt = $mysqli->prepare('SELECT tiles.id, tiles.title, tiles.image_thumb FROM tiles WHERE tiles.is_live = 1 AND tiles.type_id = 1 AND tiles.image_thumb IS NOT NULL AND tiles.image_thumb != \'\'');
     $stmt->execute();
-
-    $results = $stmt->get_result();
+    $stmt->bind_result($id, $title, $image_thumb);
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['id'] = $id;
+        $results[$i]['title'] = $title;
+        $results[$i]['image_thumb'] = $image_thumb;
+        $i++;
+    }
     return $results;
 }
 
@@ -52,19 +109,40 @@ function getAllTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     $stmt = $mysqli->prepare('SELECT tiles.id, tiles.title, tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size  FROM tiles WHERE tiles.is_live = 1');
     $stmt->execute();
-
-    $results = $stmt->get_result();
+    $stmt->bind_result($id, $title, $image_thumb, $image_thumb_med, $tile_size);
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['id'] = $id;
+        $results[$i]['title'] = $title;
+        $results[$i]['image_thumb'] = $image_thumb;
+        $results[$i]['image_thumb_med'] = $image_thumb_med;
+        $results[$i]['tile_size'] = $tile_size;
+        $i++;
+    }
     return $results;
 }
 
 function getSelectedTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->prepare('SELECT tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size, tile_id, page_tile.order FROM (page_tile) JOIN tiles ON tiles.id = page_tile.tile_id WHERE page_id = ? ORDER BY page_tile.order');
+    $stmt = $mysqli->prepare('SELECT tiles.title, tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size, tile_id, page_tile.order FROM (page_tile) JOIN tiles ON tiles.id = page_tile.tile_id WHERE page_id = ? ORDER BY page_tile.order');
     $stmt->bind_param('i', $id);
     $stmt->execute();
-
-    $results = $stmt->get_result();
+    $stmt->bind_result($title, $image_thumb, $image_thumb_med, $tile_size, $tile_id, $order);
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['title'] = $title;
+        $results[$i]['image_thumb'] = $image_thumb;
+        $results[$i]['image_thumb_med'] = $image_thumb_med;
+        $results[$i]['tile_size'] = $tile_size;
+        $results[$i]['tile_id'] = $tile_id;
+        $results[$i]['order'] = $order;
+        $i++;
+    }
     return $results;
 }
 
@@ -85,15 +163,18 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
 <body>
 <section>
     <div class="row">
-        <h1>Page - Edit</h1>
-        <a href="page-list.php">< Back to Page List</a>
-        -
-        <a href="page-add.php">Add Page</a>
+        <div class="large-12 columns">
+            <h1>Page - Edit</h1>
+            <a href="page-list.php">< Back to Page List</a>
+            -
+            <a href="page-add.php">Add Page</a>
+        </div>
     </div>
 </section>
 
 <section>
     <div class="row">
+        <div class="large-12 columns">
         <form id="frmPage" name="frmPage" action="page-process.php" method="post">
             <?php
             foreach ($pages as $page)
@@ -112,10 +193,16 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                     <?php
                     foreach ($allPages as $parentPage)
                     {
+                        $strSelected = '';
+                        if ($parentPage['id'] == $page['parent_id'])
+                        {
+                            $strSelected = ' selected="selected"';
+                        }
                         if ($parentPage['id'] != $page_id)
                         {
+
                     ?>
-                        <option value="<?=$parentPage['id']?>"><?=$parentPage['title']?></option>
+                        <option value="<?=$parentPage['id']?>"<?=$strSelected?>><?=$parentPage['title']?></option>
                     <?php
                         }
                     }
@@ -162,9 +249,6 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                 <label for="txtMetaDescription">Meta Description:</label>
                 <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="<?=$page['meta_desc']?>" />
 
-                <label for="txtMetaDescription">Meta Description:</label>
-                <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="<?=$page['meta_desc']?>" />
-
                 <label for="txtOrder">Order:</label>
                 <input type="text" id="txtOrder" name="txtOrder" value="<?=$page['order']?>" />
 
@@ -188,7 +272,16 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                              }
                          }
                      ?>
-                        <li<?=$strSelected?> data-tile-id="<?=$mapTile['id']?>" data-page-id="<?=$page_id?>"><img src="../img/locations/thumbnails/<?=$mapTile['image_thumb']?>" /></li>
+                        <li<?=$strSelected?> data-tile-id="<?=$mapTile['id']?>" data-page-id="<?=$page_id?>" class="large-3 columns left">
+                            <div class="tile">
+                                <div class="imgHolder">
+                                    <img src="../img/locations/thumbnails/<?=$mapTile['image_thumb']?>" />
+                                </div>
+                                <div class="textholder">
+                                    <h5><?=$mapTile['title']?></h5>
+                                </div>
+                            </div>
+                        </li>
                      <?php
                      }
                      ?>
@@ -219,6 +312,9 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                                     <div class="tile">
                                         <div class="imgHolder">
                                             <img src="<?=$imagePath?>" />
+                                        </div>
+                                        <div class="textholder">
+                                            <h5><?=$selectedPageTile['title']?></h5>
                                         </div>
                                     </div>
                                 </li>
@@ -254,6 +350,9 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                                             <div class="imgHolder">
                                                 <img src="<?=$imagePath?>" />
                                             </div>
+                                            <div class="textholder">
+                                                <h5><?=$pageTile['title']?></h5>
+                                            </div>
                                         </div>
                                     </li>
                                 <?php
@@ -274,6 +373,7 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
             }
             ?>
         </form>
+        </div>
     </div>
 </section>
 <script>

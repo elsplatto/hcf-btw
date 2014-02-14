@@ -110,7 +110,7 @@ include 'includes/nav.php';
     </div>
 </section>
 
-<section class="mapHolder standardMidGrey paddingTopBottom20">
+<section class="mapHolder standardLightGrey paddingTopBottom20">
   <div class="row marginBottomStandard">
       <h3 class="text-center">Find a Journey</h3>
       <div class="large-12 columns" id="mapContainer">

@@ -8,7 +8,8 @@
 function placeMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
     global $relPath;
     $results = getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $numRows =  mysqli_num_rows($results);
+    //$numRows =  mysqli_num_rows($results);
+    $numRows = count($results);
     $counter = 0;
     $markerJS = '';
     if ($numRows > 0)
@@ -21,7 +22,8 @@ function placeMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DA
 
         $markerJS .= 'var markerLocations = [';
         $markerJS .= "\r\n";
-        while ($row = $results->fetch_assoc())
+        //while ($row = $results->fetch_assoc())
+        foreach($results as $row)
         {
             $counter++;
 
@@ -356,7 +358,7 @@ function initialize() {
                 }
             }
 
-            console.dir(markerArray[i]);
+            //console.dir(markerArray[i]);
         }
     });
 
@@ -452,7 +454,7 @@ function initialize() {
                             $('#flyoutPanel').remove();
                         }
                         var panelFlyout = '';
-                        panelFlyout += '<div id="flyoutPanel" class="panelFlyout large-12 columns left">';
+                        panelFlyout += '<div id="flyoutPanel" class="panelFlyout  large-12 columns left">';
                         panelFlyout += '<div class="large-12 columns standardDarkGrey">';
                         panelFlyout += '<div id="flyoutCanvas" class="paddingTopBottom20 left"></div>';
                         panelFlyout += '<h4 class="left loading">Loading...</h4>';
@@ -474,21 +476,53 @@ function initialize() {
                     function locationRetrieveSuccessHandler(data) {
                         var obj = data;
                         var locationHTML = '';
+                        var subHeading = '';
                         var closeHTML = '<a href="#" class="flyoutPanelClose">Close panel</a>';
-                        if (obj[0].hasOwnProperty('title'))
+                        if (obj.hasOwnProperty('title'))
                         {
+                            if (obj['category_title'] === null)
+                            {
+                                subHeading = obj['type_title'];
+                            }
+                            else
+                            {
+                                if (obj['category_title'].length === 0)
+                                {
+                                    subHeading = obj['category_title'];
+                                }
+                                else
+                                {
+                                    subHeading = obj['type_title'];
+                                }
+                            }
+
+
                             locationHTML += '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
                             locationHTML += closeHTML;
-                            locationHTML += '<span>'+obj[0]['sub_heading']+'</span>';
-                            locationHTML += '<h3>'+obj[0]['title']+'</h3>';
-                            locationHTML += '<img src="<?=$relPath?>img/locations/medium/'+obj[0]['image_med']+'" alt="'+obj[0]['title']+'" />';
+                            locationHTML += '<span>'+subHeading+'</span>';
+                            locationHTML += '<h3>'+obj['title']+'</h3>';
+                            if (obj['intro_text'] !== null)
+                            {
+                                locationHTML += '<p>'+obj['intro_text']+'</p>';
+                            }
+                            if (obj['trip_plan'] !== null)
+                            {
+                                if (obj['trip_plan'].length > 0)
+                                {
+                                    locationHTML += '<div class="ferryInfo large-12 columns ultraDarkGrey">';
+                                    locationHTML += '<h4>Ferry Information</h4>';
+                                    locationHTML += obj['trip_plan'];
+                                    locationHTML += '</div>';
+                                }
+                            }
+                            locationHTML += '<img src="<?=$relPath?>img/locations/medium/'+obj['image_med']+'" alt="'+obj['alt']+'" />';
                             locationHTML += '</div>';
                         }
                         else
                         {
                             locationHTML += '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
                             locationHTML += closeHTML;
-                            locationHTML += '<h4>'+obj[0]['error_display_msg']+'</div>';
+                            locationHTML += '<h4>'+obj['error_display_msg']+'</div>';
                             locationHTML += '</div>';
                         }
                         //console.log('data: '+obj[0]['image_med']);
@@ -498,6 +532,17 @@ function initialize() {
                             scrollTop: scrollHeight
                         },'slow');
                     }
+
+                    function locationRetrieveErrorHandler(target) {
+                        var locationHTML = '';
+                        var closeHTML = '<a href="#" class="flyoutPanelClose">Close panel</a>';
+                        locationHTML = '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
+                        locationHTML += closeHTML;
+                        locationHTML += '<h4>Whoops... we appear to have an issue</h4>';
+                        locationHTML += '</div>';
+                        $('#flyoutPanel').html(locationHTML);
+                    }
+
                 });
             }(locations[i]));
         }

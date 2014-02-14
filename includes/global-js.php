@@ -103,7 +103,7 @@ $(function(){
         {
             locationHTML += '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
             locationHTML += closeHTML;
-            locationHTML += '<h4>'+obj[0]['error_display_msg']+'</div>';
+            locationHTML += '<h4>'+obj[0]['error_display_msg']+'</h4>';
             locationHTML += '</div>';
         }
         //console.log('data: '+obj[0]['image_med']);
@@ -112,6 +112,16 @@ $(function(){
         $('html').animate({
             scrollTop: scrollHeight
         },'slow');
+    }
+
+    function locationRetrieveErrorHandler(target) {
+        var locationHTML = '';
+        var closeHTML = '<a href="#" class="flyoutPanelClose">Close panel</a>';
+        locationHTML = '<div class="large-12 columns standardDarkGrey paddingTopBottom20">';
+        locationHTML += closeHTML;
+        locationHTML += '<h4>Whoops... we appear to have an issue</h4>';
+        locationHTML += '</div>';
+        $('#flyoutPanel').html(locationHTML);
     }
 
 });

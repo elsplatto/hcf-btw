@@ -62,6 +62,7 @@ if (!empty($_POST))
     }
     $stmt->execute();
     $stmt->close();
+    /*
     echo '$title['.$title.']<br />';
     echo '$is_nav['.$is_nav.']<br />';
     echo '$nav_title['.$nav_title.']<br />';
@@ -78,6 +79,7 @@ if (!empty($_POST))
     echo '$friendly_url['.$friendly_url.']<br />';
     echo '$is_live['.$is_live.']<br />';
     echo '$page_id['.$page_id.']<br />';
+    */
 }
 
 header('Location: page-list.php');

@@ -7,11 +7,43 @@ $tile_id = $_GET['id'];
 
 function getTile($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
+    $query = 'SELECT type_id, category_id, tile_size, title, lat, lng, image_thumb, image_thumb_med, image_med, image_large, ';
+    $query .= 'directive_text, alt, category, sub_heading, trip_plan, intro_text, content, address_text, start_date, end_date, is_live ';
+    $query .= 'FROM tiles WHERE id = ?';
+    //echo $query;
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->prepare('SELECT * FROM tiles WHERE id = ?');
+    $stmt = $mysqli->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
-    $results = $stmt->get_result();
+    $stmt->bind_result($type_id, $category_id, $tile_size, $title, $lat, $lng, $image_thumb, $image_thumb_med, $image_med, $image_large, $directive_text, $alt, $category, $sub_heading, $trip_plan, $intro_text, $content, $address_text, $start_date, $end_date, $is_live );
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['type_id'] = $type_id;
+        $results[$i]['category_id'] = $category_id;
+        $results[$i]['tile_size'] = $tile_size;
+        $results[$i]['title'] = $title;
+        $results[$i]['lat'] = $lat;
+        $results[$i]['lng'] = $lng;
+        $results[$i]['image_thumb'] = $image_thumb;
+        $results[$i]['image_thumb_med'] = $image_thumb_med;
+        $results[$i]['image_med'] = $image_med;
+        $results[$i]['image_large'] = $image_large;
+        $results[$i]['directive_text'] = $directive_text;
+        $results[$i]['alt'] = $alt;
+        $results[$i]['category'] = $category;
+        $results[$i]['sub_heading'] = $sub_heading;
+        $results[$i]['trip_plan'] = $trip_plan;
+        $results[$i]['intro_text'] = $intro_text;
+        $results[$i]['content'] = $content;
+        $results[$i]['address_text'] = $address_text;
+        $results[$i]['start_date'] = $start_date;
+        $results[$i]['end_date'] = $end_date;
+        $results[$i]['is_live'] = $is_live;
+        $i++;
+    }
+
     $mysqli->close();
     return $results;
 }
@@ -19,9 +51,19 @@ function getTile($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 function getTypes($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->prepare('SELECT * FROM types WHERE is_valid = 1');
+    $stmt = $mysqli->prepare('SELECT id, title FROM types WHERE is_valid = 1');
     $stmt->execute();
-    $results = $stmt->get_result();
+    $stmt->bind_result($id, $title);
+
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['id'] = $id;
+        $results[$i]['title'] = $title;
+        $i++;
+    }
+
     $mysqli->close();
     return $results;
 }
@@ -31,7 +73,19 @@ function getCategories($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     $stmt = $mysqli->prepare('SELECT c.id, c.title, c.type_id, t.title AS type_title FROM categories c, types t WHERE c.is_valid = 1 AND t.id = c.type_id ORDER BY c.type_id');
     $stmt->execute();
-    $results = $stmt->get_result();
+    $stmt->bind_result($id, $title, $type_id, $type_title);
+
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['id'] = $id;
+        $results[$i]['title'] = $title;
+        $results[$i]['type_id'] = $type_id;
+        $results[$i]['type_title'] = $type_title;
+        $i++;
+    }
+
     $mysqli->close();
     return $results;
 }
@@ -42,8 +96,8 @@ $types = getTypes($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
 $categories = getCategories($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
-$typesCount = mysqli_num_rows($types);
-$categoriesCount = mysqli_num_rows($categories);
+$typesCount = count($types);
+$categoriesCount = count($categories);
 ?>
 <html>
 <head>
@@ -65,13 +119,19 @@ $categoriesCount = mysqli_num_rows($categories);
 </head>
 <body>
 <section>
+    <div class="row">
+        <div class="large-12 columns">
     <h1>Tiles</h1>
     <a href="tiles-list.php">< Back to Tile List</a>
      -
     <a href="tile-add.php">Add Tile</a>
+        </div>
+    </div>
 </section>
 
 <section>
+    <div class="row">
+        <div class="large-12 columns">
     <form id="frmTile" name="frmTile" action="tile-process.php" method="post">
         <?php
         foreach ($tiles as $tile)
@@ -203,6 +263,8 @@ $categoriesCount = mysqli_num_rows($categories);
         }
         ?>
     </form>
+            </div>
+        </div>
 </section>
 </body>
 </html>
