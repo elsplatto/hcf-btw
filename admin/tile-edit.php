@@ -105,26 +105,16 @@ $categoriesCount = count($categories);
     <?php
     include 'includes/head.php';
     ?>
-    <style>
-        label {
-            clear: left;
-            display: block;
-            margin-top: 1rem;
-        }
-        input {
-            clear: left;
-            display: block;
-        }
-    </style>
 </head>
 <body>
 <section>
     <div class="row">
         <div class="large-12 columns">
-    <h1>Tiles</h1>
-    <a href="tiles-list.php">< Back to Tile List</a>
-     -
-    <a href="tile-add.php">Add Tile</a>
+            <a href="dashboard.php">Dashboard</a>
+            <h1>Tiles</h1>
+            <a href="tiles-list.php">< Back to Tile List</a>
+             -
+            <a href="tile-add.php">Add Tile</a>
         </div>
     </div>
 </section>

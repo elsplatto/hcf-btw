@@ -42,13 +42,12 @@ $targetPos = ($targetPos + strlen($targetStr));
 
 $friendly_url = substr($_SERVER['REQUEST_URI'],$targetPos);
 
-//echo '['.$friendly_url.']';
 
 function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
 
     $query = '';
-    $query .= 'SELECT id, title, is_landing_page, has_map, heading, heading_pullout, sub_heading, header_image, header_mp4, header_webm, content, meta_keywords, meta_desc FROM pages WHERE friendly_url = ?';
+    $query .= 'SELECT id, title, is_landing_page, has_map, heading, heading_pullout, sub_heading, header_image, header_mp4, header_webm, content_header, content, meta_keywords, meta_desc FROM pages WHERE friendly_url = ?';
 
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     if (!$stmt = $mysqli->prepare($query)) {
@@ -57,7 +56,7 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
     } else {
         $stmt->bind_param('s', strtolower($friendly_url));
         $stmt->execute();
-        $stmt->bind_result($id, $title, $is_landing_page, $has_map, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $content, $meta_keywords, $meta_desc);
+        $stmt->bind_result($id, $title, $is_landing_page, $has_map, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $content_header, $content, $meta_keywords, $meta_desc);
 
         $results = array();
         $i = 0;
@@ -73,6 +72,7 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
             $results[$i]['header_image'] = $header_image;
             $results[$i]['header_mp4'] = $header_mp4;
             $results[$i]['header_webm'] = $header_webm;
+            $results[$i]['content_header'] = $content_header;
             $results[$i]['content'] = $content;
             $results[$i]['meta_keywords'] = $meta_keywords;
             $results[$i]['meta_desc'] = $meta_desc;
@@ -99,6 +99,7 @@ foreach ($pageDetails as $pageDetail) {
         $pageHeaderImage = $pageDetail['header_image'];
         $pageHeaderMP4 = $pageDetail['header_mp4'];
         $pageHeaderWebm = $pageDetail['header_webm'];
+        $pageContentHeader = $pageDetail['content_header'];
         $pageContent = $pageDetail['content'];
         $hasMap =  $pageDetail['has_map'];
         $pageMetaKeywords= $pageDetail['meta_keywords'];

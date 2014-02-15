@@ -13,9 +13,9 @@ include 'includes/head.php';
 <section>
     <div class="row">
         <div class="large-12 columns">
-            <p>
+            <h1>
             Dashboard
-            </p>
+            </h1>
 
             <p><a href="page-list.php">Pages</a></p>
             <p><a href="tiles-list.php">Tiles</a></p>

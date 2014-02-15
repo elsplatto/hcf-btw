@@ -21,3 +21,7 @@
         </div>
     </section>
 </footer>
+
+<div id="modalShell" class="reveal-modal <?=$instagramCommentOverlaySize?>" data-reveal="">
+
+</div>

@@ -5,7 +5,7 @@ include 'includes/nav.php';
 
 $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 ?>
-<section class="breadcrumbsHolder marginBottom10">
+<section class="breadcrumbsHolder">
     <div class="row">
         <div class="large-12 columns breadcrumbs">
             <a href="home">Home</a><span>Explore Our Harbour</span>
@@ -13,7 +13,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
     </div>
 </section>
 
-<section class="featureTileHolder marginBottomStandard">
+<section class="featureTileHolder marginTop10 marginBottomStandard">
     <div class="row">
         <div class="large-12 columns">
             <h2 class="block text-left"><?=$pageHeading?></h2>

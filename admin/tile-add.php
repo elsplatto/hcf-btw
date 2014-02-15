@@ -77,6 +77,7 @@ $categoriesCount = count($categories);
 <section>
     <div class="row">
         <div class="large-12 columns">
+            <a href="dashboard.php">Dashboard</a>
             <h1>Tiles</h1>
             <a href="tiles-list.php">< Back to Tile List</a>
 

@@ -2,6 +2,9 @@ html, body {
   font-size: 100%;
   background: transparent !important; }
 
+body {
+  padding: 2rem 0 !important; }
+
 label {
   clear: left;
   display: block;

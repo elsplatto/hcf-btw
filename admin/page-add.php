@@ -36,6 +36,7 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 <section>
     <div class="row">
         <div class="large-12 columns">
+            <a href="dashboard.php">Dashboard</a>
             <h1>Page - Add</h1>
             <a href="page-list.php">< Back to Page List</a>
         </div>
@@ -98,6 +99,9 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
                 <label for="txtTags">Tags:</label>
                 <input type="text" id="txtTags" name="txtTags" value="" placeholder="No # and separate by comma" />
+
+                <label for="txtContentHeader">Content Heading:</label>
+                <input type="text" id="txtContentHeader" name="txtContentHeader" value="" placeholder="Appears above the content" />
 
                 <label for="txtContent">Content:</label>
                 <textarea id="txtContent" name="txtContent" cols="100" rows="5"></textarea>

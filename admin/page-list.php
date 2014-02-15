@@ -40,6 +40,7 @@ $pages = getPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 <section>
     <div class="row">
         <div class="large-12 columns">
+            <a href="dashboard.php">Dashboard</a>
             <h1>Pages</h1>
             <a href="page-add.php">Add Page</a>
         </div>

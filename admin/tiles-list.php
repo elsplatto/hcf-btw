@@ -43,6 +43,7 @@ $tiles = getTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     <section>
         <div class="row">
             <div class="large-12 columns">
+                <a href="dashboard.php">Dashboard</a>
                 <h1>Tiles</h1>
                 <a href="tile-add.php">Add Tile</a>
             </div>

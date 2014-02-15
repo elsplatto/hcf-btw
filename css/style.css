@@ -253,6 +253,9 @@ p {
   .standardLightGrey h3 {
     color: white !important; }
 
+div.white, section.white {
+  background-color: white; }
+
 /*Start - Route colors */
 .manly {
   background-color: #bf5757; }
@@ -504,6 +507,10 @@ p {
       margin-top: -2rem; }
     .featureImgHolder .headerHolder h3 {
       color: white; }
+    .featureImgHolder .headerHolder .pullout {
+      margin-left: auto;
+      margin-right: auto;
+      max-wdith: 75rem !important; }
     .featureImgHolder .headerHolder hr {
       position: relative;
       border: none;
@@ -760,12 +767,73 @@ p {
     margin-bottom: -0.075rem;
     color: white !important; }
 
+.textHolder.manly {
+  background-color: #bf5757 !important; }
+  .textHolder.manly span {
+    color: white !important; }
+
+.textHolder.taronga {
+  background-color: #30bda1 !important; }
+  .textHolder.taronga span {
+    color: white !important; }
+
+.textHolder.parramatta {
+  background-color: #e2b076 !important; }
+  .textHolder.parramatta span {
+    color: white !important; }
+
+.textHolder.darling {
+  background-color: #59acb3 !important; }
+  .textHolder.darling span {
+    color: white !important; }
+
+.textHolder.neutral {
+  background-color: #798fa7 !important; }
+  .textHolder.neutral span {
+    color: white !important; }
+
+.textHolder.mosman {
+  background-color: #c98abf !important; }
+  .textHolder.mosman span {
+    color: white !important; }
+
+.textHolder.eastern {
+  background-color: #eee8c0 !important; }
+  .textHolder.eastern span {
+    color: white !important; }
+
 .tile.social {
   padding: 1.563rem;
   height: 16.25rem; }
 
 .tile.social.blue {
   background-color: #4374b6; }
+
+.itineraryTile {
+  width: 100%;
+  height: 19.688rem;
+  position: relative;
+  overflow: hidden; }
+  .itineraryTile .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: inherit !important;
+    height: inherit !important;
+    background-color: rgba(39, 46, 53, 0.75);
+    padding: 2rem 1.75rem 0.75rem 1.75rem; }
+    .itineraryTile .inner .textHolder {
+      position: absolute;
+      width: 90%;
+      height: auto;
+      bottom: 0;
+      background: none !important; }
+      .itineraryTile .inner .textHolder h3 {
+        color: white;
+        margin-bottom: 0.25rem; }
+        .itineraryTile .inner .textHolder h3 a {
+          color: inherit !important; }
 
 #map-canvas {
   height: 480px;
@@ -847,6 +915,53 @@ p {
           background-color: #e2b076; }
         .controlPanelHolder .controlPanel ul li [data-target='mosmanTrip'] span span {
           background-color: #c98abf; }
+
+.contentHolder .large-12 {
+  overflow: hidden; }
+  .contentHolder .large-12 h2.block {
+    margin-bottom: 1.5rem; }
+  .contentHolder .large-12 blockquote {
+    font-family: "adobe-garamond-pro", sans-serif !important;
+    font-size: 1.875rem;
+    line-height: 2.75rem;
+    font-style: italic;
+    color: #59acb3;
+    border-left: 2px solid #59acb3;
+    margin: 0 0 1.75rem 2.25rem;
+    padding-top: 0 !important; }
+    .contentHolder .large-12 blockquote small {
+      font-family: "Inconsolata", sans-serif !important;
+      font-size: 0.875rem;
+      color: #879bb1;
+      font-style: normal;
+      clear: both; }
+  .contentHolder .large-12 figure {
+    margin: 0 0 2rem 0; }
+    .contentHolder .large-12 figure figcaption {
+      font-family: "Inconsolata", sans-serif !important;
+      font-size: 0.875rem;
+      color: #879bb1;
+      font-style: normal;
+      clear: both;
+      margin-top: 1rem; }
+
+.callout {
+  width: 100%;
+  height: 12.5rem;
+  background-image: url("img/bennalongBackground.jpg");
+  background-repeat: no-repeat;
+  display: block;
+  overflow: hidden; }
+  .callout .inner {
+    width: 100%;
+    height: 100%;
+    padding: 2rem 2rem;
+    text-align: center;
+    background-color: rgba(89, 172, 179, 0.75); }
+  .callout .green h3, .callout .green p {
+    color: white; }
+  .callout .green h3 {
+    margin-bottom: 0.5rem; }
 
 #photoHolder01 div {
   float: left;

@@ -8,14 +8,14 @@ $page_id = $_GET['id'];
 function getPage($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $query = 'SELECT title, is_nav, is_landing_page, has_map, nav_title, heading, heading_pullout, sub_heading, header_image, header_mp4, ';
-    $query .= 'header_webm, tags, friendly_url, content, meta_keywords, meta_desc, parent_id, pages.order, is_live FROM pages WHERE id = ?';
+    $query .= 'header_webm, tags, friendly_url, content_header, content, meta_keywords, meta_desc, parent_id, pages.order, is_live FROM pages WHERE id = ?';
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
     //$results = $stmt->get_result();
 
-    $stmt->bind_result($title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $tags, $friendly_url, $content, $meta_keywords, $meta_desc, $parent_id, $order, $is_live);
+    $stmt->bind_result($title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $tags, $friendly_url, $content_header, $content, $meta_keywords, $meta_desc, $parent_id, $order, $is_live);
 
     $results = array();
     $i = 0;
@@ -34,6 +34,7 @@ function getPage($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['header_webm'] = $header_webm;
         $results[$i]['tags'] = $tags;
         $results[$i]['friendly_url'] = $friendly_url;
+        $results[$i]['content_header'] = $content_header;
         $results[$i]['content'] = $content;
         $results[$i]['meta_keywords'] = $meta_keywords;
         $results[$i]['meta_desc'] = $meta_desc;
@@ -161,9 +162,11 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
     ?>
 </head>
 <body>
+
 <section>
     <div class="row">
         <div class="large-12 columns">
+            <a href="dashboard.php">Dashboard</a>
             <h1>Page - Edit</h1>
             <a href="page-list.php">< Back to Page List</a>
             -
@@ -239,6 +242,11 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
 
                 <label for="txtTags">Tags:</label>
                 <input type="text" id="txtTags" name="txtTags" value="<?=$page['tags']?>" placeholder="No # and separate by comma" />
+
+
+
+                <label for="txtContentHeader">Content Heading:</label>
+                <input type="text" d="txtContentHeader" name="txtContentHeader" value="<?=$page['content_header']?>" placeholder="Appears above the content" />
 
                 <label for="txtContent">Content:</label>
                 <textarea id="txtContent" name="txtContent" cols="100" rows="5"><?=$page['content']?></textarea>
