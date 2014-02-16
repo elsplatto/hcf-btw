@@ -18,6 +18,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
         <h2 class="sub"><?=$pageHeading?></h2>
         <hr />
         <h3 class="pullout"><?=$pagePullout?></h3>
+        <a href="#" class="button red play tungsten small">Watch the video</a>
     </div>
 </section>
 <section class="contentHolder marginBottomStandard">
@@ -136,7 +137,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
                     <div class="inner">
                         <div class="textHolder">
                             <span>Itinerary – by Joel Beck – 3 hours</span>
-                            <h3><a href="#">Enjoy the history of the harbour in our Manly Itinerary.<a></h3>
+                            <h3><a href="#">Enjoy the history of the harbour in our Manly Itinerary</a></h3>
                         </div>
                     </div>
                 </div>
@@ -147,7 +148,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
                     <div class="inner">
                         <div class="textHolder">
                             <span>Itinerary – by Joel Beck – 3 hours</span>
-                            <h3><a href="#">Enjoy the history of the harbour in our Manly Itinerary.<a></h3>
+                            <h3><a href="#">Enjoy the history of the harbour in our Manly Itinerary.</a></h3>
                         </div>
                     </div>
                 </div>

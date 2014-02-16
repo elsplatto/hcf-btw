@@ -250,4 +250,28 @@ function getPagesSelectedTiles($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_
     return $results;
 }
 
+
+
+function getShotOfTheDayID($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
+    $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    $stmt = $mysqli->prepare('SELECT instagram_media_id FROM pic_of_the_day ORDER BY id DESC LIMIT 1');
+    $stmt->execute();
+    $stmt->bind_result($media_id);
+    $stmt->fetch();
+    return $media_id;
+}
+
+function fetchSuburb($lat,$lng) {
+    /*TODO - Finish this funciton...*/
+    $url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='.$lat.','.$lng.'&sensor=true';
+    $data = @file_get_contents($url);
+    $jsondata = json_decode($data,true);
+// if we get a placemark array and the status was good, get the addres
+    /*if(is_array($jsondata )&& $jsondata ['Status']['code']==200)
+    {
+        $addr = $jsondata ['Placemark'][0]['address'];
+    }*/
+}
+
+
 ?>

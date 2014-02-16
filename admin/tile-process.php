@@ -47,7 +47,7 @@ if (!empty($_POST))
     }
     $stmt->execute();
     $stmt->close();
-    echo '$title['.$title.']<br />';
+    /*echo '$title['.$title.']<br />';
     echo '$type_id['.$type_id.']<br />';
     echo '$category_id['.$category_id.']<br />';
     echo '$lat['.$lat.']<br />';
@@ -63,8 +63,8 @@ if (!empty($_POST))
     echo '$content['.$content.']<br />';
     echo '$address_text['.$address_text.']<br />';
     echo '$is_live['.$is_live.']<br />';
-    echo '$tile_id['.$tile_id.']<br />';
+    echo '$tile_id['.$tile_id.']<br />';*/
 }
 
-//header('Location: tiles-list.php');
+header('Location: tiles-list.php');
 ?>

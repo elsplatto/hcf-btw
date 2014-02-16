@@ -744,6 +744,10 @@ div.white, section.white {
 
 /*End - Theme feature */
 /*Start - Tile Styles */
+.moreArticles .tile {
+  margin-top: 0rem;
+  margin-bottom: 2.5rem; }
+
 .tile {
   width: 100%;
   margin-top: 2.5rem; }
@@ -762,7 +766,6 @@ div.white, section.white {
     font-family: "Tungsten A", "Tungsten B" !important;
     white-space: nowrap;
     overflow: hidden;
-    width: 80%;
     text-overflow: ellipsis;
     margin-bottom: -0.075rem;
     color: white !important; }
@@ -1028,6 +1031,26 @@ div.white, section.white {
 #photoPaginationHolder {
   clear: both;
   text-align: center; }
+
+.insta {
+  position: relative; }
+  .insta .infoContainer {
+    position: absolute !important;
+    width: 100%;
+    bottom: 0 !important;
+    left: 0 !important;
+    height: 3.75rem;
+    background-color: rgba(39, 46, 53, 0.75); }
+    .insta .infoContainer .inner {
+      padding: 0.75rem 2rem; }
+      .insta .infoContainer .inner span {
+        clear: both;
+        display: block;
+        margin-bottom: 0.5rem; }
+      .insta .infoContainer .inner .location {
+        color: white;
+        font-weight: 700 !important;
+        text-transform: uppercase !important; }
 
 #instagramCommentModal {
   overflow: hidden; }

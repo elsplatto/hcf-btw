@@ -11,6 +11,9 @@ else
 }
 ?>
 
+<?php
+include 'includes/footer.php';
+?>
 
 
 <?php
