@@ -177,7 +177,6 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
 
 <?php
 $relPath = '../';
-include 'includes/footer.php';
 include 'includes/global-js.php';
 include 'includes/map-code.php';
 
