@@ -202,7 +202,6 @@ if ($hasMap > 0 || count($pageTiles) > 0)
 </section>
 
 <?php
-$relPath = '../';
 include 'includes/global-js.php';
 include 'includes/map-code.php';
 ?>

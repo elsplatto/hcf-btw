@@ -76,9 +76,24 @@ $routeNavPages = getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABAS
                         <?php
                         foreach($navPages as $navPage)
                         {
+                            if ($navPage['friendly_url'] == 'gallery')
+                            {
+                             ?>
+                                <li><a href="<?=$baseURL?>/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
+                            <?php
+                            }
+                            else if ($navPage['friendly_url'] == 'events')
+                            {
+                             ?>
+                                <li><a href="<?=$baseURL?>/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
+                            <?php
+                            }
+                            else
+                            {
                             ?>
-                            <li><a href="<?=$baseURL?>/page/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
+                                <li><a href="<?=$baseURL?>/page/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
                         <?php
+                            }
                         }
                         ?>
                     </ul>

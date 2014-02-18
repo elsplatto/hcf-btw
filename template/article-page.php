@@ -175,55 +175,14 @@ if ($friendly_url !== 'about-us')
     </div>
 </section>
 
-<section class="moreArticles white paddingTopBottom20">
-    <div class="row">
-        <div class="large-12">
-            <h3 class="text-center">More Articles</h3>
-            <div class="large-3 columns left">
-                <div class="tile">
-                    <div class="imageHolder">
-                        <img src="../img/locations/thumbnails/ancestral.jpg" alt="Title here" />
-                    </div>
-                    <div class="textHolder darling">
-                        <h5><a href="#">Indigenous</a></h5>
-                        <span>Darling Harbour</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="large-3 columns left">
-                <div class="tile">
-                    <div class="imageHolder">
-                        <img src="../img/locations/thumbnails/artist.jpg" alt="Title here" />
-                    </div>
-                    <div class="textHolder mosman">
-                        <h5><a href="#">The Artist</a></h5>
-                        <span>Mosman</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="large-6 columns left">
-                <div class="tile">
-                    <div class="imageHolder">
-                        <img src="../img/locations/thumbnail-med/entertainment.jpg" alt="Title here" />
-                    </div>
-                    <div class="textHolder parramatta">
-                        <h5><a href="#">Harbour Entertainment</a></h5>
-                        <span>Parramatta</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <?php
+    include 'includes/more-articles.php';
 }
 ?>
 
 
 <?php
-$relPath = '../';
 include 'includes/global-js.php';
 include 'includes/map-code.php';
 

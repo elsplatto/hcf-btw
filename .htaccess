@@ -13,6 +13,7 @@ RewriteRule page/(.*)$ page.php
 RewriteRule route/(.*)$ route.php
 RewriteRule home(.*)$ index.php
 RewriteRule home/(.*)$ index.php
+RewriteRule gallery/(.*)$ gallery.php
 RewriteRule 404(.*)$ 404.php
 
 
