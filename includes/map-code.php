@@ -1,12 +1,12 @@
 
 
-<script src="<?=$relPath?>js/vendor/google/maps/infoBubble.js"></script>
+<script src="<?=$baseURL?>/js/vendor/google/maps/infoBubble.js"></script>
 <?php
 
 
 
 function placeMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
-    global $relPath;
+    global $baseURL;
     $results = getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     //$numRows =  mysqli_num_rows($results);
     $numRows = count($results);
@@ -14,9 +14,9 @@ function placeMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DA
     $markerJS = '';
     if ($numRows > 0)
     {
-        $markerJS .= 'var iconBase = \''.$relPath.'img/\';';
+        $markerJS .= 'var iconBase = \''.$baseURL.'/img/\';';
         $markerJS .= "\r\n";
-        $markerJS .= 'var thmbBase = \''.$relPath.'img/locations/thumbnails/\';';
+        $markerJS .= 'var thmbBase = \''.$baseURL.'/img/locations/thumbnails/\';';
         $markerJS .= "\r\n";
 
 
@@ -66,12 +66,14 @@ function placeMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DA
 ?>
 
 <script type="text/javascript">
+
+
 function initialize() {
 
     var stdGrey = '#272e35';
 
     var mapOptions = {
-        center: new google.maps.LatLng(-33.81221,151.176853),
+        center: new google.maps.LatLng(-33.836311,151.208267),
         zoom: 12,
         mapTypeControlOptions: {
             mapTypeIds: [google.maps.MapTypeId.TERRAIN, 'map_style'],
@@ -144,6 +146,7 @@ function initialize() {
     }
 
     function drawRouteInfoBubbles($coordsJson){
+    global $baseURL;
         $bubbleJS = 'var infoBubble;';
         foreach ($coordsJson['routes'] as $route)
         {
@@ -165,7 +168,7 @@ function initialize() {
             $bubbleJS .= "\r\n";
             $bubbleJS .= 'map: map,';
             $bubbleJS .= "\r\n";
-            $bubbleJS .= 'content: \'<div class="infoBubble routes '.strtolower($route['class']).'"><h5>'.$route['title'].'</h5><a href="#" class="directive">Go to route</a></div>\',';
+            $bubbleJS .= 'content: \'<div class="infoBubble routes '.strtolower($route['class']).'"><h5>'.$route['title'].'</h5><a href="'.$baseURL.'/route/'.$route['url'].'" class="directive">Go to route</a></div>\',';
             $bubbleJS .= "\r\n";
             $bubbleJS .= 'position: latLng,';
             $bubbleJS .= "\r\n";
@@ -265,6 +268,9 @@ function initialize() {
             "elementType":"geometry",
             "stylers": [
                 {
+                    "visibility":"off"
+                },
+                {
                     "color":"#fbfaf7"
                 }
             ]
@@ -274,6 +280,9 @@ function initialize() {
             "elementType":"geometry",
             "stylers": [
                 {
+                    "visibility":"off"
+                },
+                {
                     "color":"#c5dac6"
                 }
             ]
@@ -282,7 +291,7 @@ function initialize() {
             "featureType":"administrative",
             "stylers": [
                 {
-                    "visibility":"on"
+                    "visibility":"off"
                 },
                 {
                     "lightness":33
@@ -297,14 +306,25 @@ function initialize() {
             "elementType":"labels",
             "stylers": [
                 {
-                    "visibility":"on"
+                    "visibility":"off"
                 },
                 {
                     "lightness":20
                 }
             ]
-        }
-        ,
+        },
+        {
+            "featureType":"poi.business",
+            "elementType":"labels",
+            "stylers": [
+                {
+                    "visibility":"off"
+                },
+                {
+                    "lightness":20
+                }
+            ]
+        },
         {
 
         },
@@ -337,9 +357,6 @@ function initialize() {
         e.preventDefault();
         var targetCategory = $(this).attr('data-category');
         for (var i = 0; i < markerArray.length; i++) {
-            //console.log('targetCategory['+targetCategory+']markerArray[i].category['+markerArray[i].category+']');
-            //console.log('visibility['+markerArray[i].visible+']');
-            //console.log('type of var ['+typeof markerArray[i].visible+']');
             if (markerArray[i].category === targetCategory)
             {
                 //console.log('same category');
@@ -356,8 +373,6 @@ function initialize() {
                     $(this).children('span').children('span').show();
                 }
             }
-
-            //console.dir(markerArray[i]);
         }
     });
 
@@ -388,7 +403,6 @@ function initialize() {
                 locationContent += '<div class="textHolder">';
                 locationContent += '<span>'+location.sub_heading+'</span>';
                 locationContent += '<h5><a href="#" class="panelFlyoutTrigger" data-location="'+location.id+'" data-target="mapContainer">'+location.title+'</a></h5>';
-                //locationContent += '<a href="#" class="panelFlyoutTrigger directive" data-location="'+location.id+'" data-target="mapContainer">Read More</a>';
                 locationContent += '</div>';
 
                 var locationBubble = new InfoBubble({
@@ -424,7 +438,7 @@ function initialize() {
                         var id = $(this).attr('data-location');
 
                         beforeLocationRetrieveHandler(target);
-                        $('#flyoutPanel').load('<?=$relPath?>services/load-location.php?id='+id +'&relPath=<?=$relPath?>', function(){
+                        $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/', function(){
                             var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
                             $('html').animate({
                                 scrollTop: scrollHeight

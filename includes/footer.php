@@ -15,9 +15,12 @@
         </div>
     </section>
     <section class="standard">
-        <div class="row paddingTopBottom20">
+        <div class="row paddingTop20 paddingBottom40 hcf-logo">
             <span>Beyond the Wharf <?=date('Y')?></span>
             <a hef="http://www.harbourcityferries.com.au/" target="_blank">About Us</a>
+            <br />
+
+            <a href="<?=$baseURL?>/page/about-us" class="logo-link"></a>
         </div>
     </section>
 </footer>

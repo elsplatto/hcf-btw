@@ -8,14 +8,14 @@ $tile_id = $_GET['id'];
 function getTile($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $query = 'SELECT type_id, category_id, tile_size, title, lat, lng, image_thumb, image_thumb_med, image_med, image_large, ';
-    $query .= 'directive_text, alt, category, sub_heading, trip_plan, intro_text, content, address_text, start_date, end_date, is_live ';
+    $query .= 'directive_text, alt, category, sub_heading, trip_plan, intro_text, content, address_text, start_date, end_date, tags, is_live ';
     $query .= 'FROM tiles WHERE id = ?';
     //echo $query;
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
-    $stmt->bind_result($type_id, $category_id, $tile_size, $title, $lat, $lng, $image_thumb, $image_thumb_med, $image_med, $image_large, $directive_text, $alt, $category, $sub_heading, $trip_plan, $intro_text, $content, $address_text, $start_date, $end_date, $is_live );
+    $stmt->bind_result($type_id, $category_id, $tile_size, $title, $lat, $lng, $image_thumb, $image_thumb_med, $image_med, $image_large, $directive_text, $alt, $category, $sub_heading, $trip_plan, $intro_text, $content, $address_text, $start_date, $end_date, $tags, $is_live );
     $results = array();
     $i = 0;
     while($stmt->fetch())
@@ -40,6 +40,7 @@ function getTile($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['address_text'] = $address_text;
         $results[$i]['start_date'] = $start_date;
         $results[$i]['end_date'] = $end_date;
+        $results[$i]['tags'] = $tags;
         $results[$i]['is_live'] = $is_live;
         $i++;
     }
@@ -234,16 +235,19 @@ $categoriesCount = count($categories);
         <input type="text" id="txtDirectiveText" name="txtDirectiveText" value="<?=$tile['directive_text']?>" placeholder="e.g. Read more"/>
 
         <label for="txtTripPlan">Trip Plan:</label>
-        <textarea id="txtTripPlan" name="txtTripPlan" cols="100" rows="5"><?=$tile['trip_plan']?></textarea>
+        <textarea id="txtTripPlan" name="txtTripPlan" cols="100" rows="5"><?=stripcslashes(stripcslashes($tile['trip_plan']))?></textarea>
 
         <label for="txtIntroText">Intro Text:</label>
-        <textarea id="txtIntroText" name="txtIntroText" cols="100" rows="5"><?=$tile['intro_text']?></textarea>
+        <textarea id="txtIntroText" name="txtIntroText" cols="100" rows="5"><?=stripcslashes(stripcslashes($tile['intro_text']))?></textarea>
 
         <label for="txtContent">Content:</label>
-        <textarea id="txtContent" name="txtContent" cols="100" rows="5"><?=$tile['content']?></textarea>
+        <textarea id="txtContent" name="txtContent" cols="100" rows="5"><?=stripcslashes(stripcslashes($tile['content']))?></textarea>
 
         <label for="txtAddressText">Address Text:</label>
-        <textarea id="txtAddressText" name="txtAddressText" cols="100" rows="5"><?=$tile['address_text']?></textarea>
+        <textarea id="txtAddressText" name="txtAddressText" cols="100" rows="5"><?=stripcslashes(stripcslashes($tile['address_text']))?></textarea>
+
+        <label for="txtTags">Tags:</label>
+        <input type="text" id="txtTags" name="txtTags" value="<?=$tile['tags']?>" placeholder="No # - separate by comma."/>
 
         <label for="chkLive">Live:</label>
         <input type="checkbox" id="chkLive" name="chkLive" value="1"<?php echo ($tile['is_live'] == 1?' checked="checked"':'')?> />

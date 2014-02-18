@@ -8,10 +8,15 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
 <section class="breadcrumbsHolder">
     <div class="row">
         <div class="large-12 columns breadcrumbs">
-            <a href="home">Home</a><span>Explore Our Harbour</span>
+            <a href="<?=$baseURL?>/">Home</a><span><?=$pageNavTitle?></span>
         </div>
     </div>
 </section>
+
+<?php
+if ($friendly_url == 'local-insights')
+{
+?>
 
 <section class="featureTileHolder marginTop10 marginBottomStandard">
     <div class="row">
@@ -23,11 +28,11 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
             <div class="large-6 small-6 columns left">
                 <div class="tile">
                     <div class="imgHolder">
-                        <img src="../img/locations/thumbnail-med/mariner.jpg" />
+                        <img src="<?=$baseURL?>/img/locations/thumbnail-med/mariner.jpg" />
                     </div>
                     <div class="textHolder">
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="featureTileContainer">Sydney Harbour History</a></h5>
-                        <span>experiences</span>
+                        <h5><a href="<?=$baseURL?>/page/sydney-harbour-history">Sydney Harbour History</a></h5>
+                        <span>The Mariner</span>
                     </div>
                 </div>
             </div>
@@ -39,7 +44,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
                     </div>
                     <div class="textHolder">
                         <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="featureTileContainer">Indigenous Culture</a></h5>
-                        <span>experiences</span>
+                        <span>The Ancestral Spirit</span>
                     </div>
                 </div>
             </div>
@@ -90,39 +95,45 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
     </div>
 
 </section>
+<?php
+}
+?>
 
+<?php
+if ($hasMap > 0 || count($pageTiles) > 0)
+{
+?>
+<section class="mapHolder standardLightGrey paddingTopBottom20 marginBottomStandard">
 
-<section class="mapHolder standardLightGrey paddingTopBottom20">
-
-    <div class="row marginBottomStandard">
+    <div class="row">
         <?php
         if ($hasMap > 0)
         {
-        ?>
-        <h3 class="text-center">Find a Journey</h3>
-        <div class="large-12 columns" id="mapContainer">
+            ?>
+            <h3 class="text-center">Find a Journey</h3>
+            <div class="large-12 columns" id="mapContainer">
 
-            <div class="large-12" id="map-canvas"></div>
-            <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
+                <div class="large-12" id="map-canvas"></div>
+                <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
 
-            <div id="mapControlPanelHolder" class="controlPanelHolder large-3">
-                <div id="mapControlPanel" class="controlPanel">
-                    <h6 class="white">FILTER:</h6>
+                <div id="mapControlPanelHolder" class="controlPanelHolder large-3">
+                    <div id="mapControlPanel" class="controlPanel">
+                        <h6 class="white">FILTER:</h6>
 
-                    <ul>
-                        <?php
-                        $filters = getFilters($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-                        for ($i = 0; $i < count($filters); $i++)
-                        {
-                        ?>
-                            <li><a href="#" class="mapFilter" data-category="<?=$filters[$i]?>" data-visible="true"><span><span></span></span><?=$filters[$i]?></a></li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
+                        <ul>
+                            <?php
+                            $filters = getFilters($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+                            for ($i = 0; $i < count($filters); $i++)
+                            {
+                                ?>
+                                <li><a href="#" class="mapFilter" data-category="<?=$filters[$i]?>" data-visible="true"><span><span></span></span><?=$filters[$i]?></a></li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
         <?php
         }
         ?>
@@ -151,7 +162,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
                 {
                     $categoryTitle =  $pageTile['category_title'];
                 }
-            ?>
+                ?>
                 <div class="<?=$tileClass?> columns left">
                     <div class="tile">
                         <div class="imgHolder">
@@ -171,14 +182,27 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
         </div>
     </div>
 </section>
+<?php
+}
+?>
 
 
-
+<section class="calloutHolder marginBottomStandard">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="large-12 callout">
+                <div class="inner green">
+                    <h3>Do you have a great story about Sydney’s historic harbour?</h3>
+                    <p>Share you secrets with us and win a <strong>month free travel</strong> on Sydney’s historic ferries</p>
+                    <a href="#" class="button wire white">Find out more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <?php
 $relPath = '../';
 include 'includes/global-js.php';
 include 'includes/map-code.php';
-
-
 ?>

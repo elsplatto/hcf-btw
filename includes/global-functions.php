@@ -203,6 +203,57 @@ function getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
     return $results;
 }
 
+function getRouteMapMarkers($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
+
+    $query = '';
+    $query .= 'SELECT tiles.id, tiles.title, tiles.lat, tiles.lng, tiles.image_thumb, ';
+    $query .= 'tiles.alt, types.title AS type_title, categories.id AS category_id, categories.title AS category_title , ';
+    $query .= 'categories.map_icon ';
+    $query .= 'FROM (tiles, types, categories) ';
+    $query .= 'INNER JOIN route_map_tile ON (tiles.id = route_map_tile.tile_id) ';
+    $query .= 'INNER JOIN route ON (route_map_tile.route_id = route.id) ';
+    $query .= 'WHERE types.id = tiles.type_id AND tiles.category_id = categories.id AND route_map_tile.route_id = ? ORDER BY categories.order';
+    $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    $stmt = $mysqli->prepare($query);
+    $stmt->bind_param('i', $routeId);
+    $stmt->execute();
+    $stmt->bind_result($id, $title, $lat, $lng, $image_thumb, $alt, $type_title, $category_id, $category_title, $map_icon);
+
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['id'] = $id;
+        $results[$i]['title'] = $title;
+        $results[$i]['lat'] = $lat;
+        $results[$i]['lng'] = $lng;
+        $results[$i]['image_thumb'] = $image_thumb;
+        $results[$i]['alt'] = $alt;
+        $results[$i]['type_title'] = $type_title;
+        $results[$i]['category_id'] = $category_id;
+        $results[$i]['category_title'] = $category_title;
+        $results[$i]['map_icon'] = $map_icon;
+        $i++;
+    }
+    $mysqli->close();
+    return $results;
+}
+
+function getRouteMapFilters($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
+{
+    $filterArray = array();
+    $categories = getRouteMapMarkers($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    foreach($categories as $category)
+    {
+        if (!in_array($category['category_title'], $filterArray))
+        {
+            array_push($filterArray, $category['category_title']);
+        }
+    }
+
+    return $filterArray;
+}
+
 function getFilters($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $filterArray = array();

@@ -103,8 +103,8 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
                 <label for="txtContentHeader">Content Heading:</label>
                 <input type="text" id="txtContentHeader" name="txtContentHeader" value="" placeholder="Appears above the content" />
 
-                <label for="txtContent">Content:</label>
-                <textarea id="txtContent" name="txtContent" cols="100" rows="5"></textarea>
+                <label for="txtContent">Content:</label><a href="#" class="insertTag" data-tag="paragraph" data-target="txtContent">Insert Paragraph Tag</a> | <a href="#" class="insertTag" data-tag="image" data-target="txtContent">Insert Image Tag</a> | <a href="#" class="insertTag" data-tag="quote" data-target="txtContent">Insert Quote Tag</a>
+                <textarea id="txtContent" name="txtContent" cols="100" rows="15"></textarea>
 
                 <label for="txtMetaKeywords">Meta Keywords:</label>
                 <input type="text" id="txtMetaKeywords" name="txtMetaKeywords" value="" placeholder="No # and separate by comma" />
@@ -130,5 +130,31 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
         </div>
     </div>
 </section>
+<script>
+    $(function() {
+        $('.insertTag').click(function(e) {
+            e.preventDefault();
+            var target = $('#' + $(this).attr('data-target'));
+            var tag = $(this).attr('data-tag');
+            var tagHTML = '';
+            switch(tag){
+                case 'paragraph':
+                    tagHTML = '\n<p><\/p>';
+                    break;
+
+                case 'quote':
+                    tagHTML = '\n<blockquote><br \/><small><\/small><\/blockquote>';
+                    break;
+
+                case 'image':
+                    tagHTML = '\n<figure><img src="" alt="" /><figcaption>Caption goes here</figcaption></figure>';
+                    break;
+            }
+
+            target.val(target.val() + tagHTML);
+            //target.val(tag);
+        });
+    });
+</script>
 </body>
 </html>

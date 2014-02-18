@@ -5,35 +5,12 @@ include 'Mobile_Detect.php';
 include 'global-functions.php';
 require 'instagram.class.php';
 require 'instagram.config.php';
+require 'twitter.class.php';
+require 'twitter.config.php';
 
-$device = new Mobile_Detect;
+include 'site-settings.php';
 
-session_start();
-
-
-
-
-// User session data availability check
-
-if(isset($_GET['id']))
-{
-    //kill session to log out of instagram
-    unset($_SESSION['userdetails']);
-    session_destroy();
-    $instagramUserLoggedIn = false;
-}
-
-if (isset($_SESSION['userdetails']))
-{
-
-    $instagramData = $_SESSION['userdetails'];
-    $instagramUserLoggedIn = true;
-
-}
-else
-{
-    $instagramUserLoggedIn = false;
-}
+$twitterResults = $twitter->search('#beyondthewharf'); //homepage only page with twitter feed at this point - move to site-settings.php if more prolific
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -43,15 +20,15 @@ else
     <title><?=$pageMetaTitle?></title>
     <meta name="description" content="<?=$pageMetaDesc?>" />
 
-    <link rel="apple-touch-icon" href="apple-icons/beyond-the-wharf-icon.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="apple-icons/beyond-the-wharf-76x76.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="apple-icons/beyond-the-wharf-120x120.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="apple-icons/beyond-the-wharf-152x152.png" />
+    <link rel="apple-touch-icon" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-icon.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-76x76.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-120x120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-152x152.png" />
 
 
-    <link rel="stylesheet" href="css/foundation.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/modernizr.js"></script>
+    <link rel="stylesheet" href="<?=$baseURL?>/css/foundation.css" />
+    <link rel="stylesheet" href="<?=$baseURL?>/css/style.css" />
+    <script src="<?=$baseURL?>/js/modernizr.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcRjvvKaoJuT_-v4op_kWwsV5rwQEIRG8&sensor=true"></script>
 
     <?php

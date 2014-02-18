@@ -8,7 +8,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
 <section class="breadcrumbsHolder">
     <div class="row">
         <div class="large-12 columns breadcrumbs">
-            <a href="home">Home</a><span>Explore Our Harbour</span>
+            <a href="<?=$baseURL?>/">Home</a><span>Explore Our Harbour</span>
         </div>
     </div>
 </section>
@@ -18,22 +18,27 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
         <h2 class="sub"><?=$pageHeading?></h2>
         <hr />
         <h3 class="pullout"><?=$pagePullout?></h3>
-        <a href="#" class="button red play tungsten small">Watch the video</a>
+        <!--a href="#" class="button red play tungsten small">Watch the video</a-->
     </div>
 </section>
 <section class="contentHolder marginBottomStandard">
     <div class="row">
         <div class="large-12 columns">
             <div class="large-12 columns white paddingTopBottom40">
-                <div class="large-10 columns large-offset-1">
+                <div class="large-10 columns large-offset-1 headerContentArea">
                     <h2 class="block clearfix text-left"><?=$pageContentHeader?></h2>
-                    <?=$pageContent?>
+                    <?=stripcslashes($pageContent)?>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+
+<?php
+if ($friendly_url !== 'about-us')
+{
+?>
 <section class="calloutHolder marginBottomStandard">
     <div class="row">
         <div class="large-12 columns">
@@ -47,7 +52,11 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
         </div>
     </div>
 </section>
-
+<?php
+}
+if ($hasMap > 0 || count($pageTiles) > 0)
+{
+?>
 <section class="mapHolder standardLightGrey paddingTopBottom20 marginBottomStandard">
 
     <div class="row marginBottomStandard">
@@ -128,6 +137,14 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
     </div>
 </section>
 
+<?php
+}
+?>
+
+<?php
+if ($friendly_url !== 'about-us')
+{
+?>
 <section class="itineraryTileHolder marginBottomStandard">
     <div class="row">
         <div class="large-12">
@@ -200,11 +217,13 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
         </div>
     </div>
 </section>
+<?php
+}
+?>
 
 
 <?php
 $relPath = '../';
-include 'includes/footer.php';
 include 'includes/global-js.php';
 include 'includes/map-code.php';
 

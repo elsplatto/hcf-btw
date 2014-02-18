@@ -6,38 +6,11 @@ include 'global-functions.php';
 require 'instagram.class.php';
 require 'instagram.config.php';
 
-$device = new Mobile_Detect;
-
-session_start();
-
-
-
-
-// User session data availability check
-
-if(isset($_GET['id']))
-{
-    //kill session to log out of instagram
-    unset($_SESSION['userdetails']);
-    session_destroy();
-    $instagramUserLoggedIn = false;
-}
-
-if (isset($_SESSION['userdetails']))
-{
-
-    $instagramData = $_SESSION['userdetails'];
-    $instagramUserLoggedIn = true;
-
-}
-else
-{
-    $instagramUserLoggedIn = false;
-}
+include 'site-settings.php';
 
 
 $targetStr = 'page/';
-$targetPos = strpos($_SERVER['REQUEST_URI'],'page/');
+$targetPos = strpos($_SERVER['REQUEST_URI'],$targetStr);
 $targetPos = ($targetPos + strlen($targetStr));
 
 $friendly_url = substr($_SERVER['REQUEST_URI'],$targetPos);
@@ -47,7 +20,8 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
 {
 
     $query = '';
-    $query .= 'SELECT id, title, is_landing_page, has_map, heading, heading_pullout, sub_heading, header_image, header_mp4, header_webm, content_header, content, meta_keywords, meta_desc FROM pages WHERE friendly_url = ?';
+    $query .= 'SELECT id, title, nav_title, is_landing_page, has_map, heading, heading_pullout, sub_heading, header_image, header_mp4, ';
+    $query .= 'header_webm, content_header, content, meta_keywords, meta_desc FROM pages WHERE friendly_url = ?';
 
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     if (!$stmt = $mysqli->prepare($query)) {
@@ -56,7 +30,7 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
     } else {
         $stmt->bind_param('s', strtolower($friendly_url));
         $stmt->execute();
-        $stmt->bind_result($id, $title, $is_landing_page, $has_map, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $content_header, $content, $meta_keywords, $meta_desc);
+        $stmt->bind_result($id, $title, $nav_title, $is_landing_page, $has_map, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $content_header, $content, $meta_keywords, $meta_desc);
 
         $results = array();
         $i = 0;
@@ -64,6 +38,7 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
         {
             $results[$i]['id'] = $id;
             $results[$i]['title'] = $title;
+            $results[$i]['nav_title'] = $nav_title;
             $results[$i]['is_landing_page'] = $is_landing_page;
             $results[$i]['has_map'] = $has_map;
             $results[$i]['heading'] = $heading;
@@ -93,6 +68,7 @@ foreach ($pageDetails as $pageDetail) {
         $pageId = $pageDetail['id'];
         $isLandingPage = intval('0' . $pageDetail['is_landing_page']);
         $pageTitle = $pageDetail['title'];
+        $pageNavTitle = $pageDetail['nav_title'];
         $pageHeading = $pageDetail['heading'];
         $pagePullout = $pageDetail['heading_pullout'];
         $pageSubHeading = $pageDetail['sub_heading'];
@@ -120,12 +96,12 @@ if ($fetchSuccess)
 else
 {
     //echo 'Houston - we have a problem.';
-    /*@TODO - redirect to 404 page here*/
+    header('Location: '.$baseURL.'/404');
 }
 
 
 ?>
-    <!doctype html>
+<!doctype html>
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8" />
@@ -134,15 +110,15 @@ else
     <meta name="keywords" content="<?=$pageMetaKeywords ?>" />
     <meta name="description" content="<?=$pageMetaDesc?>" />
 
-    <link rel="apple-touch-icon" href="../apple-icons/beyond-the-wharf-icon.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../apple-icons/beyond-the-wharf-76x76.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="../apple-icons/beyond-the-wharf-120x120.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="../apple-icons/beyond-the-wharf-152x152.png" />
+    <link rel="apple-touch-icon" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-icon.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-76x76.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-120x120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-152x152.png" />
 
 
-    <link rel="stylesheet" href="../css/foundation.css" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <script src="../js/modernizr.js"></script>
+    <link rel="stylesheet" href="<?=$baseURL?>/css/foundation.css" />
+    <link rel="stylesheet" href="<?=$baseURL?>/css/style.css" />
+    <script src="<?=$baseURL?>/js/modernizr.js"></script>
     <?php
     if ($hasMap > 0)
     {

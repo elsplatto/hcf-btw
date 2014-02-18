@@ -22,6 +22,10 @@ input[type="checkbox"] + label, input[type="radio"] + label
   margin-left: 0 !important
   margin-bottom: 0.5rem !important
 
+
+textarea
+  height: 15rem !important
+
 select
   width: 28rem
 
@@ -32,7 +36,7 @@ select
     cursor: pointer
     display: inline-block
     position: relative
-  [data-map-tile-selected], [data-page-tile-selected]
+  [data-map-tile-selected], [data-page-tile-selected], [data-route-tile-selected]
     .imgHolder
       &:before
         position: absolute
@@ -51,3 +55,7 @@ select
   //padding: 1rem
   outline: 2px solid grey
   overflow: hidden
+
+
+.list th, .list td
+  padding: 0.5rem 1rem 0.5rem 0

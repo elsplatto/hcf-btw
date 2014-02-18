@@ -198,6 +198,9 @@ $categoriesCount = count($categories);
                 <label for="txtAddressText">Address Text:</label>
                 <textarea id="txtAddressText" name="txtAddressText" cols="100" rows="5"></textarea>
 
+                <label for="txtTags">Tags:</label>
+                <input type="text" id="txtTags" name="txtTags" value="" placeholder="No # - separate by comma."/>
+
                 <label for="chkLive">Live:</label>
                 <input type="checkbox" id="chkLive" name="chkLive" value="1" />
 

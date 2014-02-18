@@ -226,7 +226,7 @@ InfoBubble.prototype.buildDom_ = function() {
     close.style['border'] = 0;
     close.style['zIndex'] = this.baseZIndex_ + 1;
     close.style['cursor'] = 'pointer';
-    close.src = 'img/close.png';
+    close.src = 'http://beyondthewharf.com.au/img/close.png';
 
     var that = this;
     google.maps.event.addDomListener(close, 'click', function() {

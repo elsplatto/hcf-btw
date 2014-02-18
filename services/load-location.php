@@ -34,31 +34,36 @@ if (isset($locationId))
 
 
         ?>
-            <div class="large-12 columns standardDarkGrey paddingTop40">
+            <div class="large-12 columns standardDarkGrey paddingTop20">
                 <a href="#" class="flyoutPanelClose">Close panel</a>
                 <span><?=ucwords($category_title)?></span>
                 <h3><?=$title?></h3>
-                <?=$intro_text?>
+                <?=stripcslashes($intro_text)?>
 
-                <?php
-                if (!is_null($trip_plan))
-                {
-                ?> <div class="ferryInfo large-12 columns ultraDarkGrey">
-                    <h4>Ferry Information</h4>
-                    <?=$trip_plan?>
-                    </div>
-                <?php
-                }
-                ?>
+
             </div>
             <div class="large-12 standardDarkGrey paddingBottom20">
                 <div class="large-7 columns left"><img src="<?=$relPath?>img/locations/medium/<?=$image_med?>" alt="<?=$alt?>"></div>
                 <div class="large-5 columns left">
                     <div id="flyoutMap" class="map"></div>
 
-                    <?=$address_text?>
+                    <?=stripcslashes($address_text)?>
                 </div>
             </div>
+
+            <?php
+            if (!is_null($trip_plan) && strlen(trim($trip_plan)) > 0)
+            {
+            ?>
+            <div class="large-12 columns standardDarkGrey">
+                <div class="ferryInfo large-12 columns ultraDarkGrey">
+                    <h4>Ferry Information</h4>
+                    <?=stripcslashes($trip_plan)?>
+                </div>
+            </div>
+            <?php
+            }
+            ?>
 
             <script>
                 var flyoutMapOptions = {

@@ -10,5 +10,10 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 #RewriteBase /~jasontaikato/hcf-btw
 
 RewriteRule page/(.*)$ page.php
+RewriteRule route/(.*)$ route.php
 RewriteRule home(.*)$ index.php
 RewriteRule home/(.*)$ index.php
+RewriteRule 404(.*)$ 404.php
+
+
+php_flag magic_quotes_gpc off

@@ -42,6 +42,7 @@ if (!empty($_POST))
     $tags = $_POST['txtTags'];
     $content_header = $_POST['txtContentHeader'];
     $content = $_POST['txtContent'];
+
     $order = $_POST['txtOrder'];
     $parent_id = $_POST['selParentID'];
     $friendly_url = $_POST['txtFriendlyURL'];
@@ -51,14 +52,14 @@ if (!empty($_POST))
         $page_id = $_POST['pageID'];
         $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
         $stmt = $mysqli->prepare('UPDATE pages SET title = ?, is_nav = ?, is_landing_page = ?, has_map = ?, nav_title = ?, heading = ?, heading_pullout = ?, sub_heading = ?, header_image = ?, header_mp4 = ?, header_webm = ?, tags = ?, content_header = ?, content = ?, pages.order = ?, parent_id = ?, friendly_url = ?, is_live = ? WHERE id = ?');
-        $stmt->bind_param('siiissssssssssiisii', $title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $tags, $content_header, $content, $order, $parent_id, $friendly_url, $is_live, $page_id);
+        $stmt->bind_param('siiissssssssssiisii', $title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $tags, $content_header, $mysqli->real_escape_string($content), $order, $parent_id, $friendly_url, $is_live, $page_id);
 
     }
     else
     {
         $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
         $stmt = $mysqli->prepare('INSERT INTO pages (title, is_nav, is_landing_page, has_map, nav_title, heading, heading_pullout, sub_heading, header_image, header_mp4, header_webm, tags, content_header, content, pages.order, parent_id, friendly_url, is_live) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-        $stmt->bind_param('siiissssssssssiisi', $title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $tags, $content_header, $content, $order, $parent_id, $friendly_url, $is_live);
+        $stmt->bind_param('siiissssssssssiisi', $title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $tags, $content_header, $mysqli->real_escape_string($content), $order, $parent_id, $friendly_url, $is_live);
         $page_id = $mysqli->insert_id;
     }
     $stmt->execute();

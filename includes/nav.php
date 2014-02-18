@@ -54,7 +54,7 @@ $routeNavPages = getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABAS
             <nav class="top-bar" data-topbar>
                 <ul class="title-area">
                     <li class="name">
-                        <h1><a href="home">Beyond the Wharf</a></h1>
+                        <h1><a href="<?=$baseURL?>/">Beyond the Wharf</a></h1>
                     </li>
                     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
                 </ul>
@@ -77,7 +77,7 @@ $routeNavPages = getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABAS
                         foreach($navPages as $navPage)
                         {
                             ?>
-                            <li><a href="page/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
+                            <li><a href="<?=$baseURL?>/page/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
                         <?php
                         }
                         ?>
@@ -93,7 +93,7 @@ $routeNavPages = getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABAS
                         foreach ($routeNavPages as $routeNavPage)
                         {
                         ?>
-                            <li><a href="route/<?=$routeNavPage['friendly_url']?>" class="<?=$routeNavPage['css_class']?>"><?=$routeNavPage['nav_title']?></a></li>
+                            <li><a href="<?=$baseURL?>/route/<?=$routeNavPage['friendly_url']?>" class="<?=$routeNavPage['css_class']?>"><?=$routeNavPage['nav_title']?></a></li>
                         <?php
                         }
                         ?>

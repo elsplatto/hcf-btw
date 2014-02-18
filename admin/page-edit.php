@@ -70,10 +70,10 @@ function getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
 function getSelectedMapTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->prepare('SELECT page_id, tile_id, map_tile.order, tiles.title FROM map_tile JOIN tiles ON tile_id = tiles.id WHERE page_id = ? ORDER BY map_tile.order');
+    $stmt = $mysqli->prepare('SELECT page_id, tile_id, map_tile.order, tiles.title, tiles.tags FROM map_tile JOIN tiles ON tile_id = tiles.id WHERE page_id = ? ORDER BY map_tile.order');
     $stmt->bind_param('i', $id);
     $stmt->execute();
-    $stmt->bind_result($page_id, $tile_id, $order, $title);
+    $stmt->bind_result($page_id, $tile_id, $order, $title, $tags);
     $results = array();
     $i = 0;
     while($stmt->fetch())
@@ -82,6 +82,7 @@ function getSelectedMapTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DAT
         $results[$i]['tile_id'] = $tile_id;
         $results[$i]['order'] = $order;
         $results[$i]['title'] = $title;
+        $results[$i]['tags'] = $tags;
         $i++;
     }
     return $results;
@@ -90,9 +91,9 @@ function getSelectedMapTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DAT
 function getAllMapTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->prepare('SELECT tiles.id, tiles.title, tiles.image_thumb FROM tiles WHERE tiles.is_live = 1 AND tiles.type_id = 1 AND tiles.image_thumb IS NOT NULL AND tiles.image_thumb != \'\'');
+    $stmt = $mysqli->prepare('SELECT tiles.id, tiles.title, tiles.image_thumb, tiles.tags FROM tiles WHERE tiles.is_live = 1 AND tiles.type_id = 1 AND tiles.image_thumb IS NOT NULL AND tiles.image_thumb != \'\'');
     $stmt->execute();
-    $stmt->bind_result($id, $title, $image_thumb);
+    $stmt->bind_result($id, $title, $image_thumb, $tags);
     $results = array();
     $i = 0;
     while($stmt->fetch())
@@ -100,6 +101,7 @@ function getAllMapTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['id'] = $id;
         $results[$i]['title'] = $title;
         $results[$i]['image_thumb'] = $image_thumb;
+        $results[$i]['tags'] = $tags;
         $i++;
     }
     return $results;
@@ -108,9 +110,9 @@ function getAllMapTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 function getAllTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->prepare('SELECT tiles.id, tiles.title, tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size  FROM tiles WHERE tiles.is_live = 1');
+    $stmt = $mysqli->prepare('SELECT tiles.id, tiles.title, tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size, tiles.tags  FROM tiles WHERE tiles.is_live = 1');
     $stmt->execute();
-    $stmt->bind_result($id, $title, $image_thumb, $image_thumb_med, $tile_size);
+    $stmt->bind_result($id, $title, $image_thumb, $image_thumb_med, $tile_size, $tags);
     $results = array();
     $i = 0;
     while($stmt->fetch())
@@ -120,6 +122,7 @@ function getAllTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['image_thumb'] = $image_thumb;
         $results[$i]['image_thumb_med'] = $image_thumb_med;
         $results[$i]['tile_size'] = $tile_size;
+        $results[$i]['tags'] = $tags;
         $i++;
     }
     return $results;
@@ -128,10 +131,10 @@ function getAllTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 function getSelectedTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->prepare('SELECT tiles.title, tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size, tile_id, page_tile.order FROM (page_tile) JOIN tiles ON tiles.id = page_tile.tile_id WHERE page_id = ? ORDER BY page_tile.order');
+    $stmt = $mysqli->prepare('SELECT tiles.title, tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size, tile_id, page_tile.order, tiles.tags FROM (page_tile) JOIN tiles ON tiles.id = page_tile.tile_id WHERE page_id = ? ORDER BY page_tile.order');
     $stmt->bind_param('i', $id);
     $stmt->execute();
-    $stmt->bind_result($title, $image_thumb, $image_thumb_med, $tile_size, $tile_id, $order);
+    $stmt->bind_result($title, $image_thumb, $image_thumb_med, $tile_size, $tile_id, $order, $tags);
     $results = array();
     $i = 0;
     while($stmt->fetch())
@@ -142,6 +145,7 @@ function getSelectedTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABA
         $results[$i]['tile_size'] = $tile_size;
         $results[$i]['tile_id'] = $tile_id;
         $results[$i]['order'] = $order;
+        $results[$i]['tags'] = $tags;
         $i++;
     }
     return $results;
@@ -248,8 +252,8 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                 <label for="txtContentHeader">Content Heading:</label>
                 <input type="text" d="txtContentHeader" name="txtContentHeader" value="<?=$page['content_header']?>" placeholder="Appears above the content" />
 
-                <label for="txtContent">Content:</label>
-                <textarea id="txtContent" name="txtContent" cols="100" rows="5"><?=$page['content']?></textarea>
+                <label for="txtContent">Content:</label><a href="#" class="insertTag" data-tag="paragraph" data-target="txtContent">Insert Paragraph Tag</a> | <a href="#" class="insertTag" data-tag="image" data-target="txtContent">Insert Image Tag</a> | <a href="#" class="insertTag" data-tag="quote" data-target="txtContent">Insert Quote Tag</a>
+                <textarea id="txtContent" name="txtContent" cols="100" rows="15"><?=stripcslashes(stripcslashes($page['content']))?></textarea>
 
                 <label for="txtMetaKeywords">Meta Keywords:</label>
                 <input type="text" id="txtMetaKeywords" name="txtMetaKeywords" value="<?=$page['meta_keywords']?>" placeholder="No # and separate by comma" />
@@ -446,6 +450,7 @@ $(document).ready(function() {
     });
 
     $('.pageTiles .tileList').sortable({
+        containment: 'parent',
         update: function (event, ui) {
             //console.dir(event);
             //console.dir(ui);
@@ -471,6 +476,30 @@ $(document).ready(function() {
                 });
             }
         }
+    });
+
+    $('.insertTag').click(function(e) {
+        e.preventDefault();
+        var target = $('#' + $(this).attr('data-target'));
+        var tag = $(this).attr('data-tag');
+        var tagHTML = '';
+        switch(tag)
+        {
+            case 'paragraph':
+                tagHTML = '\n<p><\/p>';
+                break;
+
+            case 'quote':
+                tagHTML = '\n<blockquote><br \/><small><\/small><\/blockquote>';
+                break;
+
+            case 'image':
+                tagHTML = '\n<figure><img src="" alt="" /><figcaption>Caption goes here</figcaption></figure>';
+                break;
+        }
+
+        target.val(target.val() + tagHTML);
+        //target.val(tag);
     });
 });
 </script>
