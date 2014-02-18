@@ -50,7 +50,7 @@ $routeTiles = getRoutesSelectedTiles($routeId,$DB_SERVER, $DB_USERNAME, $DB_PASS
     </div>
 </section>
 
-<section class="routeHeaderHolder manly">
+<section class="routeHeaderHolder <?=$routeCSSClass?>">
     <div class="row">
         <div class="large-12 columns">
             <h2 class="sub"><?=$routeHeading?></h2>
