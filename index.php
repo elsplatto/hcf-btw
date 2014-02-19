@@ -73,9 +73,8 @@ include 'includes/nav.php';
                         <a href="#"><img src="img/promoImages/promo1.jpg" alt="Image of fireworks over Sydney Opera House on New Years Eve" /></a>
                     </div>
                     <div class="textHolder">
-                        <span>On the Harbour</span>
-                        <h5><a href="#">Event Diary</a></h5>
-                        <a href="#" class="directive">Read More</a>
+                        <span>Event Diary</span>
+                        <h5><a href="<?=$baseURL?>/events">New Years Eve</a></h5>
                     </div>
                 </div>
 
@@ -86,7 +85,6 @@ include 'includes/nav.php';
                     <div class="textHolder">
                        <span>Promotion</span>
                         <h5><a href="#">Music on the Boat</a></h5>
-                        <a href="#" class="directive">Read More</a>
                     </div>
                 </div>
 
@@ -97,7 +95,6 @@ include 'includes/nav.php';
                     <div class="textHolder">
                        <span>Beyond the Wharf</span>
                         <h5><a href="#">Foodies Guide</a></h5>
-                        <a href="#" class="directive">Read More</a>
                     </div>
                 </div>
 

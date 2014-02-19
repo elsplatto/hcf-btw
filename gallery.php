@@ -1,7 +1,7 @@
 <?php
-$pageMetaTitle = "Beyond the Wharf - Sydney Harbour, Sydney Activities, Sydney Ferries";
-$pageSection = "home";
-$pageMetaDesc = "Beyond the Wharf provides local and international insights to Sydney Harbour.";
+$pageMetaTitle = "Beyond the Wharf - Photo gallery.";
+$pageSection = "gallery";
+$pageMetaDesc = "Submit, share and view your photos of Sydney Harbour.";
 include 'includes/head.php';
 /*global includes in head.php*/
 
@@ -159,7 +159,6 @@ if (isset($instagramData))
                                     echo '<span class="location">&nbsp;</span>';
                                 }
                                 ?>
-                                </span>
                         <span class="credit"><?=$shotOfTheDayResults->data->user->username?></span>
 
                         <span class="button green photo-of-the-day">Photo of the day</span>

@@ -685,7 +685,7 @@ div.white, section.white {
         width: 16.25rem;
         height: 5rem;
         display: block;
-        padding: 0.25rem 0;
+        padding: 0.75rem 0;
         text-align: center; }
         .featureImgHolder .promoHolder .large-3 .textHolder h5 {
           margin-bottom: -0.25rem; }
@@ -1129,41 +1129,47 @@ div.white, section.white {
   clear: both;
   text-align: center; }
 
-.insta {
+.eventFeature .infoContainer {
+  height: 5rem !important; }
+  .eventFeature .infoContainer .inner {
+    width: 100%;
+    padding: 0.5rem 2rem !important; }
+
+.insta, .eventFeature {
   position: relative;
   margin-top: 2.5rem; }
-  .insta .infoContainer {
+  .insta .infoContainer, .eventFeature .infoContainer {
     position: absolute !important;
     width: 100%;
     bottom: 0 !important;
     left: 0 !important;
     height: 3.75rem;
     background-color: rgba(39, 46, 53, 0.75); }
-    .insta .infoContainer .inner {
+    .insta .infoContainer .inner, .eventFeature .infoContainer .inner {
       width: 100%;
       padding: 0.75rem 2rem; }
-      .insta .infoContainer .inner span {
+      .insta .infoContainer .inner span, .eventFeature .infoContainer .inner span {
         clear: both;
         display: block;
         margin-bottom: 0.35rem; }
-      .insta .infoContainer .inner .location {
+      .insta .infoContainer .inner .location, .eventFeature .infoContainer .inner .location {
         color: white;
         font-weight: 700 !important;
         text-transform: uppercase !important;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis; }
-    .insta .infoContainer .button {
+    .insta .infoContainer .button, .eventFeature .infoContainer .button {
       font-family: "Tungsten A", "Tungsten B" !important;
       font-size: 1.25rem;
       padding: 0.5rem 0.5rem 0.5rem 2rem !important;
       cursor: default !important; }
-    .insta .infoContainer .photo-of-the-day {
+    .insta .infoContainer .photo-of-the-day, .eventFeature .infoContainer .photo-of-the-day {
       position: absolute !important;
       right: 1rem;
       top: 0.6rem;
       text-transform: uppercase !important; }
-      .insta .infoContainer .photo-of-the-day:before {
+      .insta .infoContainer .photo-of-the-day:before, .eventFeature .infoContainer .photo-of-the-day:before {
         position: absolute;
         content: "";
         width: 1rem;
