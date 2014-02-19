@@ -67,6 +67,20 @@ function placeRouteMapMarkers($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, 
 
 <script type="text/javascript">
 
+$(function(){
+
+    var cl = new CanvasLoader('map-canvas-loader');
+    cl.setColor('#ffffff');
+    cl.setShape('square'); // default is 'oval'
+    cl.setDiameter(60); // default is 40
+    cl.setDensity(90); // default is 40
+    cl.setRange(1); // default is 1.3
+    cl.setSpeed(3); // default is 2
+    cl.setFPS(24); // default is 24
+    cl.show(); // Hidden by default
+
+    $('<h4 class="left loading">Loading...</h4>').insertAfter('#canvasLoader');
+});
 
 function initialize() {
 
@@ -438,7 +452,7 @@ function initialize() {
                     backgroundClassName: 'locationBubbleWrapper',
                     arrowStyle: 0,
                     disableAutoPan: true,
-                    minWidth: 260,
+                    maxWidth: 260,
                     minHeight: 270
                 });
 

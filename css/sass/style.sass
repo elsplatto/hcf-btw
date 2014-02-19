@@ -683,6 +683,7 @@ div.white, section.white
     position: absolute
     left: 100%
     top: 35%
+    z-index: 100
     //display: none
     p, span
       display: block
@@ -1016,6 +1017,21 @@ div.white, section.white
   position: relative
   img
     max-width: inherit
+  #map-canvas-loader
+    width: 100%
+    height: auto
+    #canvasLoader
+      display: inline-block !important
+      float: left !important
+    h4.loading
+      margin-left: 1.25rem
+      float: left
+      color: #fff
+      font-family: $tungsten
+      font-style: normal
+      font-weight: 700
+      font-size: 3rem
+
 #flyoutMap
   img
     max-width: inherit
@@ -1036,6 +1052,17 @@ div.white, section.white
   &:hover
     background-color: $std-dark-grey-background
     color: rgba(255, 255, 255, 1)
+
+#mapControlPanel
+  &:after
+    content: ''
+    position: absolute
+    width: 10.375rem
+    height: 8.125rem
+    left: 2.25rem
+    bottom: 1.75rem
+    background-image: url('img/icons.png')
+    background-position: -834px 0px
 
 
 .controlPanelHolder
@@ -1149,7 +1176,9 @@ div.white, section.white
       margin-bottom: 0.5rem
 
 
-#photoHolder01
+
+
+#photoHolder01, #photoHolder2, .galleryHolder
   div
     float: left
     display: inline-block
@@ -1186,7 +1215,7 @@ div.white, section.white
         position: relative
         font-size: 0.75em
     a.comments
-      right: 1.6em
+      right: 0.6em
       width: 2rem
       height: 2rem
       &:before
@@ -1197,7 +1226,7 @@ div.white, section.white
         &:before
           background-position: -42px 0
     a.likes
-      right: 3.9rem
+      right: 2.9rem
       width: 2rem
       height: 2rem
       &:before
@@ -1214,8 +1243,6 @@ div.white, section.white
         background-position: -41px -33px !important
 
 
-  div:nth-child(2), div:nth-child(3)
-    padding-bottom: 2.5rem
 
 
 #photoPaginationHolder
@@ -1224,6 +1251,7 @@ div.white, section.white
 
 .insta
   position: relative
+  margin-top: 2.5rem
   .infoContainer
     position: absolute !important
     width: 100%
@@ -1237,11 +1265,14 @@ div.white, section.white
       span
         clear: both
         display: block
-        margin-bottom: 0.5rem
+        margin-bottom: 0.35rem
       .location
         color: #fff
         font-weight: 700 !important
         text-transform: uppercase !important
+        white-space: nowrap
+        overflow: hidden
+        text-overflow: ellipsis
     .button
       font-family: $tungsten
       font-size: 1.25rem
@@ -1507,6 +1538,7 @@ footer
   h3
     font-size: 3rem
     margin-bottom: 0.1rem
+    text-transform: uppercase
   h4
     font-size: 1.875rem
   h4.loading

@@ -31,7 +31,7 @@ include 'includes/nav.php';
         <span class="location">MINER'S POINT</span>
         <span class="routes darling">Darling Harbour</span>
         <span class="credit">Photo by Joel Coleman</span>
-        <span><a href="<?=$baseURL?>/gallery#featuredGallery">Visit Our Featured Photographer Gallery</a></span>
+        <span><a href="<?=$baseURL?>/gallery#featuredPhotographer">View more</a></span>
     </div>
     <section class="promoHolder">
         <div class="row">
@@ -138,7 +138,9 @@ include 'includes/nav.php';
       <h3 class="text-center">Find a Journey</h3>
       <div class="large-12 columns" id="mapContainer">
 
-        <div class="large-12" id="map-canvas"></div>
+        <div class="large-12" id="map-canvas">
+            <div id="map-canvas-loader"></div>
+        </div>
           <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
 
           <div id="mapControlPanelHolder" class="controlPanelHolder large-3">
@@ -174,6 +176,7 @@ include 'includes/footer.php';
 <?php
 $pageId = 1;
 include 'includes/global-js.php';
+include 'includes/instagram-js.php';
 include 'includes/map-code.php';
 ?>
 

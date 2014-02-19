@@ -8,7 +8,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
 <section class="breadcrumbsHolder">
     <div class="row">
         <div class="large-12 columns breadcrumbs">
-            <a href="<?=$baseURL?>/">Home</a><span>Explore Our Harbour</span>
+            <a href="<?=$baseURL?>/">Home</a><span><?=$pageHeading?></span>
         </div>
     </div>
 </section>
@@ -17,8 +17,15 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
     <div class="headerHolder">
         <h2 class="sub"><?=$pageHeading?></h2>
         <hr />
-        <h3 class="pullout"><?=$pagePullout?></h3>
-        <!--a href="#" class="button red play tungsten small">Watch the video</a-->
+        <h3 class="pullout clearfix"><?=$pagePullout?></h3><br />
+        <?php
+        if ($friendly_url == 'sydney-harbour-history')
+        {
+        ?>
+        <a href="#" class="button red play tungsten small">Watch the video</a>
+        <?php
+        }
+        ?>
     </div>
 </section>
 <section class="contentHolder marginBottomStandard">
@@ -67,7 +74,9 @@ if ($hasMap > 0 || count($pageTiles) > 0)
             <h3 class="text-center">Find a Journey</h3>
             <div class="large-12 columns" id="mapContainer">
 
-                <div class="large-12" id="map-canvas"></div>
+                <div class="large-12" id="map-canvas">
+                    <div id="map-canvas-loader"></div>
+                </div>
                 <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
 
                 <div id="mapControlPanelHolder" class="controlPanelHolder large-3">
