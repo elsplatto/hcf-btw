@@ -14,7 +14,7 @@ include 'includes/nav.php';
     <img src="img/featureImages/harbourPano-2.jpg" />
     <div class="headerHolder">
         <h2 class="sub">You lost?</h2>
-        <h2>Need to find a boat?</h2>
+        <h2>Want to find something to do?</h2>
         <p style="color: #fff; ">Visit our <a href="<?=$baseURL?>" style="text-decoration: underline; color: #fff">homepage</a> or use the nav and/or search box above.</p>
     </div>
     <a href="#" id="creditToggle" data-target="featureCreditPanel" class="triggerContainer" title="Click here for photo credits">

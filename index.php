@@ -54,6 +54,9 @@ include 'includes/nav.php';
                             </div>
                             <div class="tweetCred">
                                 <a href="http://twitter.com/<?=$tweet->user->name?>" target="_blank" rel="nofollow">@<?=$tweet->user->name?></a>
+
+                                <a href="https://twitter.com/share?url=<?=$baseURL?>/&text=Living like a local&hashtag=beyondthewharf&count=none" class="twitter-share-button right marginTop3    " data-lang="en">Tweet</a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                             </div>
                         </div>
                     </li>
@@ -73,8 +76,8 @@ include 'includes/nav.php';
                         <a href="#"><img src="img/promoImages/promo1.jpg" alt="Image of fireworks over Sydney Opera House on New Years Eve" /></a>
                     </div>
                     <div class="textHolder">
-                        <span>Event Diary</span>
-                        <h5><a href="<?=$baseURL?>/events">New Years Eve</a></h5>
+                        <span>Events</span>
+                        <h5><a href="<?=$baseURL?>/events">Vivid</a></h5>
                     </div>
                 </div>
 
@@ -83,8 +86,8 @@ include 'includes/nav.php';
                         <a href="#"><img src="img/promoImages/promo2.jpg" alt="Image of Musicians" /></a>
                     </div>
                     <div class="textHolder">
-                       <span>Promotion</span>
-                        <h5><a href="#">Music on the Boat</a></h5>
+                       <span>Attraction</span>
+                        <h5><a href="#">Cockatoo Island</a></h5>
                     </div>
                 </div>
 
@@ -93,8 +96,8 @@ include 'includes/nav.php';
                         <a href="#"><img src="img/promoImages/promo3.jpg" alt="" /></a>
                     </div>
                     <div class="textHolder">
-                       <span>Beyond the Wharf</span>
-                        <h5><a href="#">Foodies Guide</a></h5>
+                       <span>Itinerary</span>
+                        <h5><a href="<?=$baseURL?>/itineraries">Sunday - Family Day</a></h5>
                     </div>
                 </div>
 
@@ -148,8 +151,6 @@ include 'includes/nav.php';
                   <?php
                   $filters = getFilters(1, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
                   for ($i = 0; $i < count($filters); $i++)
-
-                  //foreach ($filters as $filter)
                   {
 
                   ?>

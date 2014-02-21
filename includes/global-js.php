@@ -22,6 +22,8 @@ $(function(){
 
     $('body').on('click', '.reveal-init', function(e)
     {
+
+        //e.stopPropagation();
         e.preventDefault();
         var url = $(this).attr('href');
         $('#modalShell').html('<div id="canvasLoader"></div>');

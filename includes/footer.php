@@ -17,7 +17,7 @@
     <section class="standard">
         <div class="row paddingTop20 paddingBottom40 hcf-logo">
             <span>Beyond the Wharf <?=date('Y')?></span>
-            <a hef="<?=$baseURL?>/page/about-us">About Us</a>
+            <a href="<?=$baseURL?>/page/about-us">About Us</a>
             <br />
 
             <a href="<?=$baseURL?>/page/about-us" class="logo-link"></a>

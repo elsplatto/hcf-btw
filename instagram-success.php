@@ -4,9 +4,21 @@ require 'includes/instagram.class.php';
 require 'includes/instagram.config.php';
 
 // Receive OAuth code parameter
-$code = $_GET['code'];
+if (isset($_GET['code']))
+{
+    $code = $_GET['code'];
+}
 
-$redirectPage = $_GET['call_page'];
+if (isset($_GET['call_page']))
+{
+    $redirectPage = $_GET['call_page'];
+}
+
+if (isset($_GET['hub_challenge']))
+{
+    $challenge = $_GET['hub_challenge'];
+}
+
 
 //echo '['.$redirectPage.']';
 
@@ -47,6 +59,9 @@ if (true === isset($code))
         header('Location: '.$redirectPage);
         //header('Location: index.php');
     }
+}
+else if (isset($challenge)) {
+    //header('Location: ' .$redirectPage .'?challenge=' .$challenge);
 }
 else
 {

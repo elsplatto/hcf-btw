@@ -569,9 +569,34 @@ class Instagram {
       fclose($fp);
     }
 
-    public function buildCustomJSONObj($tag)
-    {
+    public function setSubscription($object, $object_id, $aspect, $verify_token) {
 
+        //setSubscription('tag', 'beyondthewharf', 'media', '');
+
+        $attachment =  array(
+            'client_id' => $this->getApiKey(),
+            'client_secret' => $this->getApiSecret(),
+            'object' => $object,
+            'object_id' => $object_id,
+            'aspect' => $aspect,
+            'verify_token' => $verify_token,
+            'callback_url'=> $this->getApiCallback()
+        );
+
+
+        $url = "https://api.instagram.com/v1/subscriptions/";
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $attachment);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  //to suppress the curl output
+        $result = curl_exec($ch);
+        curl_close ($ch);
+        //print_r($result);
     }
 
 }

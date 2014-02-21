@@ -1460,6 +1460,16 @@ footer .standard {
       background-image: url("img/icons.png");
       background-position: -282px -75px; }
 
+.gallery-tweet {
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem; }
+
+.shot-of-day-tweet {
+  position: absolute;
+  top: 1.25rem;
+  right: 11rem; }
+
 .systemError {
   border: 2px solid #e00b2e;
   padding: 10px;
@@ -1468,6 +1478,9 @@ footer .standard {
 /* spacers */
 .marginBottomStandard {
   margin-bottom: 2.5rem; }
+
+.marginTop3 {
+  margin-top: 3px; }
 
 .marginTop10 {
   margin-top: 0.625rem !important; }

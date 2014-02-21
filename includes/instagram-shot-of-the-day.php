@@ -14,10 +14,11 @@ if (isset($instagramData))
 
 <section class="photoSection marginBottomStandard">
 
-<div class="row marginTop20 marginBottom20">
+<div class="row marginTop20">
     <div class="large-12 columns">
+        <h3 class="text-center" style="margin-bottom: -0.5rem">Shot of the day</h3>
         <?php
-        if (isset($instagramData))
+        /*if (isset($instagramData))
         {
             echo '<h4>Welcome ' . $instagramUsername . '</h4>';
             echo '<a href="'.$instagramLogoutURL.'" class="button">Logout of Instagram</a>';
@@ -25,11 +26,11 @@ if (isset($instagramData))
         else
         {
             echo '<a href="'.$instagramLoginURL.'" class="button">Log into Instagram</a>';
-        }
+        }*/
         ?>
     </div>
 </div>
-
+<a id="gallery"></a>
 <div id="photoHolder01" class="row">
 <?php
 
@@ -139,6 +140,9 @@ if ($shotOfTheDayResults->meta->code == 200)
                     <span class="credit"><?=$shotOfTheDayResults->data->user->username?></span>
 
                     <span class="button green photo-of-the-day">Photo of the day</span>
+
+                    <a href="https://twitter.com/share?url=<?=$baseURL?>/#gallery&text=Check out shot of the day&hashtag=beyondthewharf&count=none" class="twitter-share-button shot-of-day-tweet" data-lang="en">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                 </div>
             </div>
         </div>
@@ -211,6 +215,8 @@ if ($instagramResults->meta->code == 200)
                         ?>
                         </span>
                         <span class="credit"><?=$post->user->username?></span>
+                        <a href="https://twitter.com/share?url=<?=$baseURL?>/#gallery&text=Tag your photo and it will appear here&hashtag=beyondthewharf&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                     </div>
                 </div>
             </div>

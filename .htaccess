@@ -17,8 +17,11 @@ RewriteRule gallery/(.*)$ gallery.php
 RewriteRule gallery(.*)$ gallery.php
 RewriteRule events/(.*)$ events.php
 RewriteRule events(.*)$ events.php
+RewriteRule events(.*)$ events.php
 RewriteRule event/(.*)$ events.php
 RewriteRule event(.*)$ events.php
+RewriteRule itineraries(.*)$ itineraries.php
+RewriteRule itineraries/(.*)$ itineraries.php
 RewriteRule 404(.*)$ 404.php
 
 

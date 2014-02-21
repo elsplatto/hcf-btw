@@ -55,8 +55,8 @@ if ($friendly_url == 'local-insights')
                         <img src="../img/locations/thumbnails/artist.jpg" />
                     </div>
                     <div class="textHolder">
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="featureTileContainer">Title</a></h5>
-                        <span>Theme</span>
+                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="featureTileContainer">Art &amp; Design</a></h5>
+                        <span>The Artist</span>
                     </div>
                 </div>
             </div>
@@ -64,25 +64,25 @@ if ($friendly_url == 'local-insights')
             <div class="large-3 small-3 columns left">
                 <div class="tile">
                     <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/family.jpg" />
+                        <img src="../img/locations/thumbnails/mark-champley.jpg" />
                     </div>
                     <div class="textHolder">
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="featureTileContainer">Family Fun</a></h5>
+                        <h5><a href="<?=$baseURL?>/page/child-at-heart">Family Fun</a></h5>
                         <span>The Child at Heart</span>
                     </div>
                 </div>
             </div>
 
             <div class="large-3 small-3 columns left">
-                <div class="tile social blue">
-
+                <div class="tile">
+                    <img src="<?=$baseURL?>/img/fbShareTile.gif" alt="Share on Facebook" />
                 </div>
             </div>
 
             <div class="large-6 small-6 columns left">
                 <div class="tile">
                     <div class="imgHolder">
-                        <img src="../img/locations/thumbnail-med/entertainment.jpg" />
+                        <img src="../img/locations/thumbnail-med/shangri-la-view.jpg" />
                     </div>
                     <div class="textHolder">
                         <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="featureTileContainer">Harbour Entertainment</a></h5>
@@ -114,8 +114,7 @@ if ($hasMap > 0 || count($pageTiles) > 0)
             <div class="large-12 columns" id="mapContainer">
 
                 <div class="large-12" id="map-canvas">
-                    <div id="map-canvas-loader"></div>
-                </div>
+                    <div id="map-canvas-loader"></div></div>
                 <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
 
                 <div id="mapControlPanelHolder" class="controlPanelHolder large-3">
@@ -196,7 +195,7 @@ if ($hasMap > 0 || count($pageTiles) > 0)
                 <div class="inner green">
                     <h3>Do you have a great story about Sydney’s historic harbour?</h3>
                     <p>Share you secrets with us and win a <strong>month free travel</strong> on Sydney’s historic ferries</p>
-                    <a href="#" class="button wire white">Find out more</a>
+                    <a href="<?=$baseURL?>/overlays/contribute-story.php" class="button wire white reveal-init" data-size="small">Find out more</a>
                 </div>
             </div>
         </div>

@@ -88,7 +88,7 @@ $routeTiles = getRoutesSelectedTiles($routeId,$DB_SERVER, $DB_USERNAME, $DB_PASS
                 <div class="inner green">
                     <h3>Do you have a great story about Sydney’s historic harbour?</h3>
                     <p>Share you secrets with us and win a <strong>month free travel</strong> on Sydney’s historic ferries</p>
-                    <a href="#" class="button wire white">Find out more</a>
+                    <a href="<?=$baseURL?>/overlays/contribute-story.php" class="button wire white reveal-init" data-size="small">Find out more</a>
                 </div>
             </div>
         </div>
@@ -171,35 +171,9 @@ $routeTiles = getRoutesSelectedTiles($routeId,$DB_SERVER, $DB_USERNAME, $DB_PASS
     </div>
 </section>
 
-<section class="itineraryTileHolder marginBottomStandard">
-    <div class="row">
-        <div class="large-12">
-            <h3 class="text-center">Recommended Itineraries</h3>
-            <div class="large-6 columns left">
-                <div class="itineraryTile" style="background-image: url('<?=$baseURL?>/img/itineraries/tile/tile-2.jpg'); background-repeat: no-repeat;">
-                    <div class="inner">
-                        <div class="textHolder">
-                            <span>Itinerary – by Joel Beck – 3 hours</span>
-                            <h3><a href="#">Enjoy the history of the harbour in our Manly Itinerary</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="large-6 columns right">
-                <div class="itineraryTile" style="background-image: url('<?=$baseURL?>/img/itineraries/tile/tile-1.jpg'); background-repeat: no-repeat;">
-                    <div class="inner">
-                        <div class="textHolder">
-                            <span>Itinerary – by Joel Beck – 3 hours</span>
-                            <h3><a href="#">Enjoy the history of the harbour in our Manly Itinerary.</a></h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+<?php
+include 'includes/itineraries.php';
+?>
 
 
 

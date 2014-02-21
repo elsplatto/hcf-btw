@@ -20,8 +20,8 @@
                         <img src="<?=$baseURL?>/img/locations/thumbnails/artist.jpg" alt="Title here" />
                     </div>
                     <div class="textHolder">
-                        <h5><a href="<?=$baseURL?>">The Artist</a></h5>
-                        <span>Art</span>
+                        <h5><a href="<?=$baseURL?>">Art &amp; Design</a></h5>
+                        <span>The Artist</span>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
             <div class="large-6 columns left">
                 <div class="tile">
                     <div class="imageHolder">
-                        <img src="<?=$baseURL?>/img/locations/thumbnail-med/entertainment.jpg" alt="Title here" />
+                        <img src="<?=$baseURL?>/img/locations/thumbnail-med/shangri-la-view.jpg" alt="Title here" />
                     </div>
                     <div class="textHolder">
                         <h5><a href="<?=$baseURL?>">Harbour Entertainment</a></h5>
