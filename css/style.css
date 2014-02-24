@@ -528,7 +528,7 @@ div.white, section.white {
         background-image: url("img/icons.png");
         background-position: -82px -88px; }
   .featureImgHolder .triggerContainer {
-    z-index: 20;
+    z-index: 200;
     display: block;
     width: 3.125rem;
     height: 3.125rem;

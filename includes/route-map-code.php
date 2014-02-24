@@ -97,6 +97,17 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
 
+    // map: an instance of GMap3
+// latlng: an array of instances of GLatLng
+   /* var latlngbounds = new google.maps.LatLngBounds();
+    latlng.each(function(n){
+        latlngbounds.extend(n);
+    });
+    map.setCenter(latlngbounds.getCenter());
+    map.fitBounds(latlngbounds);
+
+*/
+
     <?php
     $coordsJson = getJsonConents('json/routeCoords.json');
 
@@ -470,7 +481,7 @@ function initialize() {
                         beforeLocationRetrieveHandler(target);
                         $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/', function(){
                             var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
-                            $('html').animate({
+                            $('html, body').animate({
                                 scrollTop: scrollHeight
                             },'slow');
                         });
@@ -586,8 +597,6 @@ function initialize() {
             }
 
         });
-
-
     });
 
     if ($('#mapControlPanelHolder').length > 0) {

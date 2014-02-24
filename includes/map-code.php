@@ -453,8 +453,9 @@ function initialize() {
 
                         beforeLocationRetrieveHandler(target);
                         $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/', function(){
+                            console.log('flyout done - scroll to start')
                             var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
-                            $('html').animate({
+                            $('html, body').animate({
                                 scrollTop: scrollHeight
                             },'slow');
                         });

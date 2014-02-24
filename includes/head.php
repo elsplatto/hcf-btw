@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Australia/NSW');
+
 include 'db.php';
 include 'Mobile_Detect.php';
 include 'global-functions.php';
