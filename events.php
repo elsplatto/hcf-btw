@@ -3,7 +3,42 @@ $pageMetaTitle = "Beyond the Wharf - Events";
 $pageSection = "events";
 $pageMetaDesc = "Find and share events that are coming up on Sydney Harbour.";
 include 'includes/head.php';
-/*global includes in head.php*/
+
+
+function getEvents($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
+{
+    $query = 'SELECT tiles.start_date, tiles.end_date, tiles.title, types.title as type_title, categories.title AS category_title, ';
+    $query .= 'tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size, tiles.alt, tiles.id FROM tiles ';
+    $query .= 'JOIN types ON (tiles.type_id = types.id) ';
+    $query .= 'LEFT OUTER JOIN categories ON (tiles.category_id = categories.id) ';
+    $query .= 'WHERE tiles.start_date > ' . time() .' OR tiles.end_date > '. time() .' ORDER BY tiles.start_date';
+    //echo 'query['.$query.']';
+    $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+
+    $stmt->bind_result($start_date, $end_date, $title, $type_title, $category_title, $image_thumb, $image_thumb_med, $tile_size, $alt, $tile_id);
+
+    $results = array();
+    $i = 0;
+    while($stmt->fetch())
+    {
+        $results[$i]['start_date'] = $start_date;
+        $results[$i]['end_date'] = $end_date;
+        $results[$i]['title'] = $title;
+        $results[$i]['type_title'] = $type_title;
+        $results[$i]['category_title'] = $category_title;
+        $results[$i]['image_thumb'] = $image_thumb;
+        $results[$i]['image_thumb_med'] = $image_thumb_med;
+        $results[$i]['tile_size'] = $tile_size;
+        $results[$i]['alt'] = $alt;
+        $results[$i]['tile_id'] = $tile_id;
+        $i++;
+    }
+    return $results;
+}
+
+$events = getEvents($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
 ?>
 <body>
@@ -13,7 +48,7 @@ include 'includes/nav.php';
 <section class="breadcrumbsHolder">
     <div class="row">
         <div class="large-12 columns breadcrumbs">
-            <a href="<?=$baseURL?>/">Home</a><span>Gallery</span>
+            <a href="<?=$baseURL?>/">Home</a><span>Events</span>
         </div>
     </div>
 </section>
@@ -57,11 +92,60 @@ include 'includes/nav.php';
 <section class="standardLightGrey paddingTopBottom20 marginBottomStandard">
 
     <div class="row marginBottomStandard">
-        <div class="large-12 columns">
-            <h3 class="text-center">May</h3>
-        </div>
+        <?php
+        $event_count = 0;
+        $last_month_name = '';
+        $new_month = false;
+        foreach ($events as $event)
+        {
+            $event_count++;
+            $start_date = getdate($event['start_date']);
+            $month_name = $start_date['month'];
 
-        <div id="flyoutPanel" class="panelFlyout  large-12 columns left">
+            if ($last_month_name !== $month_name)
+
+            {
+                $new_month = true;
+
+        ?>
+            <div class="large-12 columns">
+                <h3 class="text-center"><?=$month_name?></h3>
+            </div>
+        <?php
+            }
+            else
+            {
+                $new_month = false;
+            }
+
+            ?>
+            <div class="large-3 small-3 columns left">
+                <div class="tile">
+                    <div class="imgHolder">
+                        <img src="<?=$baseURL?>/img/locations/thumbnails/<?=$event['image_thumb']?>" alt="<?=$event['alt']?>" />
+                    </div>
+                    <div class="textHolder">
+                        <span><?=$event['type_title']?></span>
+                        <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$event['tile_id']?>" data-target="pageTileContainer" title="<?=$event['title']?>"><?=$event['title']?></a></h5>
+                    </div>
+                </div>
+            </div>
+            <?php
+
+            /*if ($new_month)
+            {
+                if ($event_count == 1)
+                {
+                }
+                else
+                {
+                }
+            }*/
+
+            $last_month_name = $month_name;
+        }
+        ?>
+        <!--div id="flyoutPanel" class="panelFlyout  large-12 columns left">
             <div class="large-12 columns standardDarkGrey paddingTop20">
                 <a href="#" class="flyoutPanelClose">Close panel</a>
                 <span>Events</span>
@@ -217,7 +301,7 @@ Additional information	Manly Ferry gates close two minutes before scheduled depa
             </div>
 
 
-        </div>
+        </div-->
 
 
     </div>
