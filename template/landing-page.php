@@ -203,6 +203,7 @@ if ($hasMap > 0 || count($pageTiles) > 0)
 </section>
 
 <?php
+include 'includes/itineraries.php';
 include 'includes/global-js.php';
 include 'includes/map-code.php';
 ?>

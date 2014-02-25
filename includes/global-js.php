@@ -37,14 +37,23 @@ $(function(){
         cl.setFPS(24); // default is 24
         cl.show(); // Hidden by default
 
+        var modal_size = $(this).attr('data-size');
+        if (modal_size != '' || modal_size == 'undefined')
+        {
+            modal_size = 'medium'
+        }
+
+
         $('#modalShell').foundation('reveal', 'open');
+        $('#modalShell').addClass(modal_size);
         $('#modalShell').load(url);
     });
 
-    $('body').on('click','.reveal-close', function(e)
+    $('body').on('click','.reveal-close, .reveal-modal-bg', function(e)
     {
         e.preventDefault();
         $('#modalShell').foundation('reveal', 'close');
+        $('#modalShell').empty();
     });
 
 

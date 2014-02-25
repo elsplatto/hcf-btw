@@ -8,14 +8,14 @@ $page_id = $_GET['id'];
 function getPage($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $query = 'SELECT title, is_nav, is_landing_page, has_map, nav_title, heading, heading_pullout, sub_heading, header_image, header_mp4, ';
-    $query .= 'header_webm, tags, friendly_url, content_header, content, meta_keywords, meta_desc, parent_id, pages.order, is_live FROM pages WHERE id = ?';
+    $query .= 'header_webm, video_embed, tags, friendly_url, content_header, content, meta_keywords, meta_desc, parent_id, pages.order, is_live FROM pages WHERE id = ?';
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
     //$results = $stmt->get_result();
 
-    $stmt->bind_result($title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $tags, $friendly_url, $content_header, $content, $meta_keywords, $meta_desc, $parent_id, $order, $is_live);
+    $stmt->bind_result($title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $video_embed, $tags, $friendly_url, $content_header, $content, $meta_keywords, $meta_desc, $parent_id, $order, $is_live);
 
     $results = array();
     $i = 0;
@@ -32,6 +32,7 @@ function getPage($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['header_image'] = $header_image;
         $results[$i]['header_mp4'] = $header_mp4;
         $results[$i]['header_webm'] = $header_webm;
+        $results[$i]['video_embed'] = $video_embed;
         $results[$i]['tags'] = $tags;
         $results[$i]['friendly_url'] = $friendly_url;
         $results[$i]['content_header'] = $content_header;
@@ -244,6 +245,11 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                 <label for="txtHeaderWebm">Header webm:</label>
                 <input type="text" id="txtHeaderWebm" name="txtHeaderWebm" value="<?=$page['header_webm']?>" />
 
+
+
+                <label for="txtVideoEmbed">Video Embed:</label>
+                <textarea id="txtVideoEmbed" name="txtVideoEmbed" class="small"><?=stripcslashes(stripcslashes($page['video_embed']))?></textarea>
+
                 <label for="txtTags">Tags:</label>
                 <input type="text" id="txtTags" name="txtTags" value="<?=$page['tags']?>" placeholder="No # and separate by comma" />
 
@@ -269,7 +275,9 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
 
                 <label>Map Tiles</label>
                 <div class="mapTiles">
-                    <ul class="tileList">
+
+                    <input type="text" class="tileFilter" data-containment="mapTileList" placeholder="Enter text to filter tiles" />
+                    <ul id="mapTileList" class="tileList">
                      <?php
                      foreach ($allMapTiles as $mapTile)
                      {
@@ -284,7 +292,7 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                              }
                          }
                      ?>
-                        <li<?=$strSelected?> data-tile-id="<?=$mapTile['id']?>" data-page-id="<?=$page_id?>" class="large-3 columns left">
+                        <li<?=$strSelected?> data-tile-id="<?=$mapTile['id']?>" data-page-id="<?=$page_id?>" class="large-3 columns left" data-tags="<?=$mapTile['tags']?>">
                             <div class="tile">
                                 <div class="imgHolder">
                                     <img src="../img/locations/thumbnails/<?=$mapTile['image_thumb']?>" />
@@ -304,7 +312,8 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
 
 
                 <div class="pageTiles large-12">
-                    <ul class="tileList large-12">
+                    <input type="text" class="tileFilter" data-containment="pageTileList" placeholder="Enter text to filter tiles" />
+                    <ul id="pageTileList" class="tileList large-12">
                         <?php
 
                             foreach ($selectedPageTiles as $selectedPageTile)
@@ -320,7 +329,7 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                                     $tileClass = 'large-3 columns left';
                                 }
                             ?>
-                                <li data-page-tile-selected data-tile-id="<?=$selectedPageTile['tile_id']?>" data-page-id="<?=$page_id?>" class="<?=$tileClass?>">
+                                <li data-page-tile-selected data-tile-id="<?=$selectedPageTile['tile_id']?>" data-page-id="<?=$page_id?>" class="<?=$tileClass?>" data-tags="<?=$selectedPageTile['tags']?>">
                                     <div class="tile">
                                         <div class="imgHolder">
                                             <img src="<?=$imagePath?>" />
@@ -357,7 +366,7 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                                         $tileClass = 'large-3 columns left';
                                     }
                                 ?>
-                                    <li data-tile-id="<?=$pageTile['id']?>" data-page-id="<?=$page_id?>" class="<?=$tileClass?>">
+                                    <li data-tile-id="<?=$pageTile['id']?>" data-page-id="<?=$page_id?>" class="<?=$tileClass?>" data-tags="<?=$pageTile['tags']?>">
                                         <div class="tile">
                                             <div class="imgHolder">
                                                 <img src="<?=$imagePath?>" />
@@ -390,6 +399,34 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
 </section>
 <script>
 $(document).ready(function() {
+
+    $('.tileFilter').keyup(function(e) {
+
+        var containmentEl = $('#' + $(this).attr('data-containment'));
+        var elValue = $(this).val();
+        if (elValue.length === 0)
+        {
+            containmentEl.children('li').each(function(i){
+                $(this).attr('style','');
+            });
+        }
+        else
+        {
+            containmentEl.children('li').each(function(i) {
+                var tagAttrStr = $(this).attr('data-tags');
+                if (tagAttrStr.indexOf(elValue) < 0)
+                {
+                    $(this).attr('style','display: none');
+                }
+                else
+                {
+                    $(this).attr('style','');
+                }
+            });
+        }
+    });
+
+
     $('.mapTiles .tileList li').on('click', function(e) {
         e.preventDefault();
         var isSelected = $(this).attr('data-map-tile-selected');
@@ -497,9 +534,7 @@ $(document).ready(function() {
                 tagHTML = '\n<figure><img src="" alt="" /><figcaption>Caption goes here</figcaption></figure>';
                 break;
         }
-
         target.val(target.val() + tagHTML);
-        //target.val(tag);
     });
 });
 </script>

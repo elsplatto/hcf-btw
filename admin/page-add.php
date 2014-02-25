@@ -97,6 +97,10 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
                 <label for="txtHeaderWebm">Header webm:</label>
                 <input type="text" id="txtHeaderWebm" name="txtHeaderWebm" value="" />
 
+
+                <label for="txtVideoEmbed">Video Embed:</label>
+                <input type="text" id="txtVideoEmbed" name="txtVideoEmbed" />
+
                 <label for="txtTags">Tags:</label>
                 <input type="text" id="txtTags" name="txtTags" value="" placeholder="No # and separate by comma" />
 
@@ -139,20 +143,19 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
             var tagHTML = '';
             switch(tag){
                 case 'paragraph':
-                    tagHTML = '\n<p><\/p>';
+                    tagHTML = '<p><\/p>';
                     break;
 
                 case 'quote':
-                    tagHTML = '\n<blockquote><br \/><small><\/small><\/blockquote>';
+                    tagHTML = '<blockquote><br \/><small><\/small><\/blockquote>';
                     break;
 
                 case 'image':
-                    tagHTML = '\n<figure><img src="" alt="" /><figcaption>Caption goes here</figcaption></figure>';
+                    tagHTML = '<figure><img src="" alt="" /><figcaption>Caption goes here</figcaption></figure>';
                     break;
             }
 
             target.val(target.val() + tagHTML);
-            //target.val(tag);
         });
     });
 </script>

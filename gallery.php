@@ -89,9 +89,9 @@ if (isset($instagramData))
         $instagramLikeOverlaySettings = '';
         $userLikedClass = '';
     } else {
-        $instagramCommentURL = 'overlays/instagram-login.php';
+        $instagramCommentURL = 'overlays/instagram-login.php?call_page=gallery.php';
         $instagramCommentOverlaySize = 'small';
-        $instagramLikeURL = 'overlays/instagram-login.php';
+        $instagramLikeURL = 'overlays/instagram-login.php?call_page=gallery.php';
         $instagramLikeOverlaySettings = ' data-reveal-ajax="true"';
         $userLikedClass = ' reveal-init';
     }
@@ -123,7 +123,7 @@ if (isset($instagramData))
         }
         else
         {
-            $likeURL = 'overlays/instagram-login.php';
+            $likeURL = 'overlays/instagram-login.php?call_page=gallery.php';
             $likeText = 'You are not logged in. Log in to like.';
         }
         ?>
@@ -131,7 +131,7 @@ if (isset($instagramData))
         <div class="small-6 large-6 columns right">
             <div class="large-12 small-12 insta">
                 <img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" />
-                <a href="<?=$instagramCommentURL?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"><span><?=$shotOfTheDayResults->data->comments->count?></span></a>
+                <a href="<?=$instagramCommentURL?>&media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"><span><?=$shotOfTheDayResults->data->comments->count?></span></a>
                 <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$shotOfTheDayResults->data->id?>" data-likesCount="<?=$shotOfTheDayResults->data->likes->count?>" data-displayCount><?=likeNumberFormatter($shotOfTheDayResults->data->likes->count)?></span></a>
                 <div class="infoContainer">
                     <div class="inner">
@@ -199,7 +199,7 @@ if (isset($instagramData))
             }
             else
             {
-                $likeURL = 'overlays/instagram-login.php';
+                $likeURL = 'overlays/instagram-login.php?call_page=gallery.php';
                 $likeText = 'You are not logged in. Log in to like.';
             }
             ?>
@@ -207,7 +207,7 @@ if (isset($instagramData))
             <div class="small-3 large-3 columns">
                 <div class="small-12 large-12 insta">
                     <img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$post[$i]->caption->text?>" />
-                    <a href="<?=$instagramCommentURL?>?media_id=<?=$post[$i]->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post[$i]->id?>" role="button"><span><?=$post[$i]->comments->count?></span></a>
+                    <a href="<?=$instagramCommentURL?>&media_id=<?=$post[$i]->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post[$i]->id?>" role="button"><span><?=$post[$i]->comments->count?></span></a>
                     <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post[$i]->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post[$i]->id?>" data-likesCount="<?=$post[$i]->likes->count?>" data-displayCount><?=likeNumberFormatter($post[$i]->likes->count)?></span></a>
                     <div class="infoContainer">
                         <div class="inner">
@@ -383,7 +383,7 @@ if ($instagramResults->meta->code == 200)
         }
         else
         {
-            $likeURL = 'overlays/instagram-login.php';
+            $likeURL = 'overlays/instagram-login.php?call_page=gallery.php';
             $likeText = 'You are not logged in. Log in to like.';
         }
         ?>

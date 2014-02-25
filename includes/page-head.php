@@ -21,7 +21,7 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
 
     $query = '';
     $query .= 'SELECT id, title, nav_title, is_landing_page, has_map, heading, heading_pullout, sub_heading, header_image, header_mp4, ';
-    $query .= 'header_webm, content_header, content, meta_keywords, meta_desc FROM pages WHERE friendly_url = ?';
+    $query .= 'header_webm, video_embed, content_header, content, meta_keywords, meta_desc FROM pages WHERE friendly_url = ?';
 
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     if (!$stmt = $mysqli->prepare($query)) {
@@ -30,7 +30,7 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
     } else {
         $stmt->bind_param('s', strtolower($friendly_url));
         $stmt->execute();
-        $stmt->bind_result($id, $title, $nav_title, $is_landing_page, $has_map, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $content_header, $content, $meta_keywords, $meta_desc);
+        $stmt->bind_result($id, $title, $nav_title, $is_landing_page, $has_map, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $video_embed, $content_header, $content, $meta_keywords, $meta_desc);
 
         $results = array();
         $i = 0;
@@ -47,6 +47,7 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
             $results[$i]['header_image'] = $header_image;
             $results[$i]['header_mp4'] = $header_mp4;
             $results[$i]['header_webm'] = $header_webm;
+            $results[$i]['video_embed'] = $video_embed;
             $results[$i]['content_header'] = $content_header;
             $results[$i]['content'] = $content;
             $results[$i]['meta_keywords'] = $meta_keywords;
@@ -75,6 +76,8 @@ foreach ($pageDetails as $pageDetail) {
         $pageHeaderImage = $pageDetail['header_image'];
         $pageHeaderMP4 = $pageDetail['header_mp4'];
         $pageHeaderWebm = $pageDetail['header_webm'];
+
+        $videoEmbed = $pageDetail['video_embed'];
         $pageContentHeader = $pageDetail['content_header'];
         $pageContent = $pageDetail['content'];
         $hasMap =  $pageDetail['has_map'];
@@ -127,16 +130,15 @@ else
     <?php
     }
     ?>
-<?php
-if (($_SERVER['SERVER_NAME'] == 'beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'www.beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'localhost')){
+    <?php
+    if (($_SERVER['SERVER_NAME'] == 'beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'www.beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'localhost'))
+    {
+        ?>
+        <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6681852/609364/css/fonts.css" />
+        <script type="text/javascript" src="//use.typekit.net/ipr3pdx.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <?php
+    }
     ?>
-    <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6681852/609364/css/fonts.css" />
-    <script type="text/javascript" src="//use.typekit.net/ipr3pdx.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-<?php
-}
-?>
-
-
 </head>

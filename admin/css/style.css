@@ -23,7 +23,11 @@ input[type="checkbox"] + label, input[type="radio"] + label {
   margin-bottom: 0.5rem !important; }
 
 textarea {
-  height: 15rem !important; }
+  height: 15rem !important;
+  resize: vertical; }
+
+textarea.small {
+  height: 2rem !important; }
 
 select {
   width: 28rem; }

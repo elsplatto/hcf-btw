@@ -5,7 +5,7 @@
             <div class="large-12 text-center barHolder">
                 <h4>Follow Beyond the Wharf</h4>
                 <ul>
-                    <li><a href="#" class="social twitter medium">twitter</a></li>
+                    <li><a href="https://twitter.com/intent/user?screen_name=beyondthewharf" class="social twitter medium" target="_blank" rel="nofollow">twitter</a></li>
                     <li><a href="#" class="social facebook medium">facebook</a></li>
                     <li><a href="#" class="social instagram medium">instagram</a></li>
                     <li><a href="#" class="social googlePlus medium">google plus</a></li>
@@ -25,6 +25,6 @@
     </section>
 </footer>
 
-<div id="modalShell" class="reveal-modal <?=$instagramCommentOverlaySize?>" data-reveal="">
+<div id="modalShell" class="reveal-modal" data-reveal="">
 
 </div>

@@ -19,10 +19,10 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
         <hr />
         <h3 class="pullout clearfix"><?=$pagePullout?></h3><br />
         <?php
-        if (strlen($pageHeaderMP4) > 0)
+        if (strlen($videoEmbed) > 0)
         {
         ?>
-        <a href="#" class="button red play tungsten small">Watch the video</a>
+        <a href="<?=$baseURL?>/overlays/show-video.php?id=<?=$pageId?>" class="button red play tungsten small reveal-init" data-size="medium">Watch the video</a>
         <?php
         }
         ?>
@@ -163,7 +163,10 @@ if ($friendly_url !== 'about-us')
 
 <?php
 include 'includes/global-js.php';
-include 'includes/map-code.php';
 
+if ($hasMap > 0)
+{
+    include 'includes/map-code.php';
+}
 
 ?>

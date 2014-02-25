@@ -21,8 +21,14 @@ if (isset($logout))
     ?>
 </head>
 <body>
-<?php
-include 'includes/login-form.php';
-?>
+<section>
+    <div class="row">
+        <div class="large-12 columns">
+            <?php
+            include 'includes/login-form.php';
+            ?>
+        </div>
+    </div>
+</section>
 </body>
 </html>

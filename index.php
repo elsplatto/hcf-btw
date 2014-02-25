@@ -55,7 +55,7 @@ include 'includes/nav.php';
                             <div class="tweetCred">
                                 <a href="http://twitter.com/<?=$tweet->user->name?>" target="_blank" rel="nofollow">@<?=$tweet->user->name?></a>
 
-                                <a href="https://twitter.com/share?url=<?=$baseURL?>/&text=Living like a local&hashtag=beyondthewharf&count=none" class="twitter-share-button right marginTop3    " data-lang="en">Tweet</a>
+                                <a href="https://twitter.com/share?url=<?=$baseURL?>/&text=Living like a local&hashtag=beyondthewharf&count=none" class="twitter-share-button right marginTop3" data-lang="en">Tweet</a>
                                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                             </div>
                         </div>
@@ -113,20 +113,20 @@ include 'includes/nav.php';
         <div class="large-12 columns">
 
             <div class="large-6 themedPromoText standardDarkGrey left">
-                <span>The Mariner</span>
-                <h3 class="block">Sydney Harbour History</h3>
-                <a href="<?=$baseURL?>/page/sydney-harbour-history" class="button wire white">Read the Article</a>
+                <span>The Child at Heart</span>
+                <h3 class="block">Family Fun on Sydney Harbour</h3>
                 <p>
-                    Our harbour history told by Andrew Callager. A tale of explorers, settlers, invaders, soldiers, merchant ships, pirates and stowaways.
+                    Ferries reveal all those family-friendly places around Sydney that you don’t find in a <br />guide book.
                 </p>
-                <img src="img/themedPromos/profile.jpg" class="profile" alt="Picture of Andrew Callager." />
-                <p>Andrew Callager</p>
-                <span class="purple">Master Sailor, Queenscliff</span>
+                <img src="img/themedPromos/profile.jpg" class="profile" alt="Picture of man and child." />
+                <p>Mark Champley</p>
+                <span class="purple">Customer Experience Manager &amp; father of nine</span>
             </div>
             <div class="large-6 themedPromoImage">
-                <img src="img/themedPromos/sailor.jpg" alt="Image of salty old captain." />
+                <img src="img/themedPromos/mark_c.jpg" alt="Picture of family." />
                 <div class="large-6 themedPromoOverlay">
-                    <a href="#" class="button red play tungsten small">Watch the video</a>
+                    <!--a href="#" class="button red play tungsten small">Watch the video</a-->
+                    <a href="<?=$baseURL?>/page/child-at-heart" class="button wire white">Hear Mark's Story</a>
                 </div>
             </div>
         </div>

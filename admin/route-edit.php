@@ -375,7 +375,7 @@ foreach ($routes as $route)
                     }
                 });
             }
-        })
+        });
 
 
         $('.mapTiles .tileList li').on('click', function(e) {
@@ -394,7 +394,7 @@ foreach ($routes as $route)
                 $(this).attr('data-map-tile-selected','');
                 action = 'add';
             }
-            //console.log('action['+action+']route_id['+route_id+']tile_id['+tile_id+']');
+
             $.ajax({
                 type: 'POST',
                 url: 'add-delete-route-map-tile.php',
@@ -441,7 +441,6 @@ foreach ($routes as $route)
         $('.pageTiles .tileList').sortable({
             containment: 'parent',
             update: function (event, ui) {
-                //console.log('here');
                 var isSelected = ui.item.context.dataset.hasOwnProperty('routeTileSelected');
                 if (isSelected)
                 {

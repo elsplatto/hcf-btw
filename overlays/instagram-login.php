@@ -6,6 +6,15 @@ require '../includes/instagram.config.php';
 
 $device = new Mobile_Detect;
 $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
+if (isset($_GET['call_page']))
+{
+    $callPage = $_GET['call_page'];
+}
+else
+{
+    $callPage = 'index.php';
+}
+//echo '['.$callPage.']';
 ?>
 <div id="instagramLoginModal" class="white">
     <h3>Instagram Login</h3>
