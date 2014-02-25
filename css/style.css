@@ -773,6 +773,10 @@ div.white, section.white {
       font-family: "Inconsolata", sans-serif !important;
       font-size: 0.938rem; }
 
+.eventTileHolder h3 {
+  margin-bottom: -1rem;
+  margin-top: 1.5rem; }
+
 .moreArticles .tile {
   margin-top: 0rem;
   margin-bottom: 2.5rem; }
@@ -1386,13 +1390,19 @@ footer .standard {
   .panelFlyout p {
     color: white;
     font-weight: 400 !important; }
+    .panelFlyout p a {
+      font-family: inherit !important;
+      font-size: inherit !important;
+      color: white !important;
+      text-decoration: underline;
+      text-transform: lowercase; }
     .panelFlyout p .purple {
       font-family: inherit !important;
       font-size: inherit; }
       .panelFlyout p .purple a {
         font-family: inherit !important;
         font-size: inherit !important;
-        color: inherit !important;
+        color: white !important;
         text-decoration: underline;
         text-transform: lowercase; }
   .panelFlyout .map + p, .panelFlyout .address {

@@ -1,5 +1,4 @@
 <?php
-$device = new Mobile_Detect;
 
 $baseURL = '';
 if ($_SERVER['SERVER_NAME'] == 'localhost')

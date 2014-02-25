@@ -1,5 +1,6 @@
 <?php
 include '../includes/db.php';
+include '../includes/site-settings.php';
 
 $locationId = $_GET['id'];
 $relPath = $_GET['relPath'];
@@ -8,7 +9,7 @@ if (isset($locationId))
 {
     $query = 'SELECT tiles.title, tiles.image_med, tiles.alt, tiles.sub_heading, tiles.intro_text, ';
     $query .= 'tiles.lat, tiles.lng, tiles.trip_plan, tiles.address_text, ';
-    $query .= 'categories.title AS category_title, types.title AS type_title, categories.map_icon FROM tiles ';
+    $query .= 'categories.title AS category_title, types.title AS type_title, categories.map_icon, tiles.start_date, tiles.end_date, tiles.cost FROM tiles ';
     $query .= 'JOIN types ON tiles.type_id = types.id ';
     $query .= 'LEFT OUTER JOIN categories ON tiles.category_id = categories.id ';
     $query .= 'WHERE tiles.id = ?';
@@ -19,7 +20,7 @@ if (isset($locationId))
 
     $stmt->execute();
 
-    $numRows = count($stmt->bind_result($title, $image_med, $alt, $sub_heading, $intro_text, $lat, $lng, $trip_plan, $address_text, $category_title, $type_title, $map_icon));
+    $numRows = count($stmt->bind_result($title, $image_med, $alt, $sub_heading, $intro_text, $lat, $lng, $trip_plan, $address_text, $category_title, $type_title, $map_icon, $start_date, $end_date, $cost));
 
     $json = array();
     if ($numRows > 0)
@@ -39,8 +40,16 @@ if (isset($locationId))
                 <span><?=ucwords($category_title)?></span>
                 <h3><?=$title?></h3>
                 <?=stripcslashes($intro_text)?>
-
-
+                <?php
+                if ($type_title == 'events')
+                {
+                ?>
+                    <h4>Event Details</h4>
+                    <p><strong>Dates: </strong> <?=date('d-F-Y H:i',$start_date)?> - <?=date('d-F-Y H:i',$end_date)?></p>
+                    <p><strong>Cost: </strong> <?echo $cost>0? '$'.sprintf("%0.2f",round($cost,2)): 'Free'?></p>
+                <?php
+                }
+                ?>
             </div>
             <div class="large-12 standardDarkGrey paddingBottom20">
                 <div class="large-7 columns left"><img src="<?=$relPath?>img/locations/medium/<?=$image_med?>" alt="<?=$alt?>"></div>
@@ -80,7 +89,7 @@ if (isset($locationId))
                 var flyoutLatLng = new google.maps.LatLng(<?=$lat?>,<?=$lng?>);
                 var flyoutMarker = new google.maps.Marker({
                 position: flyoutLatLng,
-                icon: '<?=$relPath?>img/<?=$map_icon?>',
+                icon: '<?=$baseURL?>/img/secretsMarker.png',
                 map: map,
                 id: 'flyoutMarker'
                 });

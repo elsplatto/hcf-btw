@@ -270,6 +270,7 @@ foreach ($tiles as $tile)
                 <textarea id="txtContent" name="txtContent" cols="100" rows="5"><?=stripcslashes(stripcslashes($tile['content']))?></textarea>
 
                 <label for="txtAddressText">Address Text:</label>
+                <a href="#" class="insertTag" data-tag="address" data-target="txtAddressText">Insert Address HTML Template</a>
                 <textarea id="txtAddressText" name="txtAddressText" cols="100" rows="5"><?=stripcslashes(stripcslashes($tile['address_text']))?></textarea>
 
                 <label for="txtTags">Tags:</label>
@@ -328,6 +329,25 @@ foreach ($tiles as $tile)
     }
 
     $(function(){
+
+        $('.insertTag').click(function(e) {
+            e.preventDefault();
+            var target = $('#' + $(this).attr('data-target'));
+            var tag = $(this).attr('data-tag');
+            var tagHTML = '';
+            switch(tag){
+                case 'address':
+                    tagHTML = '<p>\n';
+                    tagHTML += '<strong>Address:<\/strong><br \/>\nAddress 1\n<br \/>\nCity/Suburb\n<br \/>\nNSW ####\n<br \/>';
+                    tagHTML += '<strong>Phone:<\/strong>+61 (02) #### ####\n<br \/>\n';
+                    tagHTML += '<strong>Website:<\/strong> <a href="http:\/\/www" target="_blank" rel="nofollow">www<\/a>\n<\/p>';
+                    break;
+
+            }
+
+            target.val(target.val() + tagHTML);
+        });
+
         $('.useMap').click(function(e) {
             e.preventDefault();
             var target = $('#' + $(this).attr('data-target'));

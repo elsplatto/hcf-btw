@@ -8,7 +8,7 @@ if (isset($locationId))
 {
     $query = 'SELECT tiles.title, tiles.image_med, tiles.alt, tiles.sub_heading, tiles.intro_text, ';
     $query .= 'tiles.lat, tiles.lng, tiles.trip_plan, tiles.address_text, ';
-    $query .= 'categories.title AS category_title, types.title AS type_title, categories.map_icon FROM tiles ';
+    $query .= 'categories.title AS category_title, types.title AS type_title, categories.map_icon, tiles.start_date, tiles.end_date, tiles.cost FROM tiles ';
     $query .= 'JOIN types ON tiles.type_id = types.id ';
     $query .= 'LEFT OUTER JOIN categories ON tiles.category_id = categories.id ';
     $query .= 'WHERE tiles.id = ?';
@@ -19,7 +19,7 @@ if (isset($locationId))
 
     $stmt->execute();
 
-    $numRows = count($stmt->bind_result($title, $image_med, $alt, $sub_heading, $intro_text, $lat, $lng, $trip_plan, $address_text, $category_title, $type_title, $map_icon));
+    $numRows = count($stmt->bind_result($title, $image_med, $alt, $sub_heading, $intro_text, $lat, $lng, $trip_plan, $address_text, $category_title, $type_title, $map_icon, $start_date, $end_date, $cost));
 
     $json = array();
     if ($numRows > 0)
@@ -38,6 +38,9 @@ if (isset($locationId))
             $json['category_title'] = $category_title;
             $json['type_title'] = $type_title;
             $json['map_icon'] = $map_icon;
+            $json['start_date'] = $start_date;
+            $json['end_date'] = $end_date;
+            $json['cost'] = $cost;
         }
     }
     else
