@@ -10,9 +10,35 @@ include 'includes/head.php';
 <?php
 include 'includes/nav.php';
 ?>
-<section class="featureImgHolder marginBottomStandard">
-    <img src="img/featureImages/harbourPano-2.jpg" />
+<section class="featureImgHolder marginBottomStandard"> <?php
+    if (!$device->isMobile())
+    {
+    ?>
+    <ul id="featureImageCarousel" data-orbit data-options="animation: slide;timer_speed: 10000; swipe: true;
+                    pause_on_hover: false;
+                    animation_speed: 500;
+                    navigation_arrows: true;
+                    bullets: false;
+                    slide_number: false">
+        <li>
+            <img src="img/featureImages/sunset.jpg" />
+        </li>
+        <li>
+            <img src="img/featureImages/ferries.jpg" />
+        </li>
+        <li>
+            <img src="img/featureImages/manlyAerial.jpg" />
+        </li>
+        <li>
+            <img src="img/featureImages/bridgeSunset.jpg" />
+        </li>
+
+    </ul>
+    <?php
+    }
+    ?>
     <div class="headerHolder">
+
         <h2 class="sub">Secrets</h2>
         <h2>Beyond the Wharf</h2>
         <hr />
@@ -35,9 +61,14 @@ include 'includes/nav.php';
     </div>
     <section class="promoHolder">
         <div class="row">
-            <div class="large-12">
-                <div class="large-3 tweetSlider">
-                    <ul data-orbit>
+            <div class="large-12 small-12">
+                <div class="large-3 small-3 tweetSlider">
+                    <ul id="tweetList" data-orbit data-options="animation: slide; timer_speed: 10000;
+                    pause_on_hover: false;
+                    animation_speed: 500;
+                    navigation_arrows: false;
+                    bullets: false;
+                    slide_number: false">
                     <?php
                     $tweetCount = 0;
                     $tweetMax = 3;
@@ -45,7 +76,7 @@ include 'includes/nav.php';
                     {
                     $tweetText = $tweet->text;
                     ?>
-                    <li class="large-3 columns">
+                    <li class="large-3 small-3 columns">
                         <div class="tile">
 
 
@@ -71,7 +102,7 @@ include 'includes/nav.php';
                     </ul>
                 </div>
 
-                <div class="large-3 columns">
+                <div class="large-3 small-3 columns">
                     <div class="imgHolder">
                         <a href="#"><img src="img/promoImages/promo1.jpg" alt="Image of fireworks over Sydney Opera House on New Years Eve" /></a>
                     </div>
@@ -81,7 +112,7 @@ include 'includes/nav.php';
                     </div>
                 </div>
 
-                <div class="large-3 columns">
+                <div class="large-3 small-3 columns">
                     <div class="imgHolder">
                         <a href="#"><img src="img/promoImages/promo2.jpg" alt="Image of Musicians" /></a>
                     </div>
@@ -91,7 +122,7 @@ include 'includes/nav.php';
                     </div>
                 </div>
 
-                <div class="large-3 columns">
+                <div class="large-3 small-3 columns">
                     <div class="imgHolder">
                         <a href="#"><img src="img/promoImages/promo3.jpg" alt="" /></a>
                     </div>
@@ -110,9 +141,9 @@ include 'includes/nav.php';
 <section class="themeFeature">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Explore our harbour through the eyes of locals</h3>
-        <div class="large-12 columns">
+        <div class="large-12 small-12 columns">
 
-            <div class="large-6 themedPromoText standardDarkGrey left">
+            <div class="large-6 small-6 themedPromoText standardDarkGrey left">
                 <span>The Child at Heart</span>
                 <h3 class="block">Family Fun on Sydney Harbour</h3>
                 <p>
@@ -122,9 +153,9 @@ include 'includes/nav.php';
                 <p>Mark Champley</p>
                 <span class="purple">Customer Experience Manager &amp; father of nine</span>
             </div>
-            <div class="large-6 themedPromoImage">
+            <div class="large-6 small-6 themedPromoImage">
                 <img src="img/themedPromos/mark_c.jpg" alt="Picture of family." />
-                <div class="large-6 themedPromoOverlay">
+                <div class="large-6 small-6 themedPromoOverlay">
                     <!--a href="#" class="button red play tungsten small">Watch the video</a-->
                     <a href="<?=$baseURL?>/page/child-at-heart" class="button wire white">Hear Mark's Story</a>
                 </div>
@@ -181,19 +212,30 @@ include 'includes/map-code.php';
 <script src="js/foundation/foundation.orbit.js"></script>
 
 <script>
-$(document).foundation({
-    orbit: {
-        animation: 'slide', // Sets the type of animation used for transitioning between slides, can also be 'fade'
-        timer_speed: 10000 ,
-        pause_on_hover: false,
-        animation_speed: 500,
-        navigation_arrows: false,
-        bullets: false,
-        slide_number: false
-    }
-});
+
 
 $(function() {
+
+    $(document).foundation('orbit');
+    //loadHomeImages();
+
+    function loadHomeImages()
+    {
+        var imgHTML = '';
+        imgHTML += '<li>';
+        imgHTML += '<img src="img/featureImages/sunset.jpg" />';
+        imgHTML += '</li>';
+        imgHTML += '<li>';
+        imgHTML += '<img src="img/featureImages/manlyAerial.jpg" />';
+        imgHTML += '</li>';
+        imgHTML += '<li>';
+        imgHTML += '<img src="img/featureImages/ferries.jpg" />';
+        imgHTML += '</li>';
+
+        $(imgHTML).appendTo('#featureImageCarousel');
+
+        $(document).foundation('orbit');
+    }
 
 
     if ($('#creditToggle').length > 0)

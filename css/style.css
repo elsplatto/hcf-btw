@@ -13,6 +13,9 @@
 a:hover {
   text-decoration: underline; }
 
+.orbit-container .orbit-prev, .orbit-container .orbit-next {
+  z-index: 50 !important; }
+
 /* End - Override classes */
 /* Start - Social icon classes */
 .social {
@@ -484,6 +487,15 @@ div.white, section.white {
       text-transform: inherit !important; }
 
 /*Start - Feature Area */
+#featureImageCarousel {
+  width: 100%;
+  display: inline-block;
+  list-style: none;
+  margin: 0 !important; }
+  #featureImageCarousel li {
+    float: left;
+    width: 100%; }
+
 .featureImgHolder {
   position: relative;
   width: 100%;
@@ -655,7 +667,8 @@ div.white, section.white {
     left: 0;
     width: 100%;
     padding: 1.25rem 0;
-    background-color: rgba(39, 46, 53, 0.75); }
+    background-color: rgba(39, 46, 53, 0.75);
+    z-index: 200; }
     .featureImgHolder .promoHolder .large-3 {
       float: left;
       position: relative;
@@ -761,7 +774,7 @@ div.white, section.white {
     background-color: #59acb3;
     color: white;
     height: 11.25rem;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
     font-family: "adobe-garamond-pro", sans-serif !important;
     font-style: italic;
     font-size: 1.2rem;
@@ -857,12 +870,12 @@ div.white, section.white {
   background-repeat: no-repeat; }
 
 .routeHeaderHolder.parramatta {
-  background-image: url("img/manlyRoute.jpg");
+  background-image: url("img/parramattaRoute.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
 
 .routeHeaderHolder.mosman {
-  background-image: url("img/manlyRoute.jpg");
+  background-image: url("img/mosmanRoute.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
 
@@ -872,12 +885,12 @@ div.white, section.white {
   background-repeat: no-repeat; }
 
 .routeHeaderHolder.darling {
-  background-image: url("img/manlyRoute.jpg");
+  background-image: url("img/darlingRoute.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
 
 .routeHeaderHolder.neutral {
-  background-image: url("img/manlyRoute.jpg");
+  background-image: url("img/neutralRoute.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
 
@@ -1560,3 +1573,53 @@ footer .standard {
 .paddingTopBottom60 {
   padding-top: 5rem !important;
   padding-bottom: 5rem !important; }
+
+@media only screen and (max-width: 74.938em) {
+  html, body {
+    font-size: 81.3% !important; }
+
+  #navHolder nav.top-bar .title-area .name h1 a:before {
+    width: 5.846rem;
+    height: 44.692rem;
+    background-position: -924px -149px; }
+  #navHolder nav.top-bar .top-bar-section ul li a {
+    line-height: 1.2rem;
+    font-size: 1.2rem;
+    line-height: 2.692rem; }
+  #navHolder nav.top-bar .top-bar-section.second ul li {
+    line-height: 1rem;
+    font-size: 1rem; }
+    #navHolder nav.top-bar .top-bar-section.second ul li a {
+      line-height: 1rem;
+      font-size: 1rem; } }
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+  html, body {
+    font-size: 81.3% !important; }
+
+  #navHolder nav.top-bar .title-area .name h1 a:before {
+    width: 5.846rem;
+    height: 44.692rem;
+    background-position: -924px -149px; }
+
+  .featureImgHolder .triggerContainer {
+    top: 25%; }
+    .featureImgHolder .triggerContainer .flip-container .flipper .cameraIcon:before, .featureImgHolder .triggerContainer .flip-container .flipper .closeIcon:before {
+      width: 1.88rem;
+      height: 1.85rem; }
+  .featureImgHolder .creditPanel {
+    top: 25%; }
+
+  .panelFlyout .flyoutPanelClose:before {
+    top: 0.3rem;
+    left: 0.3rem;
+    width: 2rem;
+    height: 1.75rem; }
+
+  #mapControlPanel:after {
+    width: 10.3rem;
+    height: 9.8rem; } }
+@media only screen and (max-width: 40em) {
+  .promoHolder .row .small-3 {
+    display: none; }
+  .promoHolder .row .small-3.tweetSlider {
+    display: block !important; } }

@@ -50,7 +50,7 @@ $routeNavPages = getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABAS
 ?>
 <section id="navHolder" class="navHolder">
     <div class="row">
-        <div class="large-12 columns">
+        <div class="large-12 medium-12 small-12 columns">
             <nav class="top-bar" data-topbar>
                 <ul class="title-area">
                     <li class="name">

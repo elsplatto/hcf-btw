@@ -35,7 +35,7 @@ if (isset($locationId))
 
 
         ?>
-            <div class="large-12 columns standardDarkGrey paddingTop20">
+            <div class="large-12 medium-12 small-12 columns standardDarkGrey paddingTop20">
                 <a href="#" class="flyoutPanelClose">Close panel</a>
                 <span><?=ucwords($category_title)?></span>
                 <h3><?=$title?></h3>
@@ -51,9 +51,9 @@ if (isset($locationId))
                 }
                 ?>
             </div>
-            <div class="large-12 standardDarkGrey paddingBottom20">
-                <div class="large-7 columns left"><img src="<?=$relPath?>img/locations/medium/<?=$image_med?>" alt="<?=$alt?>"></div>
-                <div class="large-5 columns left">
+            <div class="large-12 medium-12 small-12 standardDarkGrey paddingBottom20">
+                <div class="large-7 small-7 columns left"><img src="<?=$relPath?>img/locations/medium/<?=$image_med?>" alt="<?=$alt?>"></div>
+                <div class="large-5 small-5 columns left">
                     <div id="flyoutMap" class="map"></div>
 
                     <?=stripcslashes($address_text)?>
@@ -64,8 +64,8 @@ if (isset($locationId))
             if (!is_null($trip_plan) && strlen(trim($trip_plan)) > 0)
             {
             ?>
-            <div class="large-12 columns standardDarkGrey">
-                <div class="ferryInfo large-12 columns ultraDarkGrey">
+            <div class="large-12 medium-12 small-12 columns standardDarkGrey">
+                <div class="ferryInfo large-12 medium-12 small-12 columns ultraDarkGrey">
                     <h4>Ferry Information</h4>
                     <?=stripcslashes($trip_plan)?>
                 </div>
@@ -100,7 +100,7 @@ if (isset($locationId))
     else
     {
         ?>
-        <div class="large-12 columns standardDarkGrey paddingTopBottom20">
+        <div class="large-12 medium-12 small-12 columns standardDarkGrey paddingTopBottom20">
         <a href="#" class="flyoutPanelClose">Close panel</a>
         <h4>Whoops... we appear to have an issue</h4>
         </div>

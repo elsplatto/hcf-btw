@@ -11,6 +11,9 @@ require 'twitter.config.php';
 include 'site-settings.php';
 
 $twitterResults = $twitter->search('#beyondthewharf'); //homepage only page with twitter feed at this point - move to site-settings.php if more prolific
+
+
+$device = new Mobile_Detect;
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
