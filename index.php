@@ -275,7 +275,7 @@ $(function() {
         <?php
         if ($deviceType != 'phone')
         {
-            echo 'var folder = \'phone/\'';
+            echo 'var folder = \'\'';
         }
         else
         {
