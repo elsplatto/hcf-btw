@@ -16,7 +16,7 @@ if (isset($instagramData))
 
 <div class="row marginTop20">
     <div class="large-12 columns">
-        <h3 class="text-center" style="margin-bottom: -0.5rem">Shot of the day</h3>
+        <h3 class="text-center" style="margin-bottom: -0.5rem">Gallery</h3>
         <?php
         /*if (isset($instagramData))
         {
@@ -45,7 +45,8 @@ if (isset($token))
 {
     $tokenSet = true;
 }
-else{
+else
+{
     $tokenSet = false;
 }
 
@@ -105,7 +106,7 @@ if ($shotOfTheDayResults->meta->code == 200)
     }
     ?>
 
-    <div class="small-6 large-6 columns">
+    <div class="small-12 large-6 columns">
         <div class="large-12 small-12 insta">
             <img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" />
             <a href="<?=$instagramCommentURL?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"><span><?=$shotOfTheDayResults->data->comments->count?></span></a>
@@ -181,7 +182,7 @@ if ($instagramResults->meta->code == 200)
         }
         ?>
 
-        <div class="small-3 large-3 columns">
+        <div class="small-6 large-3 columns">
             <div class="small-12 large-12 insta">
                 <img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" />
                 <a href="<?=$instagramCommentURL?>?media_id=<?=$post->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>" role="button"><span><?=$post->comments->count?></span></a>

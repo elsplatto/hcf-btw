@@ -370,6 +370,7 @@ div.white, section.white
             height: 4.688rem
             display: block
             text-indent: -100000px
+            overflow: hidden
             &:before
               position: absolute
               content: ''
@@ -575,7 +576,6 @@ div.white, section.white
   position: relative
   width: 100%
   display: inline-block
-  position: relative
   height: auto
   overflow: hidden
   img
@@ -1073,6 +1073,7 @@ div.white, section.white
   &:hover
     background-color: $std-dark-grey-background
     color: rgba(255, 255, 255, 1)
+    text-decoration: none
 
 #mapControlPanel
   &:after
@@ -1762,6 +1763,7 @@ footer
         .name
           h1
             a
+              overflow: hidden
               &:before
                 width: 5.846rem
                 height: 44.692rem
@@ -1796,8 +1798,66 @@ footer
 
 @media only screen and (max-width: 40em)
   .promoHolder
+    position: relative !important
+    bottom: 0.2rem !important
     .row
       .small-3
         display: none
       .small-3.tweetSlider
-        display: block !important
+        display: inline-block !important
+        width: 100%
+        .small-3
+          display: inline-block
+
+    .tile
+      .tweetText
+        font-size: 1.5rem
+        line-height: 1.95rem
+
+  .featureImgHolder
+    //margin-top: 5.5rem
+    min-height: 30rem
+    #creditToggle
+      display: none
+    .headerHolder
+      //position: relative !important
+      top: 0
+      h2.sub
+        font-size: 1.7rem
+        margin-top: 4.5rem
+        line-height: 0.5rem
+      h2
+        font-size: 3rem
+        line-height: 3.5rem
+        margin-top: 0.25rem
+      h3
+        font-size: 1.2rem
+      hr
+        width: 10.462rem
+        height: 0.769rem
+        margin: 0.5rem auto
+        &:after
+          width: 10.462rem
+          height: 0.769rem
+          background-position: -82px -71px
+
+  #navHolder
+    height: 3.25rem
+    nav.top-bar
+      .title-area
+        .name
+          height: 4rem
+          h1
+            width: 3.538rem
+            height: 3rem
+            a
+              width: 3.538rem
+              height: 3rem
+              overflow: hidden
+              &:before
+                width: 3.538rem
+                height: 3rem
+                background-position: -954px -217px
+
+  .marginBottomStandard
+    margin-bottom: 0.25rem !important

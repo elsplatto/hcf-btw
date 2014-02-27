@@ -327,7 +327,8 @@ div.white, section.white {
         width: 6.063rem;
         height: 4.688rem;
         display: block;
-        text-indent: -100000px; }
+        text-indent: -100000px;
+        overflow: hidden; }
         .navHolder nav.top-bar .title-area .name h1 a:before {
           position: absolute;
           content: "";
@@ -500,7 +501,6 @@ div.white, section.white {
   position: relative;
   width: 100%;
   display: inline-block;
-  position: relative;
   height: auto;
   overflow: hidden; }
   .featureImgHolder img {
@@ -970,7 +970,8 @@ div.white, section.white {
   text-align: center; }
   .toggleControlPanel:hover {
     background-color: #272e35;
-    color: white; }
+    color: white;
+    text-decoration: none; }
 
 #mapControlPanel:after {
   content: "";
@@ -1596,10 +1597,12 @@ footer .standard {
   html, body {
     font-size: 81.3% !important; }
 
-  #navHolder nav.top-bar .title-area .name h1 a:before {
-    width: 5.846rem;
-    height: 44.692rem;
-    background-position: -924px -149px; }
+  #navHolder nav.top-bar .title-area .name h1 a {
+    overflow: hidden; }
+    #navHolder nav.top-bar .title-area .name h1 a:before {
+      width: 5.846rem;
+      height: 44.692rem;
+      background-position: -924px -149px; }
 
   .featureImgHolder .triggerContainer {
     top: 25%; }
@@ -1619,7 +1622,60 @@ footer .standard {
     width: 10.3rem;
     height: 9.8rem; } }
 @media only screen and (max-width: 40em) {
-  .promoHolder .row .small-3 {
-    display: none; }
-  .promoHolder .row .small-3.tweetSlider {
-    display: block !important; } }
+  .promoHolder {
+    position: relative !important;
+    bottom: 0.2rem !important; }
+    .promoHolder .row .small-3 {
+      display: none; }
+    .promoHolder .row .small-3.tweetSlider {
+      display: inline-block !important;
+      width: 100%; }
+      .promoHolder .row .small-3.tweetSlider .small-3 {
+        display: inline-block; }
+    .promoHolder .tile .tweetText {
+      font-size: 1.5rem;
+      line-height: 1.95rem; }
+
+  .featureImgHolder {
+    min-height: 30rem; }
+    .featureImgHolder #creditToggle {
+      display: none; }
+    .featureImgHolder .headerHolder {
+      top: 0; }
+      .featureImgHolder .headerHolder h2.sub {
+        font-size: 1.7rem;
+        margin-top: 4.5rem;
+        line-height: 0.5rem; }
+      .featureImgHolder .headerHolder h2 {
+        font-size: 3rem;
+        line-height: 3.5rem;
+        margin-top: 0.25rem; }
+      .featureImgHolder .headerHolder h3 {
+        font-size: 1.2rem; }
+      .featureImgHolder .headerHolder hr {
+        width: 10.462rem;
+        height: 0.769rem;
+        margin: 0.5rem auto; }
+        .featureImgHolder .headerHolder hr:after {
+          width: 10.462rem;
+          height: 0.769rem;
+          background-position: -82px -71px; }
+
+  #navHolder {
+    height: 3.25rem; }
+    #navHolder nav.top-bar .title-area .name {
+      height: 4rem; }
+      #navHolder nav.top-bar .title-area .name h1 {
+        width: 3.538rem;
+        height: 3rem; }
+        #navHolder nav.top-bar .title-area .name h1 a {
+          width: 3.538rem;
+          height: 3rem;
+          overflow: hidden; }
+          #navHolder nav.top-bar .title-area .name h1 a:before {
+            width: 3.538rem;
+            height: 3rem;
+            background-position: -954px -217px; }
+
+  .marginBottomStandard {
+    margin-bottom: 0.25rem !important; } }

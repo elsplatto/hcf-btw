@@ -5,32 +5,42 @@ $pageMetaDesc = "Beyond the Wharf provides local and international insights to S
 include 'includes/head.php';
 /*global includes in head.php*/
 
+$deviceType = ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'computer');
+
 ?>
 <body>
 <?php
 include 'includes/nav.php';
 ?>
-<section class="featureImgHolder marginBottomStandard"> <?php
-    if (!$device->isMobile())
+<section class="featureImgHolder marginBottomStandard">
+    <?php
+    if ($deviceType != 'phone')
     {
     ?>
-    <ul id="featureImageCarousel" data-orbit data-options="animation: slide;timer_speed: 10000; swipe: true;
+    <ul id="featureImageCarousel" data-orbit data-options="animation: slide;timer_speed: 15000; swipe: true;
                     pause_on_hover: false;
                     animation_speed: 500;
                     navigation_arrows: true;
                     bullets: false;
-                    slide_number: false">
+                    slide_number: false;">
         <li>
-            <img src="img/featureImages/sunset.jpg" />
+            <img src="img/featureImages/sunset.jpg" data-latlng="33 47.877 S, 151 17.365 E" data-place="Manly Beach" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />
         </li>
+
+    </ul>
+    <?php
+    }
+    else
+    {
+        ?>
+        <ul id="featureImageCarousel" data-orbit data-options="animation: slide;timer_speed: 15000; swipe: true;
+                    pause_on_hover: false;
+                    animation_speed: 500;
+                    navigation_arrows: true;
+                    bullets: false;
+                    slide_number: false;">
         <li>
-            <img src="img/featureImages/ferries.jpg" />
-        </li>
-        <li>
-            <img src="img/featureImages/manlyAerial.jpg" />
-        </li>
-        <li>
-            <img src="img/featureImages/bridgeSunset.jpg" />
+            <img src="img/featureImages/phone/sunset.jpg" data-latlng="33 47.877 S, 151 17.365 E" data-place="Manly Beach" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />
         </li>
 
     </ul>
@@ -53,9 +63,9 @@ include 'includes/nav.php';
         </div>
     </a>
     <div id="featureCreditPanel" class="creditPanel">
-        <span class="latLng">33.8368 S, 151.2811 E</span>
-        <span class="location">MINER'S POINT</span>
-        <span class="routes darling">Darling Harbour</span>
+        <span class="latLng">33 47.877 S, 151 17.365 E</span>
+        <span class="location">MANLY BEACH</span>
+        <span class="routes manly">Manly</span>
         <span class="credit">Photo by Joel Coleman</span>
         <span><a href="<?=$baseURL?>/gallery#featuredPhotographer">View more</a></span>
     </div>
@@ -102,6 +112,11 @@ include 'includes/nav.php';
                     </ul>
                 </div>
 
+                <?php
+                if ($deviceType != 'phone')
+                {
+                ?>
+
                 <div class="large-3 small-3 columns">
                     <div class="imgHolder">
                         <a href="#"><img src="img/promoImages/promo1.jpg" alt="Image of fireworks over Sydney Opera House on New Years Eve" /></a>
@@ -131,13 +146,19 @@ include 'includes/nav.php';
                         <h5><a href="<?=$baseURL?>/itineraries">Sunday - Family Day</a></h5>
                     </div>
                 </div>
-
+                <?php
+                }
+                ?>
 
             </div>
         </div>
     </section>
 </section>
 
+<?php
+if ($deviceType != 'phone')
+{
+?>
 <section class="themeFeature">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Explore our harbour through the eyes of locals</h3>
@@ -195,6 +216,9 @@ include 'includes/nav.php';
       </div>
   </div>
 </section>
+<?php
+}
+?>
 
 <?php
 include 'includes/instagram-shot-of-the-day.php';
@@ -206,7 +230,10 @@ include 'includes/footer.php';
 $pageId = 1;
 include 'includes/global-js.php';
 include 'includes/instagram-js.php';
-include 'includes/map-code.php';
+if ($deviceType != 'phone')
+{
+    include 'includes/map-code.php';
+}
 ?>
 
 <script src="js/foundation/foundation.orbit.js"></script>
@@ -217,24 +244,57 @@ include 'includes/map-code.php';
 $(function() {
 
     $(document).foundation('orbit');
-    //loadHomeImages();
+
+    loadHomeImages();
+
+
+
+    $("#featureImageCarousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
+
+        var target = $('#featureImageCarousel li.active img');
+        var latlng = target.attr('data-latlng');
+        var place =  target.attr('data-place');
+        var route = target.attr('data-route');
+        var routeClass = target.attr('data-class');
+        var credit = target.attr('data-credit')
+
+        var creditHTML = '';
+        creditHTML += '<span class="latLng">'+latlng+'</span>';
+        creditHTML += '<span class="location">'+place+'</span>';
+        creditHTML += '<span class="routes '+routeClass+'">'+route+'</span>';
+        creditHTML += '<span class="credit">Photo by '+credit+'</span>';
+        creditHTML += '<span><a href="<?=$baseURL?>/gallery#featuredPhotographer">View more</a></span>';
+
+        $('#featureCreditPanel').html(creditHTML);
+
+    });
 
     function loadHomeImages()
     {
+
+        <?php
+        if ($deviceType != 'phone')
+        {
+            echo 'var folder = \'phone/\'';
+        }
+        else
+        {
+            echo 'var folder = \'phone/\'';
+        }
+        ?>
+
         var imgHTML = '';
         imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/sunset.jpg" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'bridgeSunset.jpg" data-latlng="33 50.682 S, 151 17.365 E" data-place="Watsons Bay" data-route="Eastern Suburbs" data-class="eastern" data-credit="Joel Coleman" />';
         imgHTML += '</li>';
         imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/manlyAerial.jpg" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'manlyAerial.jpg" data-latlng="33 47.877 S, 151 16.990 E" data-place="Manly Wharf" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
         imgHTML += '</li>';
         imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/ferries.jpg" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'ferries.jpg" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
         imgHTML += '</li>';
 
         $(imgHTML).appendTo('#featureImageCarousel');
-
-        $(document).foundation('orbit');
     }
 
 

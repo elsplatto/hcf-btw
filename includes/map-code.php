@@ -100,6 +100,9 @@ function initialize() {
     <?php
     $coordsJson = getJsonConents('json/routeCoords.json');
 
+
+    //var_dump($coordsJson);
+
     //get the route coordinates and create latlng objects in javascript
     prepRoutes($coordsJson);
     drawRoutes($coordsJson);
