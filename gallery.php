@@ -128,7 +128,7 @@ if (isset($instagramData))
         }
         ?>
 
-        <div class="small-6 large-6 columns right">
+        <div class="small-12 large-6 columns right">
             <div class="large-12 small-12 insta">
                 <img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" />
                 <a href="<?=$instagramCommentURL?>&media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"><span><?=$shotOfTheDayResults->data->comments->count?></span></a>
@@ -204,7 +204,7 @@ if (isset($instagramData))
             }
             ?>
 
-            <div class="small-3 large-3 columns">
+            <div class="small-6 large-3 columns">
                 <div class="small-12 large-12 insta">
                     <img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$post[$i]->caption->text?>" />
                     <a href="<?=$instagramCommentURL?>&media_id=<?=$post[$i]->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post[$i]->id?>" role="button"><span><?=$post[$i]->comments->count?></span></a>
@@ -271,7 +271,7 @@ if (isset($instagramData))
         </div>
 
 
-            <div class="small-6 large-6 columns left">
+            <div class="small-12 large-6 columns left">
                 <div class="large-12 small-12 insta">
                     <img src="<?=$baseURL?>/img/featuredPhotographer/medium/shelley-beach.jpg" alt="Ocean Scene" />
 
@@ -286,7 +286,7 @@ if (isset($instagramData))
 
 
 
-            <div class="small-3 large-3 columns">
+            <div class="small-6 large-3 columns">
                 <div class="small-12 large-12 insta">
                     <img src="<?=$baseURL?>/img/featuredPhotographer/small/surfboards.jpg" alt="Ocean Scene" />
                     <div class="infoContainer">
@@ -298,7 +298,7 @@ if (isset($instagramData))
                 </div>
             </div>
 
-            <div class="small-3 large-3 columns">
+            <div class="small-6 large-3 columns">
                 <div class="small-12 large-12 insta">
                     <img src="<?=$baseURL?>/img/featuredPhotographer/small/water1.jpg" alt="Ocean Scene" />
                     <div class="infoContainer">
@@ -312,7 +312,7 @@ if (isset($instagramData))
 
 
 
-            <div class="small-3 large-3 columns">
+            <div class="small-6 large-3 columns">
                 <div class="small-12 large-12 insta">
                     <img src="<?=$baseURL?>/img/featuredPhotographer/small/splash.jpg" alt="Ocean Scene" />
                     <div class="infoContainer">
@@ -326,7 +326,7 @@ if (isset($instagramData))
 
 
 
-            <div class="small-3 large-3 columns">
+            <div class="small-6 large-3 columns">
                 <div class="small-12 large-12 insta">
                     <img src="<?=$baseURL?>/img/featuredPhotographer/small/dolphin.jpg" alt="Ocean Scene" />
                     <div class="infoContainer">
@@ -388,7 +388,7 @@ if ($instagramResults->meta->code == 200)
         }
         ?>
 
-        <div class="small-3 large-3 columns">
+        <div class="small-6 large-3 columns">
             <div class="small-12 large-12 insta">
                 <img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$post[$i]->caption->text?>" />
                 <a href="<?=$instagramCommentURL?>?media_id=<?=$post[$i]->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post[$i]->id?>" role="button"><span><?=$post[$i]->comments->count?></span></a>

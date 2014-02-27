@@ -92,6 +92,16 @@ a:hover {
   .button.stdDarkGrey .social {
     margin-bottom: -0.1rem; }
 
+.button.stdGreen {
+  background-color: #30bda1;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.938rem; }
+  .button.stdGreen:hover {
+    background-color: #269d85; }
+  .button.stdGreen .social {
+    margin-bottom: -0.1rem; }
+
 .button.red {
   background-color: #c0565a;
   color: white; }
@@ -310,7 +320,7 @@ div.white, section.white {
   background-color: rgba(39, 46, 53, 0.75);
   height: 6.25rem;
   position: fixed;
-  z-index: 100;
+  z-index: 400;
   top: 0; }
   .navHolder nav.top-bar {
     position: relative;
@@ -318,7 +328,7 @@ div.white, section.white {
     .navHolder nav.top-bar .title-area .name h1 {
       margin: 0.75rem 0.25rem 0.75rem 0;
       width: 6.063rem;
-      height: atuo;
+      height: auto;
       float: left;
       display: block;
       float: left; }
@@ -502,7 +512,8 @@ div.white, section.white {
   width: 100%;
   display: inline-block;
   height: auto;
-  overflow: hidden; }
+  overflow: hidden;
+  min-height: 43.077rem; }
   .featureImgHolder img {
     width: 100%;
     text-align: center; }
@@ -1620,7 +1631,32 @@ footer .standard {
 
   #mapControlPanel:after {
     width: 10.3rem;
-    height: 9.8rem; } }
+    height: 9.8rem; }
+
+  #photoHolder01 div a.comments, #photoHolder01 div a.likes, #photoHolder2 div a.comments, #photoHolder2 div a.likes, .galleryHolder div a.comments, .galleryHolder div a.likes {
+    padding: 0.5rem 0 0 0; }
+    #photoHolder01 div a.comments span, #photoHolder01 div a.likes span, #photoHolder2 div a.comments span, #photoHolder2 div a.likes span, .galleryHolder div a.comments span, .galleryHolder div a.likes span {
+      font-size: 1.15rem; }
+  #photoHolder01 div a.comments, #photoHolder2 div a.comments, .galleryHolder div a.comments {
+    right: 0.6em;
+    width: 2.5rem;
+    height: 2.5rem; }
+    #photoHolder01 div a.comments:before, #photoHolder2 div a.comments:before, .galleryHolder div a.comments:before {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-position: 0 0; }
+    #photoHolder01 div a.comments:hover:before, #photoHolder2 div a.comments:hover:before, .galleryHolder div a.comments:hover:before {
+      background-position: -42px 0; }
+  #photoHolder01 div a.likes, #photoHolder2 div a.likes, .galleryHolder div a.likes {
+    right: 3.5rem;
+    width: 2.5rem;
+    height: 2.5rem; }
+    #photoHolder01 div a.likes:before, #photoHolder2 div a.likes:before, .galleryHolder div a.likes:before {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-position: 0 -33px; }
+    #photoHolder01 div a.likes:hover:before, #photoHolder2 div a.likes:hover:before, .galleryHolder div a.likes:hover:before {
+      background-position: -41px -33px; } }
 @media only screen and (max-width: 40em) {
   .promoHolder {
     position: relative !important;
@@ -1644,7 +1680,7 @@ footer .standard {
       top: 0; }
       .featureImgHolder .headerHolder h2.sub {
         font-size: 1.7rem;
-        margin-top: 4.5rem;
+        margin-top: 5.25rem;
         line-height: 0.5rem; }
       .featureImgHolder .headerHolder h2 {
         font-size: 3rem;
@@ -1661,21 +1697,52 @@ footer .standard {
           height: 0.769rem;
           background-position: -82px -71px; }
 
-  #navHolder {
-    height: 3.25rem; }
-    #navHolder nav.top-bar .title-area .name {
+  .navHolder {
+    height: 4.25rem; }
+    .navHolder nav.top-bar .title-area .name {
       height: 4rem; }
-      #navHolder nav.top-bar .title-area .name h1 {
+      .navHolder nav.top-bar .title-area .name h1 {
         width: 3.538rem;
-        height: 3rem; }
-        #navHolder nav.top-bar .title-area .name h1 a {
+        height: 2.846rem; }
+        .navHolder nav.top-bar .title-area .name h1 a {
           width: 3.538rem;
-          height: 3rem;
+          height: 2.846rem;
           overflow: hidden; }
-          #navHolder nav.top-bar .title-area .name h1 a:before {
+          .navHolder nav.top-bar .title-area .name h1 a:before {
             width: 3.538rem;
-            height: 3rem;
-            background-position: -954px -217px; }
+            height: 2.846rem;
+            background-position: -954px -217px !important; }
+
+  #photoHolder01 div a.comments, #photoHolder01 div a.likes, #photoHolder2 div a.comments, #photoHolder2 div a.likes, .galleryHolder div a.comments, .galleryHolder div a.likes {
+    padding: 0.5rem 0 0 0; }
+    #photoHolder01 div a.comments span, #photoHolder01 div a.likes span, #photoHolder2 div a.comments span, #photoHolder2 div a.likes span, .galleryHolder div a.comments span, .galleryHolder div a.likes span {
+      font-size: 1.15rem; }
+  #photoHolder01 div a.comments, #photoHolder2 div a.comments, .galleryHolder div a.comments {
+    right: 0.6em;
+    width: 2.5rem;
+    height: 2.5rem; }
+    #photoHolder01 div a.comments:before, #photoHolder2 div a.comments:before, .galleryHolder div a.comments:before {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-position: 0 0; }
+    #photoHolder01 div a.comments:hover:before, #photoHolder2 div a.comments:hover:before, .galleryHolder div a.comments:hover:before {
+      background-position: -42px 0; }
+  #photoHolder01 div a.likes, #photoHolder2 div a.likes, .galleryHolder div a.likes {
+    right: 3.5rem;
+    width: 2.5rem;
+    height: 2.5rem; }
+    #photoHolder01 div a.likes:before, #photoHolder2 div a.likes:before, .galleryHolder div a.likes:before {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-position: 0 -33px; }
+    #photoHolder01 div a.likes:hover:before, #photoHolder2 div a.likes:hover:before, .galleryHolder div a.likes:hover:before {
+      background-position: -41px -33px; }
+
+  .insta .infoContainer .inner, .eventFeature .infoContainer .inner {
+    padding: 0.75rem 1rem; }
+
+  .breadcrumbsHolder {
+    margin-top: 4.25rem !important; }
 
   .marginBottomStandard {
     margin-bottom: 0.25rem !important; } }

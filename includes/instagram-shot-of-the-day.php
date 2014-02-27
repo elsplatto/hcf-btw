@@ -106,8 +106,8 @@ if ($shotOfTheDayResults->meta->code == 200)
     }
     ?>
 
-    <div class="small-12 large-6 columns">
-        <div class="large-12 small-12 insta">
+    <div class="small-12 medium-6 large-6 columns">
+        <div class="large-12 medium-12 small-12 insta">
             <img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" />
             <a href="<?=$instagramCommentURL?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"><span><?=$shotOfTheDayResults->data->comments->count?></span></a>
             <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$shotOfTheDayResults->data->id?>" data-likesCount="<?=$shotOfTheDayResults->data->likes->count?>" data-displayCount><?=likeNumberFormatter($shotOfTheDayResults->data->likes->count)?></span></a>
@@ -182,7 +182,7 @@ if ($instagramResults->meta->code == 200)
         }
         ?>
 
-        <div class="small-6 large-3 columns">
+        <div class="small-6 medium-3 large-3 columns">
             <div class="small-12 large-12 insta">
                 <img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" />
                 <a href="<?=$instagramCommentURL?>?media_id=<?=$post->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>" role="button"><span><?=$post->comments->count?></span></a>
@@ -259,9 +259,30 @@ else {
             Share your experience
         </h3>
         <h4>Tag your instagram photos with <span class="tag">#beyondthewharf</span></h4>
-        <a href="#" class="button stdDarkGrey">Follow us on <span class="social instagram small"></span> Instagram</a>
+        <?php
+        if ($instagramUserLoggedIn)
+        {
+            $instagramFollowData = $instagram->getUserRelationship($btwInstagramID);
+            $instagramFollowStatus = $instagramFollowData->data->outgoing_status;
+
+            //echo '['.$instagramFollowStatus.']';
+
+            if ($instagramFollowStatus == 'none')
+            {
+                echo '<a href="'.$baseURL.'/services/instagram-follow-btw.php" class="button stdDarkGrey insta-follow">Follow us on <span class="social instagram small"></span> Instagram</a>';
+            }
+            else if ($instagramFollowStatus == 'follows')
+            {
+                echo '<a href="'.$baseURL.'/services/instagram-unfollow-btw.php" class="button stdGreen insta-unfollow"><span class="social instagram small"></span> Following</a>';
+            }
+        }
+        else{
+            echo '<a href="'.$baseURL.'/overlays/instagram-login.php" class="button stdDarkGrey reveal-init">Follow us on <span class="social instagram small"></span> Instagram</a>';
+        }
+        ?>
+
     </div>
 </div>
 </section>
 
-<!--javascript in global-js-->
+<!--javascript in instagram-js.php-->

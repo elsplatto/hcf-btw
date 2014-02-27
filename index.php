@@ -6,13 +6,19 @@ include 'includes/head.php';
 /*global includes in head.php*/
 
 $deviceType = ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'computer');
+$folder = '';
+
+if ($deviceType === 'phone')
+{
+    $folder = 'phone/';
+}
 
 ?>
 <body>
 <?php
 include 'includes/nav.php';
 ?>
-<section class="featureImgHolder marginBottomStandard">
+<section id="featureImgHolder" class="featureImgHolder marginBottomStandard">
     <?php
     if ($deviceType != 'phone')
     {
@@ -33,7 +39,7 @@ include 'includes/nav.php';
     else
     {
         ?>
-        <ul id="featureImageCarousel" data-orbit data-options="animation: slide;timer_speed: 15000; swipe: true;
+        <ul id="featureImageCarousel" data-orbit data-options="animation: slide;timer_speed: 15000; swipe: true; timer: false
                     pause_on_hover: false;
                     animation_speed: 500;
                     navigation_arrows: true;
@@ -161,7 +167,7 @@ if ($deviceType != 'phone')
 ?>
 <section class="themeFeature">
     <div class="row marginBottomStandard">
-        <h3 class="text-center">Explore our harbour through the eyes of locals</h3>
+        <h3 class="text-center">Unlock Sydney's best kept local secrets with our iconic ferry service</h3>
         <div class="large-12 small-12 columns">
 
             <div class="large-6 small-6 themedPromoText standardDarkGrey left">
@@ -266,6 +272,7 @@ $(function() {
         creditHTML += '<span><a href="<?=$baseURL?>/gallery#featuredPhotographer">View more</a></span>';
 
         $('#featureCreditPanel').html(creditHTML);
+        $('#featureImgHolder').removeAttr('style');
 
     });
 

@@ -14,6 +14,9 @@ $std-light-grey: #3c4855
 
 $grey-button-hover-bg: #727577
 
+$std-green: #30bda1
+$green-button-hover-bg: #269d85
+
 $std-red-bg: #c0565a
 $std-light-red-bg: #e85050
 
@@ -146,6 +149,16 @@ a
   font-size: 0.938rem
   &:hover
     background-color: $grey-button-hover-bg
+  .social
+    margin-bottom: -0.1rem
+
+.button.stdGreen
+  background-color: $std-green
+  color: #fff
+  text-transform: uppercase
+  font-size: 0.938rem
+  &:hover
+    background-color: $green-button-hover-bg
   .social
     margin-bottom: -0.1rem
 
@@ -349,7 +362,7 @@ div.white, section.white
   background-color: $std-dark-grey-background-opacity
   height: 6.25rem
   position: fixed
-  z-index: 100
+  z-index: 400
   top: 0
   nav.top-bar
     position: relative
@@ -360,7 +373,7 @@ div.white, section.white
           //outline: 1px solid red
           margin: 0.75rem 0.25rem 0.75rem 0
           width: 6.063rem
-          height: atuo
+          height: auto
           float: left
           display: block
           float: left
@@ -578,6 +591,7 @@ div.white, section.white
   display: inline-block
   height: auto
   overflow: hidden
+  min-height: 43.077rem
   img
     width: 100%
     text-align: center
@@ -597,6 +611,8 @@ div.white, section.white
     h3
       color: #fff
       display: inline
+      //background-color: rgba(198, 198, 198, 0.5)
+      //padding: 0 1rem
     .pullout
       margin-left: auto
       margin-right: auto
@@ -1794,6 +1810,36 @@ footer
       height: 9.8rem
 
 
+  #photoHolder01, #photoHolder2, .galleryHolder
+    div
+      a.comments, a.likes
+        padding: 0.5rem 0 0 0
+        span
+          font-size: 1.15rem
+      a.comments
+        right: 0.6em
+        width: 2.5rem
+        height: 2.5rem
+        &:before
+          width: 2.5rem
+          height: 2.5rem
+          background-position: 0 0
+        &:hover
+          &:before
+            background-position: -42px 0
+      a.likes
+        right: 3.5rem
+        width: 2.5rem
+        height: 2.5rem
+        &:before
+          width: 2.5rem
+          height: 2.5rem
+          background-position: 0 -33px
+        &:hover
+          &:before
+            background-position: -41px -33px
+
+
 
 
 @media only screen and (max-width: 40em)
@@ -1824,7 +1870,7 @@ footer
       top: 0
       h2.sub
         font-size: 1.7rem
-        margin-top: 4.5rem
+        margin-top: 5.25rem
         line-height: 0.5rem
       h2
         font-size: 3rem
@@ -1841,23 +1887,70 @@ footer
           height: 0.769rem
           background-position: -82px -71px
 
-  #navHolder
-    height: 3.25rem
+  .navHolder
+    //background-color: transparent !important
+    height: 4.25rem
     nav.top-bar
       .title-area
         .name
           height: 4rem
           h1
             width: 3.538rem
-            height: 3rem
+            height: 2.846rem
             a
               width: 3.538rem
-              height: 3rem
+              height: 2.846rem
               overflow: hidden
               &:before
                 width: 3.538rem
-                height: 3rem
-                background-position: -954px -217px
+                height: 2.846rem
+                background-position: -954px -217px !important
+
+  //.orbit-container
+    .orbit-timer
+      display: none !important
+
+
+  #photoHolder01, #photoHolder2, .galleryHolder
+    div
+      a.comments, a.likes
+        padding: 0.5rem 0 0 0
+        span
+          font-size: 1.15rem
+      a.comments
+        right: 0.6em
+        width: 2.5rem
+        height: 2.5rem
+        &:before
+          width: 2.5rem
+          height: 2.5rem
+          background-position: 0 0
+        &:hover
+          &:before
+            background-position: -42px 0
+      a.likes
+        right: 3.5rem
+        width: 2.5rem
+        height: 2.5rem
+        &:before
+          width: 2.5rem
+          height: 2.5rem
+          background-position: 0 -33px
+        &:hover
+          &:before
+            background-position: -41px -33px
+
+  .insta, .eventFeature
+    .infoContainer
+      .inner
+        padding: 0.75rem 1rem
+
+
+
+
+  .breadcrumbsHolder
+    margin-top: 4.25rem !important
 
   .marginBottomStandard
     margin-bottom: 0.25rem !important
+

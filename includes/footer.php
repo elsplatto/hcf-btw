@@ -7,9 +7,9 @@
                 <ul>
                     <li><a href="https://twitter.com/intent/user?screen_name=beyondthewharf" class="social twitter medium" target="_blank" rel="nofollow">twitter</a></li>
                     <li><a href="#" class="social facebook medium">facebook</a></li>
-                    <li><a href="#" class="social instagram medium">instagram</a></li>
+                    <!--li><a href="#" class="social instagram medium">instagram</a></li>
                     <li><a href="#" class="social googlePlus medium">google plus</a></li>
-                    <li><a href="#" class="social youtube medium">youtube</a></li>
+                    <li><a href="#" class="social youtube medium">youtube</a></li-->
                 </ul>
             </div>
         </div>
