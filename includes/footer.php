@@ -35,6 +35,11 @@
     </section>
 </footer>
 
+<!--off canvas closing divs-->
+    <a class="exit-off-canvas"></a>
+    </div>
+</div>
+
 <div id="modalShell" class="reveal-modal" data-reveal="">
 
 </div>

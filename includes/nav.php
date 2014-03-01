@@ -48,15 +48,76 @@ function getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 $navPages = getTopNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 $routeNavPages = getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 ?>
+<!--off canvas opening divs closing divs in footer-->
+<div class="off-canvas-wrap">
+    <div class="inner-wrap">
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list section-nav">
+                <!--li><label>Foundation</label></li-->
+                <?php
+                foreach($navPages as $navPage)
+                {
+                    if ($navPage['friendly_url'] == 'gallery')
+                    {
+                        ?>
+                        <li><a href="<?=$baseURL?>/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
+                    <?php
+                    }
+                    else if ($navPage['friendly_url'] == 'events')
+                    {
+                        ?>
+                        <li><a href="<?=$baseURL?>/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
+                    <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <li><a href="<?=$baseURL?>/page/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
+                    <?php
+                    }
+                }
+                ?>
+            </ul>
+        </aside>
+
+
+
+        <aside class="right-off-canvas-menu">
+            <ul class="off-canvas-list routes">
+                <li><label>Routes</label></li>
+
+                    <?php
+                    foreach ($routeNavPages as $routeNavPage)
+                    {
+                        ?>
+                        <li><a href="<?=$baseURL?>/route/<?=$routeNavPage['friendly_url']?>" class="<?=$routeNavPage['css_class']?>"><?=$routeNavPage['nav_title']?></a></li>
+                    <?php
+                    }
+                    ?>
+            </ul>
+        </aside>
+
+
 <section id="navHolder" class="navHolder">
     <div class="row">
+
+        <nav class="tab-bar">
+            <section class="left-small">
+                <a class="left-off-canvas-toggle menu-icon"><span></span></a>
+            </section>
+            <section class="right-small">
+                <a class="right-off-canvas-toggle menu-icon"><span></span></a>
+            </section>
+        </nav>
+
         <div class="large-12 medium-12 small-12 columns">
+
+
             <nav class="top-bar" data-topbar>
                 <ul class="title-area">
                     <li class="name">
                         <h1><a href="<?=$baseURL?>/">Beyond the Wharf</a></h1>
                     </li>
-                    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
                 </ul>
 
                 <section class="top-bar-section first">

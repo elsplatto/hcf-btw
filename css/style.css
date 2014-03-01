@@ -314,6 +314,9 @@ div.white, section.white {
 
 /*End - Route colors */
 /*End - color classes */
+.tab-bar {
+  display: none; }
+
 /*Start - nav */
 .navHolder {
   width: 100%;
@@ -449,6 +452,28 @@ div.white, section.white {
         font-size: 0.938rem;
         line-height: 1em;
         padding: 0 0.938rem 0 1.5rem; }
+
+.off-canvas-wrap ul.section-nav li {
+  font-family: "Tungsten A", "Tungsten B" !important;
+  font-size: 2.25rem !important;
+  font-weight: 700;
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-color: rgba(60, 60, 60, 0.65) !important; }
+  .off-canvas-wrap ul.section-nav li a {
+    font-family: inherit;
+    font-size: inherit !important;
+    font-weight: inherit;
+    text-transform: uppercase;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+    -webkit-transition-property: background-color;
+    -webkit-transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-out; }
+    .off-canvas-wrap ul.section-nav li a:hover {
+      background-color: rgba(39, 46, 53, 0.35) !important;
+      text-decoration: none; }
 
 .routes a, .routes span {
   background-color: none !important;
@@ -689,7 +714,6 @@ div.white, section.white {
       height: 13.75rem; }
       .featureImgHolder .promoHolder .large-3 .imgHolder {
         background-color: #272e35;
-        width: 16.25rem;
         height: 8.75rem;
         position: relative; }
       .featureImgHolder .promoHolder .large-3 .imgHolder.social:before {
@@ -710,7 +734,6 @@ div.white, section.white {
         background-position: -275px -137px; }
       .featureImgHolder .promoHolder .large-3 .textHolder {
         background-color: #272e35;
-        width: 16.25rem;
         height: 5rem;
         display: block;
         padding: 0.75rem 0;
@@ -1661,6 +1684,29 @@ footer .standard {
   .hcf-logo a.logo-link:after {
     width: 11.063rem;
     height: 4.313rem; } }
+@media only screen and (max-width: 60.313em) {
+  .navHolder {
+    height: 2.8125rem; }
+    .navHolder .tab-bar {
+      background-color: transparent;
+      display: block; }
+      .navHolder .tab-bar .menu-icon {
+        background-color: #272e35; }
+
+  .navHolder nav.top-bar {
+    display: none; }
+
+  .breadcrumbsHolder {
+    margin-top: 2.88rem !important; }
+
+  .homepage.featureImgHolder {
+    min-height: 39rem; }
+
+  .featureImgHolder img {
+    width: 100%;
+    text-align: center; }
+  .featureImgHolder .headerHolder {
+    top: 15%; } }
 @media only screen and (max-width: 40em) {
   .promoHolder {
     position: relative !important;
@@ -1702,21 +1748,19 @@ footer .standard {
         height: 0.769rem;
         background-position: -82px -71px; }
 
-  .navHolder {
-    height: 4.25rem; }
-    .navHolder nav.top-bar .title-area .name {
-      height: 4rem; }
-      .navHolder nav.top-bar .title-area .name h1 {
+  .navHolder nav.top-bar .title-area .name {
+    height: 4rem; }
+    .navHolder nav.top-bar .title-area .name h1 {
+      width: 3.538rem;
+      height: 2.846rem; }
+      .navHolder nav.top-bar .title-area .name h1 a {
         width: 3.538rem;
-        height: 2.846rem; }
-        .navHolder nav.top-bar .title-area .name h1 a {
+        height: 2.846rem;
+        overflow: hidden; }
+        .navHolder nav.top-bar .title-area .name h1 a:before {
           width: 3.538rem;
           height: 2.846rem;
-          overflow: hidden; }
-          .navHolder nav.top-bar .title-area .name h1 a:before {
-            width: 3.538rem;
-            height: 2.846rem;
-            background-position: -954px -217px !important; }
+          background-position: -954px -217px !important; }
 
   #photoHolder01 div a.comments, #photoHolder01 div a.likes, #photoHolder2 div a.comments, #photoHolder2 div a.likes, .galleryHolder div a.comments, .galleryHolder div a.likes {
     padding: 0.5rem 0 0 0; }

@@ -1,10 +1,30 @@
 <script src="<?=$baseURL?>/js/jquery.js"></script>
 <script src="<?=$baseURL?>/js/foundation.min.js"></script>
 <script src="<?=$baseURL?>/js/foundation/foundation.reveal.js"></script>
+<script src="<?=$baseURL?>/js/foundation/foundation.offcanvas.js"></script>
 <script src="<?=$baseURL?>/js/global-functions.js"></script>
 <script src="<?=$baseURL?>/js/vendor/plugins/indie/heartcode-canvasloader-min-0.9.1.js"></script>
 <script>
+
+
 $(function(){
+
+   // $(document).foundation('offcanvas','open');
+
+    $('.left-off-canvas-toggle').click(function(e) {
+        e.preventDefault();
+        $('.off-canvas-wrap').addClass('move-right');
+    });
+
+    $('.right-off-canvas-toggle').click(function(e) {
+        e.preventDefault();
+        $('.off-canvas-wrap').addClass('move-left');
+    });
+
+    $('.exit-off-canvas').click(function(e) {
+        e.preventDefault();
+        $('.off-canvas-wrap').removeClass('move-right move-left');
+    });
 
     var hashtag = location.hash;
     //console.log('['+hashtag+']');
