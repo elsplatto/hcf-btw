@@ -13,7 +13,7 @@ $object = 'tag';
 $object_id = 'fashion';
 $aspect = 'media';
 $verify_token='';
-$callback_url = 'http://beyondthewharf.com.au/dev/instagram-success.php';
+$callback_url = 'http://beyondthewharf.com.au/instagram-success.php';
 
 /**
  * SETTING UP THE CURL SETTINGS

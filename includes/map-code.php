@@ -40,11 +40,11 @@ function placeMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DA
             $markerJS .= "\r\n";
             $markerJS .= 'image_thumb: thmbBase + \''.$row['image_thumb'].'\', ';
             $markerJS .= "\r\n";
-            $markerJS .= 'alt: \''.$row['alt'].'\', ';
+            $markerJS .= 'alt: "'.$row['alt'].'", ';
             $markerJS .= "\r\n";
-            $markerJS .= 'category: \''.$row['category_title'].'\', ';
+            $markerJS .= 'category: "'.$row['category_title'].'", ';
             $markerJS .= "\r\n";
-            $markerJS .= 'sub_heading: \''.$row['type_title'].'\'';
+            $markerJS .= 'sub_heading: "'.$row['type_title'].'"';
             $markerJS .= "\r\n";
             $markerJS .= '}';
             if ($counter < $numRows)

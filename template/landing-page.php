@@ -25,46 +25,13 @@ if ($friendly_url == 'local-insights')
         </div>
 
         <div class="large-12" id="featureTileContainer">
+
+
+
             <div class="large-6 small-6 columns left">
                 <div class="tile">
                     <div class="imgHolder">
-                        <img src="<?=$baseURL?>/img/locations/thumbnail-med/mariner.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <h5><a href="<?=$baseURL?>/page/sydney-harbour-history">Sydney Harbour History</a></h5>
-                        <span>The Mariner</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="large-3 small-3 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/ancestral.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="featureTileContainer">Indigenous Culture</a></h5>
-                        <span>The Ancestral Spirit</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="large-3 small-3 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/artist.jpg" />
-                    </div>
-                    <div class="textHolder">
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="featureTileContainer">Art &amp; Design</a></h5>
-                        <span>The Artist</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="large-3 small-3 columns left">
-                <div class="tile">
-                    <div class="imgHolder">
-                        <img src="../img/locations/thumbnails/mark-champley.jpg" />
+                        <img src="../img/locations/thumbnail-med/Mark_wide.jpg" />
                     </div>
                     <div class="textHolder">
                         <h5><a href="<?=$baseURL?>/page/child-at-heart">Family Fun</a></h5>
@@ -73,20 +40,39 @@ if ($friendly_url == 'local-insights')
                 </div>
             </div>
 
-            <div class="large-3 small-3 columns left">
+            <div class="large-6 small-6 columns left">
                 <div class="tile">
-                    <img src="<?=$baseURL?>/img/fbShareTile.gif" alt="Share on Facebook" />
+                    <div class="imgHolder">
+                        <img src="../img/locations/thumbnail-med/Tracey_wide.jpg" alt="Image of Tracey." />
+                    </div>
+                    <div class="textHolder">
+                        <h5><a href="<?=$baseURL?>/page/aboriginal-harbour-journeys">Aboriginal Culture</a></h5>
+                        <span>The Ancestral Spirit</span>
+                    </div>
                 </div>
             </div>
+
+            <div class="large-6 medium-6 small-6 columns left">
+                <div class="tile">
+                    <div class="imgHolder">
+                        <img src="../img/locations/thumbnail-med/Sylvia_wide.jpg" alt="Image of Sylvia" />
+                    </div>
+                    <div class="textHolder">
+                        <h5><a href="<?=$baseURL?>/page/entertainment">Harbour Entertainment</a></h5>
+                        <span>The Entertainer</span>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="large-6 small-6 columns left">
                 <div class="tile">
                     <div class="imgHolder">
-                        <img src="../img/locations/thumbnail-med/shangri-la-view.jpg" />
+                        <img src="<?=$baseURL?>/img/locations/thumbnail-med/John_cross_promo_tile.jpg" />
                     </div>
                     <div class="textHolder">
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="featureTileContainer">Harbour Entertainment</a></h5>
-                        <span>The Party Goer</span>
+                        <h5><a href="<?=$baseURL?>/page/sydney-harbour-history">Sydney Harbour History</a></h5>
+                        <span>The Mariner</span>
                     </div>
                 </div>
             </div>
@@ -205,5 +191,9 @@ if ($hasMap > 0 || count($pageTiles) > 0)
 <?php
 include 'includes/itineraries.php';
 include 'includes/global-js.php';
-include 'includes/map-code.php';
+
+if ($hasMap > 0)
+{
+    include 'includes/map-code.php';
+}
 ?>

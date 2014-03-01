@@ -18,7 +18,7 @@ if ($deviceType === 'phone')
 <?php
 include 'includes/nav.php';
 ?>
-<section id="featureImgHolder" class="featureImgHolder marginBottomStandard">
+<section id="featureImgHolder" class="homepage featureImgHolder marginBottomStandard">
     <?php
     if ($deviceType != 'phone')
     {
@@ -125,7 +125,7 @@ include 'includes/nav.php';
 
                 <div class="large-3 small-3 columns">
                     <div class="imgHolder">
-                        <a href="#"><img src="img/promoImages/promo1.jpg" alt="Image of fireworks over Sydney Opera House on New Years Eve" /></a>
+                        <a href="<?=$baseURL?>/events"><img src="img/promoImages/vivid_feature.jpg" alt="Image of Sydney Opera House during Vivid." /></a>
                     </div>
                     <div class="textHolder">
                         <span>Events</span>
@@ -135,11 +135,11 @@ include 'includes/nav.php';
 
                 <div class="large-3 small-3 columns">
                     <div class="imgHolder">
-                        <a href="#"><img src="img/promoImages/promo2.jpg" alt="Image of Musicians" /></a>
+                        <a href="#"><img src="img/promoImages/maritime.jpg" alt="Image of Darling Harbour &amp; Maritime Museum at night" /></a>
                     </div>
                     <div class="textHolder">
                        <span>Attraction</span>
-                        <h5><a href="#">Cockatoo Island</a></h5>
+                        <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="mapContainer">Maritime Museum</a></h5>
                     </div>
                 </div>
 

@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /fonts/
+Disallow: /test-subscribe.php
+Disallow: /phpinfo.php

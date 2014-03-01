@@ -7,7 +7,7 @@ $baseURL = 'http://localhost/~jasontaikato/hcf-btw';
 }
 else
 {
-$baseURL = 'http://beyondthewharf.com.au/dev';
+$baseURL = 'http://beyondthewharf.com.au';
 }
 
 

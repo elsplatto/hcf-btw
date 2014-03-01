@@ -3,11 +3,11 @@
         <div class="large-12">
             <h3 class="text-center">Recommended Itineraries</h3>
             <div class="large-6 columns left">
-                <div class="itineraryTile" style="background-image: url('<?=$baseURL?>/img/it/tile/tile-2.jpg'); background-repeat: no-repeat;">
+                <div class="itineraryTile" style="background-image: url('<?=$baseURL?>/img/it/tile/entertainment.jpg'); background-repeat: no-repeat;">
                     <div class="inner">
                         <div class="textHolder">
-                            <span>Itinerary – by Joel Beck – 3 hours</span>
-                            <h3><a href="<?=$baseURL?>/itineraries">Sudnay - Family Day</a></h3>
+                            <span>Itinerary – by Sam Hindmarsh</span>
+                            <h3><a href="<?=$baseURL?>/docs/beyondthewharf-entertainment.pdf" target="_blank">Night on the Town</a></h3>
                         </div>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
                     <div class="inner">
                         <div class="textHolder">
                             <span>Itinerary – by Joel Beck – 3 hours</span>
-                            <h3><a href="<?=$baseURL?>/itineraries">Sudnay - Family Day</a></h3>
+                            <h3><a href="<?=$baseURL?>/itineraries">Sunday - Family Day</a></h3>
                         </div>
                     </div>
                 </div>

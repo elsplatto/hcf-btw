@@ -2,38 +2,29 @@
     <div class="row">
         <div class="large-12">
             <h3 class="text-center">More Articles</h3>
-            <div class="large-3 columns left">
+
+
+
+            <div class="large-6 small-6 columns left">
                 <div class="tile">
-                    <div class="imageHolder">
-                        <img src="<?=$baseURL?>/img/locations/thumbnails/ancestral.jpg" alt="Title here" />
+                    <div class="imgHolder">
+                        <img src="../img/locations/thumbnail-med/Tracey_wide.jpg" alt="Image of Tracey." />
                     </div>
                     <div class="textHolder">
-                        <h5><a href="<?=$baseURL?>">Indigenous</a></h5>
-                        <span>Ancestral Spirit</span>
+                        <h5><a href="<?=$baseURL?>/page/aboriginal-harbour-journeys">Aboriginal Culture</a></h5>
+                        <span>The Ancestral Spirit</span>
                     </div>
                 </div>
             </div>
 
-            <div class="large-3 columns left">
+            <div class="large-6 medium-6 small-6 columns left">
                 <div class="tile">
-                    <div class="imageHolder">
-                        <img src="<?=$baseURL?>/img/locations/thumbnails/artist.jpg" alt="Title here" />
+                    <div class="imgHolder">
+                        <img src="../img/locations/thumbnail-med/Sylvia_wide.jpg" alt="Image of Sylvia" />
                     </div>
                     <div class="textHolder">
-                        <h5><a href="<?=$baseURL?>">Art &amp; Design</a></h5>
-                        <span>The Artist</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="large-6 columns left">
-                <div class="tile">
-                    <div class="imageHolder">
-                        <img src="<?=$baseURL?>/img/locations/thumbnail-med/shangri-la-view.jpg" alt="Title here" />
-                    </div>
-                    <div class="textHolder">
-                        <h5><a href="<?=$baseURL?>">Harbour Entertainment</a></h5>
-                        <span>Entertainment</span>
+                        <h5><a href="<?=$baseURL?>/page/entertainment">Harbour Entertainment</a></h5>
+                        <span>The Entertainer</span>
                     </div>
                 </div>
             </div>

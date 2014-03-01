@@ -34,6 +34,8 @@ if (isset($locationId))
             }
 
 
+
+
         ?>
             <div class="large-12 medium-12 small-12 columns standardDarkGrey paddingTop20">
                 <a href="#" class="flyoutPanelClose">Close panel</a>
@@ -43,9 +45,43 @@ if (isset($locationId))
                 <?php
                 if ($type_title == 'events')
                 {
+
+                    $event_start_date = getdate($start_date);
+                    $event_end_date = getdate($end_date);
+
+                    $event_start_month_name = $event_start_date['month'];
+                    $event_end_month_name = $event_end_date['month'];
+
+
+                    $event_start_hour = $event_start_date['hours'];
+                    $event_start_mins = $event_start_date['minutes'];
+
+                    $event_end_hour = $event_end_date['hours'];
+                    $event_end_mins = $event_end_date['minutes'];
+
+
+                    if ($event_start_hour == 0 && $event_start_mins == 0)
+                    {
+                        $display_start_date = date('d F',$start_date);
+                    }
+                    else
+                    {
+                        $display_start_date = date('d F Y H:i',$start_date);
+                    }
+
+                    if ($event_end_hour == 0 && $event_end_mins == 0)
+                    {
+                        $display_end_date = date('d F',$end_date);
+                    }
+                    else
+                    {
+                        $display_end_date = date('d F Y H:i',$end_date);
+                    }
+
+
                 ?>
                     <h4>Event Details</h4>
-                    <p><strong>Dates: </strong> <?=date('d-F-Y H:i',$start_date)?> - <?=date('d-F-Y H:i',$end_date)?></p>
+                    <p><strong>Dates: </strong> <?=$display_start_date?> - <?=$display_end_date?></p>
                     <p><strong>Cost: </strong> <?echo $cost>0? '$'.sprintf("%0.2f",round($cost,2)): 'Free'?></p>
                 <?php
                 }

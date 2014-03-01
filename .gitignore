@@ -3,6 +3,7 @@
 *.iml
 .idea/
 .idea/*
+fonts/*
 
 # Sensitive files #
 ######################

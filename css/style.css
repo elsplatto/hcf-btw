@@ -507,13 +507,15 @@ div.white, section.white {
     float: left;
     width: 100%; }
 
+.homepage.featureImgHolder {
+  min-height: 43.077rem; }
+
 .featureImgHolder {
   position: relative;
   width: 100%;
   display: inline-block;
   height: auto;
-  overflow: hidden;
-  min-height: 43.077rem; }
+  overflow: hidden; }
   .featureImgHolder img {
     width: 100%;
     text-align: center; }
@@ -891,7 +893,7 @@ div.white, section.white {
   background-repeat: no-repeat; }
 
 .routeHeaderHolder.taronga {
-  background-image: url("img/manlyRoute.jpg");
+  background-image: url("img/tarongaRoute.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
 
@@ -929,7 +931,7 @@ div.white, section.white {
     z-index: 20;
     width: inherit !important;
     height: inherit !important;
-    background-color: rgba(39, 46, 53, 0.75);
+    background-color: rgba(39, 46, 53, 0.5);
     padding: 2rem 1.75rem 0.75rem 1.75rem; }
     .itineraryTile .inner .textHolder {
       position: absolute;
@@ -1507,6 +1509,11 @@ footer .standard {
   top: 1.25rem;
   right: 11rem; }
 
+.bottom-follow-panel.addthis_default_style .addthis_separator, .bottom-follow-panel.addthis_default_style .at300b, .bottom-follow-panel.addthis_default_style .at300bo, .bottom-follow-panel.addthis_default_style .at300m, .bottom-follow-panel.addthis_default_style .at300bs {
+  float: none !important;
+  display: inline-block;
+  padding: 0 0.5rem; }
+
 .systemError {
   border: 2px solid #e00b2e;
   padding: 10px;
@@ -1586,25 +1593,7 @@ footer .standard {
   padding-top: 5rem !important;
   padding-bottom: 5rem !important; }
 
-@media only screen and (max-width: 74.938em) {
-  html, body {
-    font-size: 81.3% !important; }
-
-  #navHolder nav.top-bar .title-area .name h1 a:before {
-    width: 5.846rem;
-    height: 44.692rem;
-    background-position: -924px -149px; }
-  #navHolder nav.top-bar .top-bar-section ul li a {
-    line-height: 1.2rem;
-    font-size: 1.2rem;
-    line-height: 2.692rem; }
-  #navHolder nav.top-bar .top-bar-section.second ul li {
-    line-height: 1rem;
-    font-size: 1rem; }
-    #navHolder nav.top-bar .top-bar-section.second ul li a {
-      line-height: 1rem;
-      font-size: 1rem; } }
-@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+@media only screen and (min-width: 40.063em) and (max-width: 64em), (max-width: 74.938em) {
   html, body {
     font-size: 81.3% !important; }
 
@@ -1614,6 +1603,17 @@ footer .standard {
       width: 5.846rem;
       height: 44.692rem;
       background-position: -924px -149px; }
+  #navHolder nav.top-bar .top-bar-section .routes li {
+    padding: 0.5rem 0;
+    font-size: 0.95rem !important; }
+    #navHolder nav.top-bar .top-bar-section .routes li:first-child {
+      padding: 0.5rem 1.25rem; }
+    #navHolder nav.top-bar .top-bar-section .routes li a {
+      font-size: inherit !important;
+      padding: 0 1rem 0.95rem 1.7rem; }
+      #navHolder nav.top-bar .top-bar-section .routes li a:before {
+        width: 1.385rem !important;
+        height: 0.9rem !important; }
 
   .featureImgHolder .triggerContainer {
     top: 25%; }
@@ -1656,7 +1656,11 @@ footer .standard {
       height: 2.5rem;
       background-position: 0 -33px; }
     #photoHolder01 div a.likes:hover:before, #photoHolder2 div a.likes:hover:before, .galleryHolder div a.likes:hover:before {
-      background-position: -41px -33px; } }
+      background-position: -41px -33px; }
+
+  .hcf-logo a.logo-link:after {
+    width: 11.063rem;
+    height: 4.313rem; } }
 @media only screen and (max-width: 40em) {
   .promoHolder {
     position: relative !important;
@@ -1672,30 +1676,31 @@ footer .standard {
       font-size: 1.5rem;
       line-height: 1.95rem; }
 
-  .featureImgHolder {
+  .homepage.featureImgHolder {
     min-height: 30rem; }
-    .featureImgHolder #creditToggle {
-      display: none; }
-    .featureImgHolder .headerHolder {
-      top: 0; }
-      .featureImgHolder .headerHolder h2.sub {
-        font-size: 1.7rem;
-        margin-top: 5.25rem;
-        line-height: 0.5rem; }
-      .featureImgHolder .headerHolder h2 {
-        font-size: 3rem;
-        line-height: 3.5rem;
-        margin-top: 0.25rem; }
-      .featureImgHolder .headerHolder h3 {
-        font-size: 1.2rem; }
-      .featureImgHolder .headerHolder hr {
+
+  .featureImgHolder #creditToggle {
+    display: none; }
+  .featureImgHolder .headerHolder {
+    top: 0; }
+    .featureImgHolder .headerHolder h2.sub {
+      font-size: 1.7rem;
+      margin-top: 5.25rem;
+      line-height: 0.5rem; }
+    .featureImgHolder .headerHolder h2 {
+      font-size: 3rem;
+      line-height: 3.5rem;
+      margin-top: 0.25rem; }
+    .featureImgHolder .headerHolder h3 {
+      font-size: 1.2rem; }
+    .featureImgHolder .headerHolder hr {
+      width: 10.462rem;
+      height: 0.769rem;
+      margin: 0.5rem auto; }
+      .featureImgHolder .headerHolder hr:after {
         width: 10.462rem;
         height: 0.769rem;
-        margin: 0.5rem auto; }
-        .featureImgHolder .headerHolder hr:after {
-          width: 10.462rem;
-          height: 0.769rem;
-          background-position: -82px -71px; }
+        background-position: -82px -71px; }
 
   .navHolder {
     height: 4.25rem; }
@@ -1740,6 +1745,9 @@ footer .standard {
 
   .insta .infoContainer .inner, .eventFeature .infoContainer .inner {
     padding: 0.75rem 1rem; }
+
+  .toggle-topbar.menu-icon {
+    display: none; }
 
   .breadcrumbsHolder {
     margin-top: 4.25rem !important; }

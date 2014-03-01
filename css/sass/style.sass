@@ -585,13 +585,15 @@ div.white, section.white
     float: left
     width: 100%
 
+.homepage.featureImgHolder
+  min-height: 43.077rem
+
 .featureImgHolder
   position: relative
   width: 100%
   display: inline-block
   height: auto
   overflow: hidden
-  min-height: 43.077rem
   img
     width: 100%
     text-align: center
@@ -998,7 +1000,7 @@ div.white, section.white
   background-size: cover
   background-repeat: no-repeat
 .routeHeaderHolder.taronga
-  background-image: url('img/manlyRoute.jpg')
+  background-image: url('img/tarongaRoute.jpg')
   background-size: cover
   background-repeat: no-repeat
 .routeHeaderHolder.darling
@@ -1034,7 +1036,7 @@ div.white, section.white
     z-index: 20
     width: inherit !important
     height: inherit !important
-    background-color: $std-dark-grey-background-opacity
+    background-color: $std-dark-grey-background-med-opacity
     padding: 2rem 1.75rem 0.75rem 1.75rem
     .textHolder
       position: absolute
@@ -1648,6 +1650,12 @@ footer
   top: 1.25rem
   right: 11rem
 
+.bottom-follow-panel.addthis_default_style
+  .addthis_separator, .at300b, .at300bo, .at300m, .at300bs
+    float: none !important
+    display: inline-block
+    padding: 0 0.5rem
+
 
 .systemError
   border: 2px solid #e00b2e
@@ -1736,40 +1744,12 @@ footer
 
 
 
-@media only screen and (max-width: 74.938em)
-  html, body
-    font-size: 81.3% !important
 
-  #navHolder
-    nav.top-bar
-      .title-area
-        .name
-          h1
-            a
-              &:before
-                width: 5.846rem
-                height: 44.692rem
-                background-position: -924px -149px
-      .top-bar-section
-        ul
-          li
-            a
-              line-height: 1.2rem
-              font-size: 1.2rem
-              line-height: 2.692rem
-      .top-bar-section.second
-        ul
-          li
-            line-height: 1rem
-            font-size: 1rem
-            a
-              line-height: 1rem
-              font-size: 1rem
 
 
 
 //ipad in portrait and landscape
-@media only screen and (min-width: 40.063em) and (max-width: 64em)
+@media only screen and (min-width: 40.063em) and (max-width: 64em), (max-width: 74.938em)
   html, body
     font-size: 81.3% !important
 
@@ -1784,6 +1764,20 @@ footer
                 width: 5.846rem
                 height: 44.692rem
                 background-position: -924px -149px
+      .top-bar-section
+        .routes
+          li
+            padding: 0.5rem 0
+            font-size: 0.95rem !important
+            &:first-child
+              padding: 0.5rem 1.25rem
+            a
+              font-size: inherit !important
+              padding: 0 1rem 0.95rem 1.7rem
+              &:before
+                width: 1.385rem !important
+                height: 0.9rem !important
+
   .featureImgHolder
     .triggerContainer
       top: 25%
@@ -1839,6 +1833,16 @@ footer
           &:before
             background-position: -41px -33px
 
+  .hcf-logo
+    a.logo-link
+      &:after
+        width: 11.063rem
+        height: 4.313rem
+
+
+//manage screens between phone and tablet
+@media only screen and (max-width: 60.313em)
+
 
 
 
@@ -1860,9 +1864,11 @@ footer
         font-size: 1.5rem
         line-height: 1.95rem
 
+  .homepage.featureImgHolder
+    min-height: 30rem
+
   .featureImgHolder
     //margin-top: 5.5rem
-    min-height: 30rem
     #creditToggle
       display: none
     .headerHolder
@@ -1946,7 +1952,10 @@ footer
         padding: 0.75rem 1rem
 
 
+  //TODO: NOTE - Show Menu when design done
 
+  .toggle-topbar.menu-icon
+    display: none
 
   .breadcrumbsHolder
     margin-top: 4.25rem !important

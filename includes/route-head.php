@@ -118,6 +118,8 @@ else
     <meta name="keywords" content="<?=$routeMetaKeywords ?>" />
     <meta name="description" content="<?=$routeMetaDesc?>" />
 
+
+    <link rel="icon" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-icon.png" type="image/png" />
     <link rel="apple-touch-icon" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-icon.png" />
     <link rel="apple-touch-icon" sizes="76x76" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-76x76.png" />
     <link rel="apple-touch-icon" sizes="120x120" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-120x120.png" />
@@ -133,8 +135,8 @@ else
     if (($_SERVER['SERVER_NAME'] == 'beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'www.beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'localhost')){
         ?>
         <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6681852/609364/css/fonts.css" />
-        <script type="text/javascript" src="//use.typekit.net/ipr3pdx.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6746472/661984/css/fonts.css" />
+        <script type="text/javascript" src="//use.typekit.net/bmv2swy.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <?php
     }
