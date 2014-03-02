@@ -40,8 +40,6 @@ $(function(){
     }
 
 
-
-
     $('body').on('click', '.reveal-init', function(e)
     {
 

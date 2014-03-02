@@ -453,28 +453,6 @@ div.white, section.white {
         line-height: 1em;
         padding: 0 0.938rem 0 1.5rem; }
 
-.off-canvas-wrap ul.section-nav li {
-  font-family: "Tungsten A", "Tungsten B" !important;
-  font-size: 2.25rem !important;
-  font-weight: 700;
-  border-style: solid;
-  border-width: 0 0 1px 0;
-  border-color: rgba(60, 60, 60, 0.65) !important; }
-  .off-canvas-wrap ul.section-nav li a {
-    font-family: inherit;
-    font-size: inherit !important;
-    font-weight: inherit;
-    text-transform: uppercase;
-    transition-property: background-color;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-out;
-    -webkit-transition-property: background-color;
-    -webkit-transition-duration: 0.5s;
-    -webkit-transition-timing-function: ease-out; }
-    .off-canvas-wrap ul.section-nav li a:hover {
-      background-color: rgba(39, 46, 53, 0.35) !important;
-      text-decoration: none; }
-
 .routes a, .routes span {
   background-color: none !important;
   position: relative; }
@@ -998,16 +976,31 @@ div.white, section.white {
   background-color: rgba(39, 46, 53, 0.75);
   position: absolute;
   top: 0px;
-  left: 76%;
-  margin-right: 2.5rem;
-  z-index: 20;
+  right: 0;
+  margin-right: 1.25rem;
+  z-index: 200;
   color: rgba(255, 255, 255, 0.5);
   font-size: 2em;
   text-align: center; }
+  .toggleControlPanel:before {
+    content: "";
+    position: absolute;
+    width: 0.875rem;
+    height: 1.438rem;
+    left: 0.75rem;
+    top: 0.5rem;
+    background-image: url("img/icons.png");
+    background-position: -179px -113px; }
   .toggleControlPanel:hover {
     background-color: #272e35;
     color: white;
     text-decoration: none; }
+
+.toggleControlPanel.show:before {
+  background-position: -179px -113px; }
+
+.toggleControlPanel.hide:before {
+  background-position: -194px -113px; }
 
 #mapControlPanel:after {
   content: "";
@@ -1023,11 +1016,11 @@ div.white, section.white {
   overflow: hidden;
   display: block;
   position: absolute;
-  top: 0px;
-  left: 78.33333%;
+  top: 0;
+  right: 0;
   z-index: 20;
   height: 100%;
-  width: 20%; }
+  margin-right: 1.25rem; }
   .controlPanelHolder .controlPanel {
     background-color: #272e35;
     width: 100%;
@@ -1656,6 +1649,15 @@ footer .standard {
     width: 10.3rem;
     height: 9.8rem; }
 
+  .toggleControlPanel {
+    width: 3.5rem;
+    height: 3.5rem; }
+    .toggleControlPanel:before {
+      width: 1.077rem;
+      height: 1.769rem;
+      left: 1.25rem;
+      top: 0.75rem; }
+
   #photoHolder01 div a.comments, #photoHolder01 div a.likes, #photoHolder2 div a.comments, #photoHolder2 div a.likes, .galleryHolder div a.comments, .galleryHolder div a.likes {
     padding: 0.5rem 0 0 0; }
     #photoHolder01 div a.comments span, #photoHolder01 div a.likes span, #photoHolder2 div a.comments span, #photoHolder2 div a.likes span, .galleryHolder div a.comments span, .galleryHolder div a.likes span {
@@ -1702,11 +1704,77 @@ footer .standard {
   .homepage.featureImgHolder {
     min-height: 39rem; }
 
+  #mapControlPanelHolder {
+    display: none; }
+    #mapControlPanelHolder .controlPanel {
+      left: 100%; }
+
   .featureImgHolder img {
     width: 100%;
     text-align: center; }
   .featureImgHolder .headerHolder {
-    top: 15%; } }
+    top: 15%; }
+
+  .featureImgHolder .promoHolder .textHolder h5 {
+    padding: 0 1rem; }
+
+  .toggleControlPanel {
+    width: 3.5rem;
+    height: 3.5rem; }
+    .toggleControlPanel:before {
+      width: 1.077rem;
+      height: 1.769rem;
+      left: 1.25rem;
+      top: 0.75rem;
+      background-position: -194px -113px; }
+    .toggleControlPanel:hover {
+      background-color: #272e35;
+      color: white;
+      text-decoration: none; }
+
+  .toggleControlPanel.show:before {
+    background-position: -179px -113px; }
+
+  .toggleControlPanel.hide:before {
+    background-position: -194px -113px; }
+
+  .off-canvas-wrap ul.section-nav li {
+    font-family: "Tungsten A", "Tungsten B" !important;
+    font-size: 2.25rem !important;
+    font-weight: 700;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    border-color: rgba(60, 60, 60, 0.65) !important; }
+    .off-canvas-wrap ul.section-nav li a {
+      font-family: inherit;
+      font-size: inherit !important;
+      font-weight: inherit;
+      text-transform: uppercase;
+      transition-property: background-color;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-out;
+      -webkit-transition-property: background-color;
+      -webkit-transition-duration: 0.5s;
+      -webkit-transition-timing-function: ease-out; }
+      .off-canvas-wrap ul.section-nav li a:hover {
+        background-color: rgba(39, 46, 53, 0.35) !important;
+        text-decoration: none; }
+  .off-canvas-wrap ul.routes {
+    font-family: "Inconsolata", sans-serif !important; }
+    .off-canvas-wrap ul.routes li {
+      font-size: 1.5rem; }
+      .off-canvas-wrap ul.routes li label {
+        font-size: inherit;
+        font-family: inherit; }
+      .off-canvas-wrap ul.routes li a {
+        background-color: transparent; }
+        .off-canvas-wrap ul.routes li a:before {
+          top: 1.3rem;
+          left: 0.25rem;
+          width: 1.35rem;
+          height: 0.9rem; }
+      .off-canvas-wrap ul.routes li a, .off-canvas-wrap ul.routes li label {
+        padding-left: 2.25rem; } }
 @media only screen and (max-width: 40em) {
   .promoHolder {
     position: relative !important;

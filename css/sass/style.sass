@@ -511,32 +511,6 @@ div.white, section.white
             padding: 0 0.938rem 0 1.5rem
 
 
-.off-canvas-wrap
-  ul.section-nav
-    li
-      font-family: $tungsten
-      font-size: 2.25rem !important
-      font-weight: 700
-      border-style: solid
-      border-width: 0 0 1px 0
-      border-color: rgba(60, 60, 60, 0.65) !important
-      a
-        font-family: inherit
-        font-size: inherit !important
-        font-weight: inherit
-        text-transform: uppercase
-        transition:
-          property: background-color
-          duration: 0.5s
-          timing-function: ease-out
-        -webkit-transition:
-          property: background-color
-          duration: 0.5s
-          timing-function: ease-out
-        &:hover
-          background-color: $hover-dark-grey-background-opacity !important
-          text-decoration: none
-
 
 
 
@@ -1112,16 +1086,33 @@ div.white, section.white
   background-color: $std-dark-grey-background-opacity
   position: absolute
   top: 0px
-  left: 76%
-  margin-right: 2.5rem
-  z-index: 20
+  right: 0
+  margin-right: 1.25rem
+  z-index: 200
   color: rgba(255, 255, 255, 0.5)
   font-size: 2em
   text-align: center
+  &:before
+    content: ''
+    position: absolute
+    width: 0.875rem
+    height: 1.438rem
+    left: 0.75rem
+    top: 0.5rem
+    background-image: url('img/icons.png')
+    background-position: -179px -113px
   &:hover
     background-color: $std-dark-grey-background
     color: rgba(255, 255, 255, 1)
     text-decoration: none
+
+.toggleControlPanel.show
+  &:before
+    background-position: -179px -113px
+.toggleControlPanel.hide
+  &:before
+    background-position: -194px -113px
+
 
 #mapControlPanel
   &:after
@@ -1139,11 +1130,11 @@ div.white, section.white
   overflow: hidden
   display: block
   position: absolute
-  top: 0px
-  left: 78.33333333333333%
+  top: 0
+  right: 0
   z-index: 20
   height: 100%
-  width:  20%
+  margin-right: 1.25rem
   .controlPanel
     background-color: $std-dark-grey
     width: 100%
@@ -1782,7 +1773,6 @@ footer
 @media only screen and (min-width: 40.063em) and (max-width: 64em), (max-width: 74.938em)
   html, body
     font-size: 81.3% !important
-
   #navHolder
     nav.top-bar
       .title-area
@@ -1832,6 +1822,16 @@ footer
     &:after
       width: 10.3rem
       height: 9.8rem
+
+
+  .toggleControlPanel
+    width: 3.5rem
+    height: 3.5rem
+    &:before
+      width: 1.077rem
+      height: 1.769rem
+      left: 1.25rem
+      top: 0.75rem
 
 
   #photoHolder01, #photoHolder2, .galleryHolder
@@ -1888,6 +1888,10 @@ footer
   .homepage.featureImgHolder
     min-height: 39rem
 
+  #mapControlPanelHolder
+    display: none
+    .controlPanel
+      left: 100%
 
   .featureImgHolder
     img
@@ -1895,6 +1899,80 @@ footer
       text-align: center
     .headerHolder
       top: 15%
+
+
+  .featureImgHolder
+    .promoHolder
+      .textHolder
+        h5
+          padding: 0 1rem
+
+
+  .toggleControlPanel
+    width: 3.5rem
+    height: 3.5rem
+    &:before
+      width: 1.077rem
+      height: 1.769rem
+      left: 1.25rem
+      top: 0.75rem
+      background-position: -194px -113px
+    &:hover
+      background-color: $std-dark-grey-background
+      color: rgba(255, 255, 255, 1)
+      text-decoration: none
+
+  .toggleControlPanel.show
+    &:before
+      background-position: -179px -113px
+  .toggleControlPanel.hide
+    &:before
+      background-position: -194px -113px
+
+
+  .off-canvas-wrap
+    ul.section-nav
+      li
+        font-family: $tungsten
+        font-size: 2.25rem !important
+        font-weight: 700
+        border-style: solid
+        border-width: 0 0 1px 0
+        border-color: rgba(60, 60, 60, 0.65) !important
+        a
+          font-family: inherit
+          font-size: inherit !important
+          font-weight: inherit
+          text-transform: uppercase
+          transition:
+            property: background-color
+            duration: 0.5s
+            timing-function: ease-out
+          -webkit-transition:
+            property: background-color
+            duration: 0.5s
+            timing-function: ease-out
+          &:hover
+            background-color: $hover-dark-grey-background-opacity !important
+            text-decoration: none
+
+    ul.routes
+      font-family: $inconsolata
+
+      li
+        font-size: 1.5rem
+        label
+          font-size: inherit
+          font-family: inherit
+        a
+          background-color: transparent
+          &:before
+            top: 1.3rem
+            left: 0.25rem
+            width: 1.35rem
+            height: 0.9rem
+        a, label
+          padding-left: 2.25rem
 
 @media only screen and (max-width: 40em)
   .promoHolder

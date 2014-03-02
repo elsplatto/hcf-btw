@@ -124,7 +124,7 @@
             <div class="large-12" id="map-canvas">
                 <div id="map-canvas-loader"></div>
             </div>
-            <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
+            <a href="#" id="toggleMapControlPanel" class="toggleControlPanel"></a>
 
             <div id="mapControlPanelHolder" class="controlPanelHolder large-3">
                 <div id="mapControlPanel" class="controlPanel">

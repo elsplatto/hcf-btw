@@ -538,8 +538,10 @@ function initialize() {
             var controlPanelWidth =  $('#mapControlPanelHolder').outerWidth();
             var controlPanelTargetLeft = (mapCanvasWidth - controlPanelWidth) + variant;
             var toggleMapControlPanelWidth = $('#toggleMapControlPanel').outerWidth();
-            var toggleTargetIn = (mapCanvasWidth - controlPanelWidth) - toggleMapControlPanelWidth + variant
+            var toggleTargetIn = (mapCanvasWidth - controlPanelWidth) - toggleMapControlPanelWidth + variant;
             var toggleTargetOut = (mapCanvasWidth - toggleMapControlPanelWidth) + variant;
+
+            //console.log('['+$('#mapControlPanelHolder').is(':visible')+']');
 
             if ($('#mapControlPanelHolder').is(':visible'))
             {
@@ -552,9 +554,7 @@ function initialize() {
                     }
                 );
 
-                $('#toggleMapControlPanel').animate({
-                    left: toggleTargetOut
-                }, 500).html('&lt;');
+                $('#toggleMapControlPanel').removeClass('show').addClass('hide');
             }
             else
             {
@@ -565,9 +565,7 @@ function initialize() {
                     }, 500
                 );
 
-                $('#toggleMapControlPanel').animate({
-                    left: toggleTargetIn
-                }, 500).html('&gt;');
+                $('#toggleMapControlPanel').removeClass('hide').addClass('show');
             }
 
         });
@@ -575,22 +573,7 @@ function initialize() {
 
     });
 
-    if ($('#mapControlPanelHolder').length > 0) {
-        var variant = 20;
-        var mapCanvasWidth = $('#map-canvas').outerWidth();
-        var controlPanelWidth =  $('#mapControlPanelHolder').outerWidth();
-        var controlPanelTargetLeft = (mapCanvasWidth - controlPanelWidth) + variant;
-        var toggleMapControlPanelWidth = $('#toggleMapControlPanel').outerWidth();
-        var toggleTargetLeft = controlPanelTargetLeft - toggleMapControlPanelWidth;
 
-        $('#mapControlPanelHolder').css({
-            left: controlPanelTargetLeft
-        });
-
-        $('#toggleMapControlPanel').css({
-            left: toggleTargetLeft
-        });
-    }
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

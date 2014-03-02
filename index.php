@@ -198,9 +198,9 @@ if ($deviceType != 'phone')
         <div class="large-12" id="map-canvas">
             <div id="map-canvas-loader"></div>
         </div>
-          <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">&gt;</a>
+          <a href="#" id="toggleMapControlPanel" class="toggleControlPanel"></a>
 
-          <div id="mapControlPanelHolder" class="controlPanelHolder large-3">
+          <div id="mapControlPanelHolder" class="controlPanelHolder medium-6 small-6 large-3">
               <div id="mapControlPanel" class="controlPanel">
                 <h6 class="white">FILTER:</h6>
 
