@@ -358,6 +358,7 @@ class Instagram {
     */
     public function searchLocation($lat, $lng, $distance = 1000) {
         return $this->_makeCall('locations/search', false, array('lat' => $lat, 'lng' => $lng, 'distance' => $distance));
+
     }
 
     /**
@@ -367,18 +368,20 @@ class Instagram {
     * @param integer $limit                Limit of returned results
     * @return mixed
     */
-    public function pagination($obj, $limit = 0) {
+    public function pagination($obj, $token = '', $limit = 0) {
         if (true === is_object($obj) && !is_null($obj->pagination)) {
           if (!isset($obj->pagination->next_url)) {
             return;
           }
           $apiCall = explode('?', $obj->pagination->next_url);
           if (count($apiCall) < 2) {
+
             return;
           }
           $function = str_replace(self::API_URL, '', $apiCall[0]);
           $auth = (strpos($apiCall[1], 'access_token') !== false);
-          return $this->_makeCall($function, $auth, array('max_id' => $obj->pagination->next_max_id, 'count' => $limit));
+
+          return $this->_makeCall($function, $token, array('max_id' => $obj->pagination->next_max_id, 'count' => $limit));
         } else {
           throw new Exception("Error: pagination() | This method doesn't support pagination.");
         }

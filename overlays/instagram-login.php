@@ -24,5 +24,5 @@ else
 
 
     <a href="<?php echo $instagramLoginURL ?>" class="button">Log into Instagram</a>
-    <a class="close-reveal-modal reveal-close">x</a>
+    <a class="close-reveal-modal reveal-close">Close overlay</a>
 </div>

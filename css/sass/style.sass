@@ -69,6 +69,25 @@ a
   .orbit-prev, .orbit-next
     z-index: 50 !important
 
+.reveal-modal
+  z-index: 600
+  .close-reveal-modal
+    width: 2.125rem !important
+    height: 2.125rem !important
+    top: -0.75rem
+    right: -0.75rem
+    text-indent: -10000px
+    &:before
+      position: absolute
+      content: ''
+      z-index: 600
+      top: 0
+      left: 0
+      width: 2.125rem
+      height: 2.125rem
+      background-image: url('img/icons.png')
+      background-position: -382px -173px
+
 
 /* End - Override classes*/
 
@@ -279,6 +298,11 @@ h3.block, h2.block
 
 h2.block
   font-size: 3rem
+
+.standardDarkGrey, .standardLightGrey
+  h2.block
+    color: #fff
+
 
 h3.block
   font-size: 1.875rem
@@ -903,6 +927,11 @@ div.white, section.white
       font-style: italic
       font-size: 1.2rem
       line-height: 1.5rem
+      word-wrap: break-word
+      overflow-wrap: break-all
+      a
+        color: inherit !important
+        text-decoration: underline
     .tweetCred
       height: 2.5rem
       background-color: #fff
@@ -926,9 +955,12 @@ div.white, section.white
 .tile
   width: 100%
   margin-top: 2.5rem
-  .imageHolder
+  .imageHolder, .imgHolder
     width: 100%
-    height: 11.25rem
+    min-height: 11.25rem
+    background-color: $std-dark-grey-background
+    img
+      width: 100%
 .textHolder
   width: 100%
   background-color: $std-dark-grey-background
@@ -1315,7 +1347,10 @@ div.white, section.white
     height: 5rem !important
     .inner
       width: 100%
-      padding: 0.5rem 2rem !important
+      padding: 0.5rem 1rem !important
+
+.insta.sharedPhoto
+  margin-top: 0rem !important
 
 .insta, .eventFeature
   position: relative
@@ -1329,7 +1364,7 @@ div.white, section.white
     background-color: $std-dark-grey-background-opacity
     .inner
       width: 100%
-      padding: 0.75rem 2rem
+      padding: 0.75rem 1rem
       span
         clear: both
         display: block
@@ -1810,6 +1845,7 @@ footer
     .creditPanel
       top: 25%
 
+
   .panelFlyout
     .flyoutPanelClose
       &:before
@@ -1820,7 +1856,7 @@ footer
 
   #mapControlPanel
     &:after
-      width: 10.3rem
+      width: 12.75rem
       height: 9.8rem
 
 
@@ -1877,8 +1913,42 @@ footer
     .tab-bar
       background-color: transparent
       display: block
-      .menu-icon
-        background-color: $std-dark-grey-background
+      .right-small, .left-small
+        .menu-icon
+          background-color: $std-dark-grey-background
+      .right-small
+        .menu-icon
+          &:before
+            content: ''
+            position: absolute
+            width: 1.846rem
+            height: 2.077rem
+            top: 0.4rem
+            left: 0.4rem
+            background-image: url('img/icons.png')
+            background-position: -410px -133px
+          span
+            display: none
+      .middle
+        a
+          position: relative
+          width: 3.538rem
+          height: 2.846rem
+          text-indent: -10000px
+          display: block
+          margin: 0 auto
+          background-color: $std-dark-grey-background
+          &:before
+            content: ''
+            position: absolute
+            width: 3.538rem
+            height: 2.846rem
+            left: 0
+            top: 0
+            background-image: url('img/icons.png')
+            background-position: -954px -217px
+
+
   .navHolder nav.top-bar
     display: none
 
@@ -1907,6 +1977,9 @@ footer
         h5
           padding: 0 1rem
 
+  .tile
+    .imageHolder, .imgHolder
+      min-height: 7.25rem
 
   .toggleControlPanel
     width: 3.5rem
@@ -2083,7 +2156,7 @@ footer
   .toggle-topbar.menu-icon
     display: none
 
-  .breadcrumbsHolder
+  //.breadcrumbsHolder
     margin-top: 4.25rem !important
 
   .marginBottomStandard

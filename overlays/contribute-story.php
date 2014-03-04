@@ -21,5 +21,5 @@ $device = new Mobile_Detect;
         <input type="submit" class="button" />&nbsp;&nbsp;&nbsp;<a href="#" class="reveal-close">Cancel</a>
 
     </form>
-    <a class="close-reveal-modal reveal-close">x</a>
 </div>
+<a class="close-reveal-modal reveal-close">Close this overlay</a>

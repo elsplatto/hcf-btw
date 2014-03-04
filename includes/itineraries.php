@@ -17,8 +17,8 @@
                 <div class="itineraryTile" style="background-image: url('<?=$baseURL?>/img/it/tile/tile-1.jpg'); background-repeat: no-repeat;">
                     <div class="inner">
                         <div class="textHolder">
-                            <span>Itinerary – by Joel Beck – 3 hours</span>
-                            <h3><a href="<?=$baseURL?>/itineraries">Sunday - Family Day</a></h3>
+                            <span>Itinerary – by Belinda Tobias</span>
+                            <h3><a href="<?=$baseURL?>/docs/beyondthewharf-entertainment.pdf" target="_blank">Sunday - Family Day</a></h3>
                         </div>
                     </div>
                 </div>

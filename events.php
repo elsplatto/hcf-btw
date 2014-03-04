@@ -127,7 +127,7 @@ include 'includes/nav.php';
                 $display_end_date = date('d F Y H:i',$featureEvent['end_date']);
             }
         ?>
-            <div class="small-9 medium-9 large-9 columns left">
+            <div class="small-12 medium-9 large-9 columns left">
                 <div class="large-12 small-12 eventFeature">
                     <img src="<?=$baseURL?>/img/locations/large/<?=$featureEvent['image_large']?>" alt="<?=$featureEvent['title']?>" />
                     <div class="infoContainer">
@@ -144,14 +144,14 @@ include 'includes/nav.php';
         }
         ?>
 
-        <div class="small-3 medium-3 large-3 columns">
-            <div class="small-12 large-12 insta">
+        <div class="small-6 medium-3 large-3 columns">
+            <div class="small-12 medium-12 large-12 insta">
                 <img src="<?=$baseURL?>/img/btwTile.gif" alt="" />
             </div>
         </div>
 
-        <div class="small-3 medium-3 large-3 columns">
-            <div class="small-12 large-12 insta">
+        <div class="small-6 medium-3 large-3 columns">
+            <div class="small-12 medium-12 large-12 insta">
                 <a href="mailto:events@beyondthewharf.com.au"><img src="<?=$baseURL?>/img/content/emailus-message-tile.gif" alt="Have an event to promote - click here to let us know about it." /></a>
             </div>
         </div>
@@ -161,7 +161,7 @@ include 'includes/nav.php';
 <section class="eventTileHolder standardLightGrey paddingTopBottom20 marginBottomStandard">
 
     <div class="row marginBottomStandard">
-        <div id="featureEventPanelHolder" class="large-12 columns"></div>
+        <div id="featureEventPanelHolder" class="large-12 medium-12 small-12 columns"></div>
         <?php
         $present_timestamp = getdate(time());
         $present_month_num = $present_timestamp['mon'];
@@ -189,7 +189,7 @@ include 'includes/nav.php';
 
 
                 ?>
-                    <div id="panelHolder-<?=$flyout_count?>" class="large-12 columns"></div>
+                    <div id="panelHolder-<?=$flyout_count?>" class="large-12 medium-12 small-12 columns"></div>
                     <div class="large-12 columns">
                         <h3 class="text-center"><?=$month_name?></h3>
                     </div>
@@ -201,7 +201,7 @@ include 'includes/nav.php';
             }
 
             ?>
-            <div class="large-3 medium-3 small-3 columns left">
+            <div class="large-3 medium-3 small-12 columns left">
                 <div class="tile">
                     <div class="imgHolder">
                         <img src="<?=$baseURL?>/img/locations/thumbnails/<?=$event['image_thumb']?>" alt="<?=$event['alt']?>" />

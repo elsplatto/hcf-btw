@@ -16,6 +16,25 @@ a:hover {
 .orbit-container .orbit-prev, .orbit-container .orbit-next {
   z-index: 50 !important; }
 
+.reveal-modal {
+  z-index: 600; }
+  .reveal-modal .close-reveal-modal {
+    width: 2.125rem !important;
+    height: 2.125rem !important;
+    top: -0.75rem;
+    right: -0.75rem;
+    text-indent: -10000px; }
+    .reveal-modal .close-reveal-modal:before {
+      position: absolute;
+      content: "";
+      z-index: 600;
+      top: 0;
+      left: 0;
+      width: 2.125rem;
+      height: 2.125rem;
+      background-image: url("img/icons.png");
+      background-position: -382px -173px; }
+
 /* End - Override classes */
 /* Start - Social icon classes */
 .social {
@@ -225,6 +244,9 @@ h3.block, h2.block {
 
 h2.block {
   font-size: 3rem; }
+
+.standardDarkGrey h2.block, .standardLightGrey h2.block {
+  color: white; }
 
 h3.block {
   font-size: 1.875rem; }
@@ -792,7 +814,12 @@ div.white, section.white {
     font-family: "adobe-garamond-pro", sans-serif !important;
     font-style: italic;
     font-size: 1.2rem;
-    line-height: 1.5rem; }
+    line-height: 1.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-all; }
+    .promoHolder .tile .tweetText a {
+      color: inherit !important;
+      text-decoration: underline; }
   .promoHolder .tile .tweetCred {
     height: 2.5rem;
     background-color: white;
@@ -813,9 +840,12 @@ div.white, section.white {
 .tile {
   width: 100%;
   margin-top: 2.5rem; }
-  .tile .imageHolder {
+  .tile .imageHolder, .tile .imgHolder {
     width: 100%;
-    height: 11.25rem; }
+    min-height: 11.25rem;
+    background-color: #272e35; }
+    .tile .imageHolder img, .tile .imgHolder img {
+      width: 100%; }
 
 .textHolder {
   width: 100%;
@@ -1182,7 +1212,10 @@ div.white, section.white {
   height: 5rem !important; }
   .eventFeature .infoContainer .inner {
     width: 100%;
-    padding: 0.5rem 2rem !important; }
+    padding: 0.5rem 1rem !important; }
+
+.insta.sharedPhoto {
+  margin-top: 0rem !important; }
 
 .insta, .eventFeature {
   position: relative;
@@ -1196,7 +1229,7 @@ div.white, section.white {
     background-color: rgba(39, 46, 53, 0.75); }
     .insta .infoContainer .inner, .eventFeature .infoContainer .inner {
       width: 100%;
-      padding: 0.75rem 2rem; }
+      padding: 0.75rem 1rem; }
       .insta .infoContainer .inner span, .eventFeature .infoContainer .inner span {
         clear: both;
         display: block;
@@ -1646,7 +1679,7 @@ footer .standard {
     height: 1.75rem; }
 
   #mapControlPanel:after {
-    width: 10.3rem;
+    width: 12.75rem;
     height: 9.8rem; }
 
   .toggleControlPanel {
@@ -1692,8 +1725,36 @@ footer .standard {
     .navHolder .tab-bar {
       background-color: transparent;
       display: block; }
-      .navHolder .tab-bar .menu-icon {
+      .navHolder .tab-bar .right-small .menu-icon, .navHolder .tab-bar .left-small .menu-icon {
         background-color: #272e35; }
+      .navHolder .tab-bar .right-small .menu-icon:before {
+        content: "";
+        position: absolute;
+        width: 1.846rem;
+        height: 2.077rem;
+        top: 0.4rem;
+        left: 0.4rem;
+        background-image: url("img/icons.png");
+        background-position: -410px -133px; }
+      .navHolder .tab-bar .right-small .menu-icon span {
+        display: none; }
+      .navHolder .tab-bar .middle a {
+        position: relative;
+        width: 3.538rem;
+        height: 2.846rem;
+        text-indent: -10000px;
+        display: block;
+        margin: 0 auto;
+        background-color: #272e35; }
+        .navHolder .tab-bar .middle a:before {
+          content: "";
+          position: absolute;
+          width: 3.538rem;
+          height: 2.846rem;
+          left: 0;
+          top: 0;
+          background-image: url("img/icons.png");
+          background-position: -954px -217px; }
 
   .navHolder nav.top-bar {
     display: none; }
@@ -1717,6 +1778,9 @@ footer .standard {
 
   .featureImgHolder .promoHolder .textHolder h5 {
     padding: 0 1rem; }
+
+  .tile .imageHolder, .tile .imgHolder {
+    min-height: 7.25rem; }
 
   .toggleControlPanel {
     width: 3.5rem;
@@ -1860,9 +1924,6 @@ footer .standard {
 
   .toggle-topbar.menu-icon {
     display: none; }
-
-  .breadcrumbsHolder {
-    margin-top: 4.25rem !important; }
 
   .marginBottomStandard {
     margin-bottom: 0.25rem !important; } }

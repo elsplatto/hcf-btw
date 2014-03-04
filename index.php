@@ -88,9 +88,11 @@ include 'includes/nav.php';
                 <?php
                 $tweetCount = 0;
                 $tweetMax = 3;
+
                 foreach ($twitterResults as $tweet)
                 {
-                $tweetText = $tweet->text;
+                    //$tweetText = $tweet->text;
+                    $tweetText = preg_replace('"\b(http://\S+)"', '<a href="$1">$1</a>', $tweet->text);
                 ?>
                 <li class="large-3 medium-3 small-3 columns">
                     <div class="tile">
@@ -129,7 +131,7 @@ include 'includes/nav.php';
                 </div>
                 <div class="textHolder">
                     <span>Events</span>
-                    <h5><a href="<?=$baseURL?>/events">Vivid</a></h5>
+                    <h5><a href="<?=$baseURL?>/events">Vivid Sydney</a></h5>
                 </div>
             </div>
 

@@ -120,12 +120,12 @@ $routeTiles = getRoutesSelectedTiles($routeId,$DB_SERVER, $DB_USERNAME, $DB_PASS
                 if ($routeTile['tile_size'] == 'medium')
                 {
                     $imagePath = '../img/locations/thumbnail-med/'.$routeTile['image_thumb_med'];
-                    $tileClass = 'large-6 small-6';
+                    $tileClass = 'large-6 medium-6 small-12';
                 }
                 else
                 {
                     $imagePath = '../img/locations/thumbnails/'.$routeTile['image_thumb'];
-                    $tileClass = 'large-3 small-3';
+                    $tileClass = 'large-3 medium-3 small-12';
                 }
 
                 if (!isset($routeTile['category_title']))

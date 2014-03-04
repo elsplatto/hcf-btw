@@ -44,5 +44,5 @@ function getVideo($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         }
     }
     ?>
-    <a class="close-reveal-modal reveal-close">x</a>
+    <a class="close-reveal-modal reveal-close">Close overlay</a>
 </div>

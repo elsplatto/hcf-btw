@@ -123,15 +123,7 @@ else
 
     <link rel="stylesheet" href="<?=$baseURL?>/css/foundation.css" />
     <link rel="stylesheet" href="<?=$baseURL?>/css/style.css" />
-    <script src="<?=$baseURL?>/js/modernizr.js"></script>
-    <?php
-    if ($hasMap > 0)
-    {
-    ?>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcRjvvKaoJuT_-v4op_kWwsV5rwQEIRG8&sensor=true"></script>
-    <?php
-    }
-    ?>
+
     <?php
     if (($_SERVER['SERVER_NAME'] == 'beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'www.beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'localhost'))
     {
@@ -143,4 +135,15 @@ else
     <?php
     }
     ?>
+
+    <script src="<?=$baseURL?>/js/modernizr.js"></script>
+    <?php
+    if ($hasMap > 0)
+    {
+        ?>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcRjvvKaoJuT_-v4op_kWwsV5rwQEIRG8&sensor=true"></script>
+    <?php
+    }
+    ?>
+
 </head>

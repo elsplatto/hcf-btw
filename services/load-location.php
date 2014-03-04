@@ -88,8 +88,8 @@ if (isset($locationId))
                 ?>
             </div>
             <div class="large-12 medium-12 small-12 standardDarkGrey paddingBottom20">
-                <div class="large-7 small-7 columns left"><img src="<?=$relPath?>img/locations/medium/<?=$image_med?>" alt="<?=$alt?>"></div>
-                <div class="large-5 small-5 columns left">
+                <div class="large-7 medium-7 small-12 columns left"><img src="<?=$relPath?>img/locations/medium/<?=$image_med?>" alt="<?=$alt?>"></div>
+                <div class="large-5 medium-5 small-12 columns left">
                     <div id="flyoutMap" class="map"></div>
 
                     <?=stripcslashes($address_text)?>

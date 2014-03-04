@@ -171,9 +171,9 @@ else
 
     </div>
 
-    <a class="close-reveal-modal reveal-close">x</a>
-
 </div>
+
+<a class="close-reveal-modal reveal-close">Close this overlay</a>
 <script>
 
 $(function() {
@@ -227,13 +227,13 @@ $(function() {
             {
                 if (obj.meta.code === 200)
                 {
-                    console.log('post comment server response successful');
+                    //console.log('post comment server response successful');
                 }
                 else
                 {
 
-                    console.log('post comment server response error');
-                    console.dir(obj);
+                    //console.log('post comment server response error');
+                    //console.dir(obj);
                 }
             }
             else
@@ -292,19 +292,14 @@ $(function() {
         }
     });
     */
-
-
-
-
-
+    /*
     console.log('targetHeight['+targetHeight+']');
     console.log('img['+$('#mediaFeatureImage').height()+']');
     console.log('likesHeight['+likesHeight+']');
     console.log('creditsHeight['+creditsHeight+']');
     console.log('topHeight['+topHeight+']');
     console.log('make comment height['+(targetHeight-topHeight)+']');
-
-
+    */
 });
 </script>
 
