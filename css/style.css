@@ -1273,19 +1273,25 @@ div.white, section.white {
       display: block;
       border: 1px solid #f3f3f3;
       border-radius: 3px; }
-    #instagramCommentModal .commentsArea .credits .creditHolder .credit {
-      font-size: 1rem; }
-    #instagramCommentModal .commentsArea .credits .creditHolder p {
-      font-size: 0.83rem;
-      line-height: 1.25 !important;
-      margin-bottom: 0.25rem !important; }
-      #instagramCommentModal .commentsArea .credits .creditHolder p span {
-        color: #aaaaaa;
-        font-size: 0.75rem; }
+    #instagramCommentModal .commentsArea .credits .creditHolder {
+      height: 2.6rem;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch; }
+      #instagramCommentModal .commentsArea .credits .creditHolder .credit {
+        font-size: 1rem; }
+      #instagramCommentModal .commentsArea .credits .creditHolder p {
+        font-size: 0.83rem;
+        line-height: 1.25 !important;
+        margin-bottom: 0.25rem !important; }
+        #instagramCommentModal .commentsArea .credits .creditHolder p span {
+          color: #aaaaaa;
+          font-size: 0.75rem; }
   #instagramCommentModal .commentsArea .likesArea {
     clear: both;
     overflow: hidden;
-    height: auto;
+    height: 3.5rem;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     padding: 1rem 0;
     margin: 1rem 0 0 0;
     border-style: solid;
@@ -1297,6 +1303,7 @@ div.white, section.white {
       margin-bottom: 0.25rem !important; }
   #instagramCommentModal .commentsArea .comments {
     clear: both;
+    height: 12.5rem;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     position: relative;
@@ -1715,6 +1722,44 @@ footer .standard {
       background-position: 0 -33px; }
     #photoHolder01 div a.likes:hover:before, #photoHolder2 div a.likes:hover:before, .galleryHolder div a.likes:hover:before {
       background-position: -41px -33px; }
+
+  #instagramCommentModal .commentsArea {
+    margin-top: 2rem; }
+    #instagramCommentModal .commentsArea .credits {
+      height: auto;
+      overflow: hidden; }
+      #instagramCommentModal .commentsArea .credits .profileThumbHolder .profileThumb {
+        display: block;
+        border: 1px solid #f3f3f3;
+        border-radius: 3px; }
+      #instagramCommentModal .commentsArea .credits .creditHolder {
+        height: 2.6rem;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch; }
+        #instagramCommentModal .commentsArea .credits .creditHolder .credit {
+          font-size: 1.25rem; }
+        #instagramCommentModal .commentsArea .credits .creditHolder p {
+          font-size: 1rem;
+          line-height: 1.25 !important;
+          margin-bottom: 0.25rem !important; }
+          #instagramCommentModal .commentsArea .credits .creditHolder p span {
+            color: #aaaaaa;
+            font-size: 0.75rem; }
+
+  .reveal-modal .close-reveal-modal {
+    width: 2.6rem !important;
+    height: 2.6rem !important; }
+    .reveal-modal .close-reveal-modal:before {
+      width: 2.6rem;
+      height: 2.6rem; }
+
+  .likes.small {
+    width: 1.8rem;
+    height: 1.8rem; }
+    .likes.small:before {
+      width: 1.8rem;
+      height: 1.8rem;
+      background-position: -57px -89px; }
 
   .hcf-logo a.logo-link:after {
     width: 11.063rem;

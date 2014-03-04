@@ -76,17 +76,17 @@ else
 ?>
 
 <div id="instagramCommentModal" class="white large-12">
-    <div id="imageArea" class="imageArea large-6 left">
+    <div id="imageArea" class="imageArea large-6 medium-12 small-12 left">
         <img src="<?=$instagramImg?>" id="mediaFeatureImage" />
     </div>
 
-    <div id="commentsArea" class="commentsArea large-6 columns">
+    <div id="commentsArea" class="commentsArea large-6 medium-12 small-12 columns">
         <div id="credits" class="credits large-12">
-            <div class="profileThumbHolder large-1 left">
+            <div class="profileThumbHolder large-1 medium-1 small-1 left">
                 <img src="<?=$creatorProfilePic?>" class="profileThumb" />
             </div>
 
-            <div class="creditHolder large-11 columns">
+            <div class="creditHolder large-11 medium-11 small-11 columns">
                 <p class="credit">
                     <a href="http://instagram.com/<?=$creatorUsername?>" target="_blank" rel="nofollow"><?=$creatorUsername?></a>
                 </p>
@@ -111,10 +111,10 @@ else
         {
         ?>
             <div id="likesArea" class="likesArea large-12">
-                <div class="large-1 left text-center">
+                <div class="large-1 medium-1 small-1 left text-center">
                     <span class="likes small"></span>
                 </div>
-                <div class="large-11 columns">
+                <div class="large-11 medium-11 small-11 columns">
                     <p class="commentsShoutout">
                     <?php
                     echo buildLikesString($likesCount, $blnUserLiked, $objImgLikes, $creatorUsername,$userInstagramId, 3);
@@ -131,8 +131,8 @@ else
         foreach ($objImgComments->data as $comment)
         {
             $commentHTML = '<div class="commentContainer large-12">';
-            $commentHTML .= '<div class="large-1 left"><img src="'.$comment->from->profile_picture.'" class="profileThumb" /></div>';
-            $commentHTML .= '<div class="large-11 columns">';
+            $commentHTML .= '<div class="large-2 medium-2 small-2 left"><img src="'.$comment->from->profile_picture.'" class="profileThumb" /></div>';
+            $commentHTML .= '<div class="large-10 medium-10 small-10 columns">';
             $commentHTML .= '<p><a href="http://instagram.com/'.$comment->from->username.'" target="_blank" rel="nofollow">'.$comment->from->username.'</a></p>';
             $commentHTML .= '<p>'.$comment->text.'</p>';
             $commentHTML .= '</div>';
@@ -162,9 +162,9 @@ else
             <div class="large-12 left">
                 <a href="#" data-url="<?=$heartURL?>" data-likesCount="<?=$likesCount?>" data-mediaId="<?=$media_id?>" class="left likes<?=$userLikedClass?>" title="<?=$likeText?>"></a>
 
-                <input type="text" class="left" id="txtInstagramComment" placeholder="Leave a comment..." />
+                <!--input type="text" class="left" id="txtInstagramComment" placeholder="Leave a comment..." />
 
-                <input type="submit" id="btnSubmitComment" class="button left" value="Go" disabled="disabled" data-mediaId="<?=$media_id?>" />
+                <input type="submit" id="btnSubmitComment" class="button left" value="Go" disabled="disabled" data-mediaId="<?=$media_id?>" /-->
             </div>
             </form>
         </div>
@@ -178,12 +178,12 @@ else
 
 $(function() {
 
-    var targetHeight = $('#instagramCommentModal').outerHeight();
+    /*var targetHeight = $('#instagramCommentModal').outerHeight();
     var likesHeight = $('#likesArea').outerHeight(true);
     var creditsHeight = $('#credits').outerHeight(true);
     var commentBarHeight = $('#commentBar').outerHeight(true);
     var topHeight = (likesHeight + creditsHeight + commentBarHeight);
-    $('#comments').height((targetHeight-topHeight));
+    $('#comments').height((targetHeight-topHeight));*/
 
     $('body').on('submit', '#frmInstagramComment', function(e) {
         e.preventDefault();

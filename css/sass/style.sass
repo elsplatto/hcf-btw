@@ -1412,6 +1412,9 @@ div.white, section.white
           border: 1px solid #f3f3f3
           border-radius: 3px
       .creditHolder
+        height: 2.6rem
+        overflow-y: scroll
+        -webkit-overflow-scrolling: touch
         .credit
           font-size: 1rem
         p
@@ -1424,7 +1427,9 @@ div.white, section.white
     .likesArea
       clear: both
       overflow: hidden
-      height: auto
+      height: 3.5rem
+      overflow-y: scroll
+      -webkit-overflow-scrolling: touch
       padding: 1rem 0
       margin: 1rem 0 0 0
       border-style: solid
@@ -1436,6 +1441,7 @@ div.white, section.white
         margin-bottom: 0.25rem !important
     .comments
       clear: both
+      height: 12.5rem
       overflow-y: scroll
       -webkit-overflow-scrolling: touch
       position: relative
@@ -1898,6 +1904,64 @@ footer
         &:hover
           &:before
             background-position: -41px -33px
+
+
+  #instagramCommentModal
+    .commentsArea
+      margin-top: 2rem
+      .credits
+        height: auto
+        overflow: hidden
+        .profileThumbHolder
+          .profileThumb
+            display: block
+            border: 1px solid #f3f3f3
+            border-radius: 3px
+        .creditHolder
+          height: 2.6rem
+          overflow-y: scroll
+          -webkit-overflow-scrolling: touch
+          .credit
+            font-size: 1.25rem
+          p
+            font-size: 1rem
+            line-height: 1.25 !important
+            margin-bottom: 0.25rem !important
+            span
+              color: #aaa
+              font-size: 0.75rem
+
+  .reveal-modal
+    .close-reveal-modal
+      width: 2.6rem !important
+      height: 2.6rem !important
+      &:before
+        width: 2.6rem
+        height: 2.6rem
+  //.likes
+    width: 2rem
+    height: 2rem
+    position: relative
+    display: inline-block
+    &:before
+      position: absolute
+      content: ''
+      top: 0
+      left: 0
+      width: 2rem
+      height: 2rem
+      background-image: url('img/icons.png')
+      background-position: -82px -33px
+  //.likes.userLikes
+    &:before
+      background-position: -41px -33px
+  .likes.small
+    width: 1.8rem
+    height: 1.8rem
+    &:before
+      width: 1.8rem
+      height: 1.8rem
+      background-position: -57px -89px
 
   .hcf-logo
     a.logo-link
