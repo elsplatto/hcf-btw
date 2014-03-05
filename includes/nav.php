@@ -103,11 +103,11 @@ $routeNavPages = getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABAS
 
         <nav class="tab-bar">
             <section class="left-small">
-                <a class="left-off-canvas-toggle menu-icon"><span></span></a>
+                <a class="left-off-canvas-toggle menu-icon"><span>Menu</span></a>
             </section>
             <section class="middle tab-bar-section text-center"><a href="<?=$baseURL?>">Back to homepage</a></section>
             <section class="right-small">
-                <a class="right-off-canvas-toggle menu-icon"><span></span></a>
+                <a class="right-off-canvas-toggle menu-icon"><span>Routes</span></a>
             </section>
         </nav>
 

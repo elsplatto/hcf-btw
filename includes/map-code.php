@@ -455,13 +455,8 @@ function initialize() {
                         var id = $(this).attr('data-location');
 
                         beforeLocationRetrieveHandler(target);
-                        $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/', function(){
-                            console.log('flyout done - scroll to start')
-                            var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
-                            $('html, body').animate({
-                                scrollTop: scrollHeight
-                            },'slow');
-                        });
+
+                        $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/');
                     });
 
                     $('body').on('click', '.flyoutPanelClose', function(e){
@@ -492,6 +487,12 @@ function initialize() {
                         cl.setSpeed(3); // default is 2
                         cl.setFPS(24); // default is 24
                         cl.show(); // Hidden by default
+
+
+                        var scrollHeight = ($('#flyoutPanel').offset().top - $('#navHolder').outerHeight());
+                        $('html, body').animate({
+                            scrollTop: scrollHeight
+                        },'slow');
                     }
 
 

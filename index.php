@@ -169,19 +169,20 @@ if ($deviceType != 'phone')
 <section class="themeFeature">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Unlock Sydney's best kept local secrets with our iconic ferry service</h3>
-        <div class="large-12 small-12 columns">
+        <div class="large-12 columns">
 
-            <div class="large-6 medium-6 small-6 themedPromoText standardDarkGrey left">
+            <div class="large-6 medium-12 small-12 themedPromoText standardDarkGrey left">
                 <span>The Child at Heart</span>
                 <h3 class="block">Family Fun on Sydney Harbour</h3>
                 <p>
                     Ferries reveal all those family-friendly places around Sydney that you don’t find in a <br />guide book.
                 </p>
+                <a href="<?=$baseURL?>/page/child-at-heart" class="button wire white hide-for-large">Hear Mark's Story</a>
                 <img src="img/themedPromos/profile.jpg" class="profile" alt="Picture of man and child." />
                 <p>Mark Champley</p>
                 <span class="purple">Customer Experience Manager &amp; father of nine</span>
             </div>
-            <div class="large-6 medium-6 small-6 themedPromoImage">
+            <div class="large-6 hide-for-medium hide-for-small themedPromoImage">
                 <img src="img/themedPromos/mark_c.jpg" alt="Picture of family." />
                 <div class="large-6 medium-6 small-6 themedPromoOverlay">
                     <!--a href="#" class="button red play tungsten small">Watch the video</a-->

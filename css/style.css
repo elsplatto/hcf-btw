@@ -15,6 +15,20 @@ a:hover {
 
 .orbit-container .orbit-prev, .orbit-container .orbit-next {
   z-index: 50 !important; }
+  .orbit-container .orbit-prev:before, .orbit-container .orbit-next:before {
+    content: "";
+    position: absolute;
+    left: 0.6rem;
+    top: 1.125rem;
+    width: 0.875rem;
+    height: 1.438rem;
+    background-image: url("img/icons.png"); }
+.orbit-container .orbit-next:before {
+  background-position: -179px -113px; }
+.orbit-container .orbit-prev:before {
+  background-position: -194px -113px; }
+.orbit-container .orbit-prev > span, .orbit-container .orbit-next > span {
+  border: none; }
 
 .reveal-modal {
   z-index: 600; }
@@ -766,6 +780,8 @@ div.white, section.white {
     text-align: center; }
     .themeFeature .themedPromoText span {
       font-size: 1.125rem; }
+    .themeFeature .themedPromoText a.button {
+      display: none; }
     .themeFeature .themedPromoText h3.block {
       color: white;
       font-size: 3rem;
@@ -1679,6 +1695,12 @@ footer .standard {
   .featureImgHolder .creditPanel {
     top: 25%; }
 
+  .orbit-container .orbit-prev, .orbit-container .orbit-next {
+    z-index: 50 !important; }
+    .orbit-container .orbit-prev:before, .orbit-container .orbit-next:before {
+      width: 1.077rem;
+      height: 1.769rem; }
+
   .panelFlyout .flyoutPanelClose:before {
     top: 0.3rem;
     left: 0.3rem;
@@ -1722,6 +1744,14 @@ footer .standard {
       background-position: 0 -33px; }
     #photoHolder01 div a.likes:hover:before, #photoHolder2 div a.likes:hover:before, .galleryHolder div a.likes:hover:before {
       background-position: -41px -33px; }
+
+  .themeFeature .themedPromoText a.button {
+    display: block;
+    clear: both;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    margin: 1rem auto;
+    width: 60%; }
 
   #instagramCommentModal .commentsArea {
     margin-top: 2rem; }
@@ -1772,17 +1802,35 @@ footer .standard {
       display: block; }
       .navHolder .tab-bar .right-small .menu-icon, .navHolder .tab-bar .left-small .menu-icon {
         background-color: #272e35; }
+        .navHolder .tab-bar .right-small .menu-icon span, .navHolder .tab-bar .left-small .menu-icon span {
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          width: auto;
+          height: 2rem;
+          font-size: 1rem;
+          color: white; }
+      .navHolder .tab-bar .left-small .menu-icon:before {
+        content: "";
+        position: absolute;
+        width: 1.846rem;
+        height: 1.9rem;
+        top: 0.7rem;
+        left: 0.5rem;
+        background-image: url("img/icons.png");
+        background-position: -436px -135px; }
+      .navHolder .tab-bar .left-small .menu-icon span {
+        left: 1.5rem; }
       .navHolder .tab-bar .right-small .menu-icon:before {
         content: "";
         position: absolute;
         width: 1.846rem;
-        height: 2.077rem;
+        height: 1.9rem;
         top: 0.4rem;
         left: 0.4rem;
         background-image: url("img/icons.png");
         background-position: -410px -133px; }
       .navHolder .tab-bar .right-small .menu-icon span {
-        display: none; }
+        left: -6rem; }
       .navHolder .tab-bar .middle a {
         position: relative;
         width: 3.538rem;
@@ -1809,6 +1857,9 @@ footer .standard {
 
   .homepage.featureImgHolder {
     min-height: 39rem; }
+
+  .themeFeature .themedPromoText {
+    height: auto; }
 
   #mapControlPanelHolder {
     display: none; }

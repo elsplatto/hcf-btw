@@ -356,4 +356,8 @@ class Twitter
  */
 class TwitterException extends Exception
 {
+    public function __toString()
+    {
+        return "Twitter API Response: [{$this->code}] {$this->message} (" . __CLASS__ . ") ";
+    }
 }

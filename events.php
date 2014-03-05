@@ -201,7 +201,7 @@ include 'includes/nav.php';
             }
 
             ?>
-            <div class="large-3 medium-3 small-12 columns left">
+            <div class="large-3 medium-6 small-12 columns left">
                 <div class="tile">
                     <div class="imgHolder">
                         <img src="<?=$baseURL?>/img/locations/thumbnails/<?=$event['image_thumb']?>" alt="<?=$event['alt']?>" />
