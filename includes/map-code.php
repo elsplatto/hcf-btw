@@ -398,7 +398,7 @@ function initialize() {
         for (var i=0; i<locations.length;i++)
         {
             (function(location){
-                var latLng = new google.maps.LatLng(location.lat,location.lng)
+                var latLng = new google.maps.LatLng(location.lat,location.lng);
                 var marker = new google.maps.Marker({
                     position: latLng,
                     icon: location.icon,

@@ -5,7 +5,7 @@
 
 
 
-            <div class="large-6 small-6 columns left">
+            <div class="large-6 small-6 small-12 columns left">
                 <div class="tile">
                     <div class="imgHolder">
                         <img src="../img/locations/thumbnail-med/Tracey_wide.jpg" alt="Image of Tracey." />
@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <div class="large-6 medium-6 small-6 columns left">
+            <div class="large-6 medium-6 small-12 columns left">
                 <div class="tile">
                     <div class="imgHolder">
                         <img src="../img/locations/thumbnail-med/Sylvia_wide.jpg" alt="Image of Sylvia" />

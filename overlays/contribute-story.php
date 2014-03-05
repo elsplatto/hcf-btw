@@ -7,9 +7,12 @@ $device = new Mobile_Detect;
 <div id="contributeStoryModal" class="white">
     <h3>Give us your story</h3>
     <form id="frmStory">
-        <label for="txtName">Your Name:</label>
-        <input type="text" id="txtName" />
+        <label for="txtName">First Name:</label>
+        <input type="text" id="txtFirstName" />
 
+
+        <label for="txtName">Last Name:</label>
+        <input type="text" id="txtLastName" />
 
         <label for="txtEmail">Your Email Address:</label><span>We will need to contact you to verify the story.</span>
         <input type="email" id="txtEmail" />

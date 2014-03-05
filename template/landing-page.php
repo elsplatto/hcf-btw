@@ -28,7 +28,7 @@ if ($friendly_url == 'local-insights')
 
 
 
-            <div class="large-6 small-6 columns left">
+            <div class="large-6 small-12 columns left">
                 <div class="tile">
                     <div class="imgHolder">
                         <img src="../img/locations/thumbnail-med/Mark_wide.jpg" />
@@ -40,7 +40,7 @@ if ($friendly_url == 'local-insights')
                 </div>
             </div>
 
-            <div class="large-6 small-6 columns left">
+            <div class="large-6 small-12 columns left">
                 <div class="tile">
                     <div class="imgHolder">
                         <img src="../img/locations/thumbnail-med/Tracey_wide.jpg" alt="Image of Tracey." />
@@ -52,7 +52,7 @@ if ($friendly_url == 'local-insights')
                 </div>
             </div>
 
-            <div class="large-6 medium-6 small-6 columns left">
+            <div class="large-6 small-12 columns left">
                 <div class="tile">
                     <div class="imgHolder">
                         <img src="../img/locations/thumbnail-med/Sylvia_wide.jpg" alt="Image of Sylvia" />
@@ -65,7 +65,7 @@ if ($friendly_url == 'local-insights')
             </div>
 
 
-            <div class="large-6 small-6 columns left">
+            <div class="large-6 small-12 columns left">
                 <div class="tile">
                     <div class="imgHolder">
                         <img src="<?=$baseURL?>/img/locations/thumbnail-med/John_cross_promo_tile.jpg" />
@@ -171,24 +171,7 @@ if ($hasMap > 0 || count($pageTiles) > 0)
 </section>
 <?php
 }
-?>
-
-
-<section class="calloutHolder marginBottomStandard">
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="large-12 callout">
-                <div class="inner green">
-                    <h3>Do you have a great story about Sydney’s historic harbour?</h3>
-                    <p>Share you secrets with us and win a <strong>month free travel</strong> on Sydney’s historic ferries</p>
-                    <a href="<?=$baseURL?>/overlays/contribute-story.php" class="button wire white reveal-init" data-size="small">Find out more</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<?php
+include 'includes/contribute.php';
 include 'includes/itineraries.php';
 include 'includes/global-js.php';
 

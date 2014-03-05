@@ -277,6 +277,9 @@ span
 
 .purple
   color: $std-purple
+
+.red
+  color: #f92727
 /*End - some consistent patterns*/
 
 html
@@ -1271,9 +1274,10 @@ div.white, section.white
 
 .callout
   width: 100%
-  height: 12.5rem
+  height: auto
   background-image: url('img/bennalongBackground.jpg')
   background-repeat: no-repeat
+  background-size: cover
   display: block
   overflow: hidden
   .inner
@@ -1288,8 +1292,13 @@ div.white, section.white
     h3
       margin-bottom: 0.5rem
 
-
-
+.itineraryTileHolder
+  h3
+    margin-bottom: -1rem !important
+  .medium-12
+    margin-top: 2rem
+    &:first-child
+      margin-top: 0 !important
 
 #photoHolder01, #photoHolder2, .galleryHolder
   div

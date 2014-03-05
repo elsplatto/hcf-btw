@@ -17,7 +17,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
     <div class="headerHolder">
         <h2 class="sub"><?=$pageHeading?></h2>
         <hr />
-        <h3 class="pullout clearfix"><?=$pagePullout?></h3><br />
+        <h3 class="pullout clearfix hide-for-small hide-for-medium"><?=$pagePullout?></h3><br />
         <?php
         if (strlen($videoEmbed) > 0)
         {
@@ -45,21 +45,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
 <?php
 if ($friendly_url !== 'about-us')
 {
-?>
-<section class="calloutHolder marginBottomStandard">
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="large-12 callout">
-                <div class="inner green">
-                    <h3>Do you have a great story about Sydney’s historic harbour?</h3>
-                    <p>Share you secrets with us and win a <strong>month free travel</strong> on Sydney’s historic ferries</p>
-                    <a href="<?=$baseURL?>/overlays/contribute-story.php" class="button wire white reveal-init" data-size="small">Find out more</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<?php
+    include 'includes/contribute.php';
 }
 if ($hasMap > 0 || count($pageTiles) > 0)
 {
@@ -77,7 +63,7 @@ if ($hasMap > 0 || count($pageTiles) > 0)
                 <div class="large-12" id="map-canvas">
                     <div id="map-canvas-loader"></div>
                 </div>
-                <a href="#" id="toggleMapControlPanel" class="toggleControlPanel">;</a>
+                <a href="#" id="toggleMapControlPanel" class="toggleControlPanel"></a>
 
                 <div id="mapControlPanelHolder" class="controlPanelHolder medium-6 small-6 large-3">
                     <div id="mapControlPanel" class="controlPanel">

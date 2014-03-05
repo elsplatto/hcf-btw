@@ -471,7 +471,8 @@ function initialize() {
                     locationBubble.open(map, marker);
                 });
 
-                google.maps.event.addListener(locationBubble,'domready', function(){
+                google.maps.event.addListener(locationBubble,'domready', function()
+                {
                     $('.panelFlyoutTrigger').on('click', function(e) {
                         e.preventDefault();
                         //console.log('here');
