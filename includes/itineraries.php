@@ -2,7 +2,7 @@
     <div class="row">
         <div class="large-12">
             <h3 class="text-center">Recommended Itineraries</h3>
-            <div class="large-6 medium-12 small-12 columns left">
+            <div class="large-6 medium-6 small-12 columns marginTop40">
                 <div class="itineraryTile" style="background-image: url('<?=$baseURL?>/img/it/tile/entertainment.jpg'); background-repeat: no-repeat; background-size: cover;">
                     <div class="inner">
                         <div class="textHolder">
@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <div class="large-6 medium-12 small-12 columns right">
+            <div class="large-6 medium-6 small-12 columns marginTop40">
                 <div class="itineraryTile" style="background-image: url('<?=$baseURL?>/img/it/tile/tile-1.jpg'); background-repeat: no-repeat; background-size: cover;">
                     <div class="inner">
                         <div class="textHolder">

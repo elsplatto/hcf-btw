@@ -54,7 +54,7 @@ $shotOfTheDayID = getShotOfTheDayID($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_
 
 $shotOfTheDayResults = $instagram->getMedia($shotOfTheDayID, $tokenSet);
 
-$instagramResults = $instagram->getTagMedia('beyondthewharf',$tokenSet, 4);
+$instagramResults = $instagram->getTagMedia('beyondthewharf',$tokenSet, 5); //get 1 more than we need to miss out pic of the day in the small images
 
 $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
 
@@ -113,31 +113,31 @@ if ($shotOfTheDayResults->meta->code == 200)
             <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$shotOfTheDayResults->data->id?>" data-likesCount="<?=$shotOfTheDayResults->data->likes->count?>" data-displayCount><?=likeNumberFormatter($shotOfTheDayResults->data->likes->count)?></span></a>
             <div class="infoContainer">
                 <div class="inner">
-                            <span class="location">
-                            <?php
-                            if (property_exists($shotOfTheDayResults->data,'location'))
-                            {
-                                if (is_null($shotOfTheDayResults->data->location) || $shotOfTheDayResults->data->location == null)
-                                {
-                                    echo '--';
-                                }
+                    <span class="location">
+                    <?php
+                    if (property_exists($shotOfTheDayResults->data,'location'))
+                    {
+                        if (is_null($shotOfTheDayResults->data->location) || $shotOfTheDayResults->data->location == null)
+                        {
+                            echo '--';
+                        }
 
-                                else if (property_exists($shotOfTheDayResults->data->location,'name'))
-                                {
-                                    echo $shotOfTheDayResults->data->location->name;
-                                }
-                                else if (property_exists($shotOfTheDayResults->data->location,'latitude') && property_exists($shotOfTheDayResults->data->location,'longitude') && !property_exists($shotOfTheDayResults->data->location,'name'))
-                                {
-                                    echo $shotOfTheDayResults->data->location->latitude . ' ,'. $shotOfTheDayResults->data->location->longitude;
-                                }
+                        else if (property_exists($shotOfTheDayResults->data->location,'name'))
+                        {
+                            echo $shotOfTheDayResults->data->location->name;
+                        }
+                        else if (property_exists($shotOfTheDayResults->data->location,'latitude') && property_exists($shotOfTheDayResults->data->location,'longitude') && !property_exists($shotOfTheDayResults->data->location,'name'))
+                        {
+                            echo $shotOfTheDayResults->data->location->latitude . ' ,'. $shotOfTheDayResults->data->location->longitude;
+                        }
 
-                            }
-                            else
-                            {
-                                echo '---';
-                            }
-                            ?>
-                            </span>
+                    }
+                    else
+                    {
+                        echo '---';
+                    }
+                    ?>
+                    </span>
                     <span class="credit"><?=$shotOfTheDayResults->data->user->username?></span>
 
                     <span class="button green photo-of-the-day">Photo of the day</span>
@@ -154,75 +154,77 @@ if ($shotOfTheDayResults->meta->code == 200)
 if ($instagramResults->meta->code == 200)
 {
     foreach ($instagramResults->data as $post) {
-
-        if ($instagramUserLoggedIn)
+        if ($post->id != $shotOfTheDayID && $count < 5)
         {
-            $blnUserLiked = $post->user_has_liked;
-
-            if (isset($blnUserLiked))
+            if ($instagramUserLoggedIn)
             {
-                if ($blnUserLiked) {
-                    $userLikedClass = ' userLikes';
-                    $likeURL = 'services/instagram-unlike-media.php?media_id='.$post->id;
-                    $likeText = 'You like this media - click to unlike.';
-                }
-                else
+                $blnUserLiked = $post->user_has_liked;
+
+                if (isset($blnUserLiked))
                 {
-                    $userLikedClass = ' userNoLikes';
-                    $likeURL = 'services/instagram-like-media.php?media_id='.$post->id;
-                    $likeText = 'Click to like.';
+                    if ($blnUserLiked) {
+                        $userLikedClass = ' userLikes';
+                        $likeURL = 'services/instagram-unlike-media.php?media_id='.$post->id;
+                        $likeText = 'You like this media - click to unlike.';
+                    }
+                    else
+                    {
+                        $userLikedClass = ' userNoLikes';
+                        $likeURL = 'services/instagram-like-media.php?media_id='.$post->id;
+                        $likeText = 'Click to like.';
+                    }
+
                 }
-
             }
-        }
-        else
-        {
-            $likeURL = 'overlays/instagram-login.php';
-            $likeText = 'You are not logged in. Log in to like.';
-        }
-        ?>
+            else
+            {
+                $likeURL = 'overlays/instagram-login.php';
+                $likeText = 'You are not logged in. Log in to like.';
+            }
+            ?>
 
-        <div class="small-6 medium-3 large-3 columns">
-            <div class="small-12 large-12 insta">
-                <img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" />
-                <a href="<?=$instagramCommentURL?>?media_id=<?=$post->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>" role="button"><span><?=$post->comments->count?></span></a>
-                <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post->id?>" data-likesCount="<?=$post->likes->count?>" data-displayCount><?=likeNumberFormatter($post->likes->count)?></span></a>
-                <div class="infoContainer">
-                    <div class="inner">
-                        <span class="location">
-                        <?php
-                        //var_dump($post);
-                        if (property_exists($post,'location'))
-                        {
-                            if (is_null($post->location) || $post->location == null)
+            <div class="small-6 medium-3 large-3 columns">
+                <div class="small-12 large-12 insta">
+                    <img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" />
+                    <a href="<?=$instagramCommentURL?>?media_id=<?=$post->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>" role="button"><span><?=$post->comments->count?></span></a>
+                    <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post->id?>" data-likesCount="<?=$post->likes->count?>" data-displayCount><?=likeNumberFormatter($post->likes->count)?></span></a>
+                    <div class="infoContainer">
+                        <div class="inner">
+                            <span class="location">
+                            <?php
+                            //var_dump($post);
+                            if (property_exists($post,'location'))
                             {
-                                echo '--';
-                            }
+                                if (is_null($post->location) || $post->location == null)
+                                {
+                                    echo '--';
+                                }
 
-                            else if (property_exists($post->location,'name'))
-                            {
-                                echo $post->location->name;
-                            }
-                            else if (property_exists($post->location,'latitude') && property_exists($post->location,'longitude') && !property_exists($post->location,'name'))
-                            {
-                                echo $post->location->latitude . ' ,'. $post->location->longitude;
-                            }
+                                else if (property_exists($post->location,'name'))
+                                {
+                                    echo $post->location->name;
+                                }
+                                else if (property_exists($post->location,'latitude') && property_exists($post->location,'longitude') && !property_exists($post->location,'name'))
+                                {
+                                    echo $post->location->latitude . ' ,'. $post->location->longitude;
+                                }
 
-                        }
-                        else
-                        {
-                            echo '---';
-                        }
-                        ?>
-                        </span>
-                        <span class="credit"><?=$post->user->username?></span>
-                        <a href="https://twitter.com/share?url=<?=$baseURL?>/#gallery&text=Tag your photo and it will appear here&hashtag=beyondthewharf&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>
-                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            }
+                            else
+                            {
+                                echo '---';
+                            }
+                            ?>
+                            </span>
+                            <span class="credit"><?=$post->user->username?></span>
+                            <a href="https://twitter.com/share?url=<?=$baseURL?>/#gallery&text=Tag your photo and it will appear here&hashtag=beyondthewharf&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <?php
+            <?php
+        }
 
         $count++;
     }

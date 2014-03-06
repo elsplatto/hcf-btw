@@ -7,6 +7,8 @@
 <script>
 
 
+
+
 $(function(){
 
    // $(document).foundation('offcanvas','open');
@@ -67,6 +69,15 @@ $(function(){
         $('#modalShell').foundation('reveal', 'open');
         $('#modalShell').addClass(modal_size);
         $('#modalShell').load(url);
+
+        $('html').on('keyup',function(event)
+        {
+            if (event.keyCode == 27) {
+                $('#modalShell').foundation('reveal', 'close');
+                $('#modalShell').empty();
+                $('html').off('keyup');
+            }
+        });
     });
 
     $('body').on('click','.reveal-close, .reveal-modal-bg', function(e)
@@ -74,6 +85,8 @@ $(function(){
         e.preventDefault();
         $('#modalShell').foundation('reveal', 'close');
         $('#modalShell').empty();
+
+        $('html').off('keyup');
     });
 
 

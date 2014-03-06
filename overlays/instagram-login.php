@@ -18,11 +18,8 @@ else
 ?>
 <div id="instagramLoginModal" class="white">
     <h3>Instagram Login</h3>
-    <p>To Like or Comment on an Instagram image or video we will need you to sign in.</p>
+    <p>To Like or view comments an Instagram image we will need you to sign in.</p>
 
-    <p>Our application won't do anything other than connect to your Instgram account so that you can Like or Comment on images/videos we are pulling into our site.</p>
-
-
-    <a href="<?php echo $instagramLoginURL ?>" class="button">Log into Instagram</a>
+    <a href="<?=$instagramLoginURL?>" class="button">Log into Instagram</a>
     <a class="close-reveal-modal reveal-close">Close overlay</a>
 </div>

@@ -95,12 +95,12 @@ if ($hasMap > 0 || count($pageTiles) > 0)
                 if ($pageTile['tile_size'] == 'medium')
                 {
                     $imagePath = '../img/locations/thumbnail-med/'.$pageTile['image_thumb_med'];
-                    $tileClass = 'large-6 small-6';
+                    $tileClass = 'large-6 small-12';
                 }
                 else
                 {
                     $imagePath = '../img/locations/thumbnails/'.$pageTile['image_thumb'];
-                    $tileClass = 'large-3 small-3';
+                    $tileClass = 'large-3 medium-6 small-12';
                 }
 
                 if (!isset($pageTile['category_title']))

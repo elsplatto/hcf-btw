@@ -568,7 +568,7 @@ function initialize() {
             if ($('#mapControlPanelHolder').is(':visible'))
             {
                 //hide
-                console.log('hide');
+                //console.log('hide');
                 $('#mapControlPanel').animate({
                         left: controlPanelWidth
                     }, 500,
