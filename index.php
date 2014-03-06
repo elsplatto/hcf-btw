@@ -85,38 +85,7 @@ include 'includes/nav.php';
                 navigation_arrows: false;
                 bullets: false;
                 slide_number: false">
-                <?php
-                $tweetCount = 0;
-                $tweetMax = 3;
-
-                foreach ($twitterResults as $tweet)
-                {
-                    //$tweetText = $tweet->text;
-                    $tweetText = preg_replace('"\b(http://\S+)"', '<a href="$1">$1</a>', $tweet->text);
-                ?>
-                <li class="large-3 medium-3 small-3 columns">
-                    <div class="tile">
-
-
-                        <div class="tweetText">
-                            <?=$tweetText?>
-                        </div>
-                        <div class="tweetCred">
-                            <a href="http://twitter.com/<?=$tweet->user->name?>" target="_blank" rel="nofollow">@<?=$tweet->user->name?></a>
-
-                            <a href="https://twitter.com/share?url=<?=$baseURL?>/&text=Living like a local&hashtag=beyondthewharf&count=none" class="twitter-share-button right marginTop3" data-lang="en">Tweet</a>
-                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                        </div>
-                    </div>
-                </li>
-
-                <?php
-                    $tweetCount++;
-                    if ($tweetCount >= $tweetMax) {
-                        break;
-                    }
-                }
-                ?>
+                    <li class="preloader"></li>
                 </ul>
             </div>
 
@@ -251,11 +220,8 @@ if ($deviceType != 'phone')
 
 $(function() {
 
-    $(document).foundation('orbit');
-
     loadHomeImages();
-
-
+    fetchTweets();
 
     $("#featureImageCarousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
 
@@ -264,7 +230,7 @@ $(function() {
         var place =  target.attr('data-place');
         var route = target.attr('data-route');
         var routeClass = target.attr('data-class');
-        var credit = target.attr('data-credit')
+        var credit = target.attr('data-credit');
 
         var creditHTML = '';
         creditHTML += '<span class="latLng">'+latlng+'</span>';
@@ -304,6 +270,15 @@ $(function() {
         imgHTML += '</li>';
 
         $(imgHTML).appendTo('#featureImageCarousel');
+
+        $('#featureImageCarousel').foundation('orbit');
+    }
+
+    function fetchTweets()
+    {
+        $('#tweetList').load('services/twitter-fetch-tweets.php', function() {
+            $('#tweetList').foundation('orbit');
+        });
     }
 
 

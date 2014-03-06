@@ -30,6 +30,9 @@ a:hover {
 .orbit-container .orbit-prev > span, .orbit-container .orbit-next > span {
   border: none; }
 
+.tweetSlider .orbit-container {
+  height: 13.75rem; }
+
 .reveal-modal {
   z-index: 600; }
   .reveal-modal .close-reveal-modal {
@@ -491,6 +494,18 @@ div.white, section.white {
         font-size: 0.938rem;
         line-height: 1em;
         padding: 0 0.938rem 0 1.5rem; }
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0; }
+  .videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
 
 .routes a, .routes span {
   background-color: none !important;
@@ -1706,6 +1721,14 @@ footer .standard {
   .featureImgHolder .creditPanel {
     top: 25%; }
 
+  .button.play.small:before {
+    top: 0.9rem;
+    left: 0.75rem; }
+
+  .button.play:before {
+    width: 2rem;
+    height: 2rem; }
+
   .orbit-container .orbit-prev, .orbit-container .orbit-next {
     z-index: 50 !important; }
     .orbit-container .orbit-prev:before, .orbit-container .orbit-next:before {
@@ -1802,9 +1825,26 @@ footer .standard {
       height: 1.8rem;
       background-position: -57px -89px; }
 
-  .hcf-logo a.logo-link:after {
-    width: 11.063rem;
-    height: 4.313rem; } }
+  .hcf-logo a.logo-link {
+    width: 11.063rem !important;
+    height: 4.313rem !important; }
+    .hcf-logo a.logo-link:after {
+      width: 11.063rem;
+      height: 4.313rem; }
+
+  .featureImgHolder #creditToggle {
+    display: none; }
+  .featureImgHolder .headerHolder hr {
+    width: 15.25rem;
+    height: 1rem;
+    margin: 0.5rem auto; }
+    .featureImgHolder .headerHolder hr:after {
+      width: 15.25rem;
+      height: 1rem; }
+
+  .instagram.small:before {
+    width: 1.3rem;
+    height: 1.2rem; } }
 @media only screen and (max-width: 60.313em) {
   .navHolder {
     height: 2.8125rem; }
@@ -1871,6 +1911,17 @@ footer .standard {
 
   .themeFeature .themedPromoText {
     height: auto; }
+
+  .featureImgHolder #creditToggle {
+    display: none; }
+  .featureImgHolder .headerHolder hr {
+    width: 10.462rem;
+    height: 0.769rem;
+    margin: 0.5rem auto; }
+    .featureImgHolder .headerHolder hr:after {
+      width: 10.462rem;
+      height: 0.769rem;
+      background-position: -82px -71px; }
 
   #mapControlPanelHolder {
     display: none; }
@@ -1963,15 +2014,17 @@ footer .standard {
 
   .homepage.featureImgHolder {
     min-height: 30rem; }
+    .homepage.featureImgHolder h2.sub {
+      margin-top: 4rem !important; }
 
   .featureImgHolder #creditToggle {
     display: none; }
   .featureImgHolder .headerHolder {
     top: 0; }
     .featureImgHolder .headerHolder h2.sub {
-      font-size: 1.7rem;
-      margin-top: 5.25rem;
-      line-height: 0.5rem; }
+      font-size: 2rem;
+      margin-top: 2rem;
+      line-height: 2.5rem; }
     .featureImgHolder .headerHolder h2 {
       font-size: 3rem;
       line-height: 3.5rem;

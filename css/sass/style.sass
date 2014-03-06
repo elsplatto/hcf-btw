@@ -85,7 +85,9 @@ a
   .orbit-prev > span, .orbit-next > span
     border: none
 
-
+.tweetSlider
+  .orbit-container
+    height: 13.75rem
 
 .reveal-modal
   z-index: 600
@@ -556,7 +558,17 @@ div.white, section.white
             padding: 0 0.938rem 0 1.5rem
 
 
-
+.videoWrapper
+  position: relative
+  padding-bottom: 56.25%
+  padding-top: 25px
+  height: 0
+  iframe
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
 
 
 .routes
@@ -1880,6 +1892,13 @@ footer
     .creditPanel
       top: 25%
 
+  .button.play.small:before
+    top: 0.9rem
+    left: 0.75rem
+
+  .button.play:before
+    width: 2rem
+    height: 2rem
 
   .orbit-container
     .orbit-prev, .orbit-next
@@ -1994,11 +2013,29 @@ footer
 
   .hcf-logo
     a.logo-link
+      width: 11.063rem !important
+      height: 4.313rem !important
       &:after
         width: 11.063rem
         height: 4.313rem
 
 
+  .featureImgHolder
+    #creditToggle
+      display: none
+    .headerHolder
+      hr
+        width: 15.25rem
+        height: 1rem
+        margin: 0.5rem auto
+        &:after
+          width: 15.25rem
+          height: 1rem
+
+  .instagram.small
+    &:before
+      width: 1.3rem
+      height: 1.2rem
 
 
 //manage screens between phone and tablet
@@ -2076,7 +2113,20 @@ footer
   .themeFeature
     .themedPromoText
       height: auto
-      //a.button
+
+
+  .featureImgHolder
+    #creditToggle
+      display: none
+    .headerHolder
+      hr
+        width: 10.462rem
+        height: 0.769rem
+        margin: 0.5rem auto
+        &:after
+          width: 10.462rem
+          height: 0.769rem
+          background-position: -82px -71px
 
   #mapControlPanelHolder
     display: none
@@ -2187,6 +2237,9 @@ footer
 
   .homepage.featureImgHolder
     min-height: 30rem
+    h2.sub
+      margin-top: 4rem !important
+
 
   .featureImgHolder
     //margin-top: 5.5rem
@@ -2196,9 +2249,9 @@ footer
       //position: relative !important
       top: 0
       h2.sub
-        font-size: 1.7rem
-        margin-top: 5.25rem
-        line-height: 0.5rem
+        font-size: 2rem
+        margin-top: 2rem
+        line-height: 2.5rem
       h2
         font-size: 3rem
         line-height: 3.5rem

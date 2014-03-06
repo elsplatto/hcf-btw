@@ -154,79 +154,81 @@ if ($shotOfTheDayResults->meta->code == 200)
 if ($instagramResults->meta->code == 200)
 {
     foreach ($instagramResults->data as $post) {
-        if ($post->id != $shotOfTheDayID && $count < 5)
+        if ($post->id != $shotOfTheDayID)
         {
-            if ($instagramUserLoggedIn)
+            $count++;
+            if ($count < 5)
             {
-                $blnUserLiked = $post->user_has_liked;
-
-                if (isset($blnUserLiked))
+                if ($instagramUserLoggedIn)
                 {
-                    if ($blnUserLiked) {
-                        $userLikedClass = ' userLikes';
-                        $likeURL = 'services/instagram-unlike-media.php?media_id='.$post->id;
-                        $likeText = 'You like this media - click to unlike.';
-                    }
-                    else
+                    $blnUserLiked = $post->user_has_liked;
+
+                    if (isset($blnUserLiked))
                     {
-                        $userLikedClass = ' userNoLikes';
-                        $likeURL = 'services/instagram-like-media.php?media_id='.$post->id;
-                        $likeText = 'Click to like.';
+                        if ($blnUserLiked) {
+                            $userLikedClass = ' userLikes';
+                            $likeURL = 'services/instagram-unlike-media.php?media_id='.$post->id;
+                            $likeText = 'You like this media - click to unlike.';
+                        }
+                        else
+                        {
+                            $userLikedClass = ' userNoLikes';
+                            $likeURL = 'services/instagram-like-media.php?media_id='.$post->id;
+                            $likeText = 'Click to like.';
+                        }
+
                     }
-
                 }
-            }
-            else
-            {
-                $likeURL = 'overlays/instagram-login.php';
-                $likeText = 'You are not logged in. Log in to like.';
-            }
-            ?>
+                else
+                {
+                    $likeURL = 'overlays/instagram-login.php';
+                    $likeText = 'You are not logged in. Log in to like.';
+                }
+                ?>
 
-            <div class="small-6 medium-3 large-3 columns">
-                <div class="small-12 large-12 insta">
-                    <img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" />
-                    <a href="<?=$instagramCommentURL?>?media_id=<?=$post->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>" role="button"><span><?=$post->comments->count?></span></a>
-                    <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post->id?>" data-likesCount="<?=$post->likes->count?>" data-displayCount><?=likeNumberFormatter($post->likes->count)?></span></a>
-                    <div class="infoContainer">
-                        <div class="inner">
-                            <span class="location">
-                            <?php
-                            //var_dump($post);
-                            if (property_exists($post,'location'))
-                            {
-                                if (is_null($post->location) || $post->location == null)
+                <div class="small-6 medium-3 large-3 columns">
+                    <div class="small-12 large-12 insta">
+                        <img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" />
+                        <a href="<?=$instagramCommentURL?>?media_id=<?=$post->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>" role="button"><span><?=$post->comments->count?></span></a>
+                        <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post->id?>" data-likesCount="<?=$post->likes->count?>" data-displayCount><?=likeNumberFormatter($post->likes->count)?></span></a>
+                        <div class="infoContainer">
+                            <div class="inner">
+                                <span class="location">
+                                <?php
+                                //var_dump($post);
+                                if (property_exists($post,'location'))
                                 {
-                                    echo '--';
-                                }
+                                    if (is_null($post->location) || $post->location == null)
+                                    {
+                                        echo '--';
+                                    }
 
-                                else if (property_exists($post->location,'name'))
-                                {
-                                    echo $post->location->name;
-                                }
-                                else if (property_exists($post->location,'latitude') && property_exists($post->location,'longitude') && !property_exists($post->location,'name'))
-                                {
-                                    echo $post->location->latitude . ' ,'. $post->location->longitude;
-                                }
+                                    else if (property_exists($post->location,'name'))
+                                    {
+                                        echo $post->location->name;
+                                    }
+                                    else if (property_exists($post->location,'latitude') && property_exists($post->location,'longitude') && !property_exists($post->location,'name'))
+                                    {
+                                        echo $post->location->latitude . ' ,'. $post->location->longitude;
+                                    }
 
-                            }
-                            else
-                            {
-                                echo '---';
-                            }
-                            ?>
-                            </span>
-                            <span class="credit"><?=$post->user->username?></span>
-                            <a href="https://twitter.com/share?url=<?=$baseURL?>/#gallery&text=Tag your photo and it will appear here&hashtag=beyondthewharf&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>
-                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                }
+                                else
+                                {
+                                    echo '---';
+                                }
+                                ?>
+                                </span>
+                                <span class="credit"><?=$post->user->username?></span>
+                                <a href="https://twitter.com/share?url=<?=$baseURL?>/#gallery&text=Tag your photo and it will appear here&hashtag=beyondthewharf&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>
+                                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <?php
+                <?php
+            }
         }
-
-        $count++;
     }
 }
 else {
