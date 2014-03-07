@@ -59,7 +59,7 @@ $routeTiles = getRoutesSelectedTiles($routeId,$DB_SERVER, $DB_USERNAME, $DB_PASS
             {
             ?>
                 <div class="large-12 text-center">
-                    <img src="<?=$baseURL?>/img/<?=$routeHeaderImage?>" alt="" class="routeGraphic" />
+                    <img src="<?=$baseURL?>/img/routes/<?=$routeHeaderImage?>" alt="" class="routeGraphic" />
                 </div>
             <?php
             }
