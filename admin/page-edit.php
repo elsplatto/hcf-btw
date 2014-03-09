@@ -8,14 +8,14 @@ $page_id = $_GET['id'];
 function getPage($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $query = 'SELECT title, is_nav, is_landing_page, has_map, nav_title, heading, heading_pullout, sub_heading, header_image, header_mp4, ';
-    $query .= 'header_webm, video_embed, tags, friendly_url, content_header, content, meta_keywords, meta_desc, parent_id, pages.order, is_live FROM pages WHERE id = ?';
+    $query .= 'header_webm, video_embed, tags, friendly_url, content_header, content, meta_keywords, meta_desc, parent_id, theme_class, pages.order, is_live FROM pages WHERE id = ?';
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     $stmt = $mysqli->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
     //$results = $stmt->get_result();
 
-    $stmt->bind_result($title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $video_embed, $tags, $friendly_url, $content_header, $content, $meta_keywords, $meta_desc, $parent_id, $order, $is_live);
+    $stmt->bind_result($title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $video_embed, $tags, $friendly_url, $content_header, $content, $meta_keywords, $meta_desc, $parent_id, $theme_class, $order, $is_live);
 
     $results = array();
     $i = 0;
@@ -40,6 +40,7 @@ function getPage($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['meta_keywords'] = $meta_keywords;
         $results[$i]['meta_desc'] = $meta_desc;
         $results[$i]['parent_id'] = $parent_id;
+        $results[$i]['theme_class'] = $theme_class;
         $results[$i]['order'] = $order;
         $results[$i]['is_live'] = $is_live;
         $i++;
@@ -266,6 +267,10 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
 
                 <label for="txtMetaDescription">Meta Description:</label>
                 <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="<?=$page['meta_desc']?>" />
+
+                <label for="txtThemeClass">Theme Class:</label>
+                <input type="text" id="txtThemeClass" name="txtThemeClass" value="<?=$page['theme_class']?>" />
+
 
                 <label for="txtOrder">Order:</label>
                 <input type="text" id="txtOrder" name="txtOrder" value="<?=$page['order']?>" />

@@ -21,7 +21,7 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
 
     $query = '';
     $query .= 'SELECT id, title, nav_title, is_landing_page, has_map, heading, heading_pullout, sub_heading, header_image, header_mp4, ';
-    $query .= 'header_webm, video_embed, content_header, content, meta_keywords, meta_desc FROM pages WHERE friendly_url = ?';
+    $query .= 'header_webm, video_embed, content_header, content, meta_keywords, meta_desc, theme_class FROM pages WHERE friendly_url = ? AND is_live = 1';
 
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     if (!$stmt = $mysqli->prepare($query)) {
@@ -30,7 +30,7 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
     } else {
         $stmt->bind_param('s', strtolower($friendly_url));
         $stmt->execute();
-        $stmt->bind_result($id, $title, $nav_title, $is_landing_page, $has_map, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $video_embed, $content_header, $content, $meta_keywords, $meta_desc);
+        $stmt->bind_result($id, $title, $nav_title, $is_landing_page, $has_map, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $video_embed, $content_header, $content, $meta_keywords, $meta_desc, $theme_class);
 
         $results = array();
         $i = 0;
@@ -52,6 +52,7 @@ function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
             $results[$i]['content'] = $content;
             $results[$i]['meta_keywords'] = $meta_keywords;
             $results[$i]['meta_desc'] = $meta_desc;
+            $results[$i]['theme_class'] = $theme_class;
             $i++;
         }
         return $results;
@@ -83,6 +84,7 @@ foreach ($pageDetails as $pageDetail) {
         $hasMap =  $pageDetail['has_map'];
         $pageMetaKeywords= $pageDetail['meta_keywords'];
         $pageMetaDesc= $pageDetail['meta_desc'];
+        $theme_class = $pageDetail['theme_class'];
 
         $fetchSuccess = true;
     }

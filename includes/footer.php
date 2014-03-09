@@ -26,8 +26,9 @@
     </section>
     <section class="standard">
         <div class="row paddingTop20 paddingBottom40 hcf-logo">
-            <span>Beyond the Wharf <?=date('Y')?></span>
-            <a href="<?=$baseURL?>/page/about-us">About Us</a>
+            <span class="border-right">Beyond the Wharf <?=date('Y')?></span>
+            <a class="border-right" href="<?=$baseURL?>/page/about-us">About Us</a>
+            <a href="<?=$baseURL?>/page/terms-of-use">Terms of Use</a>
             <br />
 
             <a href="<?=$baseURL?>/page/about-us" class="logo-link"></a>

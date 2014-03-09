@@ -33,7 +33,7 @@ if ($friendly_url == 'local-insights')
                     <div class="imgHolder">
                         <img src="../img/locations/thumbnail-med/Mark_wide.jpg" />
                     </div>
-                    <div class="textHolder">
+                    <div class="textHolder child">
                         <h5><a href="<?=$baseURL?>/page/child-at-heart">Family Fun</a></h5>
                         <span>The Child at Heart</span>
                     </div>
@@ -45,7 +45,7 @@ if ($friendly_url == 'local-insights')
                     <div class="imgHolder">
                         <img src="../img/locations/thumbnail-med/Tracey_wide.jpg" alt="Image of Tracey." />
                     </div>
-                    <div class="textHolder">
+                    <div class="textHolder ancestral">
                         <h5><a href="<?=$baseURL?>/page/aboriginal-harbour-journeys">Aboriginal Culture</a></h5>
                         <span>The Ancestral Spirit</span>
                     </div>
@@ -57,7 +57,7 @@ if ($friendly_url == 'local-insights')
                     <div class="imgHolder">
                         <img src="../img/locations/thumbnail-med/Sylvia_wide.jpg" alt="Image of Sylvia" />
                     </div>
-                    <div class="textHolder">
+                    <div class="textHolder entertainer">
                         <h5><a href="<?=$baseURL?>/page/entertainment">Harbour Entertainment</a></h5>
                         <span>The Entertainer</span>
                     </div>
@@ -70,7 +70,7 @@ if ($friendly_url == 'local-insights')
                     <div class="imgHolder">
                         <img src="<?=$baseURL?>/img/locations/thumbnail-med/John_cross_promo_tile.jpg" />
                     </div>
-                    <div class="textHolder">
+                    <div class="textHolder mariner">
                         <h5><a href="<?=$baseURL?>/page/sydney-harbour-history">Sydney Harbour History</a></h5>
                         <span>The Mariner</span>
                     </div>

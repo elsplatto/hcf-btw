@@ -225,6 +225,9 @@ span {
 .red {
   color: #f92727; }
 
+.underline {
+  text-decoration: underline; }
+
 /*End - some consistent patterns */
 html {
   height: 100%;
@@ -294,18 +297,24 @@ p {
   font-size: 1.125rem;
   color: #272e35; }
 
+.headerContentArea ul {
+  font-family: "adobe-garamond-pro", sans-serif !important;
+  font-size: 1.125rem;
+  color: #272e35;
+  margin-left: 2rem !important; }
+
 /*Start - color classes */
 .standardDarkGrey {
   background-color: #272e35; }
 
 .ultraDarkGrey {
   background-color: #222528; }
-  .ultraDarkGrey h3 {
+  .ultraDarkGrey h2, .ultraDarkGrey h3, .ultraDarkGrey h4, .ultraDarkGrey h5, .ultraDarkGrey p, .ultraDarkGrey a {
     color: white !important; }
 
 .standardLightGrey {
   background-color: #3c4855; }
-  .standardLightGrey h3 {
+  .standardLightGrey h2, .standardLightGrey h3, .standardLightGrey h4, .standardLightGrey h5, .standardLightGrey p, .standardLightGrey a {
     color: white !important; }
 
 div.white, section.white {
@@ -863,6 +872,79 @@ div.white, section.white {
       font-family: "Inconsolata", sans-serif !important;
       font-size: 0.938rem; }
 
+/*Start: theme icons */
+.mariner:before, .entertainer:before, .child:before, .ancestral:before {
+  content: "";
+  position: absolute;
+  background-image: url("img/icons.png"); }
+
+.ancestral:before {
+  width: 6.25rem;
+  height: 3.188rem;
+  background-position: -470px -138px; }
+
+.child:before {
+  width: 3.875rem;
+  height: 4.25rem;
+  background-position: -470px -318px; }
+
+.entertainer:before {
+  width: 3.875rem;
+  height: 3.75rem;
+  background-position: -470px -254px; }
+
+.mariner:before {
+  width: 3.125rem;
+  height: 3.313rem;
+  background-position: -470px -193px; }
+
+.textHolder.ancestral:before {
+  top: 0.75rem;
+  right: 1rem; }
+
+.textHolder.child:before {
+  top: 0.375rem;
+  right: 1rem; }
+
+.textHolder.entertainer:before {
+  top: 0.688rem;
+  right: 1rem; }
+
+.textHolder.mariner:before {
+  top: 0.75rem;
+  right: 1rem; }
+
+.featureImgHolder.child:before, .featureImgHolder.ancestral:before, .featureImgHolder.entertainer:before, .featureImgHolder.mariner:before {
+  display: none;
+  background-image: none; }
+.featureImgHolder.child .headerHolder, .featureImgHolder.ancestral .headerHolder, .featureImgHolder.entertainer .headerHolder, .featureImgHolder.mariner .headerHolder {
+  top: 2rem; }
+  .featureImgHolder.child .headerHolder span.child, .featureImgHolder.child .headerHolder span.ancestral, .featureImgHolder.child .headerHolder span.entertainer, .featureImgHolder.child .headerHolder span.mariner, .featureImgHolder.ancestral .headerHolder span.child, .featureImgHolder.ancestral .headerHolder span.ancestral, .featureImgHolder.ancestral .headerHolder span.entertainer, .featureImgHolder.ancestral .headerHolder span.mariner, .featureImgHolder.entertainer .headerHolder span.child, .featureImgHolder.entertainer .headerHolder span.ancestral, .featureImgHolder.entertainer .headerHolder span.entertainer, .featureImgHolder.entertainer .headerHolder span.mariner, .featureImgHolder.mariner .headerHolder span.child, .featureImgHolder.mariner .headerHolder span.ancestral, .featureImgHolder.mariner .headerHolder span.entertainer, .featureImgHolder.mariner .headerHolder span.mariner {
+    position: relative;
+    display: block;
+    clear: both;
+    margin: 0 auto; }
+    .featureImgHolder.child .headerHolder span.child:before, .featureImgHolder.child .headerHolder span.ancestral:before, .featureImgHolder.child .headerHolder span.entertainer:before, .featureImgHolder.child .headerHolder span.mariner:before, .featureImgHolder.ancestral .headerHolder span.child:before, .featureImgHolder.ancestral .headerHolder span.ancestral:before, .featureImgHolder.ancestral .headerHolder span.entertainer:before, .featureImgHolder.ancestral .headerHolder span.mariner:before, .featureImgHolder.entertainer .headerHolder span.child:before, .featureImgHolder.entertainer .headerHolder span.ancestral:before, .featureImgHolder.entertainer .headerHolder span.entertainer:before, .featureImgHolder.entertainer .headerHolder span.mariner:before, .featureImgHolder.mariner .headerHolder span.child:before, .featureImgHolder.mariner .headerHolder span.ancestral:before, .featureImgHolder.mariner .headerHolder span.entertainer:before, .featureImgHolder.mariner .headerHolder span.mariner:before {
+      top: 0;
+      left: 0; }
+  .featureImgHolder.child .headerHolder span.child, .featureImgHolder.ancestral .headerHolder span.child, .featureImgHolder.entertainer .headerHolder span.child, .featureImgHolder.mariner .headerHolder span.child {
+    width: 3.875rem;
+    height: 4.25rem; }
+  .featureImgHolder.child .headerHolder span.ancestral, .featureImgHolder.ancestral .headerHolder span.ancestral, .featureImgHolder.entertainer .headerHolder span.ancestral, .featureImgHolder.mariner .headerHolder span.ancestral {
+    width: 6.25rem;
+    height: 3.188rem; }
+  .featureImgHolder.child .headerHolder span.entertainer, .featureImgHolder.ancestral .headerHolder span.entertainer, .featureImgHolder.entertainer .headerHolder span.entertainer, .featureImgHolder.mariner .headerHolder span.entertainer {
+    width: 3.875rem;
+    height: 3.75rem; }
+  .featureImgHolder.child .headerHolder span.mariner, .featureImgHolder.ancestral .headerHolder span.mariner, .featureImgHolder.entertainer .headerHolder span.mariner, .featureImgHolder.mariner .headerHolder span.mariner {
+    width: 3.125rem;
+    height: 3.313rem; }
+  .featureImgHolder.child .headerHolder h2, .featureImgHolder.ancestral .headerHolder h2, .featureImgHolder.entertainer .headerHolder h2, .featureImgHolder.mariner .headerHolder h2 {
+    clear: both;
+    display: block;
+    margin-top: 1rem; }
+
+/*End: theme icons */
 .eventTileHolder h3 {
   margin-bottom: -1rem;
   margin-top: 1.5rem; }
@@ -882,6 +964,7 @@ div.white, section.white {
       width: 100%; }
 
 .textHolder {
+  position: relative;
   width: 100%;
   background-color: #272e35;
   height: 5rem;
@@ -1458,10 +1541,12 @@ footer .standard {
     text-transform: uppercase; }
   footer .standard span {
     margin-left: -5rem;
-    padding-right: 2rem;
+    padding-right: 2rem; }
+  footer .standard .border-right {
     border-right: 1px solid #272e35; }
   footer .standard a {
-    margin-left: 2rem; }
+    margin-left: 2rem;
+    padding-right: 2rem; }
 
 .infoBubbleWrapper {
   width: 100%;
@@ -1844,7 +1929,46 @@ footer .standard {
 
   .instagram.small:before {
     width: 1.3rem;
-    height: 1.2rem; } }
+    height: 1.2rem; }
+
+  /*Start: theme icons */
+  .ancestral:before {
+    width: 6.308rem;
+    height: 3.231rem;
+    background-position: -579px -138px; }
+
+  .child:before {
+    width: 3.846rem;
+    height: 4.308rem;
+    background-position: -579px -285px; }
+
+  .entertainer:before {
+    width: 3.923rem;
+    height: 3.846rem;
+    background-position: -579px -232px; }
+
+  .mariner:before {
+    width: 3.154rem;
+    height: 3.385rem;
+    background-position: -579px -183px; }
+
+  .textHolder.ancestral:before {
+    top: 0.75rem;
+    right: 1rem; }
+
+  .textHolder.child:before {
+    top: 0.375rem;
+    right: 1rem; }
+
+  .textHolder.entertainer:before {
+    top: 0.688rem;
+    right: 1rem; }
+
+  .textHolder.mariner:before {
+    top: 0.75rem;
+    right: 1rem; }
+
+  /*End: theme icons */ }
 @media only screen and (max-width: 60.313em) {
   .navHolder {
     height: 2.8125rem; }
@@ -2053,6 +2177,14 @@ footer .standard {
           width: 3.538rem;
           height: 2.846rem;
           background-position: -954px -217px !important; }
+
+  .featureImgHolder.child:before, .featureImgHolder.ancestral:before, .featureImgHolder.entertainer:before, .featureImgHolder.mariner:before {
+    display: none;
+    background-image: none; }
+  .featureImgHolder.child .headerHolder, .featureImgHolder.ancestral .headerHolder, .featureImgHolder.entertainer .headerHolder, .featureImgHolder.mariner .headerHolder {
+    top: 0.5rem; }
+    .featureImgHolder.child .headerHolder span.child, .featureImgHolder.child .headerHolder span.ancestral, .featureImgHolder.child .headerHolder span.entertainer, .featureImgHolder.child .headerHolder span.mariner, .featureImgHolder.ancestral .headerHolder span.child, .featureImgHolder.ancestral .headerHolder span.ancestral, .featureImgHolder.ancestral .headerHolder span.entertainer, .featureImgHolder.ancestral .headerHolder span.mariner, .featureImgHolder.entertainer .headerHolder span.child, .featureImgHolder.entertainer .headerHolder span.ancestral, .featureImgHolder.entertainer .headerHolder span.entertainer, .featureImgHolder.entertainer .headerHolder span.mariner, .featureImgHolder.mariner .headerHolder span.child, .featureImgHolder.mariner .headerHolder span.ancestral, .featureImgHolder.mariner .headerHolder span.entertainer, .featureImgHolder.mariner .headerHolder span.mariner {
+      display: none; }
 
   #photoHolder01 div a.comments, #photoHolder01 div a.likes, #photoHolder2 div a.comments, #photoHolder2 div a.likes, .galleryHolder div a.comments, .galleryHolder div a.likes {
     padding: 0.5rem 0 0 0; }

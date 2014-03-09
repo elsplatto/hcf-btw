@@ -12,9 +12,15 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
         </div>
     </div>
 </section>
-<section class="featureImgHolder">
+<section class="featureImgHolder <?=$theme_class?>">
     <img src="../img/featureImages/<?=$pageHeaderImage?>" />
     <div class="headerHolder">
+        <?php
+        if (strlen($theme_class) > 0)
+        {
+            echo '<span class="'.$theme_class.'"></span>';
+        }
+        ?>
         <h2 class="sub"><?=$pageHeading?></h2>
         <hr />
         <h3 class="pullout clearfix hide-for-small hide-for-medium"><?=$pagePullout?></h3><br />
@@ -43,7 +49,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
 
 
 <?php
-if ($friendly_url !== 'about-us')
+if ($friendly_url !== 'about-us' && $friendly_url !== 'terms-of-use')
 {
     include 'includes/contribute.php';
 }
@@ -137,7 +143,7 @@ if ($hasMap > 0 || count($pageTiles) > 0)
 ?>
 
 <?php
-if ($friendly_url !== 'about-us')
+if ($friendly_url !== 'about-us' && $friendly_url !== 'terms-of-use')
 {
 
     include 'includes/itineraries.php';

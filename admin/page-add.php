@@ -119,6 +119,9 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
                 <label for="txtMetaDescription">Meta Description:</label>
                 <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="" />
 
+                <label for="txtThemeClass">Theme Class:</label>
+                <input type="text" id="txtThemeClass" name="txtThemeClass" value="" />
+
                 <label for="txtOrder">Order:</label>
                 <input type="text" id="txtOrder" name="txtOrder" value="" />
 

@@ -282,6 +282,9 @@ span
 
 .red
   color: #f92727
+
+.underline
+  text-decoration: underline
 /*End - some consistent patterns*/
 
 html
@@ -354,16 +357,23 @@ p
   font-size: 1.125rem
   color: $std-dark-grey
 
+.headerContentArea
+  ul
+    font-family: $garamond
+    font-size: 1.125rem
+    color: $std-dark-grey
+    margin-left: 2rem !important
+
 /*Start - color classes*/
 .standardDarkGrey
   background-color: $std-dark-grey-background
 .ultraDarkGrey
   background-color: $ultra-dark-grey
-  h3
+  h2, h3, h4, h5, p, a
     color: #fff !important
 .standardLightGrey
   background-color: $std-light-grey
-  h3
+  h2, h3, h4, h5, p, a
     color: #fff !important
 div.white, section.white
   background-color: #fff
@@ -939,7 +949,6 @@ div.white, section.white
 
 
 /*Start - Tile Styles*/
-
 .tweetSlider
   .orbit-container
     .orbit-timer
@@ -976,6 +985,94 @@ div.white, section.white
         font-family: $inconsolata
         font-size: 0.938rem
 
+/*Start: theme icons*/
+.mariner, .entertainer, .child, .ancestral
+  &:before
+    content: ''
+    position: absolute
+    background-image: url('img/icons.png')
+
+.ancestral
+  &:before
+    width: 6.25rem
+    height: 3.188rem
+    background-position: -470px -138px
+
+.child
+  &:before
+    width: 3.875rem
+    height: 4.25rem
+    background-position: -470px -318px
+
+.entertainer
+  &:before
+    width: 3.875rem
+    height: 3.75rem
+    background-position: -470px -254px
+
+.mariner
+  &:before
+    width: 3.125rem
+    height: 3.313rem
+    background-position: -470px -193px
+
+
+.textHolder.ancestral
+  &:before
+    top: 0.75rem
+    right: 1rem
+
+.textHolder.child
+  &:before
+    top: 0.375rem
+    right: 1rem
+
+.textHolder.entertainer
+  &:before
+    top: 0.688rem
+    right: 1rem
+
+.textHolder.mariner
+  &:before
+    top: 0.75rem
+    right: 1rem
+
+.featureImgHolder.child, .featureImgHolder.ancestral, .featureImgHolder.entertainer, .featureImgHolder.mariner
+  &:before
+    display: none
+    background-image: none
+  .headerHolder
+    top: 2rem
+    span.child, span.ancestral, span.entertainer, span.mariner
+      position: relative
+      display: block
+      clear: both
+      margin: 0 auto
+      &:before
+        top: 0
+        left: 0
+    span.child
+      width: 3.875rem
+      height: 4.25rem
+    span.ancestral
+      width: 6.25rem
+      height: 3.188rem
+    span.entertainer
+      width: 3.875rem
+      height: 3.75rem
+    span.mariner
+      width: 3.125rem
+      height: 3.313rem
+
+    h2
+      clear: both
+      display: block
+      margin-top: 1rem
+
+
+
+
+/*End: theme icons*/
 
 .eventTileHolder
   h3
@@ -997,6 +1094,7 @@ div.white, section.white
     img
       width: 100%
 .textHolder
+  position: relative
   width: 100%
   background-color: $std-dark-grey-background
   height: 5rem
@@ -1600,9 +1698,11 @@ footer
     span
       margin-left: -5rem
       padding-right: 2rem
+    .border-right
       border-right: 1px solid $std-dark-grey
     a
       margin-left: 2rem
+      padding-right: 2rem
 
 .infoBubbleWrapper
   width: 100%
@@ -2038,6 +2138,56 @@ footer
       height: 1.2rem
 
 
+  /*Start: theme icons*/
+
+  .ancestral
+    &:before
+      width: 6.308rem
+      height: 3.231rem
+      background-position: -579px -138px
+
+  .child
+    &:before
+      width: 3.846rem
+      height: 4.308rem
+      background-position: -579px -285px
+
+  .entertainer
+    &:before
+      width: 3.923rem
+      height: 3.846rem
+      background-position: -579px -232px
+
+  .mariner
+    &:before
+      width: 3.154rem
+      height: 3.385rem
+      background-position: -579px -183px
+
+
+  .textHolder.ancestral
+    &:before
+      top: 0.75rem
+      right: 1rem
+
+  .textHolder.child
+    &:before
+      top: 0.375rem
+      right: 1rem
+
+  .textHolder.entertainer
+    &:before
+      top: 0.688rem
+      right: 1rem
+
+  .textHolder.mariner
+    &:before
+      top: 0.75rem
+      right: 1rem
+
+  /*End: theme icons*/
+
+
 //manage screens between phone and tablet
 @media only screen and (max-width: 60.313em)
   .navHolder
@@ -2284,7 +2434,14 @@ footer
                 height: 2.846rem
                 background-position: -954px -217px !important
 
-
+  .featureImgHolder.child, .featureImgHolder.ancestral, .featureImgHolder.entertainer, .featureImgHolder.mariner
+    &:before
+      display: none
+      background-image: none
+    .headerHolder
+      top: 0.5rem
+      span.child, span.ancestral, span.entertainer, span.mariner
+        display: none
 
 
 

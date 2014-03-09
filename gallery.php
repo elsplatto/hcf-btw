@@ -418,7 +418,8 @@ if (isset($sharedPhoto))
 <section id="featuredPhotographer" class="featurePhotographerHolder standardLightGrey">
     <div class="row paddingBottom40">
         <div class="large-12 columns marginTop40">
-            <h3 class="text-center" style="margin-bottom: 0">Featured Photographer</h3>
+            <h3 class="text-center" style="margin-bottom: 0">Featured Photographer - Joel Coleman (Saltmotion)</h3>
+            <h4 class="text-center">Visit <a href="http://saltmotion.com" target="_blank" rel="nofollow" class="underline">Saltmotion</a></h4>
         </div>
 
 
