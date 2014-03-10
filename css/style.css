@@ -1190,8 +1190,6 @@ div.white, section.white {
         .controlPanelHolder .controlPanel ul li a {
           color: white;
           text-transform: capitalize;
-          width: 1.063rem;
-          height: 1rem;
           padding: 0 0 0 2rem;
           position: relative; }
         .controlPanelHolder .controlPanel ul li [data-category]:before {
@@ -1855,6 +1853,17 @@ footer .standard {
       height: 1.769rem;
       left: 1.25rem;
       top: 0.75rem; }
+
+  .controlPanelHolder .controlPanel h6.white {
+    color: white; }
+  .controlPanelHolder .controlPanel h6 {
+    font-size: 1.25rem; }
+  .controlPanelHolder .controlPanel ul li a {
+    font-size: 1.25rem;
+    padding: 0 0 0 2.4rem; }
+  .controlPanelHolder .controlPanel ul li [data-category]:before {
+    width: 1.308rem;
+    height: 1.231rem; }
 
   #photoHolder01 div a.comments, #photoHolder01 div a.likes, #photoHolder2 div a.comments, #photoHolder2 div a.likes, .galleryHolder div a.comments, .galleryHolder div a.likes {
     padding: 0.5rem 0 0 0; }
