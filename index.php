@@ -183,7 +183,7 @@ if ($deviceType != 'phone')
                   {
 
                   ?>
-                      <li><a href="#" class="mapFilter" data-category="<?=$filters[$i]?>" data-visible="true"><span><span></span></span><?=$filters[$i]?></a></li>
+                      <li><a href="#" class="mapFilter" data-category="<?=$filters[$i]?>" data-visible="true"><?=$filters[$i]?></a></li>
                   <?php
                   }
                   ?>

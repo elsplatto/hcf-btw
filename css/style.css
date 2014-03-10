@@ -1189,32 +1189,47 @@ div.white, section.white {
         padding: 3px 0; }
         .controlPanelHolder .controlPanel ul li a {
           color: white;
-          text-transform: capitalize; }
-          .controlPanelHolder .controlPanel ul li a span {
-            display: inline-block;
-            width: 13px;
-            height: 13px;
-            border: 1px solid #495764;
-            border-radius: 7px;
-            padding: 2px;
-            margin: 0 10px 0 0;
-            position: relative;
-            top: 3px; }
-            .controlPanelHolder .controlPanel ul li a span span {
-              padding: 0;
-              margin: 0px;
-              width: 9px;
-              height: 9px;
-              position: absolute;
-              top: 1px;
-              left: 1px;
-              background-color: #59acb3; }
-        .controlPanelHolder .controlPanel ul li [data-target='manlyTrip'] span span {
-          background-color: #bf5757; }
-        .controlPanelHolder .controlPanel ul li [data-target='parramattaTrip'] span span {
-          background-color: #e2b076; }
-        .controlPanelHolder .controlPanel ul li [data-target='mosmanTrip'] span span {
-          background-color: #c98abf; }
+          text-transform: capitalize;
+          width: 1.063rem;
+          height: 1rem;
+          padding: 0 0 0 2rem;
+          position: relative; }
+        .controlPanelHolder .controlPanel ul li [data-category]:before {
+          content: "";
+          left: 0;
+          top: 0.025rem;
+          position: absolute;
+          width: 1.063rem;
+          height: 1rem;
+          background-image: url("img/icons.png"); }
+        .controlPanelHolder .controlPanel ul li [data-category="attractions"]:before {
+          background-position: -128px -258px; }
+        .controlPanelHolder .controlPanel ul li [data-category="attractions"].off:before {
+          background-position: -128px -288px; }
+        .controlPanelHolder .controlPanel ul li [data-category="adventure & sport"]:before {
+          background-position: -166px -258px; }
+        .controlPanelHolder .controlPanel ul li [data-category="adventure & sport"].off:before {
+          background-position: -166px -288px; }
+        .controlPanelHolder .controlPanel ul li [data-category="shopping"]:before {
+          background-position: -280px -258px; }
+        .controlPanelHolder .controlPanel ul li [data-category="shopping"].off:before {
+          background-position: -280px -288px; }
+        .controlPanelHolder .controlPanel ul li [data-category="nature"]:before {
+          background-position: -199px -258px; }
+        .controlPanelHolder .controlPanel ul li [data-category="nature"].off:before {
+          background-position: -199px -288px; }
+        .controlPanelHolder .controlPanel ul li [data-category="food & wine"]:before {
+          background-position: -94px -258px; }
+        .controlPanelHolder .controlPanel ul li [data-category="food & wine"].off:before {
+          background-position: -94px -288px; }
+        .controlPanelHolder .controlPanel ul li [data-category="family"]:before {
+          background-position: -242px -258px; }
+        .controlPanelHolder .controlPanel ul li [data-category="family"].off:before {
+          background-position: -242px -288px; }
+        .controlPanelHolder .controlPanel ul li [data-category="local secrets"]:before {
+          background-position: -62px -258px; }
+        .controlPanelHolder .controlPanel ul li [data-category="local secrets"].off:before {
+          background-position: -62px -288px; }
 
 .contentHolder .large-12 {
   overflow: hidden; }

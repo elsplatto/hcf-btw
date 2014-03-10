@@ -405,13 +405,13 @@ function initialize() {
                 {
                     //console.log('hide marker');
                     markerArray[i].setVisible(false);
-                    $(this).children('span').children('span').hide();
+                    $(this).addClass('off');
                 }
                 else
                 {
                     //console.log('show marker');
                     markerArray[i].setVisible(true);
-                    $(this).children('span').children('span').show();
+                    $(this).removeClass('off');
                 }
             }
         }

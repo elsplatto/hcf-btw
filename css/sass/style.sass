@@ -1323,37 +1323,61 @@ div.white, section.white
         a
           color: #fff
           text-transform: capitalize
-          span
-            display: inline-block
-            width: 13px
-            height: 13px
-            border: 1px solid #495764
-            border-radius: 7px
-            padding: 2px
-            margin: 0 10px 0 0
-            position: relative
-            top: 3px
-            span
-              padding: 0
-              margin: 0px
-              width: 9px
-              height: 9px
-              position: absolute
-              top: 1px
-              left: 1px
-              background-color: $std-green-background
-        [data-target='manlyTrip']
-          span
-            span
-              background-color: $manly
-        [data-target='parramattaTrip']
-          span
-            span
-              background-color: $parramatta
-        [data-target='mosmanTrip']
-          span
-            span
-              background-color: $mosman
+          width: 1.063rem
+          height: 1rem
+          padding: 0 0 0 2rem
+          position: relative
+        [data-category]
+          &:before
+            content: ''
+            left: 0
+            top: 0.025rem
+            position: absolute
+            width: 1.063rem
+            height: 1rem
+            background-image: url('img/icons.png')
+        [data-category="attractions"]
+          &:before
+            background-position: -128px -258px
+        [data-category="attractions"].off
+          &:before
+            background-position: -128px -288px
+        [data-category="adventure & sport"]
+          &:before
+            background-position: -166px -258px
+        [data-category="adventure & sport"].off
+          &:before
+            background-position: -166px -288px
+        [data-category="shopping"]
+          &:before
+            background-position: -280px -258px
+        [data-category="shopping"].off
+          &:before
+            background-position: -280px -288px
+        [data-category="nature"]
+          &:before
+            background-position: -199px -258px
+        [data-category="nature"].off
+          &:before
+            background-position: -199px -288px
+        [data-category="food & wine"]
+          &:before
+            background-position: -94px -258px
+        [data-category="food & wine"].off
+          &:before
+            background-position: -94px -288px
+        [data-category="family"]
+          &:before
+            background-position: -242px -258px
+        [data-category="family"].off
+          &:before
+            background-position: -242px -288px
+        [data-category="local secrets"]
+          &:before
+            background-position: -62px -258px
+        [data-category="local secrets"].off
+          &:before
+            background-position: -62px -288px
 
 .contentHolder
   .large-12
