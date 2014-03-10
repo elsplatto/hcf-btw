@@ -15,6 +15,7 @@ if (isset($page_id) && isset($tile_id) && isset($index))
     $stmt->bind_param('iii', $index, $tile_id, $page_id);
     $stmt->execute();
     $stmt->close();
+    $mysqli->close();
 
     $json = '{"success": true, "msg": "Update successfully."}';
 }

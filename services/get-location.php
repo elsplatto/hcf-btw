@@ -50,6 +50,7 @@ if (isset($locationId))
     }
     $jsonData = json_encode($json);
     echo $jsonData;
+    $stmt->close();
     $mysqli->close();
 }
 

@@ -16,6 +16,7 @@ if ($action === 'remove')
         $stmt->bind_param('ii', $tile_id, $page_id);
         $stmt->execute();
         $stmt->close();
+        $mysqli->close();
 
         $json = '{"success": true, "msg": "Record deleted."}';
     }
@@ -29,6 +30,7 @@ else if ($action === 'add')
         $stmt->bind_param('ii', $tile_id, $page_id);
         $stmt->execute();
         $stmt->close();
+        $mysqli->close();
 
         $json = '{"success": true, "msg": "Record added."}';
     }

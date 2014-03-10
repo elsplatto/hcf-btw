@@ -30,8 +30,9 @@ while($stmt->fetch())
     $i++;
 }
 
-$numRows =  count($results);
+$stmt->close();
 
+$numRows =  count($results);
 
 if ($numRows > 0)
 {

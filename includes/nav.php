@@ -18,6 +18,7 @@ function getTopNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     }
 
     $stmt->close();
+    $mysqli->close();
 
     return $results;
 }
@@ -42,6 +43,7 @@ function getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     }
 
     $stmt->close();
+    $mysqli->close();
     return $results;
 }
 

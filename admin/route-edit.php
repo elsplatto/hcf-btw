@@ -44,6 +44,7 @@ function getRoute($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $i++;
     }
 
+    $stmt->close();
     $mysqli->close();
     return $results;
 }
@@ -66,6 +67,8 @@ function getSelectedRouteMapTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $D
         $results[$i]['tags'] = $tags;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 
@@ -85,6 +88,8 @@ function getAllMapTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['tags'] = $tags;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 
@@ -106,6 +111,8 @@ function getAllTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['tags'] = $tags;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 
@@ -129,6 +136,8 @@ function getSelectedRouteTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_D
         $results[$i]['tags'] = $tags;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 

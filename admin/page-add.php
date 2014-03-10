@@ -18,7 +18,7 @@ function getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
         $results[$i]['title'] = $title;
         $i++;
     }
-
+    $stmt->close();
     $mysqli->close();
     return $results;
 }

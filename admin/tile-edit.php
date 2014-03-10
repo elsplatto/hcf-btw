@@ -46,6 +46,7 @@ function getTile($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $i++;
     }
 
+    $stmt->close();
     $mysqli->close();
     return $results;
 }
@@ -66,7 +67,8 @@ function getTypes($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $i++;
     }
 
-    $mysqli->close();
+    $stmt->close();
+    $mysqli->close();;
     return $results;
 }
 
@@ -88,6 +90,7 @@ function getCategories($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $i++;
     }
 
+    $stmt->close();
     $mysqli->close();
     return $results;
 }

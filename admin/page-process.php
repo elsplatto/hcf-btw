@@ -65,6 +65,7 @@ if (!empty($_POST))
     }
     $stmt->execute();
     $stmt->close();
+    $mysqli->close();
     /*
     echo '$title['.$title.']<br />';
     echo '$is_nav['.$is_nav.']<br />';

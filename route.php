@@ -35,6 +35,8 @@ function getRoutesSelectedTiles($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB
         $results[$i]['tile_id'] = $tile_id;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 

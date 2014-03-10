@@ -21,6 +21,7 @@ function getTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
         $i++;
     }
 
+    $stmt->close();
     $mysqli->close();
     return $results;
 }

@@ -46,7 +46,7 @@ function getPage($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $i++;
     }
 
-
+    $stmt->close();
     $mysqli->close();
     return $results;
 }
@@ -66,6 +66,8 @@ function getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
         $results[$i]['title'] = $title;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 
@@ -87,6 +89,8 @@ function getSelectedMapTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DAT
         $results[$i]['tags'] = $tags;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 
@@ -106,6 +110,8 @@ function getAllMapTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['tags'] = $tags;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 
@@ -127,6 +133,8 @@ function getAllTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['tags'] = $tags;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 
@@ -150,6 +158,8 @@ function getSelectedTiles($id,$DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABA
         $results[$i]['tags'] = $tags;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 

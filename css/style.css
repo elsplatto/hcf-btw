@@ -30,6 +30,8 @@ a:hover {
 .orbit-container .orbit-prev > span, .orbit-container .orbit-next > span {
   border: none; }
 
+.tweetSlider ul {
+  list-style: none; }
 .tweetSlider .orbit-container {
   height: 13.75rem; }
 
@@ -1056,7 +1058,7 @@ div.white, section.white {
   background-repeat: no-repeat; }
 
 .routeHeaderHolder.eastern {
-  background-image: url("img/manlyRoute.jpg");
+  background-image: url("img/easternRoute.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
 

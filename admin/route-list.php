@@ -19,6 +19,8 @@ function getRoutes($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
         $results[$i]['is_live'] = $is_live;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 

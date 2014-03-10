@@ -33,9 +33,6 @@ if (isset($locationId))
                 $category_title = $type_title;
             }
 
-
-
-
         ?>
             <div class="large-12 medium-12 small-12 columns standardDarkGrey paddingTop20">
                 <a href="#" class="flyoutPanelClose">Close panel</a>
@@ -144,6 +141,8 @@ if (isset($locationId))
     }
     //$jsonData = json_encode($json);
     //echo $jsonData;
+
+    $stmt->close();
     $mysqli->close();
 }
 

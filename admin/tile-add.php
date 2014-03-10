@@ -21,6 +21,7 @@ function getTypes($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $i++;
     }
 
+    $stmt->close();
     $mysqli->close();
     return $results;
 }
@@ -43,6 +44,7 @@ function getCategories($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $i++;
     }
 
+    $stmt->close();
     $mysqli->close();
     return $results;
 }

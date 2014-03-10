@@ -244,12 +244,14 @@ else {
     //mail($to,$subject,$message,$headers);
 
 
-    echo '<div class="systemError"><h2>Error:</h2>';
+   /* echo '<div class="systemError"><h2>Error:</h2>';
     //echo '<p>An email with the following message has been sent to the webmaster - sorry for any inconvenience.</a></p>';
     echo '<p><strong>Type:</strong> '.$instagramResults->error_type.'</p>';
     echo '<p><strong>Msg:</strong> '.$instagramResults->error_message.'</p>';
     echo '<p><strong>URL:</strong> '.$_SERVER['REQUEST_URI'].'</p>';
-    echo '</div>';
+    echo '</div>';*/
+
+    echo "<p>We are having problems with our gallery at the moment - we'll have it up and running again shortly.</p>";
 }
 
 ?>

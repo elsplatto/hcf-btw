@@ -24,6 +24,8 @@ function getVideo($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
             $results[$i]['video_embed'] = $video_embed;
             $i++;
         }
+        $stmt->close();
+        $mysqli->close();
         return $results;
     }
 }

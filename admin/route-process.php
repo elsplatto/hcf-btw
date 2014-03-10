@@ -43,7 +43,9 @@ if (!empty($_POST))
         $route_id = $mysqli->insert_id;
     }
     $stmt->execute();
+
     $stmt->close();
+    $mysqli->close();
 
     /*
     echo '$page_title['.$page_title.']<br />';

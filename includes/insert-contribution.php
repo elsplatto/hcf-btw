@@ -15,6 +15,7 @@ if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['
     $stmt->bind_param('ssssi', $firstname, $lastname, $email, $story, $created_date);
     $stmt->execute();
     $stmt->close();
+    $mysqli->close();
 
     $json = '{"success": true, "msg": "Thank you for submitting your story."}';
 }

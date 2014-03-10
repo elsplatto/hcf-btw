@@ -60,6 +60,7 @@ function getRoute($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DAT
         }
         return $results;
     }
+    $stmt->close();
     $mysqli->close();
     return $results;
 }

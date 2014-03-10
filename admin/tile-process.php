@@ -50,7 +50,9 @@ if (!empty($_POST))
         $tile_id = $mysqli->insert_id;
     }
     $stmt->execute();
+
     $stmt->close();
+    $mysqli->close();
 
     /*
     echo '$title['.$title.']<br />';

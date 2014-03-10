@@ -37,6 +37,8 @@ function getEvents($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['tile_id'] = $tile_id;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 
@@ -69,6 +71,8 @@ function getFeaturedEvent($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['tile_id'] = $tile_id;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 
@@ -216,9 +220,7 @@ include 'includes/nav.php';
             $last_month_name = $month_name;
             if ($event_count == count($events))
             {
-                ?>
-                <div id="panelHolder-<?=($flyout_count+1)?>" class="large-12 columns"></div>
-                <?php
+                ?><div id="panelHolder-<?=($flyout_count+1)?>" class="large-12 columns"></div><?php
             }
         }
         ?>

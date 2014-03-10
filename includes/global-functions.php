@@ -199,6 +199,7 @@ function getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATA
         $results[$i]['map_icon'] = $map_icon;
         $i++;
     }
+    $stmt->close();
     $mysqli->close();
     return $results;
 }
@@ -235,6 +236,7 @@ function getRouteMapMarkers($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $D
         $results[$i]['map_icon'] = $map_icon;
         $i++;
     }
+    $stmt->close();
     $mysqli->close();
     return $results;
 }
@@ -298,6 +300,8 @@ function getPagesSelectedTiles($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_
         $results[$i]['tile_id'] = $tile_id;
         $i++;
     }
+    $stmt->close();
+    $mysqli->close();
     return $results;
 }
 
@@ -309,6 +313,8 @@ function getShotOfTheDayID($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     $stmt->execute();
     $stmt->bind_result($media_id);
     $stmt->fetch();
+    $stmt->close();
+    $mysqli->close();
     return $media_id;
 }
 
