@@ -1225,7 +1225,7 @@ div.white, section.white {
         .controlPanelHolder .controlPanel ul li [data-category="family"].off:before {
           background-position: -242px -288px; }
         .controlPanelHolder .controlPanel ul li [data-category="local secrets"]:before {
-          background-position: -62px -258px; }
+          background-position: -61px -258px; }
         .controlPanelHolder .controlPanel ul li [data-category="local secrets"].off:before {
           background-position: -62px -288px; }
 
