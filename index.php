@@ -120,7 +120,7 @@ include 'includes/nav.php';
                 </div>
                 <div class="textHolder">
                    <span>Itinerary</span>
-                    <h5><a href="<?=$baseURL?>/itineraries">Sunday - Family Day</a></h5>
+                    <h5><a href="<?=$baseURL?>/docs/beyondthewharf-family.pdf" target="_blank">Sunday - Family Day</a></h5>
                 </div>
             </div>
             <?php
