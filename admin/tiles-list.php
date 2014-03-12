@@ -34,11 +34,6 @@ $tiles = getTiles($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     <?php
     include 'includes/head.php';
     ?>
-    <style>
-        .list th, .list td {
-            padding: 0.5rem 1rem 0.5rem 0
-        }
-    </style>
 </head>
 <body>
     <section>

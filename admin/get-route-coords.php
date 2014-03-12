@@ -58,11 +58,11 @@ if ($numRows > 0)
         $json .= '"info_bubble_height": ' . $row['info_bubble_height'] . ',';
         $json .= '"url": "' . $row['friendly_url'] . '"';
 
-        $innerStmt = $mysqli->prepare('SELECT lat, lng  from route_geo WHERE route_id = ? ORDER BY route_geo.order');
+        $innerStmt = $mysqli->prepare('SELECT lat, lng, is_waypoint, is_destination, label, is_sub_route  from route_geo WHERE route_id = ? ORDER BY route_geo.order');
         $innerStmt->bind_param('i', $rowID);
         $innerStmt->execute();
 
-        $innerStmt->bind_result($lat, $lng);
+        $innerStmt->bind_result($lat, $lng, $is_waypoint, $is_destination, $label, $is_sub_route);
 
         //$innerResult = $innerStmt->get_result();
         $innerResult = array();
@@ -72,6 +72,10 @@ if ($numRows > 0)
         {
             $innerResult[$i]['lat'] = $lat;
             $innerResult[$i]['lng'] = $lng;
+            $innerResult[$i]['is_waypoint'] = $is_waypoint;
+            $innerResult[$i]['is_destination'] = $is_destination;
+            $innerResult[$i]['label'] = $label;
+            $innerResult[$i]['is_sub_route'] = $is_sub_route;
             $i++;
         }
 

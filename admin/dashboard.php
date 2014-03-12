@@ -20,6 +20,8 @@ include 'includes/head.php';
             <p><a href="page-list.php">Pages</a></p>
             <p><a href="tiles-list.php">Tiles</a></p>
             <p><a href="route-list.php">Routes</a></p>
+
+            <p><a href="user-list.php">Users</a></p>
         </div>
     </div>
 </section>

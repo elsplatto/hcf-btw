@@ -920,7 +920,7 @@ div.white, section.white {
   display: none;
   background-image: none; }
 .featureImgHolder.child .headerHolder, .featureImgHolder.ancestral .headerHolder, .featureImgHolder.entertainer .headerHolder, .featureImgHolder.mariner .headerHolder {
-  top: 2rem; }
+  top: 7rem; }
   .featureImgHolder.child .headerHolder span.child, .featureImgHolder.child .headerHolder span.ancestral, .featureImgHolder.child .headerHolder span.entertainer, .featureImgHolder.child .headerHolder span.mariner, .featureImgHolder.ancestral .headerHolder span.child, .featureImgHolder.ancestral .headerHolder span.ancestral, .featureImgHolder.ancestral .headerHolder span.entertainer, .featureImgHolder.ancestral .headerHolder span.mariner, .featureImgHolder.entertainer .headerHolder span.child, .featureImgHolder.entertainer .headerHolder span.ancestral, .featureImgHolder.entertainer .headerHolder span.entertainer, .featureImgHolder.entertainer .headerHolder span.mariner, .featureImgHolder.mariner .headerHolder span.child, .featureImgHolder.mariner .headerHolder span.ancestral, .featureImgHolder.mariner .headerHolder span.entertainer, .featureImgHolder.mariner .headerHolder span.mariner {
     position: relative;
     display: block;
@@ -1225,7 +1225,7 @@ div.white, section.white {
         .controlPanelHolder .controlPanel ul li [data-category="family"].off:before {
           background-position: -242px -288px; }
         .controlPanelHolder .controlPanel ul li [data-category="local secrets"]:before {
-          background-position: -61px -258px; }
+          background-position: -62px -258px; }
         .controlPanelHolder .controlPanel ul li [data-category="local secrets"].off:before {
           background-position: -62px -288px; }
 
