@@ -12,6 +12,7 @@ if (!empty($_POST))
     $heading = $_POST['txtHeading'];
     $heading_pullout = $_POST['txtHeadingPullout'];
     $route_colour = $_POST['txtRouteColour'];
+    $sub_route_colour = $_POST['txtSubRouteColour'];
     $css_class = $_POST['txtCSSClass'];
     $header_image = $_POST['txtHeaderImage'];
     $info_bubble_width = $_POST['txtInfoBubbleWidth'];
@@ -31,15 +32,15 @@ if (!empty($_POST))
     {
         $route_id = $_POST['routeID'];
         $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-        $stmt = $mysqli->prepare('UPDATE route SET page_title = ?, nav_title = ?, friendly_url = ?, heading = ?, heading_pullout = ?, route_colour = ?, css_class = ?, header_image = ?, info_bubble_width = ?, info_bubble_height = ?, header_mp4 = ?, header_webm = ?, tags = ?, content_header = ?, content = ?, meta_keywords = ?, meta_desc = ?, nav_order = ?, is_live = ? WHERE id = ?');
-        $stmt->bind_param('ssssssssiisssssssiii', $page_title, $nav_title, $friendly_url, $heading, $heading_pullout, $route_colour, $css_class, $header_image, $info_bubble_width, $info_bubble_height, $header_mp4, $header_webm, $tags, $content_header, $mysqli->real_escape_string($content), $meta_keywords, $meta_desc, $nav_order, $is_live, $route_id);
+        $stmt = $mysqli->prepare('UPDATE route SET page_title = ?, nav_title = ?, friendly_url = ?, heading = ?, heading_pullout = ?, route_colour = ?, sub_route_colour = ?, css_class = ?, header_image = ?, info_bubble_width = ?, info_bubble_height = ?, header_mp4 = ?, header_webm = ?, tags = ?, content_header = ?, content = ?, meta_keywords = ?, meta_desc = ?, nav_order = ?, is_live = ? WHERE id = ?');
+        $stmt->bind_param('sssssssssiisssssssiii', $page_title, $nav_title, $friendly_url, $heading, $heading_pullout, $route_colour, $sub_route_colour, $css_class, $header_image, $info_bubble_width, $info_bubble_height, $header_mp4, $header_webm, $tags, $content_header, $mysqli->real_escape_string($content), $meta_keywords, $meta_desc, $nav_order, $is_live, $route_id);
 
     }
     else
     {
         $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-        $stmt = $mysqli->prepare('INSERT INTO route (page_title, nav_title, friendly_url, heading, heading_pullout, route_colour, css_class, header_image, info_bubble_width, info_bubble_height, header_mp4, header_webm, tags, content_header, content, meta_keywords, meta_desc, nav_order, is_live) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-        $stmt->bind_param('ssssssssiisssssssii', $page_title, $nav_title, $friendly_url, $heading, $heading_pullout, $route_colour, $css_class, $header_image, $info_bubble_width, $info_bubble_height, $header_mp4, $header_webm, $tags, $content_header, $mysqli->real_escape_string($content), $meta_keywords, $meta_desc, $nav_order, $is_live);
+        $stmt = $mysqli->prepare('INSERT INTO route (page_title, nav_title, friendly_url, heading, heading_pullout, route_colour, sub_route_colour, css_class, header_image, info_bubble_width, info_bubble_height, header_mp4, header_webm, tags, content_header, content, meta_keywords, meta_desc, nav_order, is_live) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+        $stmt->bind_param('sssssssssiisssssssii', $page_title, $nav_title, $friendly_url, $heading, $heading_pullout, $route_colour, $sub_route_colour, $css_class, $header_image, $info_bubble_width, $info_bubble_height, $header_mp4, $header_webm, $tags, $content_header, $mysqli->real_escape_string($content), $meta_keywords, $meta_desc, $nav_order, $is_live);
         $route_id = $mysqli->insert_id;
     }
     $stmt->execute();

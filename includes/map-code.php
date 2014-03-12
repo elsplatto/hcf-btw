@@ -361,10 +361,6 @@ function initialize() {
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
-
-
-
-
     var markerArray= [];
     showLocations(markerLocations);
 

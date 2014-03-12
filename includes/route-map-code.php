@@ -118,7 +118,11 @@ function initialize() {
     drawRouteInfoBubbles($coordsJson, $routeId);
     setMapRoutes($coordsJson, $routeId);
 
+    drawWaypoints($coordsJson, $routeId);
+
     placeRouteMapMarkers($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+
+
 
     function prepMapRoutes($coordsJson, $routeId) {
         $coordsJS = '';
@@ -149,6 +153,8 @@ function initialize() {
                 break;
             }
         }
+
+
         echo $coordsJS;
     }
 
@@ -176,6 +182,108 @@ function initialize() {
                 break;
             }
         }
+        echo $coordsJS;
+    }
+
+    function drawWaypoints($coordsJson, $routeId)
+    {
+        $wayPointsArray = array();
+        $coordsJS = '';
+        $coordsJS .= 'var wayPoints = {};';
+        $coordsJS .= "\r\n";
+        $count = 0;
+
+        foreach ($coordsJson['routes'] as $route)
+        {
+            if ($route['id'] == $routeId)
+            {
+
+                foreach ($route['coords'] as $coords)
+                {
+                    $count++;
+
+                    if ($coords['is_waypoint'] == 1 || $coords['is_destination'] == 1)
+                    {
+                        $coords['colour'] = $route['colour'];
+                        $coords['sub_colour'] = $route['sub_colour'];
+                        array_push($wayPointsArray, $coords);
+                    }
+                }
+
+                break;
+            }
+        }
+
+
+
+        foreach ($wayPointsArray as $wayPoint)
+        {
+            $coordsJS .= 'wayPoints["waypoint-'.$count.'"] = {';
+            $coordsJS .= "\r\n";
+            $coordsJS .= 'center: new google.maps.LatLng('.$wayPoint['lat'].','.$wayPoint['lng'].'),';
+            $coordsJS .= "\r\n";
+            if ($wayPoint['is_destination'] == 1)
+            {
+                $coordsJS .= 'opacity: 0,';
+            }
+            else
+            {
+                $coordsJS .= 'opacity: 1,';
+            }
+            $coordsJS .= "\r\n";
+            if ($wayPoint['is_sub_route'] == 1 && strlen($wayPoint['sub_colour']) > 0)
+            {
+                $coordsJS .= 'fill_color: "'.$wayPoint['sub_colour'].'",';
+            }
+            else
+            {
+                $coordsJS .= 'fill_color: "'.$wayPoint['colour'].'",';
+            }
+            $coordsJS .= "\r\n";
+            $coordsJS .= 'stroke_color: "'.$wayPoint['colour'].'",';
+            $coordsJS .= "\r\n";
+            $coordsJS .= 'label: "'.$wayPoint['label'].'"';
+            $coordsJS .= "\r\n";
+            $coordsJS .= '};';
+            $coordsJS .= "\r\n";
+            $count++;
+        }
+
+        $coordsJS .= 'var stopCircle;';
+        $coordsJS .= "\r\n";
+
+        $coordsJS .= 'for (var point in wayPoints) {';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'var wayPointOptions = {';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'strokeColor: wayPoints[point].stroke_color,';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'strokeOpacity: 1,';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'strokeWeight: 4,';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'fillColor: wayPoints[point].fill_color,';
+        //$coordsJS .= 'fillColor: "#ffffff",';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'fillOpacity: wayPoints[point].opacity,';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'map: map,';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'center: wayPoints[point].center,';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'radius: 80';
+        $coordsJS .= "\r\n";
+        $coordsJS .= '};';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'stopCircle = new google.maps.Circle(wayPointOptions);';
+        $coordsJS .= "\r\n";
+        $coordsJS .= 'stopCircle.setMap(map);';
+        $coordsJS .= "\r\n";
+        $coordsJS .= '}';
+        $coordsJS .= "\r\n";
+
+        //$coordsJS .= 'console.dir(wayPoints)';
+        $coordsJS .= "\r\n";
         echo $coordsJS;
     }
 

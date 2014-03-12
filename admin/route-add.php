@@ -50,6 +50,9 @@ assessLogin();
                     <label for="txtRouteColour">Route Colour:</label>
                     <input type="text" id="txtRouteColour" name="txtRouteColour" value="" />
 
+                    <label for="txtSubRouteColour">Sub Route Colour:</label>
+                    <input type="text" id="txtSubRouteColour" name="txtSubRouteColour" value="" />
+
                     <label for="txtCSSClass">CSS Class:</label>
                     <input type="text" id="txtCSSClass" name="txtCSSClass" value="" />
 

@@ -7,7 +7,7 @@ $route_id = $_GET['id'];
 
 function getRoute($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
-    $query = 'SELECT nav_title, route_title, page_title, friendly_url, heading, heading_pullout, route_colour, css_class, info_bubble_width, info_bubble_height, ';
+    $query = 'SELECT nav_title, route_title, page_title, friendly_url, heading, heading_pullout, route_colour, sub_route_colour, css_class, info_bubble_width, info_bubble_height, ';
     $query .= 'header_image, header_mp4, header_webm, nav_order, ';
     $query .= 'tags,  content_header, content, meta_keywords, meta_desc, is_live FROM route WHERE id = ?';
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
@@ -15,7 +15,7 @@ function getRoute($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     $stmt->bind_param('i', $id);
     $stmt->execute();
 
-    $stmt->bind_result($nav_title, $route_title, $page_title, $friendly_url, $heading, $heading_pullout, $route_colour, $css_class, $info_bubble_width, $info_bubble_height, $header_image, $header_mp4, $header_webm, $nav_order, $tags, $content_header, $content, $meta_keywords, $meta_desc, $is_live);
+    $stmt->bind_result($nav_title, $route_title, $page_title, $friendly_url, $heading, $heading_pullout, $route_colour, $sub_route_colour, $css_class, $info_bubble_width, $info_bubble_height, $header_image, $header_mp4, $header_webm, $nav_order, $tags, $content_header, $content, $meta_keywords, $meta_desc, $is_live);
 
     $results = array();
     $i = 0;
@@ -28,6 +28,7 @@ function getRoute($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         $results[$i]['heading'] = $heading;
         $results[$i]['heading_pullout'] = $heading_pullout;
         $results[$i]['route_colour'] = $route_colour;
+        $results[$i]['sub_route_colour'] = $sub_route_colour;
         $results[$i]['css_class'] = $css_class;
         $results[$i]['info_bubble_width'] = $info_bubble_width;
         $results[$i]['info_bubble_height'] = $info_bubble_height;
@@ -196,6 +197,9 @@ foreach ($routes as $route)
 
     <label for="txtRouteColour">Route Colour:</label>
     <input type="text" id="txtRouteColour" name="txtRouteColour" value="<?=$route['route_colour']?>" />
+
+    <label for="txtSubRouteColour">Sub Route Colour:</label>
+    <input type="text" id="txtSubRouteColour" name="txtSubRouteColour" value="<?=$route['sub_route_colour']?>" />
 
     <label for="txtCSSClass">CSS Class:</label>
     <input type="text" id="txtCSSClass" name="txtCSSClass" value="<?=$route['css_class']?>" />
