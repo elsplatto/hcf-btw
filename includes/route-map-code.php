@@ -271,7 +271,7 @@ function initialize() {
         $coordsJS .= "\r\n";
         $coordsJS .= 'center: wayPoints[point].center,';
         $coordsJS .= "\r\n";
-        $coordsJS .= 'radius: 80';
+        $coordsJS .= 'radius: 180';
         $coordsJS .= "\r\n";
         $coordsJS .= '};';
         $coordsJS .= "\r\n";
