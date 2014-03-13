@@ -5,7 +5,8 @@
 
 
 
-function placeRouteMapMarkers($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
+function placeRouteMapMarkers($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
+{
     global $baseURL;
     $results = getRouteMapMarkers($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     //$numRows =  mysqli_num_rows($results);
@@ -52,13 +53,11 @@ function placeRouteMapMarkers($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, 
                 $markerJS .= ',';
             }
             $markerJS .= "\r\n";
-
         }
         $markerJS .= '];';
         $markerJS .= "\r\n";
         $markerJS .= "\r\n";
     }
-
     echo $markerJS;
 }
 
@@ -118,7 +117,7 @@ function initialize() {
     drawRouteInfoBubbles($coordsJson, $routeId);
     setMapRoutes($coordsJson, $routeId);
 
-    drawWaypoints($coordsJson, $routeId);
+    prepWaypoints($coordsJson, $routeId);
 
     placeRouteMapMarkers($routeId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
@@ -153,8 +152,6 @@ function initialize() {
                 break;
             }
         }
-
-
         echo $coordsJS;
     }
 
@@ -185,14 +182,17 @@ function initialize() {
         echo $coordsJS;
     }
 
-    function drawWaypoints($coordsJson, $routeId)
+    function prepWaypoints($coordsJson, $routeId)
     {
+        global $baseURL;
         $wayPointsArray = array();
-        $coordsJS = '';
-        $coordsJS .= 'var wayPoints = {};';
-        $coordsJS .= "\r\n";
+        $waypointJS = '';
+        $waypointJS .= 'var wayPoints = {};';
+        $waypointJS .= "\r\n";
         $count = 0;
+        $iconBase = $baseURL . '/img/routes/';
 
+        //build wayPoints obj
         foreach ($coordsJson['routes'] as $route)
         {
             if ($route['id'] == $routeId)
@@ -206,6 +206,8 @@ function initialize() {
                     {
                         $coords['colour'] = $route['colour'];
                         $coords['sub_colour'] = $route['sub_colour'];
+                        $coords['class'] = $route['class'];
+                        $coords['route_name'] = $route['title'];
                         array_push($wayPointsArray, $coords);
                     }
                 }
@@ -214,78 +216,42 @@ function initialize() {
             }
         }
 
-
-
         foreach ($wayPointsArray as $wayPoint)
         {
-            $coordsJS .= 'wayPoints["waypoint-'.$count.'"] = {';
-            $coordsJS .= "\r\n";
-            $coordsJS .= 'center: new google.maps.LatLng('.$wayPoint['lat'].','.$wayPoint['lng'].'),';
-            $coordsJS .= "\r\n";
+            $waypointJS .= 'wayPoints["waypoint-'.$count.'"] = {';
+            $waypointJS .= "\r\n";
+            $waypointJS .= 'center: new google.maps.LatLng('.$wayPoint['lat'].','.$wayPoint['lng'].'),';
+            $waypointJS .= "\r\n";
             if ($wayPoint['is_destination'] == 1)
             {
-                $coordsJS .= 'opacity: 0,';
+                $waypointJS .= 'icon: "' . $iconBase . $wayPoint['class'] . 'Destination.png",';
             }
             else
             {
-                $coordsJS .= 'opacity: 1,';
+                if ($wayPoint['is_sub_route'] == 1)
+                {
+                    $waypointJS .= 'icon: "' . $iconBase . $wayPoint['class'] . 'SubWaypoint.png",';
+                }
+                else
+                {
+                    $waypointJS .= 'icon: "' . $iconBase . $wayPoint['class'] . 'Waypoint.png",';
+                }
             }
-            $coordsJS .= "\r\n";
-            if ($wayPoint['is_sub_route'] == 1 && strlen($wayPoint['sub_colour']) > 0)
-            {
-                $coordsJS .= 'fill_color: "'.$wayPoint['sub_colour'].'",';
-            }
-            else
-            {
-                $coordsJS .= 'fill_color: "'.$wayPoint['colour'].'",';
-            }
-            $coordsJS .= "\r\n";
-            $coordsJS .= 'stroke_color: "'.$wayPoint['colour'].'",';
-            $coordsJS .= "\r\n";
-            $coordsJS .= 'label: "'.$wayPoint['label'].'"';
-            $coordsJS .= "\r\n";
-            $coordsJS .= '};';
-            $coordsJS .= "\r\n";
+            $waypointJS .= "\r\n";
+            $waypointJS .= 'route_name: "'.$wayPoint['route_name'].'",';
+            $waypointJS .= "\r\n";
+            $waypointJS .= 'label: "'.$wayPoint['label'].'"';
+            $waypointJS .= "\r\n";
+            $waypointJS .= '};';
+            $waypointJS .= "\r\n";
             $count++;
         }
-
-        $coordsJS .= 'var stopCircle;';
-        $coordsJS .= "\r\n";
-
-        $coordsJS .= 'for (var point in wayPoints) {';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'var wayPointOptions = {';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'strokeColor: wayPoints[point].stroke_color,';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'strokeOpacity: 1,';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'strokeWeight: 4,';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'fillColor: wayPoints[point].fill_color,';
-        //$coordsJS .= 'fillColor: "#ffffff",';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'fillOpacity: wayPoints[point].opacity,';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'map: map,';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'center: wayPoints[point].center,';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'radius: 180';
-        $coordsJS .= "\r\n";
-        $coordsJS .= '};';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'stopCircle = new google.maps.Circle(wayPointOptions);';
-        $coordsJS .= "\r\n";
-        $coordsJS .= 'stopCircle.setMap(map);';
-        $coordsJS .= "\r\n";
-        $coordsJS .= '}';
-        $coordsJS .= "\r\n";
-
-        //$coordsJS .= 'console.dir(wayPoints)';
-        $coordsJS .= "\r\n";
-        echo $coordsJS;
+        $waypointJS .= "\r\n";
+        echo $waypointJS;
     }
+
+
+
 
     function drawRouteInfoBubbles($coordsJson, $routeId){
     global $baseURL;
@@ -493,12 +459,10 @@ function initialize() {
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
-
-
-
-
     var markerArray= [];
     showLocations(markerLocations);
+
+    showWayPoints(wayPoints);
 
     //console.dir(markerArray);
 
@@ -525,6 +489,24 @@ function initialize() {
         }
     });
 
+    function showWayPoints(wayPoints)
+    {
+        for (var waypoint in wayPoints)
+        {
+            var image = {
+                url: wayPoints[waypoint].icon,
+                anchor: new google.maps.Point(10, 10)
+            }
+            var marker = new google.maps.Marker({
+                position: wayPoints[waypoint].center,
+                icon: image,
+                map: map,
+                route: wayPoints[waypoint].route_name
+            });
+        }
+    }
+
+
     function showLocations(locations)
     {
         for (var i=0; i<locations.length;i++)
@@ -541,8 +523,6 @@ function initialize() {
                 //console.dir(marker);
                 //console.log('marker-'+i);
                 markerArray.push(marker);
-
-
 
                 var locationContent = '';
                 locationContent += '<div class="imgHolder" data-category="'+location.category+'">';
@@ -583,7 +563,6 @@ function initialize() {
                 {
                     $('.panelFlyoutTrigger').on('click', function(e) {
                         e.preventDefault();
-                        //console.log('here');
                         var target = $('#'+$(this).attr('data-target'));
                         var id = $(this).attr('data-location');
 
@@ -605,7 +584,7 @@ function initialize() {
                         panelFlyout += '<div id="flyoutPanel" class="panelFlyout  large-12 columns left">';
                         panelFlyout += '<div class="large-12 columns standardDarkGrey">';
                         panelFlyout += '<div id="flyoutCanvas" class="paddingTopBottom20 left"></div>';
-                        panelFlyout += '<h4 class="left loading">Loading...</h4>';
+                        panelFlyout += '<h4 class="left loading">Loading map...</h4>';
                         panelFlyout += '<div class="left"></div>';
                         panelFlyout += '</div>';
                         panelFlyout += '</div>';
@@ -626,8 +605,6 @@ function initialize() {
                         },'slow');
                     }
 
-
-
                     function locationRetrieveErrorHandler(target) {
                         var locationHTML = '';
                         var closeHTML = '<a href="#" class="flyoutPanelClose">Close panel</a>';
@@ -637,9 +614,6 @@ function initialize() {
                         locationHTML += '</div>';
                         $('#flyoutPanel').html(locationHTML);
                     }
-
-
-
                 });
             }(locations[i]));
         }
