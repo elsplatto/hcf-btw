@@ -12,7 +12,25 @@
                     </div>
                 </div>
             </div>
-
+            <?php
+            if ($friendly_url == 'parramatta-river')
+            {
+            ?>
+            <div class="large-6 medium-6 small-12 columns marginTop40">
+                <div class="itineraryTile" style="background-image: url('<?=$baseURL?>/img/it/tile/itin-parramattapark.jpg'); background-repeat: no-repeat; background-size: cover;">
+                    <div class="inner">
+                        <div class="textHolder">
+                            <span>Itinerary – by Councillor Pierre Esber</span>
+                            <h3><a href="<?=$baseURL?>/docs/beyondthewharf-parramatta.pdf" target="_blank">Parramatta Pioneer Trail</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+            }
+            else
+            {
+            ?>
             <div class="large-6 medium-6 small-12 columns marginTop40">
                 <div class="itineraryTile" style="background-image: url('<?=$baseURL?>/img/it/tile/tile-1.jpg'); background-repeat: no-repeat; background-size: cover;">
                     <div class="inner">
@@ -23,7 +41,9 @@
                     </div>
                 </div>
             </div>
-
+            <?php
+            }
+            ?>
         </div>
     </div>
 </section>

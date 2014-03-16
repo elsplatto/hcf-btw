@@ -8,7 +8,13 @@
     ga('create', 'UA-47305282-1', 'beyondthewharf.com.au');
     ga('send', 'pageview');
 
-
+    var trackOutboundLink = function(url) {
+        ga('send', 'event', 'outbound', 'click', url, {'hitCallback':
+            function () {
+                document.location = url;
+            }
+        });
+    }
 
 </script>
 

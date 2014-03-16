@@ -287,6 +287,8 @@ foreach ($tiles as $tile)
         </div>
     </form>
 </section>
+
+    <div id="converterArea"></div>
 <?php
 }
 ?>
@@ -332,6 +334,27 @@ foreach ($tiles as $tile)
     }
 
     $(function(){
+       /* embedCode();
+
+        function embedCode()
+        {
+            $('textarea:first').each(function()
+            {
+                var html = $(this).val();
+                $('#converterArea').html(html);
+                $(this).find('a[target="_blank"]').each(function() {
+                    if (!$(this).hasAttribute('onclick'))
+                    {
+                        $(this).attr('onclick','trackOutboundLink('+url+'); return false;');
+                    }
+                })
+                //$(this).val($('#converterArea').html());
+                //$('#converterArea').empty();
+            })
+
+        }*/
+
+
 
         $('.insertTag').click(function(e) {
             e.preventDefault();

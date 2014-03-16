@@ -238,6 +238,10 @@ function initialize() {
                 }
             }
             $waypointJS .= "\r\n";
+            $waypointJS .= 'color: "'.$wayPoint['colour'].'",';
+            $waypointJS .= "\r\n";
+            $waypointJS .= 'sub_color: "'.$wayPoint['sub_colour'].'",';
+            $waypointJS .= "\r\n";
             $waypointJS .= 'route_name: "'.$wayPoint['route_name'].'",';
             $waypointJS .= "\r\n";
             $waypointJS .= 'label: "'.$wayPoint['label'].'"';
@@ -491,20 +495,58 @@ function initialize() {
 
     function showWayPoints(wayPoints)
     {
-        for (var waypoint in wayPoints)
+        var count = 0;
+        for (var wp in wayPoints)
         {
-            var image = {
-                url: wayPoints[waypoint].icon,
-                anchor: new google.maps.Point(10, 10)
-            }
-            var marker = new google.maps.Marker({
-                position: wayPoints[waypoint].center,
-                icon: image,
-                map: map,
-                route: wayPoints[waypoint].route_name
-            });
+            (function(waypoint){
+                var image = {
+                    url: waypoint.icon,
+                    anchor: new google.maps.Point(10, 10)
+                }
+                var waypointLabel = waypoint.label;
+                var marker = new google.maps.Marker({
+                    position: waypoint.center,
+                    icon: image,
+                    map: map,
+                    id: 'waypoint-' + count,
+                    route: waypoint.route_name,
+                    label: waypointLabel
+                });
+
+                console.log('['+waypoint.label+']');
+                var wayPointContent = '<div class="infoBubble routes '+ waypoint.route_name + '"><h5>'+marker.label+'</h5></div>';
+
+                var infoBubble = new InfoBubble(
+                {
+                    map: map,
+                    content: wayPointContent,
+                    position: marker.position,
+                    shadowStyle: 1,
+                    padding: 0,
+                    backgroundColor: waypoint.color,
+                    borderRadius: 0,
+                    arrowSize: 10,
+                    borderWidth: 1,
+                    borderColor: waypoint.color,
+                    disableAutoPan: true,
+                    hideCloseButton: false,
+                    arrowPosition: 25,
+                    backgroundClassName: 'infoBubbleWrapper',
+                    arrowStyle: 0,
+                    disableAutoPan: true,
+                    minWidth: 240,
+                    minHeight: 70
+                });
+
+                google.maps.event.addListener(marker, 'click', function(){
+                    infoBubble.open(map, marker);
+                });
+            }(wayPoints[wp]));
+
+
         }
     }
+
 
 
     function showLocations(locations)

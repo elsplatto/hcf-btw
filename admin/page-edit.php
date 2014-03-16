@@ -415,6 +415,7 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
 <script>
 $(document).ready(function() {
 
+
     $('.tileFilter').keyup(function(e) {
 
         var containmentEl = $('#' + $(this).attr('data-containment'));
