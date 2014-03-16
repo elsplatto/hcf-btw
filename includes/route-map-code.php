@@ -96,16 +96,9 @@ function initialize() {
     var map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
 
-    // map: an instance of GMap3
-// latlng: an array of instances of GLatLng
-   /* var latlngbounds = new google.maps.LatLngBounds();
-    latlng.each(function(n){
-        latlngbounds.extend(n);
-    });
-    map.setCenter(latlngbounds.getCenter());
-    map.fitBounds(latlngbounds);
+    var bounds = new google.maps.LatLngBounds();
 
-*/
+   //bounds extended in locations and waypoint set functions
 
     <?php
     $coordsJson = getJsonConents('json/routeCoords.json');
@@ -468,7 +461,7 @@ function initialize() {
 
     showWayPoints(wayPoints);
 
-    //console.dir(markerArray);
+    map.fitBounds(bounds);
 
     $('.mapFilter').on('click', function(e){
         e.preventDefault();
@@ -513,7 +506,9 @@ function initialize() {
                     label: waypointLabel
                 });
 
-                console.log('['+waypoint.label+']');
+                bounds.extend(waypoint.center);
+
+                //console.log('['+waypoint.label+']');
                 var wayPointContent = '<div class="infoBubble routes '+ waypoint.route_name + '"><h5>'+marker.label+'</h5></div>';
 
                 var infoBubble = new InfoBubble(
@@ -565,6 +560,9 @@ function initialize() {
                 //console.dir(marker);
                 //console.log('marker-'+i);
                 markerArray.push(marker);
+
+                bounds.extend(latLng);
+
 
                 var locationContent = '';
                 locationContent += '<div class="imgHolder" data-category="'+location.category+'">';
