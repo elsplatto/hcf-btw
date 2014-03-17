@@ -798,6 +798,23 @@ div.white, section.white {
             text-decoration: none; }
 
 /*End - Feature Area */
+.route-anchors a {
+  color: #272e35;
+  text-decoration: underline;
+  padding: 0 3rem 0 0;
+  display: inline-block; }
+  .route-anchors a:after {
+    position: absolute;
+    content: "";
+    width: 1.25rem;
+    height: 1.313rem;
+    background-image: url("img/icons.png");
+    margin-left: 0.5rem; }
+.route-anchors .cockatooRoute:after {
+  background-position: 0px -341px; }
+.route-anchors .parramattaRoute:after {
+  background-position: -22px -341px; }
+
 /*Start - Theme feature */
 .themeFeature {
   position: relative; }

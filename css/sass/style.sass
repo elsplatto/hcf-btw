@@ -904,6 +904,29 @@ div.white, section.white
 
 /*End - Feature Area*/
 
+.route-anchors
+  a
+    color: $std-dark-grey
+    text-decoration: underline
+    padding: 0 3rem 0 0
+    display: inline-block
+    &:after
+      position: absolute
+      content: ''
+      width: 1.25rem
+      height: 1.313rem
+      background-image: url('img/icons.png')
+      margin-left: 0.5rem
+  .cockatooRoute
+    &:after
+      background-position: 0px -341px
+  .parramattaRoute
+    &:after
+      background-position: -22px -341px
+
+
+
+
 /*Start - Theme feature*/
 .themeFeature
   position: relative
@@ -1071,9 +1094,6 @@ div.white, section.white
       clear: both
       display: block
       margin-top: 1rem
-
-
-
 
 /*End: theme icons*/
 

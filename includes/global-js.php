@@ -41,6 +41,15 @@ $(function(){
         }
     }
 
+    $('.slow-scroll').click(function(e) {
+        e.preventDefault();
+        var tag = $(this).attr('href');
+        var scrollHeight = ($(tag).offset().top - $('#navHolder').outerHeight());
+        $('html, body').animate({
+            scrollTop: scrollHeight
+        },'slow');
+    });
+
 
     $('body').on('click', '.reveal-init', function(e)
     {

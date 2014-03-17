@@ -75,6 +75,19 @@ $routeTiles = getRoutesSelectedTiles($routeId,$DB_SERVER, $DB_USERNAME, $DB_PASS
         <div class="large-12 columns">
             <div class="large-12 columns white paddingTopBottom40">
                 <div class="large-10 columns large-offset-1">
+                    <?php
+                    if ($friendly_url == 'parramatta-river')
+                    {
+                    ?>
+                    <div class="route-anchors">
+                        <a href="#parramattaRoute" class="parramattaRoute route-legend slow-scroll">Parramatta Route</a>
+                        <a href="#cockatooRoute" class="cockatooRoute route-legend slow-scroll">Cockatoo Island Route</a>
+                    </div>
+                        <a id="parramattaRoute"></a>
+                    <?php
+                    }
+                    ?>
+
                     <h2 class="block clearfix text-left"><?=$routeContentHeader?></h2>
                     <?=stripcslashes($routeContent)?>
                 </div>
