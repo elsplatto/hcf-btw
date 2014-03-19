@@ -174,14 +174,6 @@ $routeTiles = getRoutesSelectedTiles($routeId,$DB_SERVER, $DB_USERNAME, $DB_PASS
 
 <?php
 include 'includes/itineraries.php';
-?>
-
-
-
-
-
-<?php
-
 
 include 'includes/more-articles.php';
 include 'includes/instagram-shot-of-the-day.php';

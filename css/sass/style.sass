@@ -54,6 +54,9 @@ $eastern-opacity: rgba(238, 232, 192, 0.9)
 
 
 /* Start - Override classes
+html, body
+  font-family: $garamond
+
 .row
   max-width: 75rem !important
 
@@ -64,6 +67,14 @@ $eastern-opacity: rgba(238, 232, 192, 0.9)
 a
   &:hover
     text-decoration: underline
+
+a.cancel
+  font-family: $inconsolata
+label
+  font-family: $inconsolata
+  font-size: 1rem !important
+  line-height: 1.5rem
+
 
 .orbit-container
   .orbit-prev, .orbit-next
@@ -95,8 +106,8 @@ a
 .reveal-modal
   z-index: 600
   .close-reveal-modal
-    width: 2.125rem !important
-    height: 2.125rem !important
+    width: 2.15rem !important
+    height: 2.15rem !important
     top: -0.75rem
     right: -0.75rem
     text-indent: -10000px
@@ -106,8 +117,8 @@ a
       z-index: 600
       top: 0
       left: 0
-      width: 2.125rem
-      height: 2.125rem
+      width: 2.15rem
+      height: 2.15rem
       background-image: url('img/icons.png')
       background-position: -382px -173px
 

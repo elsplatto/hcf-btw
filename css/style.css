@@ -3,6 +3,9 @@
 /*Start - colors */
 /*End - colors */
 /* Start - Override classes */
+html, body {
+  font-family: "adobe-garamond-pro", sans-serif !important; }
+
 .row {
   max-width: 75rem !important; }
 
@@ -12,6 +15,14 @@
 
 a:hover {
   text-decoration: underline; }
+
+a.cancel {
+  font-family: "Inconsolata", sans-serif !important; }
+
+label {
+  font-family: "Inconsolata", sans-serif !important;
+  font-size: 1rem !important;
+  line-height: 1.5rem; }
 
 .orbit-container .orbit-prev, .orbit-container .orbit-next {
   z-index: 50 !important; }
@@ -38,8 +49,8 @@ a:hover {
 .reveal-modal {
   z-index: 600; }
   .reveal-modal .close-reveal-modal {
-    width: 2.125rem !important;
-    height: 2.125rem !important;
+    width: 2.15rem !important;
+    height: 2.15rem !important;
     top: -0.75rem;
     right: -0.75rem;
     text-indent: -10000px; }
@@ -49,8 +60,8 @@ a:hover {
       z-index: 600;
       top: 0;
       left: 0;
-      width: 2.125rem;
-      height: 2.125rem;
+      width: 2.15rem;
+      height: 2.15rem;
       background-image: url("img/icons.png");
       background-position: -382px -173px; }
 

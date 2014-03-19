@@ -508,7 +508,6 @@ function initialize() {
 
                 bounds.extend(waypoint.center);
 
-                //console.log('['+waypoint.label+']');
                 var wayPointContent = '<div class="infoBubble routes '+ waypoint.route_name + '"><h5>'+marker.label+'</h5></div>';
 
                 var infoBubble = new InfoBubble(

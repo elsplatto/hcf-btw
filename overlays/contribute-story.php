@@ -28,7 +28,7 @@ include '../includes/db.php';
         <small class="error">Please tell us your story.</small>
         </label>
 
-        <input type="submit" id="btnSubmitStory" class="button" />&nbsp;&nbsp;&nbsp;<a href="#" class="reveal-close">Cancel</a>
+        <input type="submit" id="btnSubmitStory" class="button" />&nbsp;&nbsp;&nbsp;<a href="#" class="reveal-close cancel">Cancel</a>
 
     </form>
 </div>
