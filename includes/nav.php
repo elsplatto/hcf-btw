@@ -47,139 +47,105 @@ function getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     return $results;
 }
 
-$navPages = getTopNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-$routeNavPages = getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+//$navPages = getTopNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+//$routeNavPages = getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 ?>
 <!--off canvas opening divs closing divs in footer-->
 <div class="off-canvas-wrap">
     <div class="inner-wrap">
-        <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list section-nav">
-                <!--li><label>Foundation</label></li-->
-                <?php
-                foreach($navPages as $navPage)
-                {
-                    if ($navPage['friendly_url'] == 'gallery')
-                    {
-                        ?>
-                        <li><a href="<?=$baseURL?>/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
-                    <?php
-                    }
-                    else if ($navPage['friendly_url'] == 'events')
-                    {
-                        ?>
-                        <li><a href="<?=$baseURL?>/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
-                    <?php
-                    }
-                    else
-                    {
-                        ?>
-                        <li><a href="<?=$baseURL?>/page/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
-                    <?php
-                    }
-                }
-                ?>
-            </ul>
-        </aside>
 
+
+
+            <aside class="left-off-canvas-menu">
+                <ul class="off-canvas-list section-nav">
+                    <!--li><label>Foundation</label></li-->
+                    <li><a href="<?=$baseURL?>/page/explore-our-harbour">Explore Our Harbour</a></li>
+                    <li><a href="<?=$baseURL?>/events">Events</a></li>
+                    <li><a href="<?=$baseURL?>/gallery">Gallery</a></li>
+                    <li><a href="<?=$baseURL?>/page/local-insights">Local Insights</a></li>
+                </ul>
+            </aside>
 
 
         <aside class="right-off-canvas-menu">
             <ul class="off-canvas-list routes">
                 <li><label>Routes</label></li>
 
-                    <?php
-                    foreach ($routeNavPages as $routeNavPage)
-                    {
-                        ?>
-                        <li><a href="<?=$baseURL?>/route/<?=$routeNavPage['friendly_url']?>" class="<?=$routeNavPage['css_class']?>"><?=$routeNavPage['nav_title']?></a></li>
-                    <?php
-                    }
-                    ?>
+                <li><a href="<?=$baseURL?>/route/manly" class="manly">Manly</a></li>
+                <li><a href="<?=$baseURL?>/route/taronga-zoo" class="taronga">Taronga Zoo</a></li>
+                <li><a href="<?=$baseURL?>/route/parramatta-river" class="parramatta">Parramatta River</a></li>
+                <li><a href="<?=$baseURL?>/route/darling-harbour" class="darling">Darling Harbour</a></li>
+                <li><a href="<?=$baseURL?>/route/neutral-bay" class="neutral">Neutral Bay</a></li>
+                <li><a href="<?=$baseURL?>/route/mosman-bay" class="mosman">Mosman Bay</a></li>
+                <li><a href="<?=$baseURL?>/route/eastern-suburbs" class="eastern">Eastern Suburbs</a></li>
             </ul>
         </aside>
 
 
-<section id="navHolder" class="navHolder">
-    <div class="row">
-
-        <nav class="tab-bar">
-            <section class="left-small">
-                <a herf="#" class="to-top left-off-canvas-toggle menu-icon"><span>Menu</span></a>
-            </section>
-            <section class="middle tab-bar-section text-center"><a href="<?=$baseURL?>">Back to homepage</a></section>
-            <section class="right-small">
-                <a herf="#" class="to-top right-off-canvas-toggle menu-icon"><span>Routes</span></a>
-            </section>
-        </nav>
-
-        <div class="large-12 medium-12 small-12 columns">
 
 
-            <nav class="top-bar" data-topbar>
-                <ul class="title-area">
-                    <li class="name">
-                        <h1><a href="<?=$baseURL?>/">Beyond the Wharf</a></h1>
-                    </li>
-                </ul>
-
-                <section class="top-bar-section first">
-                    <!-- Right Nav Section -->
-                    <ul class="right">
-                        <li>
-                            <form id="frmSearch" action="#" method="POST">
-                                <label for="txtSearch">Search</label>
-                                <input type="search" name="txtSearch" id="txtSearch" placeholder="Enter keywords" />
-                                <button type="submit" id="searchSubmit" name="searchSubmit">Submit</button>
-                            </form>
-                        </li>
-                    </ul>
-
-                    <!-- Left Nav Section -->
-                    <ul class="left">
-                        <?php
-                        foreach($navPages as $navPage)
-                        {
-                            if ($navPage['friendly_url'] == 'gallery')
-                            {
-                             ?>
-                                <li><a href="<?=$baseURL?>/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
-                            <?php
-                            }
-                            else if ($navPage['friendly_url'] == 'events')
-                            {
-                             ?>
-                                <li><a href="<?=$baseURL?>/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
-                            <?php
-                            }
-                            else
-                            {
-                            ?>
-                                <li><a href="<?=$baseURL?>/page/<?=$navPage['friendly_url']?>"><?=$navPage['nav_title']?></a></li>
-                        <?php
-                            }
-                        }
-                        ?>
-                    </ul>
 
 
-                </section>
+        <section id="navHolder" class="navHolder">
+            <div class="row">
 
-                <section class="top-bar-section second">
-                    <ul class="routes">
-                        <li>Routes:</li>
-                        <?php
-                        foreach ($routeNavPages as $routeNavPage)
-                        {
-                        ?>
-                            <li><a href="<?=$baseURL?>/route/<?=$routeNavPage['friendly_url']?>" class="<?=$routeNavPage['css_class']?>"><?=$routeNavPage['nav_title']?></a></li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
-                </section>
+                <nav class="tab-bar">
+                    <section class="left-small">
+                        <a herf="#" class="to-top left-off-canvas-toggle menu-icon"><span>Menu</span></a>
+                    </section>
+                    <section class="middle tab-bar-section text-center"><a href="<?=$baseURL?>">Back to homepage</a></section>
+                    <section class="right-small">
+                        <a herf="#" class="to-top right-off-canvas-toggle menu-icon"><span>Routes</span></a>
+                    </section>
+                </nav>
 
-            </nav>
-        </div>
-    </div>
-</section>
+                <div class="large-12 medium-12 small-12 columns">
+
+
+                    <nav class="top-bar" data-topbar="">
+                        <ul class="title-area">
+                            <li class="name">
+                                <h1><a href="<?=$baseURL?>/">Beyond the Wharf</a></h1>
+                            </li>
+                        </ul>
+
+                        <section class="top-bar-section first">
+                            <!-- Right Nav Section -->
+                            <ul class="right">
+                                <li>
+                                    <form id="frmSearch" action="#" method="POST">
+                                        <label for="txtSearch">Search</label>
+                                        <input type="search" name="txtSearch" id="txtSearch" placeholder="Enter keywords">
+                                        <button type="submit" id="searchSubmit" name="searchSubmit">Submit</button>
+                                    </form>
+                                </li>
+                            </ul>
+
+                            <!-- Left Nav Section -->
+                            <ul class="left">
+                                <li><a href="<?=$baseURL?>/page/explore-our-harbour">Explore Our Harbour</a></li>
+                                <li><a href="<?=$baseURL?>/events">Events</a></li>
+                                <li><a href="<?=$baseURL?>/gallery">Gallery</a></li>
+                                <li><a href="<?=$baseURL?>/page/local-insights">Local Insights</a></li>
+                            </ul>
+
+
+                        </section>
+
+                        <section class="top-bar-section second">
+                            <ul class="routes">
+                                <li>Routes:</li>
+                                <li><a href="<?=$baseURL?>/route/manly" class="manly">Manly</a></li>
+                                <li><a href="<?=$baseURL?>/route/taronga-zoo" class="taronga">Taronga Zoo</a></li>
+                                <li><a href="<?=$baseURL?>/route/parramatta-river" class="parramatta">Parramatta River</a></li>
+                                <li><a href="<?=$baseURL?>/route/darling-harbour" class="darling">Darling Harbour</a></li>
+                                <li><a href="<?=$baseURL?>/route/neutral-bay" class="neutral">Neutral Bay</a></li>
+                                <li><a href="<?=$baseURL?>/route/mosman-bay" class="mosman">Mosman Bay</a></li>
+                                <li><a href="<?=$baseURL?>/route/eastern-suburbs" class="eastern">Eastern Suburbs</a></li>
+                            </ul>
+                        </section>
+
+                    </nav>
+                </div>
+            </div>
+        </section>
