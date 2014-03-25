@@ -1,16 +1,38 @@
 <?php
-
+include 'site-settings.php';
 include 'db.php';
 include 'Mobile_Detect.php';
 include 'global-functions.php';
 require 'instagram.class.php';
 require 'instagram.config.php';
 
-include 'site-settings.php';
-
-
-
 $device = new Mobile_Detect;
+
+$deviceType = ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'computer');
+$folder = '';
+
+if ($deviceType === 'phone')
+{
+    $folder = 'phone/';
+}
+
+if (isset($instagramData))
+{
+
+    $competitionURL = 'overlays/enter-competition.php?step=2';
+} else {
+    $competitionURL = 'overlays/enter-competition.php?step=1';
+}
+
+if (isset($_GET['competitionId']))
+{
+    $competitionId = $_GET['competitionId'];
+}
+else
+{
+    $competitionId = 0;
+}
+
 ?>
 <!doctype html>
 <html class="no-js" lang="en">

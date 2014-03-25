@@ -193,7 +193,7 @@ foreach ($routes as $route)
     <input type="text" id="txtHeading" name="txtHeading" value="<?=$route['heading']?>" />
 
     <label for="txtHeadingPullout">Heading Pullout/Quote:</label>
-    <input type="text" id="txtHeadingPullout" name="txtHeadingPullout" value="<?=$route['heading_pullout']?>" />
+    <input type="text" id="txtHeadingPullout" name="txtHeadingPullout" value="<?=stripcslashes($route['heading_pullout'])?>" />
 
     <label for="txtRouteColour">Route Colour:</label>
     <input type="text" id="txtRouteColour" name="txtRouteColour" value="<?=$route['route_colour']?>" />
@@ -224,16 +224,16 @@ foreach ($routes as $route)
     <input type="text" id="txtTags" name="txtTags" value="<?=$route['tags']?>" placeholder="No # and separate by comma" />
 
     <label for="txtContentHeader">Content Heading:</label>
-    <input type="text" d="txtContentHeader" name="txtContentHeader" value="<?=$route['content_header']?>" placeholder="Appears above the content" />
+    <input type="text" d="txtContentHeader" name="txtContentHeader" value="<?=stripcslashes($route['content_header'])?>" placeholder="Appears above the content" />
 
     <label for="txtContent">Content:</label>
     <textarea id="txtContent" name="txtContent" cols="100" rows="5"><?=stripcslashes($route['content'])?></textarea>
 
     <label for="txtMetaKeywords">Meta Keywords:</label>
-    <input type="text" id="txtMetaKeywords" name="txtMetaKeywords" value="<?=$route['meta_keywords']?>" placeholder="No # and separate by comma" />
+    <input type="text" id="txtMetaKeywords" name="txtMetaKeywords" value="<?=stripcslashes($route['meta_keywords'])?>" placeholder="No # and separate by comma" />
 
     <label for="txtMetaDescription">Meta Description:</label>
-    <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="<?=$route['meta_desc']?>" />
+    <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="<?=stripcslashes($route['meta_desc'])?>" />
 
     <label for="txtNavOrder">Order:</label>
     <input type="text" id="txtNavOrder" name="txtNavOrder" value="<?=$route['nav_order']?>" />

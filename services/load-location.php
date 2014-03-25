@@ -1,6 +1,6 @@
 <?php
-include '../includes/db.php';
 include '../includes/site-settings.php';
+include '../includes/db.php';
 
 $locationId = $_GET['id'];
 $relPath = $_GET['relPath'];

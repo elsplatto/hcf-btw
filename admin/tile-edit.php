@@ -252,7 +252,7 @@ foreach ($tiles as $tile)
                 <input type="text" id="txtAlt" name="txtAlt" value="<?=$tile['alt']?>" />
 
                 <label for="txtDirectiveText">Directive Text:</label>
-                <input type="text" id="txtDirectiveText" name="txtDirectiveText" value="<?=$tile['directive_text']?>" placeholder="e.g. Read more"/>
+                <input type="text" id="txtDirectiveText" name="txtDirectiveText" value="<?=stripcslashes($tile['directive_text'])?>" placeholder="e.g. Read more"/>
 
         </div>
 

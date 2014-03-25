@@ -1,6 +1,6 @@
 <?php
-include '../includes/db.php';
 include '../includes/site-settings.php';
+include '../includes/db.php';
 include '../includes/Mobile_Detect.php';
 
 function getVideo($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
@@ -42,7 +42,7 @@ function getVideo($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
         foreach($pageDetails as $pageDetail)
         {
             echo '<h3>'.$pageDetail['title'].'</h3>';
-            echo '<div class="text-center videoWrapper">'.stripcslashes($pageDetail['video_embed']).'</div>';
+            echo '<div class="text-center videoWrapper">'.stripcslashes(stripcslashes($pageDetail['video_embed'])).'</div>';
         }
     }
     ?>

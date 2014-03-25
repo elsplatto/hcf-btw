@@ -1,12 +1,12 @@
 <?php
 date_default_timezone_set('Australia/NSW');
+
+include 'site-settings.php';
 include 'db.php';
 include 'Mobile_Detect.php';
 include 'global-functions.php';
 require 'instagram.class.php';
 require 'instagram.config.php';
-
-include 'site-settings.php';
 
 
 $targetStr = 'page/';

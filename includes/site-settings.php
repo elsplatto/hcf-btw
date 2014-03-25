@@ -3,11 +3,13 @@
 $baseURL = '';
 if ($_SERVER['SERVER_NAME'] == 'localhost')
 {
-$baseURL = 'http://localhost/~jasontaikato/hcf-btw';
+    $baseURL = 'http://localhost/~jasontaikato/hcf-btw';
+    $adminEmailAddress = 'jason.taikato@tobiasandtobias.com';
 }
 else
 {
-$baseURL = 'http://beyondthewharf.com.au';
+    $baseURL = 'http://beyondthewharf.com.au';
+    $adminEmailAddress = 'admin@beyondthewharf.com.au';
 }
 
 

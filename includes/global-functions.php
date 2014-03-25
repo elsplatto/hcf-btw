@@ -160,11 +160,16 @@ function likeNumberFormatter($num)
     return $handled . $suffix;
 }
 
-function getJsonConents($pathToFile) {
+function getJsonContents($pathToFile) {
     $string = file_get_contents($pathToFile);
     $json=json_decode($string,true);
     //$json = file_get_contents($pathToFile);
     return $json;
+}
+
+function getFileContents($pathToFile) {
+    $string = file_get_contents($pathToFile);
+    return $string;
 }
 
 function getMapMarkers($pageId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {

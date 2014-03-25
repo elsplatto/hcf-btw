@@ -23,7 +23,7 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
         ?>
         <h2 class="sub"><?=$pageHeading?></h2>
         <hr />
-        <h3 class="pullout clearfix hide-for-small hide-for-medium"><?=$pagePullout?></h3><br />
+        <h3 class="pullout clearfix hide-for-small hide-for-medium"><?=stripcslashes($pagePullout)?></h3><br />
         <?php
         if (strlen($videoEmbed) > 0)
         {
@@ -39,8 +39,8 @@ $pageTiles = getPagesSelectedTiles($pageId,$DB_SERVER, $DB_USERNAME, $DB_PASSWOR
         <div class="large-12 columns">
             <div class="large-12 columns white paddingTopBottom40">
                 <div class="large-10 columns large-offset-1 headerContentArea">
-                    <h2 class="block clearfix text-left"><?=$pageContentHeader?></h2>
-                    <?=stripcslashes($pageContent)?>
+                    <h2 class="block clearfix text-left"><?=stripcslashes($pageContentHeader)?></h2>
+                    <?=stripcslashes(stripcslashes($pageContent))?>
                 </div>
             </div>
         </div>

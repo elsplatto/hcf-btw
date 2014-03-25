@@ -1,4 +1,3 @@
-
 <?php
 $instagramUsername = "";
 if (isset($instagramData))
@@ -9,9 +8,7 @@ if (isset($instagramData))
     // Login URL
     $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
 }
-
 ?>
-
 <section class="photoSection marginBottomStandard">
 
 <div class="row marginTop20">

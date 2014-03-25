@@ -118,6 +118,7 @@ label {
 /* End - Social icon classes */
 /*Start - button overrides */
 .button {
+  position: relative;
   font-family: "Inconsolata", sans-serif !important;
   padding: 0.75rem 1rem;
   font-weight: 700 !important;
@@ -190,6 +191,25 @@ label {
 
 .button.wire.white {
   border-color: white; }
+
+.button.instagram {
+  padding: 0.75rem 1rem 0.75rem 2.5rem; }
+  .button.instagram:before {
+    content: "";
+    position: absolute;
+    left: 0.25rem;
+    top: 0.5rem;
+    width: 1.688rem;
+    height: 1.625rem;
+    background-image: url("img/icons.png");
+    background-position: -483px -17px; }
+
+[data-abide] .error small.error, [data-abide] span.error, [data-abide] small.error {
+  font-style: normal !important;
+  font-weight: bold !important; }
+
+.reveal-modal-bg {
+  z-index: 500 !important; }
 
 /*End - button overrides */
 /*Start - some consistent patterns */
@@ -332,6 +352,10 @@ p {
 
 div.white, section.white {
   background-color: white; }
+  div.white h4, div.white h5, section.white h4, section.white h5 {
+    color: #272e35; }
+    div.white h4 a, div.white h5 a, section.white h4 a, section.white h5 a {
+      color: #59acb3; }
 
 /*Start - Route colors */
 .manly {
@@ -528,6 +552,113 @@ div.white, section.white {
     left: 0;
     width: 100%;
     height: 100%; }
+
+/*Start Autocomplete */
+.ui-autocomplete {
+  z-index: 800; }
+
+.ui-widget-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.ui-autocomplete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: default;
+  background-color: white;
+  font-size: 1.25rem;
+  font-family: "Inconsolata", sans-serif !important;
+  border-color: #cccccc;
+  border-width: 0 1px 1px 1px;
+  border-style: solid; }
+
+.ui-menu {
+  list-style: none;
+  padding: 2px;
+  margin: 0;
+  display: block;
+  outline: none; }
+  .ui-menu .ui-menu {
+    margin-top: -3px;
+    position: absolute; }
+  .ui-menu .ui-menu-item {
+    margin: 0;
+    padding: 0;
+    width: 100%; }
+  .ui-menu .ui-menu-divider {
+    margin: 5px -2px 5px -2px;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border-width: 1px 0 0 0; }
+  .ui-menu .ui-menu-item a {
+    text-decoration: none;
+    display: block;
+    padding: 2px 0.4em;
+    line-height: 1.5;
+    min-height: 0;
+    font-weight: normal; }
+    .ui-menu .ui-menu-item a.ui-state-focus, .ui-menu .ui-menu-item a.ui-state-active {
+      font-weight: normal;
+      background-color: #cccccc; }
+  .ui-menu .ui-state-disabled {
+    font-weight: normal;
+    margin: 0.4em 0 0.2em;
+    line-height: 1.5; }
+    .ui-menu .ui-state-disabled a {
+      cursor: default; }
+
+/* icon support */
+.ui-menu-icons {
+  position: relative; }
+  .ui-menu-icons .ui-menu-item a {
+    position: relative;
+    padding-left: 2em; }
+
+/* left-aligned */
+.ui-menu .ui-icon {
+  position: absolute;
+  top: 0.2em;
+  left: 0.2em; }
+.ui-menu .ui-menu-icon {
+  position: static;
+  float: right; }
+
+/* right-aligned */
+/*Finish Autocomplete */
+.show-hide {
+  padding: 0.25rem 0; }
+  .show-hide li .extra-info {
+    display: none; }
+
+ul.arrowed {
+  display: block;
+  position: relative;
+  list-style: none;
+  margin: 0; }
+  ul.arrowed li {
+    display: list-item;
+    position: relative;
+    padding: 0 0 0 1.5rem; }
+    ul.arrowed li:before {
+      content: "";
+      position: absolute;
+      top: 0.5rem;
+      left: 0;
+      width: 1rem;
+      height: 1rem;
+      background-image: url("img/icons.png");
+      background-position: -16px -314px; }
+  ul.arrowed .active:before {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg); }
 
 .routes a, .routes span {
   background-color: none !important;
@@ -1881,6 +2012,17 @@ footer .standard {
       height: 1.769rem;
       left: 1.25rem;
       top: 0.75rem; }
+
+  ul.arrowed li:before {
+    width: 1.281rem;
+    height: 1.281rem; }
+
+  .button.instagram:before {
+    left: 0.5rem;
+    top: 0.75rem;
+    width: 1.231rem;
+    height: 1.154rem;
+    background-position: -447px 0px; }
 
   .controlPanelHolder .controlPanel h6.white {
     color: white; }

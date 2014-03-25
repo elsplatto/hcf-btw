@@ -1,5 +1,6 @@
 <?php
 date_default_timezone_set('Australia/NSW');
+include 'site-settings.php';
 include 'db.php';
 
 if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['story']))
@@ -16,6 +17,15 @@ if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['
     $stmt->execute();
     $stmt->close();
     $mysqli->close();
+
+    $emailMsg = "Name: " . $firstname . ' ' . $lastname . "\n";
+    $emailMsg .= "Email: " . $email . "\n";
+    $emailMsg .= "Story:\n";
+    $emailMsg .= $story;
+
+    $headers = "From: webmaster@beyondthewharf.com.au";
+
+    mail($adminEmailAddress,"Story Submitted",$emailMsg,$headers);
 
     $json = '{"success": true, "msg": "Thank you for submitting your story."}';
 }

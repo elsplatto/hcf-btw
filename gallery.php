@@ -1,5 +1,5 @@
 <?php
-$pageMetaTitle = "Beyond the Wharf - Gallery.";
+$pageMetaTitle = "Gallery - Great photos from around the harbour.";
 $pageSection = "gallery";
 $pageMetaDesc = "Submit, share and view your photos of Sydney Harbour.";
 include 'includes/head.php';
@@ -747,7 +747,6 @@ $(function(){
             }
             loadHTML += '<span class="credit">'+dataObj[i].user.username+'</span>';
             loadHTML += '<a href="https://twitter.com/share?url=<?=$baseURL?>/gallery/'+dataObj[i].id+'&text=Check this photo out&hashtag=beyondthewharf&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>';
-
             loadHTML += '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");<\/script>';
 
             loadHTML += '</div>';
@@ -782,7 +781,7 @@ $(function(){
     function completeLoadMoreHandler(data, el)
     {
         //load twitter widgets
-        twttr.widgets.load()
+        twttr.widgets.load();
     }
 
     /* TODO get location function working

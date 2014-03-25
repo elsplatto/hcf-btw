@@ -242,10 +242,10 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                 <input type="text" id="txtHeading" name="txtHeading" value="<?=$page['heading']?>" />
 
                 <label for="txtHeadingPullout">Heading Pullout/Quote:</label>
-                <input type="text" id="txtHeadingPullout" name="txtHeadingPullout" value="<?=$page['heading_pullout']?>" />
+                <input type="text" id="txtHeadingPullout" name="txtHeadingPullout" value="<?=stripcslashes($page['heading_pullout'])?>" />
 
                 <label for="txtSubHeading">Sub Heading:</label>
-                <input type="text" id="txtSubHeading" name="txtSubHeading" value="<?=$page['sub_heading']?>" />
+                <input type="text" id="txtSubHeading" name="txtSubHeading" value="<?=stripcslashes($page['sub_heading'])?>" />
 
                 <label for="txtHeaderImage">Header Image:</label>
                 <input type="text" id="txtHeaderImage" name="txtHeaderImage" value="<?=$page['header_image']?>" />
@@ -267,16 +267,16 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
 
 
                 <label for="txtContentHeader">Content Heading:</label>
-                <input type="text" d="txtContentHeader" name="txtContentHeader" value="<?=$page['content_header']?>" placeholder="Appears above the content" />
+                <input type="text" d="txtContentHeader" name="txtContentHeader" value="<?=stripcslashes($page['content_header'])?>" placeholder="Appears above the content" />
 
                 <label for="txtContent">Content:</label><a href="#" class="insertTag" data-tag="paragraph" data-target="txtContent">Insert Paragraph Tag</a> | <a href="#" class="insertTag" data-tag="image" data-target="txtContent">Insert Image Tag</a> | <a href="#" class="insertTag" data-tag="quote" data-target="txtContent">Insert Quote Tag</a>
                 <textarea id="txtContent" name="txtContent" cols="100" rows="15"><?=stripcslashes(stripcslashes($page['content']))?></textarea>
 
                 <label for="txtMetaKeywords">Meta Keywords:</label>
-                <input type="text" id="txtMetaKeywords" name="txtMetaKeywords" value="<?=$page['meta_keywords']?>" placeholder="No # and separate by comma" />
+                <input type="text" id="txtMetaKeywords" name="txtMetaKeywords" value="<?=stripcslashes($page['meta_keywords'])?>" placeholder="No # and separate by comma" />
 
                 <label for="txtMetaDescription">Meta Description:</label>
-                <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="<?=$page['meta_desc']?>" />
+                <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="<?=stripcslashes($page['meta_desc'])?>" />
 
                 <label for="txtThemeClass">Theme Class:</label>
                 <input type="text" id="txtThemeClass" name="txtThemeClass" value="<?=$page['theme_class']?>" />

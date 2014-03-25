@@ -1,4 +1,5 @@
 <?php
+require 'includes/site-settings.php';
 require 'includes/db.php';
 require 'includes/instagram.class.php';
 require 'includes/instagram.config.php';
@@ -18,6 +19,8 @@ if (isset($_GET['hub_challenge']))
 {
     $challenge = $_GET['hub_challenge'];
 }
+
+
 
 
 //echo '['.$redirectPage.']';

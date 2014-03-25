@@ -1,4 +1,5 @@
 <?php
+include '../includes/site-settings.php';
 include '../includes/db.php';
 include '../includes/Mobile_Detect.php';
 require '../includes/instagram.class.php';
@@ -12,7 +13,7 @@ if (isset($_GET['call_page']))
 }
 else
 {
-    $callPage = 'index.php';
+    $callPage = $baseURL;
 }
 //echo '['.$callPage.']';
 ?>

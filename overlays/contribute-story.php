@@ -102,15 +102,18 @@ $(function() {
     {
         var obj = JSON.parse(data);
         //console.log('success');
-        //console.dir(obj);
+        console.dir(obj);
 
         $('#postContributionLoader').remove();
+        el.parent('div').children('h3').text('Got it!');
         el.parent('div').append('<div><p>'+obj.msg+'</p></div>');
     }
 
     function errorPostHandler(data,el)
     {
-        var obj = JSON.parse(data);
+        $('#postContributionLoader').remove();
+        //var obj = JSON.parse(data);
+        el.parent('div').children('h3').text('Oh-oh.');
         el.parent('div').append('<div><p>Something went wrong - please email <a href="mailto:admin@beyondthewharf.com.au">admin@beyondthewharf.com.au</a> with your story</p></div>');
     }
 

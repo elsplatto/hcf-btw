@@ -98,10 +98,7 @@ function initialize() {
         mapOptions);
 
     <?php
-    $coordsJson = getJsonConents('json/routeCoords.json');
-
-
-    //var_dump($coordsJson);
+    $coordsJson = getJsonContents('json/routeCoords.json');
 
     //get the route coordinates and create latlng objects in javascript
     prepRoutes($coordsJson);

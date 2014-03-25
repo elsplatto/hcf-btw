@@ -1,10 +1,10 @@
 <?php
 
+include '../includes/site-settings.php';
 include '../includes/global-functions.php';
 require '../includes/twitter.class.php';
 require '../includes/twitter.config.php';
 
-include '../includes/site-settings.php';
 
 $twitterResults = $twitter->search('#beyondthewharf'); //homepage only page with twitter feed at this point - move to site-settings.php if more prolific
 
@@ -16,7 +16,7 @@ if (count($twitterResults) > 0)
     foreach ($twitterResults as $tweet)
     {
         //$tweetText = $tweet->text;
-        $tweetText = preg_replace('"\b(http://\S+)"', '<a href="$1">$1</a>', $tweet->text);
+        $tweetText = preg_replace('"\b(http://\S+)"', '<a href="$1" target="_blank" rel="nofollow">$1</a>', $tweet->text);
 
     ?>
     <li class="large-3 medium-3 small-3 columns">
@@ -31,6 +31,7 @@ if (count($twitterResults) > 0)
 
                 <a href="https://twitter.com/share?url=<?=$baseURL?>/&text=Living like a local&hashtag=beyondthewharf&count=none" class="twitter-share-button right marginTop3" data-lang="en">Tweet</a>
                 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
             </div>
         </div>
     </li>

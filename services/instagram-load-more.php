@@ -1,8 +1,7 @@
 <?php
-
+require '../includes/site-settings.php';
 require '../includes/instagram.class.php';
 require '../includes/instagram.config.php';
-require '../includes/site-settings.php';
 
 $tag = 'beyondthewharf';
 $clientID = $instagram->getApiKey();

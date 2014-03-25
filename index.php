@@ -2,18 +2,12 @@
 $pageMetaTitle = "Beyond the Wharf - Sydney Harbour, Sydney Activities, Sydney Ferries";
 $pageSection = "home";
 $pageMetaDesc = "Beyond the Wharf provides local and international insights to Sydney Harbour.";
-include 'includes/head.php';
+
 /*global includes in head.php*/
-
-$deviceType = ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'computer');
-$folder = '';
-
-if ($deviceType === 'phone')
-{
-    $folder = 'phone/';
-}
-
+include 'includes/head.php';
 ?>
+
+
 <body>
 <?php
 include 'includes/nav.php';
@@ -96,7 +90,17 @@ include 'includes/nav.php';
 
             <div class="large-3 medium-3 small-3 columns">
                 <div class="imgHolder">
-                    <a href="<?=$baseURL?>/events"><img src="img/promoImages/vivid_feature.jpg" alt="Image of Sydney Opera House during Vivid." /></a>
+                    <img src="img/promoImages/sm-silk.jpg" alt="Saltmotion image of wave - by Joel Coleman" />
+                </div>
+                <div class="textHolder">
+                    <span>Photo Competition</span>
+                    <h5><a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/?competitionId=1" id="competitionPromo" class="reveal-init" data-size="small">Win This Art Print</a></h5>
+                </div>
+            </div>
+
+            <div class="large-3 medium-3 small-3 columns">
+                <div class="imgHolder">
+                    <img src="img/promoImages/vivid_feature.jpg" alt="Image of Sydney Opera House during Vivid." />
                 </div>
                 <div class="textHolder">
                     <span>Events</span>
@@ -104,19 +108,11 @@ include 'includes/nav.php';
                 </div>
             </div>
 
-            <div class="large-3 medium-3 small-3 columns">
-                <div class="imgHolder">
-                    <a href="#"><img src="img/promoImages/maritime.jpg" alt="Image of Darling Harbour &amp; Maritime Museum at night" /></a>
-                </div>
-                <div class="textHolder">
-                   <span>Attraction</span>
-                    <h5><a href="#" class="panelFlyoutTrigger" data-location="5" data-target="mapContainer">Maritime Museum</a></h5>
-                </div>
-            </div>
+
 
             <div class="large-3 medium-3 small-3 columns">
                 <div class="imgHolder">
-                    <a href="#"><img src="img/promoImages/promo3.jpg" alt="" /></a>
+                    <img src="img/promoImages/promo3.jpg" alt="Image of Sydney Harbour from Watsons Bay" />
                 </div>
                 <div class="textHolder">
                    <span>Itinerary</span>
@@ -220,6 +216,13 @@ if ($deviceType != 'phone')
 
 $(function() {
 
+    <?if ($competitionId == 1)
+    {
+    ?>
+    $('#competitionPromo').trigger('click');
+    <?php
+    }
+    ?>
     loadHomeImages();
     fetchTweets();
 
@@ -278,6 +281,7 @@ $(function() {
     {
         $('#tweetList').load('services/twitter-fetch-tweets.php', function() {
             $('#tweetList').foundation('orbit');
+            twttr.widgets.load();
         });
     }
 
