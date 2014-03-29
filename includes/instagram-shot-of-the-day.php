@@ -261,6 +261,9 @@ else {
 </div>
 <div class="row marginTop20">
     <div class="large-12 columns text-center">
+
+        <a href="<?=$baseURL?>/gallery" class="button">Go to Gallery</a>
+
         <h3 class="block">
             Share your experience
         </h3>
