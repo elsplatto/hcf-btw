@@ -2,6 +2,7 @@
 $pageMetaTitle = "Gallery - Great photos from around the harbour.";
 $pageSection = "gallery";
 $pageMetaDesc = "Submit, share and view your photos of Sydney Harbour.";
+$pageMetaKeywords = "Sydney, photos, gallery, harbour, experiences";
 include 'includes/head.php';
 /*global includes in head.php*/
 
@@ -350,11 +351,18 @@ if (isset($sharedPhoto))
                 $likeURL = $baseURL . '/overlays/instagram-login.php?call_page='.$callbackURL;
                 $likeText = 'You are not logged in. Log in to like.';
             }
+
+            $altText = '';
+
+            if ($post[$i]->caption !== NULL)
+            {
+                $altText = $post[$i]->caption->text;
+            }
             ?>
 
             <div class="small-6 medium-3 large-3 columns">
                 <div class="small-12 medium-12 large-12 insta">
-                    <img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$post[$i]->caption->text?>" />
+                    <img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$altText?>" />
                     <a href="<?=$instagramCommentURL?>?media_id=<?=$post[$i]->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post[$i]->id?>" role="button"><span><?=$post[$i]->comments->count?></span></a>
                     <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post[$i]->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post[$i]->id?>" data-likesCount="<?=$post[$i]->likes->count?>" data-displayCount><?=likeNumberFormatter($post[$i]->likes->count)?></span></a>
                     <div class="infoContainer">
@@ -423,7 +431,7 @@ if (isset($sharedPhoto))
         </div>
 
 
-            <div class="small-12 medium-6 large-6 columns left">
+            <!--div class="small-12 medium-6 large-6 columns left">
                 <div class="large-12 medium-12 small-12 insta">
                     <img src="<?=$baseURL?>/img/featuredPhotographer/medium/shelley-beach.jpg" alt="Ocean Scene" />
 
@@ -434,9 +442,13 @@ if (isset($sharedPhoto))
                         </div>
                     </div>
                 </div>
+            </div-->
+
+            <div class="small-12 medium-6 large-6 columns left">
+                <div class="large-12 medium-12 small-12 insta">
+                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/gallery/?competitionId=1" id="competitionPromo" class="reveal-init" data-size="small"><img src="<?=$baseURL?>/img/featuredPhotographer/medium/competition-1.jpg" alt="Click here to enter photo competition." /></a>
+                </div>
             </div>
-
-
 
             <div class="small-6 medium-3 large-3 columns">
                 <div class="small-12 medium-12 medium-12 large-12 insta">
@@ -531,11 +543,19 @@ if (isset($sharedPhoto))
                 $likeURL = $baseURL . '/overlays/instagram-login.php?call_page='.$callbackURL;
                 $likeText = 'You are not logged in. Log in to like.';
             }
+
+            $altText = '';
+
+            if ($post[$i]->caption !== NULL)
+            {
+                $altText = $post[$i]->caption->text;
+            }
+
             ?>
 
             <div class="small-6 medium-3 large-3 columns">
                 <div class="small-12 large-12 insta">
-                    <img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$post[$i]->caption->text?>" />
+                    <img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$altText?>" />
                     <a href="<?=$instagramCommentURL?>?media_id=<?=$post[$i]->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post[$i]->id?>" role="button"><span><?=$post[$i]->comments->count?></span></a>
                     <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post[$i]->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post[$i]->id?>" data-likesCount="<?=$post[$i]->likes->count?>" data-displayCount><?=likeNumberFormatter($post[$i]->likes->count)?></span></a>
                     <div class="infoContainer">
@@ -620,6 +640,14 @@ include 'includes/analytics.php';
 <script>
 $(function(){
 
+    <?if ($competitionId == 1)
+    {
+    ?>
+    $('#competitionPromo').trigger('click');
+    <?php
+    }
+    ?>
+
     $('body').on( 'click', '#btnLoadMoreInstagram', function(e){
         e.preventDefault();
         var maxId = $(this).attr('data-maxId');
@@ -688,11 +716,28 @@ $(function(){
         var userLikedClass = '';
         var likeText = 'Click to like';
 
+        var altText = '';
+
         for (var i=0; i<dataObj.length;i++)
         {
             loadHTML += '<div class="small-6 medium-3 large-3 columns">';
             loadHTML += '<div class="small-12 large-12 insta">';
-            loadHTML += '<img src="'+dataObj[i].images.low_resolution.url+'" alt="'+dataObj[i].caption.text+'" />';
+            if (dataObj[i].caption != null)
+            {
+                if (dataObj[i].caption.text == null)
+                {
+                    altText = '';
+                }
+                else
+                {
+                    altText = dataObj[i].caption.text;
+                }
+            }
+            else
+            {
+                altText = '';
+            }
+            loadHTML += '<img src="'+dataObj[i].images.low_resolution.url+'" alt="'+ altText +'" />';
 
             loadHTML += '<a href="'+instagramCommentURL+'?media_id='+dataObj[i].id+'" class="comments reveal-init" data-size="medium" data-mediaId="'+dataObj[i].id+'" role="button"><span>'+dataObj[i].comments.count+'</span></a>';
 

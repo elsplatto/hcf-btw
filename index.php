@@ -2,6 +2,7 @@
 $pageMetaTitle = "Beyond the Wharf - Sydney Harbour, Sydney Activities, Sydney Ferries";
 $pageSection = "home";
 $pageMetaDesc = "Beyond the Wharf provides local and international insights to Sydney Harbour.";
+$pageMetaKeywords = "Sydney, Harbour, Activities, Events, Share, Contribute, Travel";
 
 /*global includes in head.php*/
 include 'includes/head.php';
@@ -72,33 +73,59 @@ include 'includes/nav.php';
     <section class="promoHolder">
         <div class="row">
 
-            <div class="large-3 medium-3 small-3 tweetSlider">
-                <ul id="tweetList" data-orbit data-options="animation: slide; timer_speed: 10000;
-                pause_on_hover: false;
-                animation_speed: 500;
-                navigation_arrows: false;
-                bullets: false;
-                slide_number: false">
-                    <li class="preloader"></li>
-                </ul>
-            </div>
+            <?php
+            if ($deviceType == 'phone')
+            {
+            ?>
+
+                <div class="large-3 medium-3 small-12 promoTile columns<?=$deviceClass?>">
+                    <div class="imgHolder">
+                        <img src="img/promoImages/<?=$folder?>sm-silk.jpg" alt="Saltmotion image of wave - by Joel Coleman" />
+                    </div>
+                    <div class="textHolder">
+                        <span>Photo Competition</span>
+                        <h5><a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/?competitionId=1" id="competitionPromo" class="reveal-init" data-size="small">Win a $700 Art Print</a></h5>
+                    </div>
+                </div>
+
+                <div class="large-3 medium-3 small-12 tweetSlider">
+                    <ul id="tweetList" data-orbit data-options="animation: slide; timer_speed: 10000;
+            pause_on_hover: false;
+            animation_speed: 500;
+            navigation_arrows: false;
+            bullets: false;
+            slide_number: false">
+                        <li class="preloader"></li>
+                    </ul>
+                </div>
 
             <?php
+            }
             if ($deviceType != 'phone')
             {
             ?>
 
-            <div class="large-3 medium-3 small-3 columns">
+            <div class="large-3 medium-3 small-12 tweetSlider">
+                <ul id="tweetList" data-orbit data-options="animation: slide; timer_speed: 10000;
+            pause_on_hover: false;
+            animation_speed: 500;
+            navigation_arrows: false;
+            bullets: false;
+            slide_number: false">
+                    <li class="preloader"></li>
+                </ul>
+            </div>
+            <div class="large-3 medium-3 small-12 promoTile columns">
                 <div class="imgHolder">
                     <img src="img/promoImages/sm-silk.jpg" alt="Saltmotion image of wave - by Joel Coleman" />
                 </div>
                 <div class="textHolder">
                     <span>Photo Competition</span>
-                    <h5><a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/?competitionId=1" id="competitionPromo" class="reveal-init" data-size="small">Win This Art Print</a></h5>
+                    <h5><a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/?competitionId=1" id="competitionPromo" class="reveal-init" data-size="small">Win a $700 Art Print</a></h5>
                 </div>
             </div>
 
-            <div class="large-3 medium-3 small-3 columns">
+            <!--div class="large-3 medium-3 small-12 columns hide-for-small-only">
                 <div class="imgHolder">
                     <img src="img/promoImages/vivid_feature.jpg" alt="Image of Sydney Opera House during Vivid." />
                 </div>
@@ -106,11 +133,21 @@ include 'includes/nav.php';
                     <span>Events</span>
                     <h5><a href="<?=$baseURL?>/events">Vivid Sydney</a></h5>
                 </div>
+            </div-->
+
+            <div class="large-3 medium-3 small-12 columns hide-for-small-only">
+                <div class="imgHolder">
+                    <img src="img/promoImages/Biennale-of-Sydney.jpg" alt="Image of Biennale of Sydney." />
+                </div>
+                <div class="textHolder">
+                    <span>Events</span>
+                    <h5><a href="<?=$baseURL?>/events">Biennale of Sydney</a></h5>
+                </div>
             </div>
 
 
 
-            <div class="large-3 medium-3 small-3 columns">
+            <div class="large-3 medium-3 small-12 columns hide-for-small-only">
                 <div class="imgHolder">
                     <img src="img/promoImages/promo3.jpg" alt="Image of Sydney Harbour from Watsons Bay" />
                 </div>
@@ -177,10 +214,7 @@ if ($deviceType != 'phone')
                   $filters = getFilters(1, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
                   for ($i = 0; $i < count($filters); $i++)
                   {
-
-                  ?>
-                      <li><a href="#" class="mapFilter" data-category="<?=$filters[$i]?>" data-visible="true"><?=$filters[$i]?></a></li>
-                  <?php
+                    ?><li><a href="#" class="mapFilter" data-category="<?=$filters[$i]?>" data-visible="true"><?=$filters[$i]?></a></li><?php
                   }
                   ?>
                   </ul>
@@ -314,8 +348,6 @@ $(function() {
             $(this).removeClass('flip');
         }
     });
-
-
 
 });
 </script>

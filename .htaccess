@@ -30,6 +30,7 @@ RewriteRule ^event/(.*)$ events.php
 RewriteRule ^event(.*)$ events.php
 RewriteRule ^itineraries(.*)$ itineraries.php
 RewriteRule ^itineraries/(.*)$ itineraries.php
+
 RewriteRule 404(.*)$ 404.php
 
 

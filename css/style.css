@@ -47,6 +47,7 @@ label {
   height: 13.75rem; }
 
 .reveal-modal {
+  border: none !important;
   z-index: 600; }
   .reveal-modal .close-reveal-modal {
     width: 2.15rem !important;
@@ -64,6 +65,30 @@ label {
       height: 2.15rem;
       background-image: url("img/icons.png");
       background-position: -382px -173px; }
+  .reveal-modal .brandedBanner {
+    width: 100%;
+    height: auto;
+    background-color: #3c4855;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    .reveal-modal .brandedBanner span {
+      position: relative;
+      display: block;
+      margin: 0.5rem auto;
+      width: 4.75rem;
+      height: 3.75rem; }
+      .reveal-modal .brandedBanner span:before {
+        position: absolute;
+        content: "";
+        opacity: 0.25;
+        width: 4.75rem;
+        height: 3.75rem;
+        top: 0;
+        left: 0;
+        background-image: url("img/icons.png");
+        background-position: -924px -149px; }
 
 /* End - Override classes */
 /* Start - Social icon classes */
@@ -2092,11 +2117,20 @@ footer .standard {
             font-size: 0.75rem; }
 
   .reveal-modal .close-reveal-modal {
-    width: 2.6rem !important;
+    width: 2.7rem !important;
     height: 2.6rem !important; }
     .reveal-modal .close-reveal-modal:before {
-      width: 2.6rem;
+      width: 2.7rem;
       height: 2.6rem; }
+  .reveal-modal .brandedBanner {
+    height: auto; }
+    .reveal-modal .brandedBanner span {
+      width: 3.538rem;
+      height: 2.846rem; }
+      .reveal-modal .brandedBanner span:before {
+        width: 3.538rem;
+        height: 2.846rem;
+        background-position: -954px -217px; }
 
   .likes.small {
     width: 1.8rem;
@@ -2320,14 +2354,26 @@ footer .standard {
 @media only screen and (max-width: 40em) {
   .promoHolder {
     position: relative !important;
-    bottom: 0.2rem !important; }
-    .promoHolder .row .small-3 {
-      display: none; }
-    .promoHolder .row .small-3.tweetSlider {
-      display: inline-block !important;
-      width: 100%; }
-      .promoHolder .row .small-3.tweetSlider .small-3 {
-        display: inline-block; }
+    bottom: 0.25rem !important;
+    padding-bottom: 2rem !important; }
+    .promoHolder .row .small-12 {
+      margin-top: 1rem !important; }
+    .promoHolder .row .small-12.promoTile {
+      height: 20rem !important;
+      overflow: hidden !important; }
+      .promoHolder .row .small-12.promoTile .imgHolder {
+        height: 15rem; }
+      .promoHolder .row .small-12.promoTile .textHolder {
+        height: 5rem; }
+        .promoHolder .row .small-12.promoTile .textHolder a {
+          text-decoration: underline; }
+    .promoHolder .row .small-12.promoTile.phone {
+      height: 16.93rem !important;
+      overflow: hidden !important; }
+      .promoHolder .row .small-12.promoTile.phone .imgHolder {
+        height: 11.93rem; }
+      .promoHolder .row .small-12.promoTile.phone .textHolder {
+        height: 5rem; }
     .promoHolder .tile .tweetText {
       font-size: 1.5rem;
       line-height: 1.95rem; }

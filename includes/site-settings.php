@@ -1,18 +1,30 @@
 <?php
-
 $baseURL = '';
 if ($_SERVER['SERVER_NAME'] == 'localhost')
 {
     $baseURL = 'http://localhost/~jasontaikato/hcf-btw';
     $adminEmailAddress = 'jason.taikato@tobiasandtobias.com';
 }
-else
+else if ($_SERVER['SERVER_NAME'] == 'www.beyondthewharf.com.au')
+{
+    $baseURL = 'http://www.beyondthewharf.com.au';
+    $adminEmailAddress = 'admin@beyondthewharf.com.au';
+}
+else if ($_SERVER['SERVER_NAME'] == 'beyondthewharf.com.au')
 {
     $baseURL = 'http://beyondthewharf.com.au';
     $adminEmailAddress = 'admin@beyondthewharf.com.au';
 }
-
-
+else if (($_SERVER['SERVER_NAME'] == 'www.harbourcityferries.com.au') || ($_SERVER['SERVER_NAME'] == 'harbourcityferries.com.au'))
+{
+    $baseURL = 'http://beyondthewharf.com.au';
+    $adminEmailAddress = 'admin@beyondthewharf.com.au';
+}
+else
+{
+    $baseURL = 'http://'.$_SERVER['SERVER_NAME'];
+    $adminEmailAddress = 'admin@beyondthewharf.com.au';
+}
 
 session_start();
 

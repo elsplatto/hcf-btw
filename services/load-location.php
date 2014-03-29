@@ -89,7 +89,7 @@ if (isset($locationId))
                 <div class="large-5 medium-5 small-12 columns left">
                     <div id="flyoutMap" class="map"></div>
 
-                    <?=stripcslashes($address_text)?>
+                    <?=stripcslashes(stripcslashes($address_text))?>
                 </div>
             </div>
 
@@ -100,7 +100,7 @@ if (isset($locationId))
             <div class="large-12 medium-12 small-12 columns standardDarkGrey">
                 <div class="ferryInfo large-12 medium-12 small-12 columns ultraDarkGrey">
                     <h4>Ferry Information</h4>
-                    <?=stripcslashes($trip_plan)?>
+                    <?=stripcslashes(stripcslashes($trip_plan))?>
                 </div>
             </div>
             <?php

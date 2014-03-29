@@ -15,6 +15,11 @@ $targetPos = ($targetPos + strlen($targetStr));
 
 $friendly_url = substr($_SERVER['REQUEST_URI'],$targetPos);
 
+if (isset($_GET['page-title']))
+{
+    $friendly_url = $_GET['page-title'];
+}
+
 
 function getPage($friendly_url, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {

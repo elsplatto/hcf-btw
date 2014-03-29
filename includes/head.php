@@ -10,15 +10,16 @@ $device = new Mobile_Detect;
 
 $deviceType = ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'computer');
 $folder = '';
+$deviceClass = '';
 
 if ($deviceType === 'phone')
 {
     $folder = 'phone/';
+    $deviceClass = ' phone';
 }
 
 if (isset($instagramData))
 {
-
     $competitionURL = 'overlays/enter-competition.php?step=2';
 } else {
     $competitionURL = 'overlays/enter-competition.php?step=1';
@@ -41,6 +42,10 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?=$pageMetaTitle?></title>
     <meta name="description" content="<?=$pageMetaDesc?>" />
+    <meta name="keywords" content="<?=$pageMetaKeywords?>" />
+
+
+    <meta name="robots" content="index, follow" />
 
 
     <link rel="icon" href="<?=$baseURL?>/apple-icons/beyond-the-wharf-icon.png" type="image/png" />

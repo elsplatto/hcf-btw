@@ -51,7 +51,7 @@ $shotOfTheDayID = getShotOfTheDayID($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_
 
 $shotOfTheDayResults = $instagram->getMedia($shotOfTheDayID, $tokenSet);
 
-$instagramResults = $instagram->getTagMedia('beyondthewharf',$tokenSet, 5); //get 1 more than we need to miss out pic of the day in the small images
+$instagramResults = $instagram->getTagMedia('beyondthewharf',$tokenSet, 20); //get 1 more than we need to miss out pic of the day in the small images
 
 $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
 
@@ -150,10 +150,13 @@ if ($shotOfTheDayResults->meta->code == 200)
 
 if ($instagramResults->meta->code == 200)
 {
+    $photographerList = array();
     foreach ($instagramResults->data as $post) {
-        if ($post->id != $shotOfTheDayID)
+        $photographerID = $post->user->id;
+        if ($post->id != $shotOfTheDayID && !in_array($photographerID,$photographerList))
         {
             $count++;
+            array_push($photographerList, $photographerID);
             if ($count < 5)
             {
                 if ($instagramUserLoggedIn)

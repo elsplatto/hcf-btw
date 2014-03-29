@@ -9,7 +9,7 @@ require '../includes/twitter.config.php';
 $twitterResults = $twitter->search('#beyondthewharf'); //homepage only page with twitter feed at this point - move to site-settings.php if more prolific
 
 $tweetCount = 0;
-$tweetMax = 3;
+$tweetMax = 10;
 
 if (count($twitterResults) > 0)
 {
@@ -61,8 +61,6 @@ else
 
     <li class="large-3 medium-3 small-3 columns">
         <div class="tile">
-
-
             <div class="tweetText">
                 <img src="../img/content/twitterRobot-tile.png" alt="Looks like we are having trouble connecting to twitter" />
             </div>

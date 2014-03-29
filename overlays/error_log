@@ -1,0 +1,1 @@
+[25-Mar-2014 13:59:41 UTC] PHP Warning:  file_get_contents(../json/wharfs.json) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /home/beyond/public_html/includes/global-functions.php on line 171

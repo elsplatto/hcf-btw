@@ -17,6 +17,11 @@ function getUserDetails($instagramId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $D
     $stmt->bind_result($id, $firstname, $lastname, $email, $wharf);
 
     $results = array();
+    $results['id'] = '';
+    $results['firstname'] = '';
+    $results['lastname'] = '';
+    $results['email'] = '';
+    $results['home_wharf'] = '';
     while($stmt->fetch())
     {
         $results['id'] = $id;
@@ -84,25 +89,29 @@ else
 
 $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
 ?>
-<div id="competitionModal" class="white">
+
+<div class="brandedBanner grey"><span></span></div>
+<div id="competitionModal" class="paddingTop60 white">
 <?php
 
 if ($step == 1)
 {
 ?>
 <section class="steps">
-    <h3 class="block">WIN AN AMAZING SIGNED ARTWORK FROM ACCLAIMED OCEAN PHOTOGRAPHER JOEL COLEMAN.</h3>
 
-    <h3 class="block marginBottom20">HOW TO WIN!</h3>
+    <h3 class="block marginBottom20">SHARE YOUR EXPERIENCE OF SYDNEY HARBOUR OR PARRAMATTA RIVER BEFORE THE END OF JUNE ON INSTAGRAM &amp; WIN AN AMAZING SIGNED ARTWORK FROM ACCLAIMED PHOTOGRAPHER JOEL COLEMAN VALUED AT $700.</h3>
+
+    <h3 class="block marginBottom20">HOW TO WIN.</h3>
 
 
-    <!--a href="#" class="button instagram show-for-small-only">Log into Instagram &amp; Enter</a-->
+    <a href="<?=$instagramLoginURL?>" class="button instagram">Log into Instagram &amp; Enter</a>
 
     <ul class="arrowed show-hide">
         <li>
-            <h4><a href="#">Take a great photo of Sydney Harbour</a></h4>
+            <h4><a href="#">Capture the Essence of Sydney in a Photograph</a></h4>
             <div class="extra-info">
-                <p>Capture the best of Sydney Harbour, it's people and it's iconic ferries.</p>
+                <p>Take a great photo of Sydney harbour or the Parramatta river. Capture the people, the places and experiences accessed through our iconic ferry service.</p>
+                <p>Jump on a ferry, explore our harbour and capture the essence of Sydney's most authentic experience. </p>
             </div>
         </li>
         <li>
@@ -116,15 +125,16 @@ if ($step == 1)
             <h4><a href="#">Share your photos</a></h4>
             <div class="extra-info">
                 <p>Once you've signed up for the competition, share your best photos on Instagram.</p>
-                <p>Simply tag each image with #beyondthewharf and encourage your friends to 'like' them. We'll also publish all submitted images on beyondthewharf.com.au and our facebook page for all the world to see.</p>
+                <p>Simply tag each image with #beyondthewharf and encourage your friends to 'like' them. We'll also publish all submitted images
+                    on beyondthewharf.com.au and our <a href="http://www.facebook.com/beyondthewharf" target="_blank" rel="nofollow">facebook page</a> for all the world to see.</p>
             </div>
         </li>
         <li>
             <h4><a href="#">Tips on how to win</a></h4>
             <div class="extra-info">
-                <p>Photos with the most 'likes' will be selected for final judging by our expert panel so make sure you get your friends to 'like' your images.</p>
-
-                <p>Our judges will select winners based on the creativity and originality of the images submitted and on how they capture experiences on or around sydney's beautiful harbour.</p>
+                <p>Our expert panel of judges will select winners based on the creativity and originality of the entries. The judges will be looking for images that present unique
+                    perspectives of our awesome harbour and the communities that surround it. Special credit will be given to images that capture local secrets,
+                    hidden gems and insight into the best and most authentic experiences on offer.</p>
 
                 <p>Don't forget to visit beyondthewharf.com.au and use our tools to promote your images to your network.</p>
             </div>
@@ -134,13 +144,13 @@ if ($step == 1)
             <div class="extra-info">
                 <p>The monthly winner will receive an awesome Joel Coleman artwork valued at $700.</p>
 
-                <p>One winner will be selected each month for the duration of the competition. All winners will be announced and featured on beyondthewharf.com.au. Winners will also be notified by email.</p>
+                <p>One winner will be selected each month for the duration of the competition. All winners will be announced and featured on beyondthewharf.com.au and our <a href="http://www.facebook.com/beyondthewharf" target="_blank" rel="nofollow">facebook page</a>. All winners will be notified by email.</p>
             </div>
         </li>
         <li>
             <h4><a href="#">Legal stuff</a></h4>
             <div class="extra-info">
-                <p>The competition runs between 20/03/2014 to 20/05/2014 to enter the competition you must have taken the image yourself and own all legal rights to submit the image.</p>
+                <p>The competition runs between 20/03/2014 to 20/06/2014 to enter the competition you must have taken the image yourself and own all legal rights to submit the image.</p>
 
                 <p>Employees (and their immediate families) of the promoter and agencies associated with this promotion are ineligible to enter the competition.</p>
             </div>
@@ -160,7 +170,7 @@ else if ($step == 2)
     {
     ?>
     <h3>Hello <?=$instagramUsername?>,</h3>
-    <p>We just need a few details off you to enter you into the competition.<br /><sup class="red">*</sup>Mandatory Fields.</p>
+    <p>We just need a few details from you to enter you into the competition.<br /><sup class="red">*</sup>Mandatory Fields.</p>
     <form id="frmCompetition" action="<?=$baseURL?>/includes/process-competition-entry.php" method="post" data-abide="ajax">
         <label for="txtFirstname">First Name:<sup class="red">*</sup>
             <input type="text" name="txtFirstname" id="txtFirstname" value="<?=$userDetails['firstname']?>" required />
@@ -186,6 +196,10 @@ else if ($step == 2)
             <small class="error">Please agree to the terms and conditions.</small>
         </label>
 
+        <label for="chkSubscribe">
+            <input type="checkbox" name="chkSubscribe" id="chkSubscribe" value="1" />&nbsp;Yes, I want to receive news and promotions from Beyond The Wharf.</small>
+        </label>
+
         <input type="submit" id="btnSubmitStory" class="button" value="Enter Competition" />&nbsp;&nbsp;&nbsp;<a href="#" class="reveal-close cancel">Cancel</a>
 
     </form>
@@ -198,7 +212,7 @@ else if ($step == 2)
             <li>Employees (and their immediate families) of the Promoter and agencies associated with this promotion are ineligible to enter. Immediate family means any
                 of the following: spouse, ex-spouse, de-facto spouse, child or step-child (whether natural or by adoption), parent, step-parent, grandparent,
                 step-grandparent, uncle, aunt, niece, nephew, brother, sister, step-brother, step-sister or 1st cousin.</li>
-            <li>Promotion commences at 9:00 am on20/03/2014 and closes at 11:59pm on 20/5/2014, unless extended in the absolute discretion of the Promoter (“Promotional
+            <li>Promotion commences at 9:00 am on20/03/2014 and closes at 11:59pm on 20/6/2014, unless extended in the absolute discretion of the Promoter (“Promotional
                 Period”). The Promoter reserves the right to extend the Promotional Period until 11.59pm on 20/7/2014. All times throughout the terms and conditions will
                 be based on Sydney local time, which will be either AEDST or AEST, depending upon the date.</li>
             <li>To enter, the entrant must first create an image that includes something on or something to do around Sydney harbour.</li>
@@ -377,11 +391,15 @@ else if ($step == 3)
                 var el = $(this);
                 var url = $(this).attr('action');
                 var firstname, lastname, email, wharf;
+                var subscribe = 0;
                 firstname = $('#txtFirstname').val();
                 lastname = $('#txtLastname').val();
                 email = $('#txtEmail').val();
                 wharf = $('#txtWharf').val();
-
+                if ($('#chkSubscribe').is(':checked'))
+                {
+                    subscribe = 1;
+                }
                 $.ajax({
                     type: 'POST',
                     url: url,
@@ -389,7 +407,8 @@ else if ($step == 3)
                         firstname: firstname,
                         lastname: lastname,
                         email: email,
-                        wharf: wharf
+                        wharf: wharf,
+                        subscribe: subscribe
                     },
                     dataType: 'json',
                     cache: false,
@@ -415,6 +434,7 @@ else if ($step == 3)
         {
             var section = el.parent('section');
             el.hide();
+            section.addClass('complete');
             section.append('<div id="postEntryLoader"></div>');
             var cl = new CanvasLoader('postEntryLoader');
             cl.setColor('#59acb3');
@@ -485,6 +505,7 @@ else if ($step == 3)
         function beforeGetRecentHandler(el)
         {
             el.append('<div id="recentMediaLoader"></div>');
+            el.addClass('complete');
             var cl = new CanvasLoader('recentMediaLoader');
             cl.setColor('#59acb3');
             cl.setShape('square'); // default is 'oval'
@@ -502,13 +523,31 @@ else if ($step == 3)
             var dataObj = data;
             var loadHTML = '<h4>Perhaps you would like to promote your photos.</h4>';
             loadHTML += '<p>Click on the twitter button to broadcast your photo via twitter. Encourage your friends to "Like" your photos.</p>';
+            var altText = '';
             if (dataObj.length > 0)
             {
                 for (var i=0; i<dataObj.length;i++)
                 {
+
+                    if (dataObj[i].caption != null)
+                    {
+                        if (dataObj[i].caption.text == null)
+                        {
+                            altText = '';
+                        }
+                        else
+                        {
+                            altText = dataObj[i].caption.text;
+                        }
+                    }
+                    else
+                    {
+                        altText = '';
+                    }
+
                     loadHTML += '<div class="small-12 medium-6 large-3 columns">';
                     loadHTML += '<div class="small-12 large-12 insta">';
-                    loadHTML += '<img src="'+dataObj[i].images.low_resolution.url+'" alt="'+dataObj[i].caption.text+'" />';
+                    loadHTML += '<img src="'+dataObj[i].images.low_resolution.url+'" alt="'+altText+'" />';
                     loadHTML += '<div class="infoContainer">';
                     loadHTML += '<div class="inner">';
 
@@ -524,6 +563,7 @@ else if ($step == 3)
                     loadHTML = '';
                 }
             }
+            return false;
         }
 
         function completeGetRecentHandler(data, targetEl)
