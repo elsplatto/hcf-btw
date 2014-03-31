@@ -28,6 +28,7 @@ if ($friendly_url == 'local-insights')
 
 
 
+
             <div class="large-6 medium-6 small-12 columns left">
                 <div class="tile">
                     <div class="imgHolder">

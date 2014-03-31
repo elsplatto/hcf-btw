@@ -15,11 +15,12 @@ if (isset($instagramData))
     <div class="large-12 columns">
         <h3 class="text-center" style="margin-bottom: -0.5rem">Gallery</h3>
         <?php
-        /*if (isset($instagramData))
+        if (isset($instagramData))
         {
             echo '<h4>Welcome ' . $instagramUsername . '</h4>';
             echo '<a href="'.$instagramLogoutURL.'" class="button">Logout of Instagram</a>';
         }
+        /*
         else
         {
             echo '<a href="'.$instagramLoginURL.'" class="button">Log into Instagram</a>';

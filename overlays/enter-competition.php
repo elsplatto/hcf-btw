@@ -92,12 +92,16 @@ $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationship
 
 <div class="brandedBanner grey"><span></span></div>
 <div id="competitionModal" class="paddingTop60 white">
+
+
+
 <?php
 
 if ($step == 1)
 {
 ?>
 <section class="steps">
+
 
     <h3 class="block marginBottom20">SHARE YOUR EXPERIENCE OF SYDNEY HARBOUR OR PARRAMATTA RIVER BEFORE THE END OF JUNE ON INSTAGRAM &amp; WIN AN AMAZING SIGNED ARTWORK FROM ACCLAIMED PHOTOGRAPHER JOEL COLEMAN VALUED AT $700.</h3>
 
@@ -343,6 +347,9 @@ else if ($step == 3)
 <script>
 
     $(function() {
+
+
+
 
         <?php
         if ($userEntered == 1)

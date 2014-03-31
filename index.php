@@ -1,8 +1,8 @@
 <?php
 $pageMetaTitle = "Beyond the Wharf - Sydney Harbour, Sydney Activities, Sydney Ferries";
 $pageSection = "home";
-$pageMetaDesc = "Beyond the Wharf provides local and international insights to Sydney Harbour.";
-$pageMetaKeywords = "Sydney, Harbour, Activities, Events, Share, Contribute, Travel";
+$pageMetaDesc = "Beyond the Wharf provides local and international insights to Sydney Harbour. Looking for great things to doin Sydney? ";
+$pageMetaKeywords = "Sydney, harbour, experience, activities, events, share, contribute, locals, international, travel";
 
 /*global includes in head.php*/
 include 'includes/head.php';
@@ -171,7 +171,11 @@ if ($deviceType != 'phone')
 <section class="themeFeature">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Unlock Sydney's best kept local secrets with our iconic ferry service</h3>
+
+
         <div class="large-12 columns">
+
+
 
             <div class="large-6 medium-12 small-12 themedPromoText standardDarkGrey left">
                 <span>The Child at Heart</span>
@@ -355,6 +359,5 @@ $(function() {
 <?php
 include 'includes/analytics.php';
 ?>
-
 </body>
 </html>

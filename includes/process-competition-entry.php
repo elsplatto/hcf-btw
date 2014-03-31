@@ -118,7 +118,7 @@ if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['
 
             $headers = "From: webmaster@beyondthewharf.com.au";
 
-            mail($adminEmailAddress,"Competition ".$competitionId." Entry",$emailMsg,$headers);
+            mail($adminEmailAddress.",jason.taikato@tobiasandtobias.com","Competition ".$competitionId." Entry",$emailMsg,$headers);
 
         }
     }
