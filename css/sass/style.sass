@@ -248,6 +248,11 @@ label
   color: #fff
   &:hover
     background-color: $std-light-red-bg
+.button.verboten
+  background-color: $std-light-red-bg
+  color: #fff
+  &:hover
+    background-color: $std-red-bg
 .button.play
   padding-left: 3rem !important
   &:before
@@ -725,6 +730,23 @@ div.white, section.white
 
 /*Finish Autocomplete*/
 
+/*START - Share buttons*/
+.shareButtons
+  position: absolute
+  right: 1rem
+  width: 11.5rem
+  display: block
+  height: auto
+  z-index: 20
+
+.landingPageAddthisHolder
+  width: 100%
+  overflow: hidden
+  .shareButtons
+    position: relative
+    float: right
+/*END - Share buttons*/
+
 
 .show-hide
   padding: 0.25rem 0
@@ -1062,16 +1084,18 @@ ul.arrowed
         h5
           margin-bottom: -0.25rem
         .button
-          font-size: 1.875rem
-          text-transform: uppercase
-          font-family: $tungsten
-          font-weight: 700 !important
+          //font-size: 1.875rem
+          //text-transform: uppercase
+          //font-family: $tungsten
+          //font-weight: 700 !important
+          display: block
+          clear: both
           color: #fff
         .button
-          max-width: 100%
+          max-width: 90%
           padding: 0.45rem 0.65rem
-          background-color: $std-text-green
-          margin: 0.625rem 0 0 0
+          //background-color: $std-text-green
+          margin: 0.625rem auto 0 auto
           &:hover
             text-decoration: none
 
@@ -2263,6 +2287,20 @@ footer
       background-position: -447px 0px
 
 
+  .shareButtons
+    width: 14.25rem
+
+  .homeAddThisHolder
+    .shareButtons
+      position: relative
+      clear: both
+      margin-left: 0.75rem
+      margin-bottom: 1rem
+      .addthis_default_style
+        a
+          float: right
+
+
   .controlPanelHolder
     .controlPanel
       h6.white
@@ -2549,6 +2587,7 @@ footer
       top: 15%
 
 
+
   .featureImgHolder
     .promoHolder
       .textHolder
@@ -2638,6 +2677,26 @@ footer
         .small-3
           display: inline-block
 
+  .shareButtons
+    width: 14.25rem
+    position: relative
+    clear: both
+    margin-left: 0.75rem
+    .addthis_default_style
+      a
+        float: right
+
+  .landingPageAddthisHolder
+    padding: 0 1.25rem
+    .shareButtons
+      float: none
+      width: 14.25rem
+      position: relative
+      clear: both
+      margin-left: 0.75rem
+      .addthis_default_style
+        a
+          float: right
 
   .promoHolder
     position: relative !important
@@ -2653,8 +2712,6 @@ footer
           height: 15rem
         .textHolder
           height: 5rem
-          a
-            text-decoration: underline
       .small-12.promoTile.phone
         height: 16.93rem !important
         overflow: hidden !important
@@ -2662,6 +2719,8 @@ footer
           height: 11.93rem
         .textHolder
           height: 5rem
+          .button
+            clear: both
 
     .tile
       .tweetText

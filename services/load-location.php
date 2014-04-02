@@ -38,7 +38,7 @@ if (isset($locationId))
                 <a href="#" class="flyoutPanelClose">Close panel</a>
                 <span><?=ucwords($category_title)?></span>
                 <h3><?=$title?></h3>
-                <?=stripcslashes($intro_text)?>
+                <?=stripcslashes(stripcslashes($intro_text))?>
                 <?php
                 if ($type_title == 'events')
                 {

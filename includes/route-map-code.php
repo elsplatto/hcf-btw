@@ -570,7 +570,7 @@ function initialize() {
                 locationContent += '</div>';
                 locationContent += '<div class="textHolder">';
                 locationContent += '<span>'+location.sub_heading+'</span>';
-                locationContent += '<h5><a href="#" class="panelFlyoutTrigger" data-location="'+location.id+'" data-target="mapContainer">'+location.title+'</a></h5>';
+                locationContent += '<h5><a href="#" class="panelFlyoutTrigger" data-location="'+location.id+'" data-target="mapContainer" onClick="trackInternalLink(\'Tile on <?=$routeNavTitle?> route map - click\', \''+location.title.replace(/'/g, "\\'")+'\'); return false;">'+location.title+'</a></h5>';
                 locationContent += '</div>';
 
                 var locationBubble = new InfoBubble({

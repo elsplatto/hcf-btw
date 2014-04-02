@@ -1,7 +1,8 @@
 <?php
+$pageHeading = "Home";
 $pageMetaTitle = "Beyond the Wharf - Sydney Harbour, Sydney Activities, Sydney Ferries";
 $pageSection = "home";
-$pageMetaDesc = "Beyond the Wharf provides local and international insights to Sydney Harbour. Looking for great things to doin Sydney? ";
+$pageMetaDesc = "Looking for great things to do in Sydney? Beyond the Wharf provides local and international insights to Sydney Harbour. ";
 $pageMetaKeywords = "Sydney, harbour, experience, activities, events, share, contribute, locals, international, travel";
 
 /*global includes in head.php*/
@@ -50,6 +51,8 @@ include 'includes/nav.php';
     ?>
     <div class="headerHolder">
 
+
+
         <h2 class="sub">Secrets</h2>
         <h2>Beyond the Wharf</h2>
         <hr />
@@ -84,7 +87,7 @@ include 'includes/nav.php';
                     </div>
                     <div class="textHolder">
                         <span>Photo Competition</span>
-                        <h5><a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/?competitionId=1" id="competitionPromo" class="reveal-init" data-size="small">Win a $700 Art Print</a></h5>
+                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/?competitionId=1" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - mobile click', 'Competition 1 - Win $700 Art Print'); return false;">Win a $700 Art Print</a>
                     </div>
                 </div>
 
@@ -121,7 +124,7 @@ include 'includes/nav.php';
                 </div>
                 <div class="textHolder">
                     <span>Photo Competition</span>
-                    <h5><a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/?competitionId=1" id="competitionPromo" class="reveal-init" data-size="small">Win a $700 Art Print</a></h5>
+                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/?competitionId=1" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - click', 'Competition 1 - Win $700 Art Print'); return false;">Win a $700 Art Print</a>
                 </div>
             </div>
 
@@ -170,10 +173,19 @@ if ($deviceType != 'phone')
 ?>
 <section class="themeFeature">
     <div class="row marginBottomStandard">
+
+        <div class="large-12 columns homeAddThisHolder">
+            <?php
+            include 'includes/addthis.php';
+            ?>
+        </div>
+
         <h3 class="text-center">Unlock Sydney's best kept local secrets with our iconic ferry service</h3>
 
 
         <div class="large-12 columns">
+
+
 
 
 

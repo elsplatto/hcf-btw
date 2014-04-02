@@ -183,6 +183,12 @@ label {
   .button.red:hover {
     background-color: #e85050; }
 
+.button.verboten {
+  background-color: #e85050;
+  color: white; }
+  .button.verboten:hover {
+    background-color: #c0565a; }
+
 .button.play {
   padding-left: 3rem !important; }
   .button.play:before {
@@ -655,6 +661,23 @@ div.white, section.white {
 
 /* right-aligned */
 /*Finish Autocomplete */
+/*START - Share buttons */
+.shareButtons {
+  position: absolute;
+  right: 1rem;
+  width: 11.5rem;
+  display: block;
+  height: auto;
+  z-index: 20; }
+
+.landingPageAddthisHolder {
+  width: 100%;
+  overflow: hidden; }
+  .landingPageAddthisHolder .shareButtons {
+    position: relative;
+    float: right; }
+
+/*END - Share buttons */
 .show-hide {
   padding: 0.25rem 0; }
   .show-hide li .extra-info {
@@ -951,16 +974,13 @@ ul.arrowed {
         .featureImgHolder .promoHolder .large-3 .textHolder h5 {
           margin-bottom: -0.25rem; }
         .featureImgHolder .promoHolder .large-3 .textHolder .button {
-          font-size: 1.875rem;
-          text-transform: uppercase;
-          font-family: "Tungsten A", "Tungsten B" !important;
-          font-weight: 700 !important;
+          display: block;
+          clear: both;
           color: white; }
         .featureImgHolder .promoHolder .large-3 .textHolder .button {
-          max-width: 100%;
+          max-width: 90%;
           padding: 0.45rem 0.65rem;
-          background-color: #59acb3;
-          margin: 0.625rem 0 0 0; }
+          margin: 0.625rem auto 0 auto; }
           .featureImgHolder .promoHolder .large-3 .textHolder .button:hover {
             text-decoration: none; }
 
@@ -2049,6 +2069,17 @@ footer .standard {
     height: 1.154rem;
     background-position: -447px 0px; }
 
+  .shareButtons {
+    width: 14.25rem; }
+
+  .homeAddThisHolder .shareButtons {
+    position: relative;
+    clear: both;
+    margin-left: 0.75rem;
+    margin-bottom: 1rem; }
+    .homeAddThisHolder .shareButtons .addthis_default_style a {
+      float: right; }
+
   .controlPanelHolder .controlPanel h6.white {
     color: white; }
   .controlPanelHolder .controlPanel h6 {
@@ -2352,6 +2383,25 @@ footer .standard {
       .off-canvas-wrap ul.routes li a, .off-canvas-wrap ul.routes li label {
         padding-left: 2.25rem; } }
 @media only screen and (max-width: 40em) {
+  .shareButtons {
+    width: 14.25rem;
+    position: relative;
+    clear: both;
+    margin-left: 0.75rem; }
+    .shareButtons .addthis_default_style a {
+      float: right; }
+
+  .landingPageAddthisHolder {
+    padding: 0 1.25rem; }
+    .landingPageAddthisHolder .shareButtons {
+      float: none;
+      width: 14.25rem;
+      position: relative;
+      clear: both;
+      margin-left: 0.75rem; }
+      .landingPageAddthisHolder .shareButtons .addthis_default_style a {
+        float: right; }
+
   .promoHolder {
     position: relative !important;
     bottom: 0.25rem !important;
@@ -2365,8 +2415,6 @@ footer .standard {
         height: 15rem; }
       .promoHolder .row .small-12.promoTile .textHolder {
         height: 5rem; }
-        .promoHolder .row .small-12.promoTile .textHolder a {
-          text-decoration: underline; }
     .promoHolder .row .small-12.promoTile.phone {
       height: 16.93rem !important;
       overflow: hidden !important; }
@@ -2374,6 +2422,8 @@ footer .standard {
         height: 11.93rem; }
       .promoHolder .row .small-12.promoTile.phone .textHolder {
         height: 5rem; }
+        .promoHolder .row .small-12.promoTile.phone .textHolder .button {
+          clear: both; }
     .promoHolder .tile .tweetText {
       font-size: 1.5rem;
       line-height: 1.95rem; }

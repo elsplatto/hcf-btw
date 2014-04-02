@@ -95,7 +95,15 @@ include 'includes/nav.php';
 <section class="featureEvents marginBottomStandard">
 
     <div class="row marginTop20">
+
+
+
         <div class="large-12 columns">
+
+            <?php
+            include 'includes/addthis.php';
+            ?>
+
             <h2 class="block clearfix text-left">Harbour Event Diary</h2>
 
         </div>
@@ -136,7 +144,7 @@ include 'includes/nav.php';
                     <img src="<?=$baseURL?>/img/locations/large/<?=$featureEvent['image_large']?>" alt="<?=$featureEvent['title']?>" />
                     <div class="infoContainer">
                         <div class="inner">
-                            <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$featureEvent['tile_id']?>" data-target="featureEventPanelHolder" title="Link opens event details in dynamic panel.?>"><?=$featureEvent['title']?></a></h5>
+                            <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$featureEvent['tile_id']?>" data-target="featureEventPanelHolder" title="Link opens event details in dynamic panel." onClick="trackInternalLink('Feature Event Panel - click', '<?=$featureEvent['title']?>'); return false;"><?=$featureEvent['title']?></a></h5>
 
                             <span><?=$display_start_date?> - <?=$display_end_date?></span>
                         </div>
@@ -212,7 +220,7 @@ include 'includes/nav.php';
                     </div>
                     <div class="textHolder">
                         <span><?=$event['type_title']?></span>
-                        <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$event['tile_id']?>" data-target="panelHolder-<?=($flyout_count+1)?>" title="<?=$event['title']?>"><?=$event['title']?></a></h5>
+                        <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$event['tile_id']?>" data-target="panelHolder-<?=($flyout_count+1)?>" title="<?=$event['title']?>" onClick="trackInternalLink('Standard Event Tile - click', '<?=addslashes($event['title'])?>'); return false;"><?=$event['title']?></a></h5>
                     </div>
                 </div>
             </div>

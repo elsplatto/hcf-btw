@@ -16,6 +16,10 @@
         });
     }
 
+    var trackInternalLink = function(action, label) {
+        ga('send', 'event', 'internal', action, label);
+    }
+
 </script>
 
 <script type='text/javascript'>

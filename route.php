@@ -73,8 +73,14 @@ $routeTiles = getRoutesSelectedTiles($routeId,$DB_SERVER, $DB_USERNAME, $DB_PASS
 <section class="contentHolder marginBottomStandard">
     <div class="row">
         <div class="large-12 columns">
+
             <div class="large-12 columns white paddingTopBottom40">
+
                 <div class="large-10 columns large-offset-1">
+                    <?php
+                    include 'includes/addthis.php';
+                    ?>
+
                     <?php
                     if ($friendly_url == 'parramatta-river')
                     {
@@ -159,7 +165,7 @@ $routeTiles = getRoutesSelectedTiles($routeId,$DB_SERVER, $DB_USERNAME, $DB_PASS
                         </div>
                         <div class="textHolder">
                             <span><?=$categoryTitle?></span>
-                            <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$routeTile['tile_id']?>" data-target="pageTileContainer" title="<?=$routeTile['title']?>"><?=$routeTile['title']?></a></h5>
+                            <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$routeTile['tile_id']?>" data-target="pageTileContainer" title="<?=$routeTile['title']?>" onClick="trackInternalLink('Standard <?=$routeNavTitle?> Route Tile - click', '<?=addslashes($routeTile['title'])?>'); return false;"><?=$routeTile['title']?></a></h5>
                         </div>
                     </div>
                 </div>

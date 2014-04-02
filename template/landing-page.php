@@ -26,7 +26,11 @@ if ($friendly_url == 'local-insights')
 
         <div class="large-12" id="featureTileContainer">
 
-
+            <div class="large-12 landingPageAddthisHolder">
+                <?php
+                include 'includes/addthis.php';
+                ?>
+            </div>
 
 
             <div class="large-6 medium-6 small-12 columns left">
@@ -93,10 +97,21 @@ if ($hasMap > 0 || count($pageTiles) > 0)
 <section class="mapHolder standardLightGrey paddingTopBottom20 marginBottomStandard">
 
     <div class="row">
+
+        <div class="large-12 columns">
+            <?php
+            include 'includes/addthis.php';
+            ?>
+        </div>
+
         <?php
         if ($hasMap > 0)
         {
             ?>
+
+
+
+
             <h3 class="text-center">Find a Journey</h3>
             <div class="large-12 columns" id="mapContainer">
 
@@ -158,7 +173,7 @@ if ($hasMap > 0 || count($pageTiles) > 0)
                         </div>
                         <div class="textHolder">
                             <span><?=$categoryTitle?></span>
-                            <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$pageTile['tile_id']?>" data-target="pageTileContainer" title="<?=$pageTile['title']?>"><?=$pageTile['title']?></a></h5>
+                            <h5><a href="#" class="panelFlyoutTrigger" data-location="<?=$pageTile['tile_id']?>" data-target="pageTileContainer" title="<?=$pageTile['title']?>" onClick="trackInternalLink('Page tile for <?=$pageHeading?> - click', '<?=addslashes($pageTile['title'])?>'); return false;"><?=$pageTile['title']?></a></h5>
                         </div>
                     </div>
                 </div>
