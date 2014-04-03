@@ -4,9 +4,11 @@ if (isset($instagramData))
 {
     $instagramUsername = $instagramData->user->username;
     $instagramLogoutURL = '?id=logout';
+    $instagramPicLink = $baseURL .'/overlays/instagram-comment.php';
 } else {
     // Login URL
     $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
+    $instagramPicLink = $baseURL .'/overlays/instagram-get-media.php';
 }
 ?>
 <section class="photoSection marginBottomStandard">
@@ -106,7 +108,7 @@ if ($shotOfTheDayResults->meta->code == 200)
 
     <div class="small-12 medium-6 large-6 columns">
         <div class="large-12 medium-12 small-12 insta">
-            <img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" />
+            <a href="<?=$instagramPicLink?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>"><img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" /></a>
             <a href="<?=$instagramCommentURL?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"><span><?=$shotOfTheDayResults->data->comments->count?></span></a>
             <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$shotOfTheDayResults->data->id?>" data-likesCount="<?=$shotOfTheDayResults->data->likes->count?>" data-displayCount><?=likeNumberFormatter($shotOfTheDayResults->data->likes->count)?></span></a>
             <div class="infoContainer">
@@ -189,7 +191,7 @@ if ($instagramResults->meta->code == 200)
 
                 <div class="small-6 medium-3 large-3 columns">
                     <div class="small-12 large-12 insta">
-                        <img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" />
+                        <a href="<?=$instagramPicLink?>?media_id=<?=$post->id?>" data-reveal-ajax="true" class="reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>"><img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" /></a>
                         <a href="<?=$instagramCommentURL?>?media_id=<?=$post->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>" role="button"><span><?=$post->comments->count?></span></a>
                         <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post->id?>" data-likesCount="<?=$post->likes->count?>" data-displayCount><?=likeNumberFormatter($post->likes->count)?></span></a>
                         <div class="infoContainer">
@@ -233,24 +235,6 @@ if ($instagramResults->meta->code == 200)
     }
 }
 else {
-
-    /*$to = 'jason.taikato@tobiasandtobias.com';
-    $subject = 'System error mail';
-    $message = '<html><head></head><body><p><strong>Type:</strong> '.$instagramResults->error_type.'</p><p><strong>Msg:</strong> '.$instagramResults->error_message.'</p><p><strong>URL:</strong> '.$_SERVER['REQUEST_URI'].'</p></body></html>';
-
-    $from = 'website@harbourcityferries.com.au';
-    $headers = 'MIME-Version: 1.0\r\n';
-    $headers .= 'Content-type: text/html; charset=iso-8859-1\r\n';
-    $headers  .= 'From:' .$from.'\r\n';*/
-    //mail($to,$subject,$message,$headers);
-
-
-   /* echo '<div class="systemError"><h2>Error:</h2>';
-    //echo '<p>An email with the following message has been sent to the webmaster - sorry for any inconvenience.</a></p>';
-    echo '<p><strong>Type:</strong> '.$instagramResults->error_type.'</p>';
-    echo '<p><strong>Msg:</strong> '.$instagramResults->error_message.'</p>';
-    echo '<p><strong>URL:</strong> '.$_SERVER['REQUEST_URI'].'</p>';
-    echo '</div>';*/
 
     echo "<p>We are having problems with our gallery at the moment - we'll have it up and running again shortly.</p>";
 }

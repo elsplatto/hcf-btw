@@ -1,4 +1,5 @@
 <?php
+include '../includes/site-settings.php';
 include '../includes/db.php';
 include '../includes/Mobile_Detect.php';
 require '../includes/instagram.class.php';
@@ -7,7 +8,6 @@ include '../includes/global-functions.php';
 
 $device = new Mobile_Detect;
 
-session_start();
 $userData=$_SESSION['userdetails'];
 $userInstagramId = $userData->user->id;
 

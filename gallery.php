@@ -49,9 +49,11 @@ if (isset($instagramData))
 {
     $instagramUsername = $instagramData->user->username;
     $instagramLogoutURL = '?id=logout';
+    $instagramPicLink = $baseURL .'/overlays/instagram-comment.php';
 } else {
     // Login URL
     $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
+    $instagramPicLink = $baseURL .'/overlays/instagram-get-media.php';
 }
 
 $galleryHeaderClass = '';
@@ -150,7 +152,7 @@ if (isset($sharedPhoto))
                     <div class="small-12 large-offset-3 large-6 medium-6 columns">
                         <h3 class="text-center"><?=$sharedPhoto->data->user->username?>'s photo</h3>
                         <div class="large-12 medium-12 small-12 insta sharedPhoto">
-                            <img src="<?=$sharedPhoto->data->images->standard_resolution->url?>" alt="<?=$sharedPhoto->data->caption->text?>" />
+                            <a href="<?=$instagramPicLink?>?media_id=<?=$sharedPhoto->data->id?>" data-reveal-ajax="true" class="reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$sharedPhoto->data->id?>"><img src="<?=$sharedPhoto->data->images->standard_resolution->url?>" alt="<?=$sharedPhoto->data->caption->text?>" /></a>
                             <a href="<?=$instagramCommentURL?>?media_id=<?=$sharedPhoto->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$sharedPhoto->data->id?>" role="button"><span><?=$sharedPhoto->data->comments->count?></span></a>
                             <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$sharedPhoto->data->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$sharedPhoto->data->id?>" data-likesCount="<?=$sharedPhoto->data->likes->count?>" data-displayCount><?=likeNumberFormatter($sharedPhoto->data->likes->count)?></span></a>
                             <div class="infoContainer">
@@ -276,7 +278,7 @@ if (isset($sharedPhoto))
 
         <div class="small-12 large-6 medium-6 columns right">
             <div class="large-12 medium-12 small-12 insta">
-                <img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" />
+                <a href="<?=$instagramPicLink?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>"><img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" /></a>
                 <a href="<?=$instagramCommentURL?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"><span><?=$shotOfTheDayResults->data->comments->count?></span></a>
                 <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$shotOfTheDayResults->data->id?>" data-likesCount="<?=$shotOfTheDayResults->data->likes->count?>" data-displayCount><?=likeNumberFormatter($shotOfTheDayResults->data->likes->count)?></span></a>
                 <div class="infoContainer">
@@ -362,7 +364,7 @@ if (isset($sharedPhoto))
 
             <div class="small-6 medium-3 large-3 columns">
                 <div class="small-12 medium-12 large-12 insta">
-                    <img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$altText?>" />
+                    <a href="<?=$instagramPicLink?>?media_id=<?=$post[$i]->id?>" data-reveal-ajax="true" class="reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post[$i]->id?>"><img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$altText?>" />
                     <a href="<?=$instagramCommentURL?>?media_id=<?=$post[$i]->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post[$i]->id?>" role="button"><span><?=$post[$i]->comments->count?></span></a>
                     <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post[$i]->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post[$i]->id?>" data-likesCount="<?=$post[$i]->likes->count?>" data-displayCount><?=likeNumberFormatter($post[$i]->likes->count)?></span></a>
                     <div class="infoContainer">
@@ -555,7 +557,7 @@ if (isset($sharedPhoto))
 
             <div class="small-6 medium-3 large-3 columns">
                 <div class="small-12 large-12 insta">
-                    <img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$altText?>" />
+                    <a href="<?=$instagramPicLink?>?media_id=<?=$post[$i]->id?>" data-reveal-ajax="true" class="reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post[$i]->id?>"><img src="<?=$post[$i]->images->low_resolution->url?>" alt="<?=$altText?>" /></a>
                     <a href="<?=$instagramCommentURL?>?media_id=<?=$post[$i]->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post[$i]->id?>" role="button"><span><?=$post[$i]->comments->count?></span></a>
                     <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post[$i]->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post[$i]->id?>" data-likesCount="<?=$post[$i]->likes->count?>" data-displayCount><?=likeNumberFormatter($post[$i]->likes->count)?></span></a>
                     <div class="infoContainer">
@@ -737,7 +739,7 @@ $(function(){
             {
                 altText = '';
             }
-            loadHTML += '<img src="'+dataObj[i].images.low_resolution.url+'" alt="'+ altText +'" />';
+            loadHTML += '<a href="<?=$instagramPicLink?>?media_id='+dataObj[i].id+'" data-reveal-ajax="true" class="reveal-init" data-size="medium" data-mediaId="'+dataObj[i].id+'"><img src="'+dataObj[i].images.low_resolution.url+'" alt="'+ altText +'" /></a>';
 
             loadHTML += '<a href="'+instagramCommentURL+'?media_id='+dataObj[i].id+'" class="comments reveal-init" data-size="medium" data-mediaId="'+dataObj[i].id+'" role="button"><span>'+dataObj[i].comments.count+'</span></a>';
 

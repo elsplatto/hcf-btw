@@ -19,7 +19,7 @@ else
 ?>
 <div id="instagramLoginModal" class="white">
     <h3>Instagram Login</h3>
-    <p>To Like or view comments an Instagram image we will need you to sign in.</p>
+    <p>To like or view comments an Instagram image we will need you to sign in.</p>
 
     <a href="<?=$instagramLoginURL?>" class="button">Log into Instagram</a>
     <a class="close-reveal-modal reveal-close">Close overlay</a>
