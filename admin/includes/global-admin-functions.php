@@ -1,11 +1,23 @@
 <?php
-function assessLogin()
+function assessLogin($array = null)
 {
-    session_start();
-    //$userId = $_SESSION['adminUserId'];
+    if ($array == null)
+    {
+        $array = ['super'];
+    }
+    if(session_id() == '' || !isset($_SESSION)) {
+        session_start();
+    }
     if (!isset($_SESSION['adminUserId']))
     {
         header('Location: login-fail.php');
+    }
+    else
+    {
+        if(!in_array($_SESSION['adminRole'],$array))
+        {
+            header('Location: dashboard.php');
+        }
     }
 }
 ?>

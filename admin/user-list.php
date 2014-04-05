@@ -1,7 +1,7 @@
 <?php
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin();
+assessLogin(['super','publisher','author']);
 
 function getUsers($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);

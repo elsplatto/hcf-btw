@@ -1,7 +1,7 @@
 <?php
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin();
+assessLogin(['super','publisher','author']);
 
 $route_id = $_POST['route_id'];
 $tile_id = $_POST['tile_id'];

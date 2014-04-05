@@ -1,7 +1,8 @@
 <?php
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin();
+assessLogin(['super','publisher','author']);
+assessLogin(['super','publisher','author']);
 
 
 

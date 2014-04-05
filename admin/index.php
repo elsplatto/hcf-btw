@@ -8,7 +8,9 @@ session_start();
 if (isset($logout))
 {
     unset($_SESSION['adminUserId']);
+    unset($_SESSION['adminName']);
     unset($_SESSION['adminUsername']);
+    unset($_SESSION['adminRole']);
     session_destroy();
 }
 ?>

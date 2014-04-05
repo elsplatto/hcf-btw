@@ -1,7 +1,8 @@
 <?php
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin();
+assessLogin(['super','publisher','author']);
+assessLogin(['super','publisher','author']);
 
 
 
@@ -86,13 +87,12 @@ $categoriesCount = count($categories);
                 </label>
                 <small class="error">Please enter users first name</small>
 
-
-
                 <label for="txtLastname">Last Name:
                 <input type="text" id="txtLastname" name="txtLastname" required />
                 </label>
                 <small class="error">Please enter users last name</small>
 
+                <!--TODO: Check to make sure username is unique-->
 
                 <label for="txtUsername">Username:
                 <input type="text" id="txtUsername" name="txtUsername" required />
@@ -101,12 +101,12 @@ $categoriesCount = count($categories);
 
 
                 <label for="selRole">Role:
-                    <select id="selRole" required>
+                    <select id="selRole" name="selRole" required>
                         <option value="">Select role</option>
                         <option value="super">Super User</option>
                         <option value="publisher">Publisher</option>
                         <option value="author">Author</option>
-                        <option value="guest">Guest</option>
+                        <option value="restricted">Restricted</option>
                     </select>
                 </label>
                 <small class="error">Please select user's role</small>

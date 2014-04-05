@@ -1,7 +1,7 @@
 <?php
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin();
+assessLogin(['super','publisher']);
 
 $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 $stmt = $mysqli->prepare('SELECT id, nav_title, css_class, route_colour, sub_route_colour, friendly_url, info_bubble_width, info_bubble_height from route WHERE is_live = 1 ORDER BY nav_order');
