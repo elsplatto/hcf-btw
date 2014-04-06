@@ -104,6 +104,10 @@ label
     height: 13.75rem
 
 
+video
+  width: 100%
+  height: auto
+
 .reveal-modal
   border: none !important
   z-index: 600
@@ -1736,6 +1740,22 @@ ul.arrowed
 .insta, .eventFeature
   position: relative
   margin-top: 2.5rem
+  a.video
+    position: relative
+    display: block
+    &:before
+      position: absolute
+      content: ''
+      width: 1.625rem
+      height: 1.5rem
+      top: 0.75rem
+      left: 0.75rem
+      background-image: url('img/icons.png')
+      background-position: 0px -365px
+    &:hover
+      &:before
+        background-position: -31px -365px
+
   .infoContainer
     position: absolute !important
     width: 100%
@@ -2822,6 +2842,10 @@ footer
             background-position: -41px -33px
 
   .insta, .eventFeature
+    a.video
+      &:before
+        width: 1.846rem
+        height: 1.846rem
     .infoContainer
       .inner
         padding: 0.75rem 1rem

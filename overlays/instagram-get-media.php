@@ -2,7 +2,12 @@
 include '../includes/site-settings.php';
 require '../includes/instagram.class.php';
 require '../includes/instagram.config.php';
+include '../includes/Mobile_Detect.php';
 include '../includes/global-functions.php';
+
+
+$device = new Mobile_Detect;
+$deviceType = ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'computer');
 
 $media_id = $_GET['media_id'];
 
@@ -28,6 +33,22 @@ foreach ($instagramMediaResults as $post) {
                 $locationName = $post->location->name;
             }
 
+            if ($post->type == 'video')
+            {
+                $isVideo = true;
+                if ($deviceType == 'phone')
+                {
+                    $instagramVideo = $post->videos->low_resolution->url;
+                }
+                else
+                {
+                    $instagramVideo = $post->videos->standard_resolution->url;
+                }
+            }
+            else
+            {
+                $isVideo = false;
+            }
 
         }
     }
@@ -37,7 +58,23 @@ foreach ($instagramMediaResults as $post) {
 
 <div id="instagramPicModal" class="white large-12">
     <div id="imageArea" class="imageArea large-12 medium-12 small-12 text-center">
-        <img src="<?=$instagramImg?>" id="mediaFeatureImage" />
+        <?php
+        if ($isVideo)
+        {
+        ?>
+            <video controls>
+                <source src="<?=$instagramVideo?>"
+                        type="video/mp4"/>
+            </video>
+        <?php
+        }
+        else
+        {
+        ?>
+            <img src="<?=$instagramImg?>" id="mediaFeatureImage" />
+        <?php
+        }
+        ?>
     </div>
 </div>
 

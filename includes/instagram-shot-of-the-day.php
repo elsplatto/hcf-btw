@@ -104,11 +104,19 @@ if ($shotOfTheDayResults->meta->code == 200)
         $likeURL = 'overlays/instagram-login.php';
         $likeText = 'You are not logged in. Log in to like.';
     }
+    if ($shotOfTheDayResults->data->type == 'video')
+    {
+        $videoClass = ' video';
+    }
+    else
+    {
+        $videoClass = '';
+    }
     ?>
 
     <div class="small-12 medium-6 large-6 columns">
         <div class="large-12 medium-12 small-12 insta">
-            <a href="<?=$instagramPicLink?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>"><img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" /></a>
+            <a href="<?=$instagramPicLink?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="reveal-init<?=$videoClass?>" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>"><img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" /></a>
             <a href="<?=$instagramCommentURL?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"><span><?=$shotOfTheDayResults->data->comments->count?></span></a>
             <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$shotOfTheDayResults->data->id?>" data-likesCount="<?=$shotOfTheDayResults->data->likes->count?>" data-displayCount><?=likeNumberFormatter($shotOfTheDayResults->data->likes->count)?></span></a>
             <div class="infoContainer">
@@ -187,11 +195,20 @@ if ($instagramResults->meta->code == 200)
                     $likeURL = 'overlays/instagram-login.php';
                     $likeText = 'You are not logged in. Log in to like.';
                 }
+
+                if ($post->type == 'video')
+                {
+                    $videoClass = ' video';
+                }
+                else
+                {
+                    $videoClass = '';
+                }
                 ?>
 
                 <div class="small-6 medium-3 large-3 columns">
                     <div class="small-12 large-12 insta">
-                        <a href="<?=$instagramPicLink?>?media_id=<?=$post->id?>" data-reveal-ajax="true" class="reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>"><img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" /></a>
+                        <a href="<?=$instagramPicLink?>?media_id=<?=$post->id?>" data-reveal-ajax="true" class="reveal-init<?=$videoClass?>" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>"><img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" /></a>
                         <a href="<?=$instagramCommentURL?>?media_id=<?=$post->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>" role="button"><span><?=$post->comments->count?></span></a>
                         <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post->id?>" data-likesCount="<?=$post->likes->count?>" data-displayCount><?=likeNumberFormatter($post->likes->count)?></span></a>
                         <div class="infoContainer">

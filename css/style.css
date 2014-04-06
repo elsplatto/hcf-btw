@@ -46,6 +46,10 @@ label {
 .tweetSlider .orbit-container {
   height: 13.75rem; }
 
+video {
+  width: 100%;
+  height: auto; }
+
 .reveal-modal {
   border: none !important;
   z-index: 600; }
@@ -1564,6 +1568,20 @@ ul.arrowed {
 .insta, .eventFeature {
   position: relative;
   margin-top: 2.5rem; }
+  .insta a.video, .eventFeature a.video {
+    position: relative;
+    display: block; }
+    .insta a.video:before, .eventFeature a.video:before {
+      position: absolute;
+      content: "";
+      width: 1.625rem;
+      height: 1.5rem;
+      top: 0.75rem;
+      left: 0.75rem;
+      background-image: url("img/icons.png");
+      background-position: 0px -365px; }
+    .insta a.video:hover:before, .eventFeature a.video:hover:before {
+      background-position: -31px -365px; }
   .insta .infoContainer, .eventFeature .infoContainer {
     position: absolute !important;
     width: 100%;
@@ -2503,6 +2521,9 @@ footer .standard {
     #photoHolder01 div a.likes:hover:before, #photoHolder2 div a.likes:hover:before, .galleryHolder div a.likes:hover:before {
       background-position: -41px -33px; }
 
+  .insta a.video:before, .eventFeature a.video:before {
+    width: 1.846rem;
+    height: 1.846rem; }
   .insta .infoContainer .inner, .eventFeature .infoContainer .inner {
     padding: 0.75rem 1rem; }
 

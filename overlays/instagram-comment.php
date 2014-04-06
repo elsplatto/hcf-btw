@@ -7,6 +7,7 @@ require '../includes/instagram.config.php';
 include '../includes/global-functions.php';
 
 $device = new Mobile_Detect;
+$deviceType = ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'computer');
 
 $userData=$_SESSION['userdetails'];
 $userInstagramId = $userData->user->id;
@@ -52,6 +53,23 @@ foreach ($instagramMediaResults as $post) {
             $blnUserLiked = $post->user_has_liked;
             $objImgLikes = $post->likes;
             $objImgComments = $instagram->getMediaComments($media_id);
+
+            if ($post->type == 'video')
+            {
+                $isVideo = true;
+                if ($deviceType == 'phone')
+                {
+                    $instagramVideo = $post->videos->low_resolution->url;
+                }
+                else
+                {
+                    $instagramVideo = $post->videos->standard_resolution->url;
+                }
+            }
+            else
+            {
+                $isVideo = false;
+            }
         }
     }
 }
@@ -77,7 +95,23 @@ else
 
 <div id="instagramCommentModal" class="white large-12">
     <div id="imageArea" class="imageArea large-6 medium-12 small-12 left">
+        <?php
+        if ($isVideo)
+        {
+            ?>
+            <video controls>
+                <source src="<?=$instagramVideo?>"
+                        type="video/mp4"/>
+            </video>
+        <?php
+        }
+        else
+        {
+        ?>
         <img src="<?=$instagramImg?>" id="mediaFeatureImage" />
+        <?php
+        }
+        ?>
     </div>
 
     <div id="commentsArea" class="commentsArea large-6 medium-12 small-12 columns">
