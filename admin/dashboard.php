@@ -22,9 +22,6 @@ include 'includes/header.php';
             Dashboard
             </h1>
 
-            <h3>Hello <?=$_SESSION['adminName']?></h3>
-
-
 
             <?php
             if (in_array($_SESSION['adminRole'],['super','publisher','author']))

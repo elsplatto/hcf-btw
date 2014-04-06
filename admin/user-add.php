@@ -95,7 +95,8 @@ $categoriesCount = count($categories);
                 <!--TODO: Check to make sure username is unique-->
 
                 <label for="txtUsername">Username:
-                <input type="text" id="txtUsername" name="txtUsername" required />
+                    <input type="text" id="txtUsername" name="txtUsername" required />
+                    <span class="ajaxCheck"></span>
                 </label>
                 <small class="error">Please enter a username</small>
 
@@ -143,7 +144,63 @@ include 'includes/footer.php';
 ?>
 <script src="../js/foundation/foundation.abide.js"></script>
 <script>
-$('#frmUser').foundation('abide');
+    $('#frmUser').foundation('abide');
+
+    $(function() {
+        $('#txtUsername').blur(function(e)
+        {
+            var el = $(this);
+            var username = el.val();
+            var id = 0;
+            var indicator = el.next('.ajaxCheck');
+            if (username !== '')
+            {
+                indicator.css({
+                    top: $(this).parent('label').height() / 2,
+                    left: $(this).outerWidth() + 10
+                });
+                indicator.text('checking...');
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'services/unique-username.php',
+                    dataType: 'json',
+                    data: {
+                        username: username,
+                        postedId: id
+                    },
+                    beforeSend: function()
+                    {
+                        //beforeLikeSendHandler(el);
+                    },
+                    success: function(data)
+                    {
+                        successUniqueCheckHandler(data, el, indicator)
+                    }
+                });
+            }
+        });
+
+        function successUniqueCheckHandler(data,el,indicator)
+        {
+            var obj = JSON.parse(data);
+            console.dir(obj);
+
+            if (obj.success)
+            {
+                if (obj.unique)
+                {
+                    indicator.text('unique');
+                    el.removeAttr('data-invalid');
+                }
+                else
+                {
+                    indicator.text('duplicate');
+                    el.attr('data-invalid','');
+                }
+            }
+        }
+    });
 </script>
 </body>
 </html>
