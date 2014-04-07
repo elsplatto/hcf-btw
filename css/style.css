@@ -95,6 +95,12 @@ video {
         background-position: -924px -149px; }
 
 /* End - Override classes */
+.joyride-content-wrapper p {
+  font-size: 1rem !important;
+  color: white; }
+.joyride-content-wrapper .button {
+  font-size: 1rem !important; }
+
 /* Start - Social icon classes */
 .social {
   position: relative;

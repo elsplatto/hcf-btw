@@ -34,6 +34,16 @@ else
     $competitionId = 0;
 }
 
+if (!isset($_COOKIE['LandingCookie']))
+{
+    setcookie("LandingCookie","visited", time()+3600*24*30); //flags that user has been to landing page before - expires in 30days
+}
+
+if (isset($_GET['killCookie']))
+{
+    setcookie("LandingCookie", "", time()-3600);   //expire cookie
+}
+
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
