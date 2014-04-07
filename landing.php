@@ -40,7 +40,7 @@ include 'includes/nav.php';
                     </p>
                     <p>
                         <a href="<?=$baseURL?>/page/about-us">About Us</a><br />
-                        <a href="http://harbourcityferries.com.au/careers" target="_blank" rel="nofollow">Careers</a>
+                        <a href="http://harbourcityferries.com.au/careers" target="_blank" rel="nofollow" onClick="trackOutboundLink('http://harbourcityferries.com.au/careers'); return false;">Careers</a>
                     </p>
                 </div>
             </div>
@@ -51,7 +51,7 @@ include 'includes/nav.php';
                     <p>
                         Beyond The Wharf is an experience and activity finder for your journeys in and around the harbour. Bought to your by Harbour City Ferries as a way for you to get the most out of your ferry journeys and enjoyment of Sydney.
                     </p>
-                    <h3 class="block text-center">ROUTES, MAPS, ITINERARIES, LOCAL INSIGHTS,  GALLERY AND MORE</h3>
+                    <h3 class="block text-center">ROUTES, MAPS, ITINERARIES, LOCAL INSIGHTS, GALLERY AND MORE</h3>
                     <p class="text-center paddingTopBottom20">
                         <a href="<?=$baseURL?>" class="button">GO TO BEYOND THE WHARF</a>
                     </p>
@@ -62,7 +62,7 @@ include 'includes/nav.php';
                 <div class="large-12 white80 columns paddingTopBottom40 planner">
                     <h2 id="tripPlannerTile" class="block text-left">Plan your trip</h2>
                     <p class="text-center paddingTopBottom20">
-                        <a href="<?=$baseURL?>/overlays/trip-planner-<?=$tripplannerOrientation?>.php" class="reveal-init button">USE THE TRIPPLANNER</a>
+                        <a href="<?=$baseURL?>/overlays/trip-planner-<?=$tripplannerOrientation?>.php" class="reveal-init button" onClick="trackInternalLink('Landing page trip planner - click', 'Use the trip planner'); return false;">USE THE TRIPPLANNER</a>
                     </p>
                 </div>
             </div>

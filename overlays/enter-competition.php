@@ -6,6 +6,12 @@ include '../includes/global-functions.php';
 require '../includes/instagram.class.php';
 require '../includes/instagram.config.php';
 
+
+$device = new Mobile_Detect;
+
+$deviceType = ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'computer');
+
+
 function getUserDetails($instagramId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
@@ -88,6 +94,17 @@ else
 }
 
 $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
+
+
+if ($step == 1)
+{
+    $stepLabel = "View competition overlay.";
+}
+else if ($step == 2)
+{
+    $stepLabel = "View personal details form.";
+}
+
 ?>
 
 <div class="brandedBanner grey"><span></span></div>
@@ -108,7 +125,7 @@ if ($step == 1)
     <h3 class="block marginBottom20">HOW TO WIN.</h3>
 
 
-    <a href="<?=$instagramLoginURL?>" class="button instagram">Log into Instagram &amp; Enter</a>
+    <a href="<?=$instagramLoginURL?>" class="button instagram" onClick="trackInternalLink('Competition Overlay - <?=$deviceType?>','Clicked Log into Instgram Button - Step 1');">Log into Instagram &amp; Enter</a>
 
     <ul class="arrowed show-hide">
         <li>
@@ -161,7 +178,7 @@ if ($step == 1)
         </li>
     </ul>
 
-    <a href="<?=$instagramLoginURL?>" class="button instagram">Log into Instagram &amp; Enter</a>
+    <a href="<?=$instagramLoginURL?>" class="button instagram" onClick="trackInternalLink('Competition Overlay - <?=$deviceType?>','Clicked Log into Instgram Button - Step 1');">Log into Instagram &amp; Enter</a>
 </section>
 <?php
 }
@@ -348,9 +365,6 @@ else if ($step == 3)
 
     $(function() {
 
-
-
-
         <?php
         if ($userEntered == 1)
         {
@@ -395,6 +409,7 @@ else if ($step == 3)
 
             if ($('[data-invalid]').length == 0)
             {
+                trackInternalLink('Competition Overlay - <?=$deviceType?>','Submitted Entry Form - Step 2');
                 var el = $(this);
                 var url = $(this).attr('action');
                 var firstname, lastname, email, wharf;
@@ -463,7 +478,7 @@ else if ($step == 3)
             //el.parent('section').html('');
             var html = '<h3>Thank you for entering.</h3>';
             html += '<p>Thanks for joining us in our quest to capture the essence of Sydney Harbour. Don\'t forget to tag your photos with #beyondthewharf and promote your images with our social sharing tools.</p>';
-
+            trackInternalLink('Competition Overlay - <?=$deviceType?>','Entry Successful - Step 3');
             el.parent('section').html(html);
         }
 

@@ -185,10 +185,6 @@ if ($deviceType != 'phone')
 
         <div class="large-12 columns">
 
-
-
-
-
             <div class="large-6 medium-12 small-12 themedPromoText standardDarkGrey left">
                 <span>The Child at Heart</span>
                 <h3 class="block">Family Fun on Sydney Harbour</h3>
