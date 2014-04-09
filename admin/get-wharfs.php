@@ -1,7 +1,8 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher']);
+assessLogin($securityArrPublisher);
 
 $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 $stmt = $mysqli->prepare('SELECT  DISTINCT(label) FROM route_geo WHERE is_waypoint = 1 OR is_destination = 1 order by label');

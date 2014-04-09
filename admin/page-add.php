@@ -1,7 +1,8 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author']);
+assessLogin($securityArrAuthor);
 
 function getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
@@ -33,10 +34,13 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     ?>
 </head>
 <body>
+<?php
+include 'includes/header.php';
+?>
 <section>
     <div class="row">
         <div class="large-12 columns">
-            <a href="dashboard.php">Dashboard</a>
+            <a href="dashboard.php">Home</a>
             <h1>Page - Add</h1>
             <a href="page-list.php">< Back to Page List</a>
         </div>
@@ -131,7 +135,7 @@ $allPages = getAllPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
                 <label for="chkLive">Live:</label>
                 <input type="checkbox" id="chkLive" name="chkLive" value="1" />
 
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" class="button" /> &nbsp; <a href="page-list.php"class="cancel">Cancel</a>
 
             </form>
         </div>

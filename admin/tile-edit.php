@@ -1,8 +1,8 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author']);
-assessLogin(['super','publisher','author']);
+assessLogin($securityArrAuthor);
 
 $tile_id = $_GET['id'];
 
@@ -119,10 +119,15 @@ foreach ($tiles as $tile)
     $lat = $tile['lat'];
     $lng = $tile['lng'];
 ?>
+
+<?php
+include 'includes/header.php';
+?>
+
 <section>
     <div class="row">
         <div class="large-12 columns">
-            <a href="dashboard.php">Dashboard</a>
+            <a href="dashboard.php">Home</a>
             <h1>Tile - <?=$tile['title']?></h1>
             <a href="tiles-list.php">< Back to Tile List</a>
              -
@@ -283,7 +288,7 @@ foreach ($tiles as $tile)
                 <label for="chkLive">Live:</label>
                 <input type="checkbox" id="chkLive" name="chkLive" value="1"<?php echo ($tile['is_live'] == 1?' checked="checked"':'')?> />
 
-                <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" class="button" />&nbsp;<a href="tiles-list.php"class="cancel">Cancel</a>
             </div>
         </div>
     </form>

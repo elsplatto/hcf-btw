@@ -1,11 +1,10 @@
 <?php
-include '../includes/site-settings.php';
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include '../includes/global-functions.php';
-require '../includes/instagram.class.php';
-require '../includes/instagram.config.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author','restricted']);
+assessLogin($securityArr);
+
 
 if (isset($_POST['txtMediaId']))
 {
@@ -16,14 +15,13 @@ if (isset($_POST['txtMediaId']))
     $admin_user_id = $_SESSION['adminUserId'];
     $is_valid = 1;
 
-
+    /*
     echo '$previous_media_id[' .$previous_media_id. ']<br />';
     echo '$instagram_media_id[' .$instagram_media_id. ']<br />';
     echo '$date_remove[' .$date_remove. ']<br />';
     echo '$date_live[' .$date_live. ']<br />';
     echo '$admin_user_id[' .$admin_user_id. ']<br />';
-
-
+    */
 
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 

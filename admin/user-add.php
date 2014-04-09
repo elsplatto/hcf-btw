@@ -1,9 +1,8 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author']);
-assessLogin(['super','publisher','author']);
-
+assessLogin($securityArrAuthor);
 
 
 function getTypes($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
@@ -69,7 +68,7 @@ $categoriesCount = count($categories);
 <section>
     <div class="row">
         <div class="large-12 columns">
-            <a href="dashboard.php">Dashboard</a>
+            <a href="dashboard.php">Home</a>
             <h1>User</h1>
             <a href="user-list.php">< Back to User List</a>
 

@@ -1,7 +1,8 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author']);
+assessLogin($securityArrAuthor);
 
 function getUsers($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
@@ -43,7 +44,7 @@ $users = getUsers($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 <section>
     <div class="row">
         <div class="large-12 columns">
-            <a href="dashboard.php">Dashboard</a>
+            <a href="dashboard.php">Home</a>
             <h1>Users</h1>
             <a href="user-add.php">Add User</a>
         </div>

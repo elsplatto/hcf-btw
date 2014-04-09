@@ -1,7 +1,8 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author']);
+assessLogin($securityArrAuthor);
 
 
 ?>
@@ -14,10 +15,14 @@ assessLogin(['super','publisher','author']);
 </head>
 <body>
 
+<?php
+include 'includes/header.php';
+?>
+
 <section>
     <div class="row">
         <div class="large-12 columns">
-            <a href="dashboard.php">Dashboard</a>
+            <a href="dashboard.php">Home</a>
             <h1>Route - Add</h1>
             <a href="route-list.php">< Back to Route List</a>
         </div>
@@ -97,7 +102,7 @@ assessLogin(['super','publisher','author']);
                     <label for="chkLive">Live:</label>
                     <input type="checkbox" id="chkLive" name="chkLive" value="1" />
 
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Submit" class="button" />&nbsp;<a href="route-list.php"class="cancel">Cancel</a>
 
             </form>
         </div>

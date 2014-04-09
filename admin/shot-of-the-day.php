@@ -1,11 +1,12 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/site-settings.php';
 include '../includes/db.php';
 include '../includes/global-functions.php';
 require '../includes/instagram.class.php';
 require '../includes/instagram.config.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author','restricted']);
+assessLogin($securityArr);
 
 function getShotOfTheDay($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 {
@@ -125,7 +126,7 @@ foreach ($instagramSingleMediaResults as $post) {
     <section>
         <div class="row">
             <div class="large-12 columns">
-                <a href="dashboard.php">Dashboard</a>
+                <a href="dashboard.php">Home</a>
                 <h1>
                     Shot of the day
                 </h1>

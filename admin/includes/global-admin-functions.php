@@ -3,7 +3,7 @@ function assessLogin($array = null)
 {
     if ($array == null)
     {
-        $array = ['super'];
+        array_push($array,'super');
     }
     if(session_id() == '' || !isset($_SESSION)) {
         session_start();

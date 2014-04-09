@@ -76,6 +76,9 @@ select {
   outline: 2px solid grey;
   overflow: hidden; }
 
+table.list {
+  margin-top: 1rem; }
+
 .list th, .list td {
   padding: 0.5rem 1rem 0.5rem 0; }
 
@@ -143,3 +146,6 @@ select {
   background-image: -o-linear-gradient(top, #ec2727, #c10a0a); }
   .ribbon.red:before, .ribbon.red:after {
     border-top: 3px solid #891a00; }
+
+.cancel {
+  margin-left: 2rem; }

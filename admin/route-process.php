@@ -1,8 +1,8 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author']);
-assessLogin(['super','publisher','author']);
+assessLogin($securityArrAuthor);
 
 
 if (!empty($_POST))

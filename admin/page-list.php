@@ -1,7 +1,9 @@
 <?php
+
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author']);
+assessLogin($securityArrAuthor);
 
 function getPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
@@ -40,10 +42,13 @@ $pages = getPages($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     </style>
 </head>
 <body>
+<?php
+include 'includes/header.php';
+?>
 <section>
     <div class="row">
         <div class="large-12 columns">
-            <a href="dashboard.php">Dashboard</a>
+            <a href="dashboard.php">Home</a>
             <h1>Pages</h1>
             <a href="page-add.php">Add Page</a>
         </div>

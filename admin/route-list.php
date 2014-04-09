@@ -1,8 +1,8 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author']);
-assessLogin(['super','publisher','author']);
+assessLogin($securityArrAuthor);
 
 function getRoutes($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE) {
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
@@ -35,10 +35,15 @@ $routes = getRoutes($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     ?>
 </head>
 <body>
+
+<?php
+include 'includes/header.php';
+?>
+
 <section>
     <div class="row">
         <div class="large-12 columns">
-            <a href="dashboard.php">Dashboard</a>
+            <a href="dashboard.php">Home</a>
             <h1>Routes</h1>
             <a href="route-add.php">Add Route</a>
         </div>

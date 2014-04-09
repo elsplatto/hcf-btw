@@ -1,7 +1,8 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author']);
+assessLogin($securityArrAuthor);
 
 $route_id = $_GET['id'];
 
@@ -157,10 +158,14 @@ $selectedRoutePageTiles = getSelectedRouteTiles($route_id ,$DB_SERVER, $DB_USERN
 </head>
 <body>
 
+<?php
+include 'includes/header.php';
+?>
+
 <section>
     <div class="row">
         <div class="large-12 columns">
-            <a href="dashboard.php">Dashboard</a>
+            <a href="dashboard.php">Home</a>
             <h1>Route - Edit</h1>
             <a href="route-list.php">< Back to Route List</a>
             -
@@ -353,7 +358,7 @@ foreach ($routes as $route)
     <label for="chkLive">Live:</label>
     <input type="checkbox" id="chkLive" name="chkLive" value="1"<?php echo ($route['is_live'] == 1?'checked="checked"':'')?> />
 
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Submit" class="button" />&nbsp;<a href="route-list.php"class="cancel">Cancel</a>
 <?php
 }
 ?>

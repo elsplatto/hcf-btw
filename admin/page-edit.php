@@ -1,7 +1,8 @@
 <?php
+include 'includes/admin-settings.php';
 include '../includes/db.php';
 include 'includes/global-admin-functions.php';
-assessLogin(['super','publisher','author']);
+assessLogin($securityArrAuthor);
 
 $page_id = $_GET['id'];
 
@@ -179,10 +180,14 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
 </head>
 <body>
 
+<?php
+include 'includes/header.php';
+?>
+
 <section>
     <div class="row">
         <div class="large-12 columns">
-            <a href="dashboard.php">Dashboard</a>
+            <a href="dashboard.php">Home</a>
             <h1>Page - Edit</h1>
             <a href="page-list.php">< Back to Page List</a>
             -
@@ -404,7 +409,7 @@ $selectedPageTiles = getSelectedTiles($page_id ,$DB_SERVER, $DB_USERNAME, $DB_PA
                 <label for="chkLive">Live:</label>
                 <input type="checkbox" id="chkLive" name="chkLive" value="1"<?php echo ($page['is_live'] == 1?'checked="checked"':'')?> />
 
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" class="button" />&nbsp;<a href="page-list.php"class="cancel">Cancel</a>
             <?php
             }
             ?>
@@ -489,7 +494,7 @@ $(document).ready(function() {
             action = 'add';
         }
 
-        console.log('action['+action+']page_id['+page_id+']tile_id['+tile_id+']item_index['+item_index+']');
+        //console.log('action['+action+']page_id['+page_id+']tile_id['+tile_id+']item_index['+item_index+']');
         $.ajax({
             type: 'POST',
             url: 'add-delete-page-tile.php',
