@@ -42,6 +42,8 @@ if (!empty($_POST))
     $header_webm = $_POST['txtHeaderWebm'];
     $video_embed = $_POST['txtVideoEmbed'];
     $tags = $_POST['txtTags'];
+    $meta_keywords = $_POST['txtMetaKeywords'];
+    $meta_description = $_POST['txtMetaDescription'];
     $content_header = $_POST['txtContentHeader'];
     $content = $_POST['txtContent'];
     $theme_class = $_POST['txtThemeClass'];
@@ -53,15 +55,15 @@ if (!empty($_POST))
     {
         $page_id = $_POST['pageID'];
         $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-        $stmt = $mysqli->prepare('UPDATE pages SET title = ?, is_nav = ?, is_landing_page = ?, has_map = ?, nav_title = ?, heading = ?, heading_pullout = ?, sub_heading = ?, header_image = ?, header_mp4 = ?, header_webm = ?, video_embed = ?, tags = ?, content_header = ?, content = ?, theme_class = ?, pages.order = ?, parent_id = ?, friendly_url = ?, is_live = ? WHERE id = ?');
-        $stmt->bind_param('siiissssssssssssiisii', $title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $mysqli->real_escape_string($video_embed), $tags, $content_header, $mysqli->real_escape_string($content), $theme_class, $order, $parent_id, $friendly_url, $is_live, $page_id);
+        $stmt = $mysqli->prepare('UPDATE pages SET title = ?, is_nav = ?, is_landing_page = ?, has_map = ?, nav_title = ?, heading = ?, heading_pullout = ?, sub_heading = ?, header_image = ?, header_mp4 = ?, header_webm = ?, video_embed = ?, tags = ?, meta_keywords = ?, meta_desc = ?, content_header = ?, content = ?, theme_class = ?, pages.order = ?, parent_id = ?, friendly_url = ?, is_live = ? WHERE id = ?');
+        $stmt->bind_param('siiissssssssssssssiisii', $title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $mysqli->real_escape_string($video_embed), $tags, $meta_keywords, $meta_description, $content_header, $mysqli->real_escape_string($content), $theme_class, $order, $parent_id, $friendly_url, $is_live, $page_id);
 
     }
     else
     {
         $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-        $stmt = $mysqli->prepare('INSERT INTO pages (title, is_nav, is_landing_page, has_map, nav_title, heading, heading_pullout, sub_heading, header_image, header_mp4, header_webm, video_embed, tags, content_header, content, theme_class, pages.order, parent_id, friendly_url, is_live) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-        $stmt->bind_param('siiissssssssssssiisi', $title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $mysqli->real_escape_string($video_embed), $tags, $content_header, $mysqli->real_escape_string($content), $theme_class,$order, $parent_id, $friendly_url, $is_live);
+        $stmt = $mysqli->prepare('INSERT INTO pages (title, is_nav, is_landing_page, has_map, nav_title, heading, heading_pullout, sub_heading, header_image, header_mp4, header_webm, video_embed, tags, meta_keywords, meta_desc, content_header, content, theme_class, pages.order, parent_id, friendly_url, is_live) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+        $stmt->bind_param('siiissssssssssssssiisi', $title, $is_nav, $is_landing_page, $has_map, $nav_title, $heading, $heading_pullout, $sub_heading, $header_image, $header_mp4, $header_webm, $mysqli->real_escape_string($video_embed), $tags, $meta_keywords, $meta_description, $content_header, $mysqli->real_escape_string($content), $theme_class,$order, $parent_id, $friendly_url, $is_live);
         $page_id = $mysqli->insert_id;
     }
     $stmt->execute();

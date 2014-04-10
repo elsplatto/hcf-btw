@@ -118,23 +118,19 @@ $categoriesCount = count($categories);
                 <input type="hidden" id="userId" name="userId" value="<?=$userId?>" />
                 <label for="txtFirstname">First Name:
                     <input type="text" id="txtFirstname" name="txtFirstname" value="<?=$userDetails['firstname']?>" required />
+                    <small class="error">Please enter users first name</small>
                 </label>
-                <small class="error">Please enter users first name</small>
-
-
 
                 <label for="txtLastname">Last Name:
                     <input type="text" id="txtLastname" name="txtLastname" value="<?=$userDetails['lastname']?>" required />
+                    <small class="error">Please enter users last name</small>
                 </label>
-                <small class="error">Please enter users last name</small>
-
-                <!--TODO: Check to make sure username is unique-->
 
                 <label for="txtUsername">Username:
                     <input type="text" id="txtUsername" name="txtUsername" value="<?=$userDetails['username']?>" required />
                     <span class="ajaxCheck"></span>
+                    <small class="error">Please enter a username</small>
                 </label>
-                <small class="error">Please enter a username</small>
 
 
                 <label for="selRole">Role:
@@ -145,17 +141,18 @@ $categoriesCount = count($categories);
                         <option value="author" <?=strtolower($userDetails['role']) == 'author' ? 'selected="selected"' : "" ?>>Author</option>
                         <option value="restricted" <?=strtolower($userDetails['role']) == 'restricted' ? 'selected="selected"' : '' ?>>Restricted</option>
                     </select>
+                    <small class="error">Please select user's role</small>
                 </label>
-                <small class="error">Please select user's role</small>
 
 
                 <label for="txtEmail">Email:
                     <input type="email" id="txtEmail" name="txtEmail" value="<?=$userDetails['email']?>" required />
+                    <small class="error">Please enter a valid email</small>
                 </label>
-                <small class="error">Please enter a valid email</small>
 
-                <label for="chkValid">Valid:</label>
-                <input type="checkbox" id="chkValid" name="chkValid" value="1" <?=$userDetails['is_valid'] == 1 ? 'checked="checked"' : '' ?>/>
+                <label for="chkValid">Valid:
+                    <input type="checkbox" id="chkValid" name="chkValid" value="1" <?=$userDetails['is_valid'] == 1 ? 'checked="checked"' : '' ?>/>
+                </label>
 
                 <input class="button" type="submit" value="Submit" />
             </div>
@@ -183,7 +180,6 @@ $(function() {
                 top: $(this).parent('label').height() / 2,
                 left: $(this).outerWidth() + 10
             });
-            indicator.text('checking...');
 
             $.ajax({
                 type: 'POST',
@@ -195,7 +191,7 @@ $(function() {
                 },
                 beforeSend: function()
                 {
-                    //beforeLikeSendHandler(el);
+                    beforeUniqueCheckHandler(el);
                 },
                 success: function(data)
                 {
@@ -203,24 +199,41 @@ $(function() {
                 }
             });
         }
-   });
+        else
+        {
+            el.siblings('small').text('Please enter a username');
+        }
+    });
+
+    function beforeUniqueCheckHandler(el) {
+        el.siblings('.ajaxCheck').addClass('preloader');
+    }
 
     function successUniqueCheckHandler(data,el,indicator)
     {
         var obj = JSON.parse(data);
-        console.dir(obj);
+
+        el.siblings('.ajaxCheck').removeClass('preloader');
 
         if (obj.success)
         {
             if (obj.unique)
             {
-                indicator.text('unique');
+                //indicator.text('unique');
+                el.siblings('.ajaxCheck').addClass('okay');
+                el.siblings('.ajaxCheck').removeClass('problem');
                 el.removeAttr('data-invalid');
+                el.parent('label').removeClass('error');
+                el.siblings('small').text('Please enter a username');
             }
             else
             {
-                indicator.text('duplicate');
+                //indicator.text('duplicate');
+                el.siblings('.ajaxCheck').addClass('problem');
+                el.siblings('.ajaxCheck').removeClass('okay');
                 el.attr('data-invalid','');
+                el.parent('label').addClass('error');
+                el.siblings('small').text('Your username is not unique');
             }
         }
     }

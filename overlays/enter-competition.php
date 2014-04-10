@@ -198,7 +198,7 @@ else if ($step == 2)
             <small class="error">Please enter your first name.</small>
         </label>
 
-        <label for="txtLastname">Surame:<sup class="red">*</sup>
+        <label for="txtLastname">Surname:<sup class="red">*</sup>
             <input type="text" name="txtLastname" id="txtLastname" value="<?=$userDetails['lastname']?>" required />
             <small class="error">Please enter your surname.</small>
         </label>

@@ -148,9 +148,6 @@ include 'includes/header.php';
                     <optgroup label="<?=$category['type_title']?>">
                         <?php
                         }
-
-
-
                         ?>
                         <option value="<?=$category['id']?>"><?=$category['title']?></option>
                         <?php

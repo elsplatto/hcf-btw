@@ -1,3 +1,5 @@
+/* Start - font-family variables */
+/* End - font-family variables */
 html, body {
   font-size: 100%;
   background: transparent !important; }
@@ -6,14 +8,22 @@ body {
   padding: 1rem 0 !important; }
 
 label {
-  clear: left;
+  clear: both;
   display: block;
   margin-top: 1rem;
   position: relative; }
 
 input, select, textarea {
   clear: left;
-  display: block; }
+  display: block;
+  font-family: "Inconsolata", sans-serif !important; }
+
+input[type="checkbox"], input[type="radio"] {
+  clear: none !important;
+  display: inline; }
+
+label input[type="checkbox"], label input[type="radio"] {
+  margin: 0; }
 
 .ajaxCheck {
   position: absolute;
@@ -52,7 +62,33 @@ select {
     top: 3rem;
     right: 1.5rem;
     background-image: url("img/adminIcons.png");
-    background-position: 0 0; }
+    background-position: 0 -41px; }
+
+.ajaxCheck {
+  width: 1.563rem;
+  height: 1.5rem;
+  margin-left: 0;
+  margin-top: 0; }
+
+.ajaxCheck.okay:before {
+  content: "";
+  position: absolute;
+  width: 1.563rem;
+  height: 1.5rem;
+  top: 0;
+  left: 0;
+  background-image: url("img/adminIcons.png");
+  background-position: 0 -16px; }
+
+.ajaxCheck.problem:before {
+  content: "";
+  position: absolute;
+  width: 1.563rem;
+  height: 1.5rem;
+  top: 0;
+  left: 0;
+  background-image: url("img/adminIcons.png");
+  background-position: -29 -16px; }
 
 .photo-of-the-day {
   position: absolute;
@@ -149,3 +185,81 @@ table.list {
 
 .cancel {
   margin-left: 2rem; }
+
+a.showHide {
+  display: block; }
+
+.marginTop10 {
+  margin-top: 0.625rem !important; }
+
+.marginTop20 {
+  margin-top: 1.25rem !important; }
+
+.marginTop40 {
+  margin-top: 2.5rem !important; }
+
+.marginTop60 {
+  margin-top: 5rem !important; }
+
+.marginBottom10 {
+  margin-bottom: 0.625rem !important; }
+
+.marginBottom20 {
+  margin-bottom: 1.25rem !important; }
+
+.marginBottom40 {
+  margin-bottom: 2.5rem !important; }
+
+.marginBottom60 {
+  margin-bottom: 5rem !important; }
+
+.paddingTop10 {
+  padding-top: 0.625rem !important; }
+
+.paddingTop20 {
+  padding-top: 1.25rem !important; }
+
+.paddingTop40 {
+  padding-top: 2.5rem !important; }
+
+.paddingTop60 {
+  padding-top: 5rem !important; }
+
+.paddingBottom10 {
+  padding-bottom: 0.625rem !important; }
+
+.paddingBottom20 {
+  padding-bottom: 1.25rem !important; }
+
+.paddingBottom40 {
+  padding-bottom: 2.5rem !important; }
+
+.paddingBottom60 {
+  margin-bottom: 5rem !important; }
+
+.paddingBottom120 {
+  margin-bottom: 10rem !important; }
+
+.paddingTopBottom10 {
+  padding-top: 0.625rem !important;
+  padding-bottom: 0.625rem !important; }
+
+.paddingTopBottom20 {
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important; }
+
+.paddingTopBottom40 {
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important; }
+
+.paddingTopBottom60 {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important; }
+
+.paddingLeftRight10 {
+  padding-left: 0.625rem !important;
+  padding-right: 0.625rem !important; }
+
+.paddingLeftRight20 {
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important; }

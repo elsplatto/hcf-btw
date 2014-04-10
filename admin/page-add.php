@@ -52,61 +52,89 @@ include 'includes/header.php';
         <div class="large-12 columns">
             <form id="frmPage" name="frmPage" action="page-process.php" method="post">
 
-                <label for="txtTitle">Title:</label>
-                <input type="text" id="txtTitle" name="txtTitle" />
-
-                <label for="txtFriendlyURL">Friendly URL:</label>
-                <input type="text" id="txtFriendlyURL" name="txtFriendlyURL" placeholder="Lower case and separated by '-'" />
-
-                <label for="selParentID">Parent Page</label>
-                <select id="selParentID" name="selParentID">
-                    <option value="0">Select</option>
-                    <?php
-                    foreach ($allPages as $parentPage)
-                    {
-                        if ($parentPage['id'] != $page_id)
-                        {
-                            ?>
-                            <option value="<?=$parentPage['id']?>"><?=$parentPage['title']?></option>
+                <label for="selParentID">Parent Page:
+                    <select id="selParentID" name="selParentID">
+                        <option value="0">Select</option>
                         <?php
+                        foreach ($allPages as $parentPage)
+                        {
+                            if ($parentPage['id'] != $page_id)
+                            {
+                                ?>
+                                <option value="<?=$parentPage['id']?>"><?=$parentPage['title']?></option>
+                            <?php
+                            }
                         }
-                    }
-                    ?>
-                </select>
+                        ?>
+                    </select>
+                </label>
 
-                <label for="chkNav">Show in Nav:</label>
-                <input type="checkbox" id="chkNav" name="chkNav" value="1"/>
 
-                <label for="chkLanding">Is Landing Page:</label>
-                <input type="checkbox" id="chkLanding" name="chkLanding" value="1" />
+                <label for="txtFriendlyURL">Friendly URL:
+                    <input type="text" id="txtFriendlyURL" name="txtFriendlyURL" placeholder="Lower case and separated by '-'" />
+                </label>
 
-                <label for="txtNavTitle">Nav Title:</label>
-                <input type="text" id="txtNavTitle" name="txtNavTitle" value="" />
+                <a href="#" class="showHide" data-target="#metaArea" data-hideText="Hide Meta Data Fields" data-showText="Show Meta Data Fields">Show Meta Data Fields</a>
 
-                <label for="txtHeading">Heading:</label>
-                <input type="text" id="txtHeading" name="txtHeading" value="" />
+                <div id="metaArea" class="hide">
 
-                <label for="txtHeadingPullout">Heading Pullout/Quote:</label>
-                <input type="text" id="txtHeadingPullout" name="txtHeadingPullout" value="" />
+                    <label for="txtTags">Tags:
+                        <input type="text" id="txtTags" name="txtTags" value="" placeholder="No # and separate by comma" />
+                    </label>
 
-                <label for="txtSubHeading">Sub Heading:</label>
-                <input type="text" id="txtSubHeading" name="txtSubHeading" value="" />
+                    <label for="txtTitle">Meta Title:
+                        <input type="text" id="txtTitle" name="txtTitle" placeholder="This appears in the tab on the browser" />
+                    </label>
 
-                <label for="txtHeaderImage">Header Image:</label>
-                <input type="text" id="txtHeaderImage" name="txtHeaderImage" value="" />
 
-                <label for="txtHeaderMP4">Header mp4:</label>
+                    <label for="txtMetaKeywords">Meta Keywords:
+                        <input type="text" id="txtMetaKeywords" name="txtMetaKeywords" value="" placeholder="No # and separate by comma" />
+                    </label>
+
+                    <label for="txtMetaDescription">Meta Description:
+                        <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="" />
+                    </label>
+                </div>
+
+                <label for="chkLanding">Is Landing Page:
+                    <input type="checkbox" id="chkLanding" name="chkLanding" value="1" />
+                </label>
+
+                <label for="chkNav">Show in Nav:
+                    <input type="checkbox" id="chkNav" name="chkNav" value="1" class="showHide" data-target="#navTitleArea" />
+                </label>
+
+                <label id="navTitleArea" class="hide" for="txtNavTitle">Nav Title:
+                    <input type="text" id="txtNavTitle" name="txtNavTitle" value="" />
+                </label>
+
+                <label for="txtHeading">Heading:
+                    <input type="text" id="txtHeading" name="txtHeading" value="" />
+                </label>
+
+                <label for="txtHeadingPullout">Heading Pullout/Quote:
+                    <input type="text" id="txtHeadingPullout" name="txtHeadingPullout" value="" />
+                </label>
+
+                <label for="txtSubHeading">Sub Heading:
+                    <input type="text" id="txtSubHeading" name="txtSubHeading" value="" />
+                </label>
+
+                <label for="txtHeaderImage">Header Image:
+                    <input type="text" id="txtHeaderImage" name="txtHeaderImage" value="" />
+                </label>
+
+                <!--label for="txtHeaderMP4">Header mp4:
                 <input type="text" id="txtHeaderMP4" name="txtHeaderMP4" value="" />
+                </label>
 
-                <label for="txtHeaderWebm">Header webm:</label>
+                <label for="txtHeaderWebm">Header webm:
                 <input type="text" id="txtHeaderWebm" name="txtHeaderWebm" value="" />
+                </label-->
 
-
-                <label for="txtVideoEmbed">Video Embed:</label>
-                <input type="text" id="txtVideoEmbed" name="txtVideoEmbed" />
-
-                <label for="txtTags">Tags:</label>
-                <input type="text" id="txtTags" name="txtTags" value="" placeholder="No # and separate by comma" />
+                <label for="txtVideoEmbed">Video Embed:
+                    <input type="text" id="txtVideoEmbed" name="txtVideoEmbed" />
+                </label>
 
                 <label for="txtContentHeader">Content Heading:</label>
                 <input type="text" id="txtContentHeader" name="txtContentHeader" value="" placeholder="Appears above the content" />
@@ -114,26 +142,23 @@ include 'includes/header.php';
                 <label for="txtContent">Content:</label><a href="#" class="insertTag" data-tag="paragraph" data-target="txtContent">Insert Paragraph Tag</a> | <a href="#" class="insertTag" data-tag="image" data-target="txtContent">Insert Image Tag</a> | <a href="#" class="insertTag" data-tag="quote" data-target="txtContent">Insert Quote Tag</a>
                 <textarea id="txtContent" name="txtContent" cols="100" rows="15"></textarea>
 
-                <label for="txtMetaKeywords">Meta Keywords:</label>
-                <input type="text" id="txtMetaKeywords" name="txtMetaKeywords" value="" placeholder="No # and separate by comma" />
 
-                <label for="txtMetaDescription">Meta Description:</label>
-                <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="" />
 
-                <label for="txtMetaDescription">Meta Description:</label>
-                <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="" />
+                <label for="txtThemeClass">Theme Class:
+                    <input type="text" id="txtThemeClass" name="txtThemeClass" value="" />
+                </label>
 
-                <label for="txtThemeClass">Theme Class:</label>
-                <input type="text" id="txtThemeClass" name="txtThemeClass" value="" />
+                <label for="txtOrder">Order:
+                    <input type="text" id="txtOrder" name="txtOrder" value="" />
+                </label>
 
-                <label for="txtOrder">Order:</label>
-                <input type="text" id="txtOrder" name="txtOrder" value="" />
+                <label for="chkHasMap">Has Map:
+                    <input type="checkbox" id="chkHasMap" name="chkHasMap" value="1" />
+                </label>
 
-                <label for="chkHasMap">Has Map:</label>
-                <input type="checkbox" id="chkHasMap" name="chkHasMap" value="1" />
-
-                <label for="chkLive">Live:</label>
-                <input type="checkbox" id="chkLive" name="chkLive" value="1" />
+                <label for="chkLive">Publish:
+                    <input type="checkbox" id="chkLive" name="chkLive" value="1" />
+                </label>
 
                 <input type="submit" value="Submit" class="button" /> &nbsp; <a href="page-list.php"class="cancel">Cancel</a>
 
@@ -166,5 +191,9 @@ include 'includes/header.php';
         });
     });
 </script>
+
+<?php
+include 'includes/global-admin-js.php';
+?>
 </body>
 </html>

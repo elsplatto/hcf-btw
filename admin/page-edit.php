@@ -190,8 +190,6 @@ include 'includes/header.php';
             <a href="dashboard.php">Home</a>
             <h1>Page - Edit</h1>
             <a href="page-list.php">< Back to Page List</a>
-            -
-            <a href="page-add.php">Add Page</a>
         </div>
     </div>
 </section>
@@ -205,209 +203,241 @@ include 'includes/header.php';
             {
                 ?>
                 <input type="hidden" id="pageID" name="pageID" value="<?=$page_id?>" />
-                <label for="txtTitle">Title:</label>
-                <input type="text" id="txtTitle" name="txtTitle" value="<?=$page['title']?>" />
-
-                <label for="txtFriendlyURL">Friendly URL:</label>
-                <input type="text" id="txtFriendlyURL" name="txtFriendlyURL" value="<?=$page['friendly_url']?>" placeholder="Lower case and separated by '-'" />
-
-                <label for="selParentID">Parent Page</label>
-                <select id="selParentID" name="selParentID">
-                    <option value="0">Select</option>
-                    <?php
-                    foreach ($allPages as $parentPage)
-                    {
-                        $strSelected = '';
-                        if ($parentPage['id'] == $page['parent_id'])
-                        {
-                            $strSelected = ' selected="selected"';
-                        }
-                        if ($parentPage['id'] != $page_id)
-                        {
-
-                    ?>
-                        <option value="<?=$parentPage['id']?>"<?=$strSelected?>><?=$parentPage['title']?></option>
-                    <?php
-                        }
-                    }
-                    ?>
-                </select>
-
-                <label for="chkNav">Show in Nav:</label>
-                <input type="checkbox" id="chkNav" name="chkNav" value="1"<?php if ($page['is_nav'] == 1) { echo ' checked="checked"';}?> />
 
 
-                <label for="chkLanding">Is Landing Page:</label>
-                <input type="checkbox" id="chkLanding" name="chkLanding" value="1"<?php if ($page['is_landing_page'] == 1) { echo ' checked="checked"';}?> />
-
-                <label for="txtNavTitle">Nav Title:</label>
-                <input type="text" id="txtNavTitle" name="txtNavTitle" value="<?=$page['nav_title']?>" />
-
-                <label for="txtHeading">Heading:</label>
-                <input type="text" id="txtHeading" name="txtHeading" value="<?=$page['heading']?>" />
-
-                <label for="txtHeadingPullout">Heading Pullout/Quote:</label>
-                <input type="text" id="txtHeadingPullout" name="txtHeadingPullout" value="<?=stripcslashes($page['heading_pullout'])?>" />
-
-                <label for="txtSubHeading">Sub Heading:</label>
-                <input type="text" id="txtSubHeading" name="txtSubHeading" value="<?=stripcslashes($page['sub_heading'])?>" />
-
-                <label for="txtHeaderImage">Header Image:</label>
-                <input type="text" id="txtHeaderImage" name="txtHeaderImage" value="<?=$page['header_image']?>" />
-
-                <label for="txtHeaderMP4">Header mp4:</label>
-                <input type="text" id="txtHeaderMP4" name="txtHeaderMP4" value="<?=$page['header_mp4']?>" />
-
-                <label for="txtHeaderWebm">Header webm:</label>
-                <input type="text" id="txtHeaderWebm" name="txtHeaderWebm" value="<?=$page['header_webm']?>" />
-
-
-
-                <label for="txtVideoEmbed">Video Embed:</label>
-                <textarea id="txtVideoEmbed" name="txtVideoEmbed" class="small"><?=stripcslashes(stripcslashes($page['video_embed']))?></textarea>
-
-                <label for="txtTags">Tags:</label>
-                <input type="text" id="txtTags" name="txtTags" value="<?=$page['tags']?>" placeholder="No # and separate by comma" />
-
-
-
-                <label for="txtContentHeader">Content Heading:</label>
-                <input type="text" d="txtContentHeader" name="txtContentHeader" value="<?=stripcslashes($page['content_header'])?>" placeholder="Appears above the content" />
 
                 <label for="txtContent">Content:</label><a href="#" class="insertTag" data-tag="paragraph" data-target="txtContent">Insert Paragraph Tag</a> | <a href="#" class="insertTag" data-tag="image" data-target="txtContent">Insert Image Tag</a> | <a href="#" class="insertTag" data-tag="quote" data-target="txtContent">Insert Quote Tag</a>
                 <textarea id="txtContent" name="txtContent" cols="100" rows="15"><?=stripcslashes(stripcslashes($page['content']))?></textarea>
 
-                <label for="txtMetaKeywords">Meta Keywords:</label>
-                <input type="text" id="txtMetaKeywords" name="txtMetaKeywords" value="<?=stripcslashes($page['meta_keywords'])?>" placeholder="No # and separate by comma" />
+                <a href="#" class="showHide paddingBottom20" data-target="#headingArea" data-hideText="Hide Heading Settings" data-showText="Show Heading Settings">Show Heading Settings</a>
+                <div id="headingArea" class="hide">
+                    <label for="txtHeading">Heading:
+                        <input type="text" id="txtHeading" name="txtHeading" value="<?=$page['heading']?>" />
+                    </label>
 
-                <label for="txtMetaDescription">Meta Description:</label>
-                <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="<?=stripcslashes($page['meta_desc'])?>" />
+                    <label for="txtHeadingPullout">Heading Pullout/Quote:
+                        <input type="text" id="txtHeadingPullout" name="txtHeadingPullout" value="<?=stripcslashes($page['heading_pullout'])?>" />
+                    </label>
 
-                <label for="txtThemeClass">Theme Class:</label>
-                <input type="text" id="txtThemeClass" name="txtThemeClass" value="<?=$page['theme_class']?>" />
+                    <label for="txtSubHeading">Sub Heading:
+                        <input type="text" id="txtSubHeading" name="txtSubHeading" value="<?=stripcslashes($page['sub_heading'])?>" />
+                    </label>
+
+                    <label for="txtHeaderImage">Header Image:
+                        <input type="text" id="txtHeaderImage" name="txtHeaderImage" value="<?=$page['header_image']?>" />
+                    </label>
+
+                    <!--label for="txtHeaderMP4">Header mp4:
+                        <input type="text" id="txtHeaderMP4" name="txtHeaderMP4" value="<?=$page['header_mp4']?>" />
+                    </label>
+
+                    <label for="txtHeaderWebm">Header webm:
+                        <input type="text" id="txtHeaderWebm" name="txtHeaderWebm" value="<?=$page['header_webm']?>" />
+                    </label-->
 
 
-                <label for="txtOrder">Order:</label>
-                <input type="text" id="txtOrder" name="txtOrder" value="<?=$page['order']?>" />
-
-                <label for="chkHasMap">Has Map:</label>
-                <input type="checkbox" id="chkHasMap" name="chkHasMap" value="1"<?php echo ($page['has_map']==1?'checked="checked"':'')?> />
-
-                <label>Map Tiles</label>
-                <div class="mapTiles">
-
-                    <input type="text" class="tileFilter" data-containment="mapTileList" placeholder="Enter text to filter tiles" />
-                    <ul id="mapTileList" class="tileList">
-                     <?php
-                     foreach ($allMapTiles as $mapTile)
-                     {
-                         $strSelected = '';
-                         $strSelectedIndicator = '';
-                         foreach ($selectedMapTiles as $selectedMapTile)
-                         {
-                             if ($mapTile['id'] == $selectedMapTile['tile_id'])
-                             {
-                                $strSelected = ' data-map-tile-selected';
-                                break;
-                             }
-                         }
-                     ?>
-                        <li<?=$strSelected?> data-tile-id="<?=$mapTile['id']?>" data-page-id="<?=$page_id?>" class="large-3 columns left" data-tags="<?=$mapTile['tags']?>">
-                            <div class="tile">
-                                <div class="imgHolder">
-                                    <img src="../img/locations/thumbnails/<?=$mapTile['image_thumb']?>" />
-                                </div>
-                                <div class="textholder">
-                                    <h5><?=$mapTile['title']?></h5>
-                                </div>
-                            </div>
-                        </li>
-                     <?php
-                     }
-                     ?>
-                    </ul>
+                    <label for="txtContentHeader">Content Heading:
+                        <input type="text" d="txtContentHeader" name="txtContentHeader" value="<?=stripcslashes($page['content_header'])?>" placeholder="Appears above the content" />
+                    </label>
                 </div>
 
-                <label>Page Tiles</label>
+                <a href="#" class="showHide paddingBottom20 clearfix" data-target="#settingsArea" data-hideText="Hide Settings" data-showText="Show Settings">Show Settings</a>
+                <div id="settingsArea" class="hide">
+                    <label for="txtFriendlyURL">Friendly URL:
+                        <input type="text" id="txtFriendlyURL" name="txtFriendlyURL" value="<?=$page['friendly_url']?>" placeholder="Lower case and separated by '-'" />
+                    </label>
 
-
-                <div class="pageTiles large-12">
-                    <input type="text" class="tileFilter" data-containment="pageTileList" placeholder="Enter text to filter tiles" />
-                    <ul id="pageTileList" class="tileList large-12">
-                        <?php
-
-                            foreach ($selectedPageTiles as $selectedPageTile)
-                            {
-                                if ($selectedPageTile['tile_size'] == 'medium')
-                                {
-                                    $imagePath = '../img/locations/thumbnail-med/'.$selectedPageTile['image_thumb_med'];
-                                    $tileClass = 'large-6 columns left';
-                                }
-                                else
-                                {
-                                    $imagePath = '../img/locations/thumbnails/'.$selectedPageTile['image_thumb'];
-                                    $tileClass = 'large-3 columns left';
-                                }
-                            ?>
-                                <li data-page-tile-selected data-tile-id="<?=$selectedPageTile['tile_id']?>" data-page-id="<?=$page_id?>" class="<?=$tileClass?>" data-tags="<?=$selectedPageTile['tags']?>">
-                                    <div class="tile">
-                                        <div class="imgHolder">
-                                            <img src="<?=$imagePath?>" />
-                                        </div>
-                                        <div class="textholder">
-                                            <h5><?=$selectedPageTile['title']?></h5>
-                                        </div>
-                                    </div>
-                                </li>
+                    <label for="selParentID">Parent Page:
+                        <select id="selParentID" name="selParentID">
+                            <option value="0">Select</option>
                             <?php
-                            }
-
-                            foreach ($allPageTiles as $pageTile)
+                            foreach ($allPages as $parentPage)
                             {
-                                $tileMatch = false;
+                                $strSelected = '';
+                                if ($parentPage['id'] == $page['parent_id'])
+                                {
+                                    $strSelected = ' selected="selected"';
+                                }
+                                if ($parentPage['id'] != $page_id)
+                                {
+
+                                    ?>
+                                    <option value="<?=$parentPage['id']?>"<?=$strSelected?>><?=$parentPage['title']?></option>
+                                <?php
+                                }
+                            }
+                            ?>
+                        </select>
+                    </label>
+
+
+                    <label for="chkLanding">Is Landing Page:
+                        <input type="checkbox" id="chkLanding" name="chkLanding" value="1"<?php if ($page['is_landing_page'] == 1) { echo ' checked="checked"';}?> />
+                    </label>
+
+                    <label for="chkNav">Show in Nav:
+                        <input type="checkbox" id="chkNav" name="chkNav" value="1"<?php if ($page['is_nav'] == 1) { echo ' checked="checked"';}?>  class="showHide" data-target="#navTitleArea" />
+                    </label>
+
+                    <label id="navTitleArea" class="hide" for="txtNavTitle">Nav Title:
+                        <input type="text" id="txtNavTitle" name="txtNavTitle" value="<?=$page['nav_title']?>" />
+                    </label>
+                </div>
+
+                <a href="#" class="showHide paddingBottom20 clearfix" data-target="#metaArea" data-hideText="Hide Meta Data Fields" data-showText="Show Meta Data Fields">Show Meta Data Fields</a>
+
+                <div id="metaArea" class="hide">
+                    <label for="txtTags">Tags:
+                        <input type="text" id="txtTags" name="txtTags" value="<?=$page['tags']?>" placeholder="No # and separate by comma" />
+                    </label>
+                    <label for="txtTitle">Meta Title:
+                        <input type="text" id="txtTitle" name="txtTitle" value="<?=$page['title']?>" placeholder="This appears in the tab on the browser" />
+                    </label>
+
+                    <label for="txtMetaKeywords">Meta Keywords:
+                        <input type="text" id="txtMetaKeywords" name="txtMetaKeywords" value="<?=stripcslashes($page['meta_keywords'])?>" placeholder="No # and separate by comma" />
+                    </label>
+
+                    <label for="txtMetaDescription">Meta Description:
+                        <input type="text" id="txtMetaDescription" name="txtMetaDescription" value="<?=stripcslashes($page['meta_desc'])?>" />
+                    </label>
+
+                    <label for="txtThemeClass">Theme Class:
+                        <input type="text" id="txtThemeClass" name="txtThemeClass" value="<?=$page['theme_class']?>" />
+                    </label>
+
+
+                    <label for="txtOrder">Order:
+                        <input type="text" id="txtOrder" name="txtOrder" value="<?=$page['order']?>" />
+                    </label>
+
+                </div>
+
+                <label for="chkHasMap">Has Map:
+                    <input type="checkbox" id="chkHasMap" name="chkHasMap" value="1"<?php echo ($page['has_map']==1?'checked="checked"':'')?> class="showHide" data-target="#mapTiles" />
+                </label>
+
+                <div id="mapTiles" class="hide">
+                    <label>Map Tiles</label>
+                    <div class="mapTiles">
+
+                        <input type="text" class="tileFilter" data-containment="mapTileList" placeholder="Enter text to filter tiles" />
+                        <ul id="mapTileList" class="tileList">
+                         <?php
+                         foreach ($allMapTiles as $mapTile)
+                         {
+                             $strSelected = '';
+                             $strSelectedIndicator = '';
+                             foreach ($selectedMapTiles as $selectedMapTile)
+                             {
+                                 if ($mapTile['id'] == $selectedMapTile['tile_id'])
+                                 {
+                                    $strSelected = ' data-map-tile-selected';
+                                    break;
+                                 }
+                             }
+                         ?>
+                            <li<?=$strSelected?> data-tile-id="<?=$mapTile['id']?>" data-page-id="<?=$page_id?>" class="large-3 columns left" data-tags="<?=$mapTile['tags']?>">
+                                <div class="tile">
+                                    <div class="imgHolder">
+                                        <img src="../img/locations/thumbnails/<?=$mapTile['image_thumb']?>" />
+                                    </div>
+                                    <div class="textholder">
+                                        <h5><?=$mapTile['title']?></h5>
+                                    </div>
+                                </div>
+                            </li>
+                         <?php
+                         }
+                         ?>
+                        </ul>
+                    </div>
+                </div>
+
+                <label for="chkHasPageTiles">Has Page Tiles:
+                    <input type="checkbox" id="chkHasPageTiles" name="chkHasPageTiles" value="1" class="showHide" data-target="#pageTiles" />
+                </label>
+
+                <div id="pageTiles" class="hide">
+                    <label>Page Tiles</label>
+                    <div class="pageTiles large-12">
+                        <input type="text" class="tileFilter" data-containment="pageTileList" placeholder="Enter text to filter tiles" />
+                        <ul id="pageTileList" class="tileList large-12">
+                            <?php
+
                                 foreach ($selectedPageTiles as $selectedPageTile)
                                 {
-                                    if ($pageTile['id'] == $selectedPageTile['tile_id'])
+                                    if ($selectedPageTile['tile_size'] == 'medium')
                                     {
-                                        $tileMatch = true;
-                                        break;
-                                    }
-                                }
-                                if (!$tileMatch)
-                                {
-                                    if ($pageTile['tile_size'] == 'medium')
-                                    {
-                                        $imagePath = '../img/locations/thumbnail-med/'.$pageTile['image_thumb_med'];
+                                        $imagePath = '../img/locations/thumbnail-med/'.$selectedPageTile['image_thumb_med'];
                                         $tileClass = 'large-6 columns left';
                                     }
                                     else
                                     {
-                                        $imagePath = '../img/locations/thumbnails/'.$pageTile['image_thumb'];
+                                        $imagePath = '../img/locations/thumbnails/'.$selectedPageTile['image_thumb'];
                                         $tileClass = 'large-3 columns left';
                                     }
                                 ?>
-                                    <li data-tile-id="<?=$pageTile['id']?>" data-page-id="<?=$page_id?>" class="<?=$tileClass?>" data-tags="<?=$pageTile['tags']?>">
+                                    <li data-page-tile-selected data-tile-id="<?=$selectedPageTile['tile_id']?>" data-page-id="<?=$page_id?>" class="<?=$tileClass?>" data-tags="<?=$selectedPageTile['tags']?>">
                                         <div class="tile">
                                             <div class="imgHolder">
                                                 <img src="<?=$imagePath?>" />
                                             </div>
                                             <div class="textholder">
-                                                <h5><?=$pageTile['title']?></h5>
+                                                <h5><?=$selectedPageTile['title']?></h5>
                                             </div>
                                         </div>
                                     </li>
                                 <?php
                                 }
-                            }
-                        ?>
-                    </ul>
+
+                                foreach ($allPageTiles as $pageTile)
+                                {
+                                    $tileMatch = false;
+                                    foreach ($selectedPageTiles as $selectedPageTile)
+                                    {
+                                        if ($pageTile['id'] == $selectedPageTile['tile_id'])
+                                        {
+                                            $tileMatch = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!$tileMatch)
+                                    {
+                                        if ($pageTile['tile_size'] == 'medium')
+                                        {
+                                            $imagePath = '../img/locations/thumbnail-med/'.$pageTile['image_thumb_med'];
+                                            $tileClass = 'large-6 columns left';
+                                        }
+                                        else
+                                        {
+                                            $imagePath = '../img/locations/thumbnails/'.$pageTile['image_thumb'];
+                                            $tileClass = 'large-3 columns left';
+                                        }
+                                    ?>
+                                        <li data-tile-id="<?=$pageTile['id']?>" data-page-id="<?=$page_id?>" class="<?=$tileClass?>" data-tags="<?=$pageTile['tags']?>">
+                                            <div class="tile">
+                                                <div class="imgHolder">
+                                                    <img src="<?=$imagePath?>" />
+                                                </div>
+                                                <div class="textholder">
+                                                    <h5><?=$pageTile['title']?></h5>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    <?php
+                                    }
+                                }
+                            ?>
+                        </ul>
+                    </div>
+
                 </div>
 
 
-
-
-                <label for="chkLive">Live:</label>
-                <input type="checkbox" id="chkLive" name="chkLive" value="1"<?php echo ($page['is_live'] == 1?'checked="checked"':'')?> />
+                <label for="chkLive">Live:
+                    <input type="checkbox" id="chkLive" name="chkLive" value="1"<?php echo ($page['is_live'] == 1?'checked="checked"':'')?> />
+                </label>
 
                 <input type="submit" value="Submit" class="button" />&nbsp;<a href="page-list.php"class="cancel">Cancel</a>
             <?php
@@ -559,5 +589,8 @@ $(document).ready(function() {
     });
 });
 </script>
+<?php
+include 'includes/global-admin-js.php';
+?>
 </body>
 </html>
