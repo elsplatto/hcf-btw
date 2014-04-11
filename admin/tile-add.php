@@ -113,17 +113,19 @@ include 'includes/header.php';
             ?>
             </label>
 
-            <label for="dateStartDate">Start Date:
-                <input type="text" id="dateStartDate" name="dateStartDate" class="dateTimePickerInput" />
-            </label>
+            <div id="eventArea" class="hide">
+                <label for="dateStartDate">Start Date:
+                    <input type="text" id="dateStartDate" name="dateStartDate" class="dateTimePickerInput" />
+                </label>
 
-            <label for="endStartDate">End Date:
-                <input type="text" id="dateEndDate" name="dateEndDate" class="dateTimePickerInput" />
-            </label>
+                <label for="endStartDate">End Date:
+                    <input type="text" id="dateEndDate" name="dateEndDate" class="dateTimePickerInput" />
+                </label>
 
-            <label for="cost">Cost:
-                <input type="text" id="cost" name="cost" placeholder="00.00" />
-            </label>
+                <label for="cost">Cost:
+                    <input type="text" id="cost" name="cost" placeholder="00.00" />
+                </label>
+            </div>
 
 
             <label for="selCategory">Category:</label>
@@ -204,11 +206,13 @@ include 'includes/header.php';
                 <inpu type="hidden" name="largeDir" id="largeDir" value="../img/locations/large/" />
             </label>
 
-            <label for="txtAlt">Alt:</label>
-            <input type="text" id="txtAlt" name="txtAlt" value="" />
+            <label for="txtAlt">Alt:
+                <input type="text" id="txtAlt" name="txtAlt" value="" />
+            </label>
 
-            <label for="txtDirectiveText">Directive Text:</label>
-            <input type="text" id="txtDirectiveText" name="txtDirectiveText"  placeholder="e.g. Read more"/>
+            <label for="txtDirectiveText">Directive Text:
+                <input type="text" id="txtDirectiveText" name="txtDirectiveText"  placeholder="e.g. Read more"/>
+            </label>
 
 
         </div>
@@ -235,11 +239,13 @@ include 'includes/header.php';
             <a href="#" class="insertTag" data-tag="address" data-target="txtAddressText">Insert Address HTML Template</a>
             <textarea id="txtAddressText" name="txtAddressText" cols="100" rows="5"></textarea>
 
-            <label for="txtTags">Tags:</label>
-            <input type="text" id="txtTags" name="txtTags" value="" placeholder="No # - separate by comma."/>
+            <label for="txtTags">Tags:
+                <input type="text" id="txtTags" name="txtTags" value="" placeholder="No # - separate by comma."/>
+            </label>
 
-            <label for="chkLive">Live:</label>
-            <input type="checkbox" id="chkLive" name="chkLive" value="1" />
+            <label for="chkLive">Live:
+                <input type="checkbox" id="chkLive" name="chkLive" value="1" />
+            </label>
 
             <input type="submit" value="Submit" class="button" />&nbsp;<a href="tiles-list.php"class="cancel">Cancel</a>
         </div>
@@ -276,6 +282,23 @@ include 'includes/header.php';
 
 
     $(function(){
+
+        $('#selType').change(function(e) {
+            if ($(this).find(':selected').text().toLowerCase() === 'events')
+            {
+                if ($('#eventArea').is(':hidden'))
+                {
+                    $('#eventArea').show();
+                }
+            }
+            else
+            {
+                if (!$('#eventArea').is(':hidden'))
+                {
+                    $('#eventArea').hide();
+                }
+            }
+        });
 
         $('.insertTag').click(function(e) {
             e.preventDefault();
@@ -314,6 +337,7 @@ include 'includes/header.php';
         $('.dateTimePickerInput').datetimepicker({
             dateFormat: 'dd-MM-yy'
         });
+
         $('#dateStartDate').on('blur', function(){
             if ($(this).val() !== '')
             {
@@ -324,5 +348,8 @@ include 'includes/header.php';
     })
 </script>
 
+<?php
+include 'includes/global-admin-js.php';
+?>
 </body>
 </html>

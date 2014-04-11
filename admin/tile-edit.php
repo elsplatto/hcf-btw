@@ -171,18 +171,19 @@ include 'includes/header.php';
                 }
                 ?>
 
+                <div id="eventArea" class="<?php echo (strtolower($type['title']) !== 'events' ? 'hide':'')?>">
+                    <label for="dateStartDate">Start Date:
+                        <input type="text" id="dateStartDate" name="dateStartDate" class="dateTimePickerInput" value="<?echo $tile['start_date'] > 0 ? date('d-F-Y H:i',$tile['start_date']): ''?>" />
+                    </label>
 
-                <label for="dateStartDate">Start Date:
-                    <input type="text" id="dateStartDate" name="dateStartDate" class="dateTimePickerInput" value="<?echo $tile['start_date'] > 0 ? date('d-F-Y H:i',$tile['start_date']): ''?>" />
-                </label>
+                    <label for="endStartDate">End Date:
+                        <input type="text" id="dateEndDate" name="dateEndDate" class="dateTimePickerInput" value="<?echo $tile['end_date'] > 0 ? date('d-F-Y H:i',$tile['end_date']): ''?>" />
+                    </label>
 
-                <label for="endStartDate">End Date:
-                    <input type="text" id="dateEndDate" name="dateEndDate" class="dateTimePickerInput" value="<?echo $tile['end_date'] > 0 ? date('d-F-Y H:i',$tile['end_date']): ''?>" />
-                </label>
-
-                <label for="cost">Cost:
-                    <input type="text" id="cost" name="cost" placeholder="00.00" value="<?=sprintf("%0.2f",round($tile['cost'],2))?>" />
-                </label>
+                    <label for="cost">Cost:
+                        <input type="text" id="cost" name="cost" placeholder="00.00" value="<?=sprintf("%0.2f",round($tile['cost'],2))?>" />
+                    </label>
+                </div>
 
 
                 <label for="selCategory">Category:
@@ -252,7 +253,7 @@ include 'includes/header.php';
 
 
 
-            <label for="txtImgThumb">Thumbnail:
+            <label id="smallImg" for="txtImgThumb">Thumbnail:
                 <input type="text" id="txtImgThumb" name="txtImgThumb" value="<?=$tile['image_thumb']?>" readonly />
                 <input type="file" id="thumbImgUpload" name="thumbImgUpload" />
                 <inpu type="hidden" name="thmbDir" id="thmbDir" value="../img/locations/thumbnails/" />
@@ -260,7 +261,7 @@ include 'includes/header.php';
 
 
 
-            <label for="txtImgThumbMed">Thumbnail - Med:
+            <label id="medImg" for="txtImgThumbMed">Thumbnail - Med:
                 <input type="text" id="txtImgThumbMed" name="txtImgThumbMed" value="<?=$tile['image_thumb_med']?>" readonly />
                 <input type="file" id="mediumThumbImgUpload" name="mediumThumbImgUpload" />
                 <inpu type="hidden" name="mediumThmbDir" id="mediumThmbDir" value="../img/locations/thumbnail-med/" />
@@ -370,27 +371,39 @@ include 'includes/header.php';
 
     }
 
-    $(function(){
-       /* embedCode();
+    $(function() {
 
-        function embedCode()
-        {
-            $('textarea:first').each(function()
+        $('#selType').change(function(e) {
+            if ($(this).find(':selected').text().toLowerCase() === 'events')
             {
-                var html = $(this).val();
-                $('#converterArea').html(html);
-                $(this).find('a[target="_blank"]').each(function() {
-                    if (!$(this).hasAttribute('onclick'))
-                    {
-                        $(this).attr('onclick','trackOutboundLink('+url+'); return false;');
-                    }
-                })
-                //$(this).val($('#converterArea').html());
-                //$('#converterArea').empty();
-            })
+                if ($('#eventArea').is(':hidden'))
+                {
+                    $('#eventArea').show();
+                }
+            }
+            else
+            {
+                if (!$('#eventArea').is(':hidden'))
+                {
+                    $('#eventArea').hide();
+                }
+            }
+        });
 
-        }*/
+        /*$('#selTileSize').change(function(e) {
 
+            if($(this).find(':selected').val().toLowerCase() === 'medium')
+            {
+                $('#medImg').show();
+                $('#smallImg').hide();
+
+            }
+            else if ($(this).find(':selected').val().toLowerCase() === 'small')
+            {
+                $('#smallImg').show();
+                $('#medImg').hide();
+            }
+        })*/
 
 
         $('.insertTag').click(function(e) {
