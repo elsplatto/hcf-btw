@@ -130,59 +130,62 @@ include 'includes/header.php';
             <a href="dashboard.php">Home</a>
             <h1>Tile - <?=$tile['title']?></h1>
             <a href="tiles-list.php">< Back to Tile List</a>
-             -
-            <a href="tile-add.php">Add Tile</a>
         </div>
     </div>
 </section>
 
 <section>
-    <form id="frmTile" name="frmTile" action="tile-process.php" method="post">
+    <form enctype="multipart/form-data" id="frmTile" name="frmTile" action="tile-process.php" method="post">
     <div class="row">
         <div class="large-12 columns">
 
                 <input type="hidden" id="tileID" name="tileID" value="<?=$tile_id?>" />
-                <label for="txtTitle">Title:</label>
-                <input type="text" id="txtTitle" name="txtTitle" value="<?=$tile['title']?>" />
+                <label for="txtTitle">Title:
+                    <input type="text" id="txtTitle" name="txtTitle" value="<?=$tile['title']?>" />
+                </label>
 
-                <label for="selType">Type:</label>
+                <label for="selType">Type:
                 <?php
                 if ($typesCount > 0)
                 {
                 ?>
-                <select id="selType" name="selType">
-                    <option value="0">Select</option>
-                    <?php
-                    foreach ($types as $type)
-                    {
-                        $typeSelected = '';
-                        if ($type['id'] == $tile['type_id'])
+                    <select id="selType" name="selType">
+                        <option value="0">Select</option>
+                        <?php
+                        foreach ($types as $type)
                         {
-                            $typeSelected = ' selected="selected"';
-                        }
+                            $typeSelected = '';
+                            if ($type['id'] == $tile['type_id'])
+                            {
+                                $typeSelected = ' selected="selected"';
+                            }
 
-                    ?>
-                        <option value="<?=$type['id']?>"<?=$typeSelected?>><?=$type['title']?></option>
-                    <?php
-                    }
-                    ?>
-                </select>
+                        ?>
+                            <option value="<?=$type['id']?>"<?=$typeSelected?>><?=$type['title']?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </label>
                 <?php
                 }
                 ?>
 
 
-                <label for="dateStartDate">Start Date:</label>
-                <input type="text" id="dateStartDate" name="dateStartDate" class="dateTimePickerInput" value="<?echo $tile['start_date'] > 0 ? date('d-F-Y H:i',$tile['start_date']): ''?>" />
+                <label for="dateStartDate">Start Date:
+                    <input type="text" id="dateStartDate" name="dateStartDate" class="dateTimePickerInput" value="<?echo $tile['start_date'] > 0 ? date('d-F-Y H:i',$tile['start_date']): ''?>" />
+                </label>
 
-                <label for="endStartDate">End Date:</label>
-                <input type="text" id="dateEndDate" name="dateEndDate" class="dateTimePickerInput" value="<?echo $tile['end_date'] > 0 ? date('d-F-Y H:i',$tile['end_date']): ''?>" />
+                <label for="endStartDate">End Date:
+                    <input type="text" id="dateEndDate" name="dateEndDate" class="dateTimePickerInput" value="<?echo $tile['end_date'] > 0 ? date('d-F-Y H:i',$tile['end_date']): ''?>" />
+                </label>
 
-                <label for="cost">Cost:</label>
-                <input type="text" id="cost" name="cost" placeholder="00.00" value="<?=sprintf("%0.2f",round($tile['cost'],2))?>" />
+                <label for="cost">Cost:
+                    <input type="text" id="cost" name="cost" placeholder="00.00" value="<?=sprintf("%0.2f",round($tile['cost'],2))?>" />
+                </label>
 
 
-                <label for="selCategory">Category:</label>
+                <label for="selCategory">Category:
                 <?php
                 if ($categoriesCount > 0)
                 {
@@ -225,40 +228,66 @@ include 'includes/header.php';
                 <?php
                 }
                 ?>
+                </label>
 
-                <label for="selTileSize">Size:</label>
-                <select id="selTileSize" name="selTileSize">
-                    <option value="">Select</option>
-                    <option value="small"<?php echo ($tile['tile_size'] == 'small'?' selected="selected"':'')?>>Small</option>
-                    <option value="medium"<?php echo ($tile['tile_size'] == 'medium'?' selected="selected"':'')?>>Medium</option>
-                </select>
+                <label for="selTileSize">Size:
+                    <select id="selTileSize" name="selTileSize">
+                        <option value="">Select</option>
+                        <option value="small"<?php echo ($tile['tile_size'] == 'small'?' selected="selected"':'')?>>Small</option>
+                        <option value="medium"<?php echo ($tile['tile_size'] == 'medium'?' selected="selected"':'')?>>Medium</option>
+                    </select>
+                </label>
         </div>
+
         <div class="large-5 columns left">
 
-                <label for="txtLat">Lat:</label>
+            <label for="txtLat">Lat:
                 <input type="text" id="txtLat" name="txtLat" value="<?=$tile['lat']?>" />
+            </label>
 
 
-                <label for="txtLng">Lng:</label>
+            <label for="txtLng">Lng:
                 <input type="text" id="txtLng" name="txtLng" value="<?=$tile['lng']?>" />
+            </label>
 
-                <label for="txtImgThumb">Thumbnail:</label>
-                <input type="text" id="txtImgThumb" name="txtImgThumb" value="<?=$tile['image_thumb']?>" />
 
-                <label for="txtImgThumbMed">Thumbnail - Med:</label>
-                <input type="text" id="txtImgThumbMed" name="txtImgThumbMed" value="<?=$tile['image_thumb_med']?>" />
 
-                <label for="txtImgMed">Medium:</label>
-                <input type="text" id="txtImgMed" name="txtImgMed" value="<?=$tile['image_med']?>" />
+            <label for="txtImgThumb">Thumbnail:
+                <input type="text" id="txtImgThumb" name="txtImgThumb" value="<?=$tile['image_thumb']?>" readonly />
+                <input type="file" id="thumbImgUpload" name="thumbImgUpload" />
+                <inpu type="hidden" name="thmbDir" id="thmbDir" value="../img/locations/thumbnails/" />
+            </label>
 
-                <label for="txtImgLarge">Large:</label>
-                <input type="text" id="txtImgLarge" name="txtImgLarge" value="<?=$tile['image_large']?>" />
 
-                <label for="txtAlt">Alt:</label>
+
+            <label for="txtImgThumbMed">Thumbnail - Med:
+                <input type="text" id="txtImgThumbMed" name="txtImgThumbMed" value="<?=$tile['image_thumb_med']?>" readonly />
+                <input type="file" id="mediumThumbImgUpload" name="mediumThumbImgUpload" />
+                <inpu type="hidden" name="mediumThmbDir" id="mediumThmbDir" value="../img/locations/thumbnail-med/" />
+            </label>
+
+
+
+            <label for="txtImgMed">Medium:
+                <input type="text" id="txtImgMed" name="txtImgMed" value="<?=$tile['image_med']?>" readonly />
+                <input type="file" id="mediumImgUpload" name="mediumImgUpload" />
+                <inpu type="hidden" name="mediumDir" id="mediumDir" value="../img/locations/medium/" />
+            </label>
+
+            <label for="txtImgLarge">Large:
+                <input type="text" id="txtImgLarge" name="txtImgLarge" value="<?=$tile['image_large']?>" readonly />
+                <input type="file" id="largeImgUpload" name="largeImgUpload" />
+                <inpu type="hidden" name="largeDir" id="largeDir" value="../img/locations/large/" />
+            </label>
+
+            <label for="txtAlt">Alt:
                 <input type="text" id="txtAlt" name="txtAlt" value="<?=$tile['alt']?>" />
+            </label>
 
-                <label for="txtDirectiveText">Directive Text:</label>
+            <label for="txtDirectiveText">Directive Text:
                 <input type="text" id="txtDirectiveText" name="txtDirectiveText" value="<?=stripcslashes($tile['directive_text'])?>" placeholder="e.g. Read more"/>
+            </label>
+
 
         </div>
 
@@ -282,11 +311,13 @@ include 'includes/header.php';
                 <a href="#" class="insertTag" data-tag="address" data-target="txtAddressText">Insert Address HTML Template</a>
                 <textarea id="txtAddressText" name="txtAddressText" cols="100" rows="5"><?=stripcslashes(stripcslashes($tile['address_text']))?></textarea>
 
-                <label for="txtTags">Tags:</label>
-                <input type="text" id="txtTags" name="txtTags" value="<?=$tile['tags']?>" placeholder="No # - separate by comma."/>
+                <label for="txtTags">Tags:
+                    <input type="text" id="txtTags" name="txtTags" value="<?=$tile['tags']?>" placeholder="No # - separate by comma."/>
+                </label>
 
-                <label for="chkLive">Live:</label>
-                <input type="checkbox" id="chkLive" name="chkLive" value="1"<?php echo ($tile['is_live'] == 1?' checked="checked"':'')?> />
+                <label for="chkLive">Live:
+                    <input type="checkbox" id="chkLive" name="chkLive" value="1"<?php echo ($tile['is_live'] == 1?' checked="checked"':'')?> />
+                </label>
 
             <input type="submit" value="Submit" class="button" />&nbsp;<a href="tiles-list.php"class="cancel">Cancel</a>
             </div>

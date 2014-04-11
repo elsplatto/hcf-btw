@@ -83,15 +83,16 @@ include 'includes/header.php';
 </section>
 
 <section>
-    <form id="frmTile" name="frmTile" action="tile-process.php" method="post">
+    <form enctype="multipart/form-data" id="frmTile" name="frmTile" action="tile-process.php" method="post">
     <div class="row">
         <div class="large-12 columns">
 
-            <input type="hidden" id="tileID" name="tileID" value="" />
-            <label for="txtTitle">Title:</label>
-            <input type="text" id="txtTitle" name="txtTitle" value="" />
+            <input type="hidden" id="tileID" name="tileID" value="0" />
+            <label for="txtTitle">Title:
+                <input type="text" id="txtTitle" name="txtTitle" value="" />
+            </label>
 
-            <label for="selType">Type:</label>
+            <label for="selType">Type:
             <?php
             if ($typesCount > 0)
             {
@@ -101,7 +102,7 @@ include 'includes/header.php';
                     <?php
                     foreach ($types as $type)
                     {
-                                              ?>
+                    ?>
                         <option value="<?=$type['id']?>"><?=$type['title']?></option>
                     <?php
                     }
@@ -110,17 +111,19 @@ include 'includes/header.php';
             <?php
             }
             ?>
+            </label>
 
+            <label for="dateStartDate">Start Date:
+                <input type="text" id="dateStartDate" name="dateStartDate" class="dateTimePickerInput" />
+            </label>
 
+            <label for="endStartDate">End Date:
+                <input type="text" id="dateEndDate" name="dateEndDate" class="dateTimePickerInput" />
+            </label>
 
-            <label for="dateStartDate">Start Date:</label>
-            <input type="text" id="dateStartDate" name="dateStartDate" class="dateTimePickerInput" />
-
-            <label for="endStartDate">End Date:</label>
-            <input type="text" id="dateEndDate" name="dateEndDate" class="dateTimePickerInput" />
-
-            <label for="cost">Cost:</label>
-            <input type="text" id="cost" name="cost" placeholder="00.00" />
+            <label for="cost">Cost:
+                <input type="text" id="cost" name="cost" placeholder="00.00" />
+            </label>
 
 
             <label for="selCategory">Category:</label>
@@ -168,24 +171,38 @@ include 'includes/header.php';
             </select>
         </div>
         <div class="large-5 columns left">
-            <label for="txtLat">Lat:</label>
-            <input type="text" id="txtLat" name="txtLat" value="" />
+            <label for="txtLat">Lat:
+                <input type="text" id="txtLat" name="txtLat" value="" />
+            </label>
 
 
-            <label for="txtLng">Lng:</label>
-            <input type="text" id="txtLng" name="txtLng" value="" />
+            <label for="txtLng">Lng:
+                <input type="text" id="txtLng" name="txtLng" value="" />
+            </label>
 
-            <label for="txtImgThumb">Thumbnail:</label>
-            <input type="text" id="txtImgThumb" name="txtImgThumb" value="" />
+            <label for="txtImgThumb">Thumbnail:
+                <input type="text" id="txtImgThumb" name="txtImgThumb" value="" readonly />
+                <input type="file" id="thumbImgUpload" name="thumbImgUpload" />
+                <inpu type="hidden" name="thmbDir" id="thmbDir" value="../img/locations/thumbnails/" />
+            </label>
 
-            <label for="txtImgThumbMed">Thumbnail - Med:</label>
-            <input type="text" id="txtImgThumbMed" name="txtImgThumbMed" value="" />
+            <label for="txtImgThumbMed">Thumbnail - Med:
+                <input type="text" id="txtImgThumbMed" name="txtImgThumbMed" value="" readonly />
+                <input type="file" id="mediumThumbImgUpload" name="mediumThumbImgUpload" />
+                <inpu type="hidden" name="mediumThmbDir" id="mediumThmbDir" value="../img/locations/thumbnail-med/" />
+            </label>
 
-            <label for="txtImgMed">Medium:</label>
-            <input type="text" id="txtImgMed" name="txtImgMed" value="" />
+            <label for="txtImgMed">Medium:
+                <input type="text" id="txtImgMed" name="txtImgMed" value="" readonly />
+                <input type="file" id="mediumImgUpload" name="mediumImgUpload" />
+                <inpu type="hidden" name="mediumDir" id="mediumDir" value="../img/locations/medium/" />
+            </label>
 
-            <label for="txtImgLarge">Large:</label>
-            <input type="text" id="txtImgLarge" name="txtImgLarge" value="" />
+            <label for="txtImgLarge">Large:
+                <input type="text" id="txtImgLarge" name="txtImgLarge" value="" readonly />
+                <input type="file" id="largeImgUpload" name="largeImgUpload" />
+                <inpu type="hidden" name="largeDir" id="largeDir" value="../img/locations/large/" />
+            </label>
 
             <label for="txtAlt">Alt:</label>
             <input type="text" id="txtAlt" name="txtAlt" value="" />

@@ -1,7 +1,8 @@
 <?php
 include 'includes/admin-settings.php';
-include '../includes/db.php';
 include 'includes/global-admin-functions.php';
+include '../includes/db.php';
+include 'includes/class.upload.php';
 assessLogin($securityArrAuthor);
 
 
@@ -35,6 +36,103 @@ if (!empty($_POST))
     {
         $is_live = 0;
     }
+
+
+    if (isset($_FILES['thumbImgUpload']))
+    {
+        // ---------- IMAGE UPLOAD ----------
+
+        // we create an instance of the class, giving as argument the PHP object
+        // corresponding to the file field from the form
+        // All the uploads are accessible from the PHP object $_FILES
+        $thmbImg = new Upload($_FILES['thumbImgUpload']);
+
+
+        //Get directory
+        $thmbDir = '../img/locations/thumbnails/';
+        if (isset($_POST['thmbDir']))
+        {
+            $thmbDir = $_POST['thmbDir'];
+        }
+
+        if ($thmbImg->uploaded)
+        {
+            // uploaded - process and save to correct directory
+            $thmbImg->image_resize = true;
+            $thmbImg->image_ratio_y = false;
+            $thmbImg->image_x = 260;
+            $thmbImg->image_y = 180;
+            $thmbImg->Process($thmbDir);
+            $image_thumb = $thmbImg->file_dst_name;
+        }
+    }
+
+    if (isset($_FILES['mediumThumbImgUpload']))
+    {
+        $mediumThmbImg = new Upload($_FILES['mediumThumbImgUpload']);
+
+        $mediumThmbDir = '../img/locations/thumbnail-med/';
+        if (isset($_POST['mediumThmbDir']))
+        {
+            $mediumThmbDir = $_POST['mediumThmbDir'];
+        }
+
+        if ($mediumThmbImg->uploaded)
+        {
+            $mediumThmbImg->image_resize = true;
+            $mediumThmbImg->image_ratio_y = false;
+            $mediumThmbImg->image_x = 560;
+            $mediumThmbImg->image_y = 180;
+            $mediumThmbImg->Process($mediumThmbDir);
+            $image_thumb_med = $mediumThmbImg->file_dst_name;
+        }
+
+    }
+
+    if (isset($_FILES['mediumImgUpload']))
+    {
+        $mediumImg = new Upload($_FILES['mediumImgUpload']);
+
+        $mediumDir = '../img/locations/medium/';
+        if (isset($_POST['mediumDir']))
+        {
+            $mediumDir = $_POST['mediumDir'];
+        }
+
+        if ($mediumImg->uploaded)
+        {
+            $mediumImg->image_resize = true;
+            $mediumImg->image_ratio_y = false;
+            $mediumImg->image_x = 720;
+            $mediumImg->image_y = 422;
+            $mediumImg->Process($mediumDir);
+            $image_med = $mediumImg->file_dst_name;
+        }
+
+    }
+
+    if (isset($_FILES['largeImgUpload']))
+    {
+        $largeImg = new Upload($_FILES['largeImgUpload']);
+
+        $largeDir = '../img/locations/large/';
+        if (isset($_POST['largeDir']))
+        {
+            $largeDir = $_POST['largeDir'];
+        }
+
+        if ($largeImg->uploaded)
+        {
+            $largeImg->image_resize = true;
+            $largeImg->image_ratio_y = false;
+            $largeImg->image_x = 860;
+            $largeImg->image_y = 560;
+            $largeImg->Process($largeDir);
+            $image_large = $largeImg->file_dst_name;
+        }
+
+    }
+
 
     if (!empty($_POST['tileID']))
     {
