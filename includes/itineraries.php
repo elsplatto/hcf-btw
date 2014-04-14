@@ -36,7 +36,7 @@
                     <div class="inner">
                         <div class="textHolder">
                             <span>Itinerary – by Belinda Tobias</span>
-                            <h3><a href="<?=$baseURL?>/docs/beyondthewharf-entertainment.pdf" target="_blank">Sunday - Family Day</a></h3>
+                            <h3><a href="<?=$baseURL?>/docs/beyondthewharf-family.pdf" target="_blank">Sunday - Family Day</a></h3>
                         </div>
                     </div>
                 </div>
