@@ -1,0 +1,53 @@
+body {
+  background-color: white;
+  font-size: 16px; }
+
+ul {
+  font-size: 1.125rem;
+  color: #272e35;
+  margin-left: 2rem !important; }
+
+p {
+  font-family: "adobe-garamond-pro", sans-serif !important;
+  font-size: 1.125rem;
+  color: #272e35; }
+
+blockquote {
+  font-family: "adobe-garamond-pro", sans-serif !important;
+  font-size: 1.875rem;
+  line-height: 2.75rem;
+  font-style: italic;
+  color: #59acb3;
+  border-left: 2px solid #59acb3;
+  margin: 0 0 1.75rem 2.25rem;
+  padding-top: 0 !important;
+  font-weight: 400; }
+
+ul li {
+  font-family: "adobe-garamond-pro", sans-serif !important;
+  font-size: 1.125rem;
+  color: #272e35; }
+
+small {
+  font-family: "Inconsolata", sans-serif !important;
+  font-size: 0.875rem;
+  color: #879bb1;
+  font-style: normal;
+  clear: both; }
+
+h2 {
+  font-family: "Tungsten A", "Tungsten B" !important;
+  font-weight: 700;
+  color: #272e35;
+  margin-bottom: -0.25rem;
+  font-style: normal !important;
+  text-transform: uppercase;
+  font-size: 3rem; }
+
+h3 {
+  font-family: "adobe-garamond-pro", sans-serif !important;
+  font-size: 1.875rem;
+  font-style: italic;
+  font-weight: 400;
+  color: #59acb3;
+  margin-bottom: 1.4rem; }
