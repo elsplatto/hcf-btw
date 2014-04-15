@@ -171,16 +171,8 @@ include 'includes/header.php';
                 <option value="small">Small</option>
                 <option value="medium">Medium</option>
             </select>
-        </div>
-        <div class="large-5 columns left">
-            <label for="txtLat">Lat:
-                <input type="text" id="txtLat" name="txtLat" value="" />
-            </label>
 
 
-            <label for="txtLng">Lng:
-                <input type="text" id="txtLng" name="txtLng" value="" />
-            </label>
 
             <label for="txtImgThumb">Thumbnail:
                 <input type="text" id="txtImgThumb" name="txtImgThumb" value="" readonly />
@@ -215,14 +207,21 @@ include 'includes/header.php';
             </label>
 
 
-        </div>
 
-        <div class="large-7 columns left">
-            <a href="#" class="useMap" data-target="tile-map-canvas">Hide Map</a>
-            <div id="tile-map-canvas" class="google-maps" style="width: 800px; height: 500px;"></div>
-        </div>
+            <a href="#" class="showHide" data-target="#mapArea" data-hideText="Hide Map" data-showText="Show Map">Hide Map</a>
+            <div id="mapArea">
 
-        <div class="large-12 columns">
+                <label for="txtLat">Lat:
+                    <input type="text" id="txtLat" name="txtLat" value="" />
+                </label>
+
+
+                <label for="txtLng">Lng:
+                    <input type="text" id="txtLng" name="txtLng" value="" />
+                </label>
+                <div id="tile-map-canvas" class="google-maps" style="width: 800px; height: 500px;"></div>
+            </div>
+
 
 
 

@@ -148,6 +148,7 @@ include 'includes/header.php';
                 <?php
                 if ($typesCount > 0)
                 {
+                $typeSelectedTitle = '';
                 ?>
                     <select id="selType" name="selType">
                         <option value="0">Select</option>
@@ -158,6 +159,7 @@ include 'includes/header.php';
                             if ($type['id'] == $tile['type_id'])
                             {
                                 $typeSelected = ' selected="selected"';
+                                $typeSelectedTitle = $type['title'];
                             }
 
                         ?>
@@ -170,8 +172,7 @@ include 'includes/header.php';
                 <?php
                 }
                 ?>
-
-                <div id="eventArea" class="<?php echo (strtolower($type['title']) !== 'events' ? 'hide':'')?>">
+                <div id="eventArea" class="<?php echo (strtolower($typeSelectedTitle) != 'events' ? 'hide':'')?>">
                     <label for="dateStartDate">Start Date:
                         <input type="text" id="dateStartDate" name="dateStartDate" class="dateTimePickerInput" value="<?echo $tile['start_date'] > 0 ? date('d-F-Y H:i',$tile['start_date']): ''?>" />
                     </label>
@@ -238,22 +239,9 @@ include 'includes/header.php';
                         <option value="medium"<?php echo ($tile['tile_size'] == 'medium'?' selected="selected"':'')?>>Medium</option>
                     </select>
                 </label>
-        </div>
-
-        <div class="large-5 columns left">
-
-            <label for="txtLat">Lat:
-                <input type="text" id="txtLat" name="txtLat" value="<?=$tile['lat']?>" />
-            </label>
 
 
-            <label for="txtLng">Lng:
-                <input type="text" id="txtLng" name="txtLng" value="<?=$tile['lng']?>" />
-            </label>
-
-
-
-            <label id="smallImg" for="txtImgThumb">Thumbnail:
+            <label<?= ($tile['tile_size'] == 'medium'?' class="hide"':'') ?> id="smallImg" for="txtImgThumb">Thumbnail:
                 <input type="text" id="txtImgThumb" name="txtImgThumb" value="<?=$tile['image_thumb']?>" readonly />
                 <input type="file" id="thumbImgUpload" name="thumbImgUpload" />
                 <inpu type="hidden" name="thmbDir" id="thmbDir" value="../img/locations/thumbnails/" />
@@ -261,7 +249,7 @@ include 'includes/header.php';
 
 
 
-            <label id="medImg" for="txtImgThumbMed">Thumbnail - Med:
+            <label<?= ($tile['tile_size'] == 'small'?' class="hide"':'') ?> id="medImg" for="txtImgThumbMed">Thumbnail - Med:
                 <input type="text" id="txtImgThumbMed" name="txtImgThumbMed" value="<?=$tile['image_thumb_med']?>" readonly />
                 <input type="file" id="mediumThumbImgUpload" name="mediumThumbImgUpload" />
                 <inpu type="hidden" name="mediumThmbDir" id="mediumThmbDir" value="../img/locations/thumbnail-med/" />
@@ -290,14 +278,21 @@ include 'includes/header.php';
             </label>
 
 
-        </div>
+            <a href="#" class="showHide" data-target="#mapArea" data-hideText="Hide Map" data-showText="Show Map">Show Map</a>
+            <div id="mapArea" class="hide">
 
-        <div class="large-7 columns left">
-            <a href="#" class="useMap" data-target="tile-map-canvas">Hide Map</a>
-            <div id="tile-map-canvas" class="google-maps" style="width: 800px; height: 500px;"></div>
-        </div>
+                <label for="txtLat">Lat:
+                    <input type="text" id="txtLat" name="txtLat" value="<?=$tile['lat']?>" />
+                </label>
 
-        <div class="large-12 columns">
+
+                <label for="txtLng">Lng:
+                    <input type="text" id="txtLng" name="txtLng" value="<?=$tile['lng']?>" />
+                </label>
+
+                <div id="tile-map-canvas" class="google-maps" style="width: 800px; height: 500px;"></div>
+            </div>
+
 
                 <label for="txtTripPlan">Trip Plan:</label>
                 <textarea id="txtTripPlan" name="txtTripPlan" cols="100" rows="5"><?=stripcslashes(stripcslashes($tile['trip_plan']))?></textarea>
@@ -390,7 +385,7 @@ include 'includes/header.php';
             }
         });
 
-        /*$('#selTileSize').change(function(e) {
+        $('#selTileSize').change(function(e) {
 
             if($(this).find(':selected').val().toLowerCase() === 'medium')
             {
@@ -403,7 +398,7 @@ include 'includes/header.php';
                 $('#smallImg').show();
                 $('#medImg').hide();
             }
-        })*/
+        })
 
 
         $('.insertTag').click(function(e) {
@@ -452,5 +447,9 @@ include 'includes/header.php';
         });
     })
 </script>
+
+<?php
+include 'includes/global-admin-js.php';
+?>
 </body>
 </html>
