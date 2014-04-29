@@ -216,17 +216,14 @@ include 'includes/header.php';
                                 this.document.appendStyleSheet( '//cloud.typography.com/6746472/661984/css/fonts.css' );
                                 this.document.appendStyleSheet('http://use.typekit.net/c/98ad18/adobe-garamond-pro:i4:i7:n4:n7.Xs1:N:2,Xs0:N:2,Xs2:N:2,Xrz:N:2/d?3bb2a6e53c9684ffdc9a9bf61f5b2a62850218b0182b3a8f955d7ad2db6541b4dabc0c21aa2a7c792f39b9f5c6204ab979cefddad6a45f2aa23d83a33e9fc84aa62c7fcffff12038a7544e49bafc4f43f1758a92f668d64bad61a1be13b4fe2d9a5fd49dace08aa446');
                                 this.document.appendStyleSheet( 'css/page.css' );
-
-                                //var scriptNode = document.getElementsByTagName('iframe')[0].innerHTML;
-                                //alert(scriptNode);
-
-                                /*var scriptNode = this.document.getElementsByTagName('head')[0].createElement('script');
-                                scriptNode.setAttribute('type','text/javascript');
-                                scriptNode.setAttribute('src','//use.typekit.net/bmv2swy.js');*/
-
                             }
-                        }
+                        },
+                        customConfig : 'ckeditor/page-config.js'
                     } );
+
+                    CKEDITOR.editorConfig = function(config) {
+                        config.format_tags = 'h2;h3;p';
+                    }
 
                 </script>
 
