@@ -15,7 +15,7 @@ if (isset($instagramData))
 
 <div class="row marginTop20">
     <div class="large-12 columns">
-        <h3 class="text-center" style="margin-bottom: -0.5rem">Gallery</h3>
+        <h3 class="text-center galleryTitle">Gallery</h3>
         <?php
         if (isset($instagramData))
         {
@@ -50,6 +50,8 @@ else
     $tokenSet = false;
 }
 
+$compWinnerResults = $instagram->getMedia('689269929886056156_198550', $tokenSet);
+
 $shotOfTheDayID = getShotOfTheDayID($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
 $shotOfTheDayResults = $instagram->getMedia($shotOfTheDayID, $tokenSet);
@@ -76,6 +78,87 @@ if ($instagramUserLoggedIn)
 
 $count = 0;
 
+if ($compWinnerResults->meta->code == 200)
+{
+
+    if ($instagramUserLoggedIn)
+    {
+        $blnUserLiked = $compWinnerResults->data->user_has_liked;
+        if (isset($blnUserLiked))
+        {
+            if ($blnUserLiked) {
+                $userLikedClass = ' userLikes';
+                $likeURL = 'services/instagram-unlike-media.php?media_id='.$compWinnerResults->data->id;
+                $likeText = 'You like this media - click to unlike.';
+            }
+            else
+            {
+                $userLikedClass = ' userNoLikes';
+                $likeURL = 'services/instagram-like-media.php?media_id='.$compWinnerResults->data->id;
+                $likeText = 'Click to like.';
+            }
+
+        }
+    }
+    else
+    {
+        $likeURL = 'overlays/instagram-login.php';
+        $likeText = 'You are not logged in. Log in to like.';
+    }
+    if ($compWinnerResults->data->type == 'video')
+    {
+        $videoClass = ' video';
+    }
+    else
+    {
+        $videoClass = '';
+    }
+    ?>
+
+    <div class="small-12 medium-6 large-6 columns">
+        <div class="large-12 medium-12 small-12 insta">
+            <a href="<?=$instagramPicLink?>?media_id=<?=$compWinnerResults->data->id?>" data-reveal-ajax="true" class="reveal-init<?=$videoClass?>" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$compWinnerResults->data->id?>"><img src="<?=$compWinnerResults->data->images->standard_resolution->url?>" alt="<?=$compWinnerResults->data->caption->text?>" /></a>
+            <div class="ribbon-wrapper"><div class="ribbon red">Winner</div></div>
+            <a href="<?=$instagramCommentURL?>?media_id=<?=$compWinnerResults->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"><span><?=$compWinnerResults->data->comments->count?></span></a>
+            <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$compWinnerResults->data->id?>" data-likesCount="<?=$compWinnerResults->data->likes->count?>" data-displayCount><?=likeNumberFormatter($compWinnerResults->data->likes->count)?></span></a>
+            <div class="infoContainer">
+                <div class="inner">
+                    <span class="location">
+                    <?php
+                    if (property_exists($compWinnerResults->data,'location'))
+                    {
+                        if (is_null($compWinnerResults->data->location) || $compWinnerResults->data->location == null)
+                        {
+                            echo '--';
+                        }
+
+                        else if (property_exists($compWinnerResults->data->location,'name'))
+                        {
+                            echo $compWinnerResults->data->location->name;
+                        }
+                        else if (property_exists($compWinnerResults->data->location,'latitude') && property_exists($compWinnerResults->data->location,'longitude') && !property_exists($compWinnerResults->data->location,'name'))
+                        {
+                            echo $compWinnerResults->data->location->latitude . ' ,'. $compWinnerResults->data->location->longitude;
+                        }
+
+                    }
+                    else
+                    {
+                        echo '---';
+                    }
+                    ?>
+                    </span>
+                    <span class="credit"><?=$compWinnerResults->data->user->username?></span>
+
+                    <a href="https://twitter.com/share?url=<?=$baseURL?>/#gallery&text=Check out @beyondthewharf competition winner&hashtag=beyondthewharf&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php
+}
 
 if ($shotOfTheDayResults->meta->code == 200)
 {
