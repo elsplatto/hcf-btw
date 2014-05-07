@@ -40,7 +40,7 @@ include 'includes/nav.php';
                     </p>
                     <p>
                         <a href="<?=$baseURL?>/page/about-us">About Us</a><br />
-                        <a href="http://harbourcityferries.com.au/careers" target="_blank" rel="nofollow" onClick="trackOutboundLink('http://harbourcityferries.com.au/careers'); return false;">Careers</a>
+                        <a href="http://www.harbourcityferries.applynow.net.au/" rel="nofollow" onClick="trackOutboundLink('http://www.harbourcityferries.applynow.net.au/'); return false;">Careers</a>
                     </p>
                 </div>
             </div>

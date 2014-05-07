@@ -26,7 +26,9 @@ else
     $adminEmailAddress = 'admin@beyondthewharf.com.au';
 }
 
-session_start();
+if(!isset($_SESSION)) {
+    session_start();
+}
 
 // User session data availability check
 

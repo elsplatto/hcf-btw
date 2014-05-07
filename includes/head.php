@@ -67,8 +67,15 @@ if (isset($_GET['killCookie']))
 
     <link rel="stylesheet" href="<?=$baseURL?>/css/foundation.css" />
     <link rel="stylesheet" href="<?=$baseURL?>/css/style.css" />
-
     <?php
+    if ($pageSection == 'vivid')
+    {
+    ?>
+        <link rel="stylesheet" href="<?=$baseURL?>/css/vivd.css" />
+    <?php
+    }
+
+
     if (($_SERVER['SERVER_NAME'] == 'beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'www.beyondthewharf.com.au') || ($_SERVER['SERVER_NAME'] == 'localhost')){
         ?>
         <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>

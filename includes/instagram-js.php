@@ -1,5 +1,36 @@
 <script>
 $(function () {
+
+    //getMediaByIdForComp('689269929886056156_198550',$('photoHolder01'));
+
+    function getMediaByIdForComp(id,el)
+    {
+        var url = '<?=$baseURL?>/services/instagram-fetch-media-by-id.php';
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                media_id: id
+            },
+            dataType: 'json',
+            cache: false,
+            beforeSend: function () {
+                beforeFetchByIDHandler(el);
+            },
+            success: function (data) {
+                successFetchByIDHandler(data);
+            }
+        });
+    }
+
+    function successFetchByIDHandler(data) {
+        //console.dir(data);
+    }
+
+    function beforeFetchByIDHandler(el) {
+
+    }
+
     $('body').on('click', 'a.userLikes', function (e) {
         e.preventDefault();
         var url = $(this).attr('data-url');

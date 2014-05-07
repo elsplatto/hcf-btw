@@ -35,7 +35,7 @@ include 'includes/nav.php';
     else
     {
         ?>
-        <ul id="featureImageCarousel" data-orbit data-options="animation: slide;timer_speed: 15000; swipe: true; timer: false
+        <ul id="featureImageCarousel" data-orbit data-options="animation: slide;timer_speed: 15000; swipe: true; timer: false;
                     pause_on_hover: false;
                     animation_speed: 500;
                     navigation_arrows: true;
@@ -186,21 +186,21 @@ if ($deviceType != 'phone')
         <div class="large-12 columns">
 
             <div class="large-6 medium-12 small-12 themedPromoText standardDarkGrey left">
-                <span>The Child at Heart</span>
-                <h3 class="block">Family Fun on Sydney Harbour</h3>
+                <span>The Ancestral Spirit</span>
+                <h3 class="block">Discover Sydney’s Aboriginal Culture</h3>
                 <p>
-                    Ferries reveal all those family-friendly places around Sydney that you don’t find in a <br />guide book.
+                    Australia's Aboriginal culture dates back 60,000 years. Sydney Harbour played a large part and continues to do so today.
                 </p>
-                <a href="<?=$baseURL?>/page/child-at-heart" class="button wire white hide-for-large">Hear Mark's Story</a>
-                <img src="img/themedPromos/profile.jpg" class="profile" alt="Picture of man and child." />
-                <p>Mark Champley</p>
-                <span class="purple">Customer Experience Manager &amp; father of nine</span>
+                <a href="<?=$baseURL?>/page/child-at-heart" class="button wire white hide-for-large">Hear Tracey's Story</a>
+                <img src="img/themedPromos/profile-2.jpg" class="profile" alt="Picture of Tracey." />
+                <p>Tracey Keys</p>
+                <span class="purple">Harbour City Ferries - Crew Member</span>
             </div>
             <div class="large-6 hide-for-medium hide-for-small themedPromoImage">
-                <img src="img/themedPromos/mark_c.jpg" alt="Picture of family." />
+                <img src="img/themedPromos/crossing.jpg" alt="Picture of North Head - Sydney." />
                 <div class="large-6 medium-6 small-6 themedPromoOverlay">
                     <!--a href="#" class="button red play tungsten small">Watch the video</a-->
-                    <a href="<?=$baseURL?>/page/child-at-heart" class="button wire white">Hear Mark's Story</a>
+                    <a href="<?=$baseURL?>/page/aboriginal-harbour-journeys" class="button wire white">Hear Tracey's Story</a>
                 </div>
             </div>
         </div>
@@ -317,6 +317,12 @@ $(function() {
         imgHTML += '<li>';
         imgHTML += '<img src="img/featureImages/'+folder+'ferries.jpg" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
         imgHTML += '</li>';
+        /*imgHTML += '<li>';
+        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay.jpg" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
+        imgHTML += '</li>';
+        imgHTML += '<li>';
+        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay-2.jpg" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
+        imgHTML += '</li>';*/
 
         $(imgHTML).appendTo('#featureImageCarousel');
 
@@ -360,7 +366,6 @@ $(function() {
             $(this).removeClass('flip');
         }
     });
-
 });
 </script>
 

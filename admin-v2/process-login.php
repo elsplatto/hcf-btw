@@ -16,7 +16,9 @@ if (isset($username) && isset($password))
 
     if($numRows > 0)
     {
-        session_start();
+        if(session_id() == '') {
+            session_start();
+        }
         // Storing instagram user data into session
         while($data = mysql_fetch_assoc($result))
         {

@@ -1,0 +1,123 @@
+/* Start - font-family variables
+$garamond: 'adobe-garamond-pro', sans-serif !important //Adobe Typekit
+$inconsolata: 'Inconsolata', sans-serif !important //Google font - normal weight = 400, bold = 700
+$tungsten: 'Tungsten A', 'Tungsten B' !important  //Typography.com normal weight = 400, bold = 700
+/* End - font-family variables
+
+$purple-light: #4d3373
+$purple-dark: #120437
+
+$orange: #ffa200
+$pink: #fd0083
+
+$std-dark-grey: rgba(39, 46, 53, 1)
+
+
+.lightPurpleBackground
+  background-color: $purple-light
+  h2.block
+    color: #fff !important
+    font-size: 3rem
+  h2, h3, h4
+    color: #fff
+  p
+    color: #fff
+
+.darkPurpleBackground
+  background-color: $purple-dark
+  h3
+    color: $orange
+
+.orangeBackground
+  background-color: $orange
+
+.pinkBackground
+  background-color: $pink
+  h2, h3, h4
+    color: #fff
+
+.padding32 h3.block
+  line-height: 3rem
+  padding-top: 0 !important
+  padding-bottom: 0.5rem !important
+  margin-top: 0 !important
+
+.button.orange
+  background-color: $orange
+  color: #fff
+
+.photoTips.setHeight, .photoTipsNav.setHeight
+  height: 35rem
+  overflow: hidden
+
+.photoTips.orangeBackground
+  h2, h3, h4, p
+    color: $std-dark-grey
+
+.photoTips, .photoTipsNav
+  ul
+    position: relative
+    margin: 0 !important
+    padding: 0 !important
+    list-style: none
+
+.photoTips
+  padding: 2rem 0rem
+  ul
+    li
+      padding: 0 4rem
+      height: inherit
+      p
+        font-size: 1.75rem
+        line-height: 2.5rem
+  .orbit-container
+    .orbit-prev
+      left: 0
+
+.photoTipsNav
+  padding: 2rem 1rem
+
+.photoTipsNav
+  ul
+    li
+      position: relative
+      padding: 0 0 0 1.75rem
+      &:before
+        content: ''
+        position: absolute
+        width: 1.125rem
+        height: 1rem
+        top: 0.4rem
+        left: 0
+        background-image: url('img/icons.png')
+        background-position: -308px -288px
+      p
+        font-size: 1.025rem
+        line-height: 1.25rem
+        font-family: $inconsolata
+        a
+          color: #fff
+    .active
+      &:before
+        background-position: -308px -258px
+
+//ipad in portrait and landscape
+@media only screen and (min-width: 40.063em) and (max-width: 64em), (max-width: 74.938em)
+  .photoTips.setHeight, .photoTipsNav.setHeight
+    height: 45rem
+
+  .photoTips
+    padding: 2rem 0rem
+    ul
+      li
+        padding: 0 4rem
+        height: inherit
+        p
+          font-size: 1rem
+          line-height: 1.5rem
+
+//manage screens between phone and tablet
+@media only screen and (max-width: 60.313em)
+
+
+@media only screen and (max-width: 40em)

@@ -45,6 +45,18 @@ function getVideo($id, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
             echo '<div class="text-center videoWrapper">'.stripcslashes(stripcslashes($pageDetail['video_embed'])).'</div>';
         }
     }
+    else if (isset($_GET['src']))
+    {
+        $src = $_GET['src'];
+        if (isset($_GET['title']))
+        {
+            echo '<h3>'.$_GET['title'].'</h3>';
+        }
+        ?>
+        <div class="text-center videoWrapper">
+            <iframe src="<?=$src?>?autoplay=1" width="800" height="450" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" kwframeid="2"></iframe></div>
+        <?php
+    }
     ?>
     <a class="close-reveal-modal reveal-close">Close overlay</a>
 </div>

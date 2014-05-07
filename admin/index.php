@@ -4,7 +4,9 @@ if (isset($_GET['logout']))
     $logout = $_GET['logout'];
 }
 
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 if (isset($logout))
 {
     unset($_SESSION['adminUserId']);

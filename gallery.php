@@ -224,6 +224,8 @@ if (isset($sharedPhoto))
 
     $shotOfTheDayResults = $instagram->getMedia($shotOfTheDayID, $tokenSet);
 
+
+
     $instagramResults = $instagram->getTagMedia('beyondthewharf',$tokenSet);
 
     $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationships','comments'));
