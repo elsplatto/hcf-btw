@@ -831,20 +831,23 @@ ul.arrowed {
     text-align: center; }
   .featureImgHolder .headerHolder {
     position: absolute;
-    top: 25%;
+    top: 45%;
     text-align: center;
     z-index: 20;
     width: 100%;
     height: auto; }
     .featureImgHolder .headerHolder h2 {
-      line-height: 7rem;
-      margin-top: -1.5rem; }
+      line-height: 4rem;
+      margin-top: -1.5rem;
+      font-size: 3.8rem; }
     .featureImgHolder .headerHolder h2.sub {
       line-height: 4.5rem;
-      margin-top: -2rem; }
+      margin-top: -2rem;
+      font-size: 2rem; }
     .featureImgHolder .headerHolder h3 {
       color: white;
-      display: inline; }
+      display: inline;
+      font-size: 1.3rem; }
     .featureImgHolder .headerHolder .pullout {
       margin-left: auto;
       margin-right: auto;
@@ -852,7 +855,7 @@ ul.arrowed {
     .featureImgHolder .headerHolder hr {
       position: relative;
       border: none;
-      margin: 1rem auto;
+      margin: 0.5rem auto;
       width: 12.5rem;
       height: 0.938rem; }
       .featureImgHolder .headerHolder hr:after {

@@ -26,7 +26,7 @@ include 'includes/nav.php';
                     bullets: false;
                     slide_number: false;">
         <li>
-            <img src="img/featureImages/sunset.jpg" data-latlng="33 47.877 S, 151 17.365 E" data-place="Manly Beach" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />
+            <img src="img/featureImages/lightPlay-2.jpg" data-latlng="33 47.877 S, 151 17.365 E" data-place="Manly Beach" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />
         </li>
 
     </ul>
@@ -42,7 +42,7 @@ include 'includes/nav.php';
                     bullets: false;
                     slide_number: false;">
         <li>
-            <img src="img/featureImages/phone/sunset.jpg" data-latlng="33 47.877 S, 151 17.365 E" data-place="Manly Beach" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />
+            <img src="img/featureImages/phone/lightPlay-2.jpg" data-latlng="33 47.877 S, 151 17.365 E" data-place="Manly Beach" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />
         </li>
 
     </ul>
@@ -312,17 +312,11 @@ $(function() {
         imgHTML += '<img src="img/featureImages/'+folder+'bridgeSunset.jpg" data-latlng="33 50.682 S, 151 17.365 E" data-place="Watsons Bay" data-route="Eastern Suburbs" data-class="eastern" data-credit="Joel Coleman" />';
         imgHTML += '</li>';
         imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/'+folder+'manlyAerial.jpg" data-latlng="33 47.877 S, 151 16.990 E" data-place="Manly Wharf" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay.jpg" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
         imgHTML += '</li>';
         imgHTML += '<li>';
         imgHTML += '<img src="img/featureImages/'+folder+'ferries.jpg" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
         imgHTML += '</li>';
-        /*imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay.jpg" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
-        imgHTML += '</li>';
-        imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay-2.jpg" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
-        imgHTML += '</li>';*/
 
         $(imgHTML).appendTo('#featureImageCarousel');
 
