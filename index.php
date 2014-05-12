@@ -56,7 +56,7 @@ include 'includes/nav.php';
         <h2 class="sub">Secrets</h2>
         <h2>Beyond the Wharf</h2>
         <hr />
-        <h3>Discover. Share. Contribute.</h3>
+        <h3>Discover. Share. Experience.</h3>
     </div>
     <a href="#" id="creditToggle" data-target="featureCreditPanel" class="triggerContainer" title="Click here for photo credits">
         <div class="flip-container">
@@ -83,7 +83,7 @@ include 'includes/nav.php';
 
                 <div class="large-3 medium-3 small-12 promoTile columns<?=$deviceClass?>">
                     <div class="imgHolder">
-                        <img src="img/promoImages/<?=$folder?>sm-silk.jpg" alt="Saltmotion image of wave - by Joel Coleman" />
+                        <img src="img/promoImages/<?=$folder?>sm-shelly.jpg" alt="Saltmotion image of Shelly Beach - by Joel Coleman" />
                     </div>
                     <div class="textHolder">
                         <span>Photo Competition</span>
@@ -120,7 +120,7 @@ include 'includes/nav.php';
             </div>
             <div class="large-3 medium-3 small-12 promoTile columns">
                 <div class="imgHolder">
-                    <img src="img/promoImages/sm-silk.jpg" alt="Saltmotion image of wave - by Joel Coleman" />
+                    <img src="img/promoImages/sm-shelly.jpg" alt="Saltmotion image of Shelly Beach - by Joel Coleman" />
                 </div>
                 <div class="textHolder">
                     <span>Photo Competition</span>
