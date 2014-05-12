@@ -7,11 +7,20 @@ $tungsten: 'Tungsten A', 'Tungsten B' !important  //Typography.com normal weight
 $purple-light: #4d3373
 $purple-dark: #120437
 
+$purple-text: #612e74
+$purple-dark-text: #120437
+
 $orange: #ffa200
 $pink: #fd0083
 
+$header-green: #59acb3
+$std-text-green: #59acb3
+$std-green-background: #59acb3
+
 $std-dark-grey: rgba(39, 46, 53, 1)
 
+.darkPurple
+  color: $purple-dark-text !important
 
 .lightPurpleBackground
   background-color: $purple-light
@@ -27,6 +36,8 @@ $std-dark-grey: rgba(39, 46, 53, 1)
   background-color: $purple-dark
   h3
     color: $orange
+  p
+    color: #fff
 
 .orangeBackground
   background-color: $orange
@@ -87,7 +98,7 @@ $std-dark-grey: rgba(39, 46, 53, 1)
         position: absolute
         width: 1.125rem
         height: 1rem
-        top: 0.4rem
+        top: 0.25rem
         left: 0
         background-image: url('img/icons.png')
         background-position: -308px -288px
@@ -100,6 +111,55 @@ $std-dark-grey: rgba(39, 46, 53, 1)
     .active
       &:before
         background-position: -308px -258px
+
+
+.locationBubbleWrapper.photoSpots
+  background-color: $std-dark-grey
+  height: auto
+  width: 100%
+  .contentHolder
+    height: auto
+    width: 100%
+    padding-top: 1rem
+    overflow: scroll
+    p
+      padding: 0 1rem 1rem 1rem
+      line-height: 1.25rem
+      font-size: 1rem
+      font-family: $inconsolata
+      color: $std-text-green
+  .textHolder
+    height: 5rem
+    background-color: $orange
+    span, h5
+      color: $purple-text !important
+
+.vividPromo
+  .infoRibbon
+    position: absolute
+    top: 7rem
+    z-index: 10
+    height: 3.125rem
+    width: 100%
+    overflow: hidden
+  h3.block
+    span
+      font-family: inherit !important
+  .promoText
+    p
+      font-size: 1.375rem
+      line-height: 1.5rem
+      &:first-child
+        padding-top: 3rem
+    .sponsor
+      font-size: 0.83rem
+      line-height: 1.5rem
+      padding-top: 2rem
+      font-family: $inconsolata
+      font-weight: 700
+
+
+
 
 //ipad in portrait and landscape
 @media only screen and (min-width: 40.063em) and (max-width: 64em), (max-width: 74.938em)
@@ -117,7 +177,7 @@ $std-dark-grey: rgba(39, 46, 53, 1)
           line-height: 1.5rem
 
 //manage screens between phone and tablet
-@media only screen and (max-width: 60.313em)
+//@media only screen and (max-width: 60.313em)
 
 
-@media only screen and (max-width: 40em)
+//@media only screen and (max-width: 40em)

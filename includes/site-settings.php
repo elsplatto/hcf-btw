@@ -43,12 +43,13 @@ $instagramUserLoggedIn = false;
 if (isset($_SESSION['userdetails']))
 {
 
-$instagramData = $_SESSION['userdetails'];
-$instagramUserLoggedIn = true;
+    $instagramData = $_SESSION['userdetails'];
+    $instagramUserLoggedIn = true;
 
 }
 else
 {
-$instagramUserLoggedIn = false;
+    $instagramUserLoggedIn = false;
 }
+
 ?>

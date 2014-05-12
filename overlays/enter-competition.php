@@ -7,9 +7,34 @@ require '../includes/instagram.class.php';
 require '../includes/instagram.config.php';
 
 
+
+
 $device = new Mobile_Detect;
 
 $deviceType = ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'computer');
+
+function getStepOneData($compId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
+{
+    //echo '['.$compId.']['.$DB_SERVER.']['.$DB_USERNAME.']['.$DB_PASSWORD.']['.$DB_DATABASE.']';
+    $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+
+    $stmt = $mysqli->prepare('SELECT intro_text, how_to_win FROM competitions WHERE id= ?');
+    $stmt->bind_param('i', $compId);
+    $stmt->execute();
+    $stmt->bind_result($intro_text, $how_to_win);
+    $results = array();
+    $results['intro_text'] = '';
+    $results['how_to_win'] = '';
+    while($stmt->fetch())
+    {
+        $results['intro_text'] = $intro_text;
+        $results['how_to_win'] = $how_to_win;
+    }
+    $stmt->close();
+    $mysqli->close();
+
+    return $results;
+}
 
 
 function getUserDetails($instagramId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
@@ -57,6 +82,10 @@ function userEntered($userId, $competitionId, $DB_SERVER, $DB_USERNAME, $DB_PASS
 }
 
 $competitionId = 1;
+if (isset($_GET['competitionId']))
+{
+    $competitionId = $_GET['competitionId'];
+}
 $wharfs = getFileContents('../json/wharfs.json');
 $userEntered = 0;
 
@@ -113,21 +142,36 @@ else if ($step == 2)
 
 
 <?php
-
 if ($step == 1)
 {
+    $competitionDetails = getStepOneData($competitionId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    $compIntroText = '';
+    $compHowToWin = '';
+    if (isset($competitionDetails))
+    {
+        $compIntroText = $competitionDetails['intro_text'];
+        $compHowToWin = $competitionDetails['how_to_win'];
+    }
 ?>
 <section class="steps">
 
+    <?=$compIntroText?>
+    <!--h3 class="block marginBottom20">SHARE YOUR EXPERIENCE OF SYDNEY HARBOUR OR PARRAMATTA RIVER BEFORE THE END OF JUNE ON INSTAGRAM &amp; WIN AN AMAZING SIGNED ARTWORK FROM ACCLAIMED OCEAN PHOTOGRAPHER JOEL COLEMAN VALUED AT $700.</h3>
 
-    <h3 class="block marginBottom20">SHARE YOUR EXPERIENCE OF SYDNEY HARBOUR OR PARRAMATTA RIVER BEFORE THE END OF JUNE ON INSTAGRAM &amp; WIN AN AMAZING SIGNED ARTWORK FROM ACCLAIMED OCEAN PHOTOGRAPHER JOEL COLEMAN VALUED AT $700.</h3>
+    <h3 class="block marginBottom20">HOW TO WIN.</h3-->
 
-    <h3 class="block marginBottom20">HOW TO WIN.</h3>
+    <!--h3 class="block marginBottom20">WIN A CANON EOS1200D OR A WEEKLY PRIZE OF MARITIME MUSEUM TICKETS - SIMPLY TAG YOUR INSTAGRAM POSTS #VIVIDSYDNEY</h3>
+
+    <h3 class="block marginBottom20">HOW TO WIN.</h3-->
+
+
 
 
     <a href="<?=$instagramLoginURL?>" class="button instagram" onClick="trackInternalLink('Competition Overlay - <?=$deviceType?>','Clicked Log into Instgram Button - Step 1');">Log into Instagram &amp; Enter</a>
 
-    <ul class="arrowed show-hide">
+
+    <?=$compHowToWin?>
+    <!--ul class="arrowed show-hide">
         <li>
             <h4><a href="#">Capture the Essence of Sydney in a Photograph</a></h4>
             <div class="extra-info">
@@ -139,7 +183,7 @@ if ($step == 1)
             <h4><a href="#">Sign-up for the competition</a></h4>
             <div class="extra-info">
                 <p>Simply sign-in using your Instagram account, provide us with your contact details and start snapping.</p>
-                <p>If you don’t already have an Instagram account, <a href="http://instagram.com" target="_blank" rel="nofollow">download the free app now</a>.</p>
+                <p>If you don't already have an Instagram account, <a href="http://instagram.com" target="_blank" rel="nofollow">download the free app now</a>.</p>
             </div>
         </li>
         <li>
@@ -176,7 +220,7 @@ if ($step == 1)
                 <p>Employees (and their immediate families) of the promoter and agencies associated with this promotion are ineligible to enter the competition.</p>
             </div>
         </li>
-    </ul>
+    </ul-->
 
     <a href="<?=$instagramLoginURL?>" class="button instagram" onClick="trackInternalLink('Competition Overlay - <?=$deviceType?>','Clicked Log into Instgram Button - Step 1');">Log into Instagram &amp; Enter</a>
 </section>
@@ -193,6 +237,7 @@ else if ($step == 2)
     <h3>Hello <?=$instagramUsername?>,</h3>
     <p>We just need a few details from you to enter you into the competition.<br /><sup class="red">*</sup>Mandatory Fields.</p>
     <form id="frmCompetition" action="<?=$baseURL?>/includes/process-competition-entry.php" method="post" data-abide="ajax">
+        <input type="hidden" id="competitionId" name="competitionId" value="<?=$competitionId?>" />
         <label for="txtFirstname">First Name:<sup class="red">*</sup>
             <input type="text" name="txtFirstname" id="txtFirstname" value="<?=$userDetails['firstname']?>" required />
             <small class="error">Please enter your first name.</small>
@@ -412,8 +457,9 @@ else if ($step == 3)
                 trackInternalLink('Competition Overlay - <?=$deviceType?>','Submitted Entry Form - Step 2');
                 var el = $(this);
                 var url = $(this).attr('action');
-                var firstname, lastname, email, wharf;
+                var firstname, lastname, email, wharf, competitionId;
                 var subscribe = 0;
+                competitionId = $('#competitionId').val();
                 firstname = $('#txtFirstname').val();
                 lastname = $('#txtLastname').val();
                 email = $('#txtEmail').val();
@@ -430,7 +476,8 @@ else if ($step == 3)
                         lastname: lastname,
                         email: email,
                         wharf: wharf,
-                        subscribe: subscribe
+                        subscribe: subscribe,
+                        competitionId: competitionId
                     },
                     dataType: 'json',
                     cache: false,

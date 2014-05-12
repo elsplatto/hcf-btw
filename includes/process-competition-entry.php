@@ -18,6 +18,10 @@ if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['
     $date_subscribed = time();
     $date_registered = time();
     $competitionId = 1;
+    if (!empty($_POST['competitionId']))
+    {
+        $competitionId = $_POST['competitionId'];
+    }
 
     if (isset($instagramData))
     {

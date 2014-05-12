@@ -1,5 +1,8 @@
 /* Start - font-family variables */
 /* End - font-family variables */
+.darkPurple {
+  color: #120437 !important; }
+
 .lightPurpleBackground {
   background-color: #4d3373; }
   .lightPurpleBackground h2.block {
@@ -14,6 +17,8 @@
   background-color: #120437; }
   .darkPurpleBackground h3 {
     color: #ffa200; }
+  .darkPurpleBackground p {
+    color: white; }
 
 .orangeBackground {
   background-color: #ffa200; }
@@ -68,7 +73,7 @@
     position: absolute;
     width: 1.125rem;
     height: 1rem;
-    top: 0.4rem;
+    top: 0.25rem;
     left: 0;
     background-image: url("img/icons.png");
     background-position: -308px -288px; }
@@ -80,3 +85,58 @@
       color: white; }
 .photoTipsNav ul .active:before {
   background-position: -308px -258px; }
+
+.locationBubbleWrapper.photoSpots {
+  background-color: #272e35;
+  height: auto;
+  width: 100%; }
+  .locationBubbleWrapper.photoSpots .contentHolder {
+    height: auto;
+    width: 100%;
+    padding-top: 1rem;
+    overflow: scroll; }
+    .locationBubbleWrapper.photoSpots .contentHolder p {
+      padding: 0 1rem 1rem 1rem;
+      line-height: 1.25rem;
+      font-size: 1rem;
+      font-family: "Inconsolata", sans-serif !important;
+      color: #59acb3; }
+  .locationBubbleWrapper.photoSpots .textHolder {
+    height: 5rem;
+    background-color: #ffa200; }
+    .locationBubbleWrapper.photoSpots .textHolder span, .locationBubbleWrapper.photoSpots .textHolder h5 {
+      color: #612e74 !important; }
+
+.vividPromo .infoRibbon {
+  position: absolute;
+  top: 7rem;
+  z-index: 10;
+  height: 3.125rem;
+  width: 100%;
+  overflow: hidden; }
+.vividPromo h3.block span {
+  font-family: inherit !important; }
+.vividPromo .promoText p {
+  font-size: 1.375rem;
+  line-height: 1.5rem; }
+  .vividPromo .promoText p:first-child {
+    padding-top: 3rem; }
+.vividPromo .promoText .sponsor {
+  font-size: 0.83rem;
+  line-height: 1.5rem;
+  padding-top: 2rem;
+  font-family: "Inconsolata", sans-serif !important;
+  font-weight: 700; }
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em), (max-width: 74.938em) {
+  .photoTips.setHeight, .photoTipsNav.setHeight {
+    height: 45rem; }
+
+  .photoTips {
+    padding: 2rem 0rem; }
+    .photoTips ul li {
+      padding: 0 4rem;
+      height: inherit; }
+      .photoTips ul li p {
+        font-size: 1rem;
+        line-height: 1.5rem; } }

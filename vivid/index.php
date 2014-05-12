@@ -23,6 +23,41 @@ include '../includes/nav.php';
     </div>
 </section>
 
+<section class="vividPromo paddingBottom40">
+  <div class="row">
+      <div class="large-12 columns">
+          <div class="large-12">
+            <div class="large-12 pinkBackground infoRibbon">
+                <h3 class="block text-center">Harbour Lights <span class="darkPurple">23 May - 09 June</span></h3>
+            </div>
+          </div>
+          <div class="large-12 darkPurpleBackground overflow">
+              <div class="large-3 promoText left ">
+                <div class="large-12">
+                    <img src="<?=$baseURL?>/img/vividLogo-1.jpg" alt="Vivid Sydney Logo" />
+                </div>
+                <div class="large-12 padding32">
+                  <p>
+                      Vivid Sydney extends onto the harbour for the first time in 2014 with the spectacular Harbour Lights.
+                  </p>
+                  <p>
+                      During Vivid, make the most of your experience by exploring Sydney Harbour’s best kept secrets with Beyond the Wharf.
+                  </p>
+                  <p class="sponsor">
+                      Presented by 32 Hundred Lighting, Intel and Destination NSW.
+                  </p>
+                </div>
+              </div>
+
+              <div class="large-9 left">
+                  <img src="<?=$baseURL?>/img/promoImages/vivid-lighting-boats.jpg" alt="Sydney ferries decorated with lights" />
+              </div>
+          </div>
+      </div>
+
+  </div>
+</section>
+
 <section class="darkPurpleBackground paddingTopBottom20">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Vivid App</h3>
@@ -114,7 +149,7 @@ include '../includes/nav.php';
                 </p>
                 <h4 class="white text-center">Submit your photos with to<br /> <span class="block">#VIVIDSYDNEY</span><br /> with Instagram to be in to win</h4>
                 <div class="large-12 text-center paddingTop20">
-                    <a href="#" class="button orange">Enter Competition</a>
+                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&competitionId=2&call_page=<?=$baseURL?>/vivid/?competitionId=2" class="reveal-init button orange" id="enterVividComp">Enter Competition</a>
                 </div>
             </div>
 
@@ -167,30 +202,60 @@ include '../includes/nav.php';
                     bullets: false;
                     slide_number: false;">
                     <li data-orbit-slide="tip-1">
-                        <h3>Tip One. <span class="block">Use a tripod for sharp pictures</span></h3>
+                        <h3>Tip One. <span class="block">Camera and equipment</span></h3>
                         <p>
-                            Shooting at night obviously means there will be less light and therefore slow shutter speeds, anywhere from 1-30 seconds – that’s way too slow to shoot hand-held. So you’ll need to attach your digital camera securely to a tripod if you want sharp results. Make sure your tripod is set up correctly and rock solid – it’s easy to end up with soft images because you haven’t double-checked. Hang your camera bag off the hook on the bottom of the centre column if you can. And don’t hold onto your tripod as you’re shooting with slow shutter speeds because any slight movement can mean blurred photos.
+                            Long exposure photography can be achieved with surprisingly little equipment, for example a point-and-shoot camera that has a setting that enables a longer shutter speed. I've taken a lot of interesting photos using the Lumix (which has a 15, 30 or 60 second “Starry Sky” mode) placed on a rock. However, for best results you’ll need a DSLR or Mirror-less camera with full manual mode. A tripod and shutter release cable will allow you to take photos without camera movement. This will enable you to capture scenes, however you can get creative by adding your own sources of light.
                         </p>
                     </li>
                     <li data-orbit-slide="tip-2">
-                        <h3>Tip Two. <span class="block">Use a tripod for sharp pictures</span></h3>
+                        <h3>Tip Two. <span class="block">Focus and settings</span></h3>
                         <p>
-                            Shooting at night obviously means there will...
+                            Your camera’s auto-focus will only work if there is enough light for it to “see” the object you're trying to focus on. So, in dark areas it's often good to take a torch with you. For long exposures you’ll be using a tripod, and your subject will hopefully be staying still. That means your focus won't change, so you can “lock” the focus by switching your lens to manual-focus. Your settings will vary for each photo. Your ISO should usually be between 100-800, your shutter speed will often depend on the movement within the frame, and your aperture will depend on the ambient light.
+
                         </p>
                     </li>
                     <li data-orbit-slide="tip-3">
-                        <h3>Tip Three. <span class="block">Use a tripod for sharp pictures</span></h3>
+                        <h3>Tip Three. <span class="block">Light Illumination</span></h3>
                         <p>
-                            Shooting at night obviously means there will be less light and therefore slow shutter speeds, anywhere from 1-30 seconds – that’s way too slow to shoot hand-held. So you’ll need to attach your digital camera securely to a tripod if you want sharp results. Make sure your tripod is set up correctly and rock solid – it’s easy to end up with soft images because you haven’t double-checked. Hang your camera bag off the hook on the bottom of the centre column if you can. And don’t hold onto your tripod as you’re shooting with slow shutter speeds because any slight movement can mean blurred photos.
+                            In a photo, your camera sees only what the light sees. In a long exposure, it will see all the light that happens while the shutter is open, so in effect its a composite of numerous moments. This means you can use torches to “illuminate” objects. You can walk into the frame and the camera won't “see” you, as long as its dark, you keep moving and light doesn't fall on you. The torch wont be seen either, so long as you shine it away from the camera. By doing this, you can create beautiful lighting and textures. Use bigger torches for bigger objects, and experiment with different colours, remembering there are many different whites (from warm to cool).
+                        </p>
+                    </li>
+                    <li data-orbit-slide="tip-4">
+                        <h3>Tip Four. <span class="block">Painting with light</span></h3>
+                        <p>
+                            By shining light at the camera, you can “burn” into the image various patterns. Because you're facing the camera, everything you do will be in reverse.  So, to “write” something, you’ll need to write from right to left, with each letter being a mirror image of itself, i.e. “End” would be “bn3”. You’ll need to turn off the light between each letter, either with the switch or by blocking the light with your hand. You can also draw/light paint other objects, smiley faces, love hearts, cats… its up to you. Different types of lights and torches will give different effects, and you can also shine light through coloured “filters” such as cellophane.
+                        </p>
+                    </li>
+                    <li data-orbit-slide="tip-5">
+                        <h3>Tip Five. <span class="block">Using flash</span></h3>
+                        <p>
+                            Flash is great for creating quick bursts of light. Where as a torch can be used like a paintbrush to gradually light a scene, flash can be used to freeze objects. Like with torches, with a long exposure you can take a flash into the scene. Ideally this is done with an external camera flash using ‘pilot’ mode to manually fire the flash, where you can adjust the power of the output. If you dont have an external flash though, you can simply borrow someone else’s camera, and then use its flash by taking a ‘normal photo’ while your camera is taking the long exposure photo.
+                            Flash can also be used to capture the same object more than once, i.e. flash the same person in two positions, and in the one photo you’ll see two of them!
+                        </p>
+                    </li>
+                    <li data-orbit-slide="tip-6">
+                        <h3>Tip Six. <span class="block">Capturing people</span></h3>
+                        <p>
+                            When lighting your photo, for a sharp image its essential that objects are still…. this can be very challenging when lighting people! Although flash is easier, using a warm torch at the right angle can create stunning results. You can actually create studio style photographs… the principles are the same. Instead of expensive lighting equipment, one torch can be your key light, fill light and rim light. Your body can be the light stand, the way you wave the light onto your subject will determine the size and proximity of your light box, and you can determine precisely which areas to illuminate, and which to leave dark.
+                        </p>
+                    </li>
+                    <li data-orbit-slide="tip-7">
+                        <h3>Tip Seven. <span class="block">Composition</span></h3>
+                        <p>
+                            When taking long exposure photographs, it's important to keep in mind that all the usual principles of photography still apply. Take time to compose your photos until they look good to you. You may benefit from using principles such as the “rule-of-thirds”, and using angles to lead the eye into you images and create a photo that is more 3 dimensional. You can take these principles a step further, by using light trails to similar effect, or by shining your torch more on key areas so that they are more illuminated and therefore become the focus of attention. In the dark, the world becomes a blank canvas, it up to you how you'd like to paint it.
                         </p>
                     </li>
                 </ul>
             </div>
             <div id="photoTipsNav" class="large-3 hide-for-small hide-for-medium left standardDarkGrey setHeight photoTipsNav">
                 <ul>
-                    <li class="active"><p><a data-orbit-link="tip-1" href="#"><strong>Tip one.</strong> Use a tripod for sharp pictures.</a></p></li>
-                    <li><p><a data-orbit-link="tip-2" href="#"><strong>Tip Two.</strong> Use a tripod for sharp pictures.</a></p></li>
-                    <li><p><a data-orbit-link="tip-3" href="#"><strong>Tip Three.</strong> Use a tripod for sharp pictures.</a></p></li>
+                    <li class="active"><p><a data-orbit-link="tip-1" href="#"><strong>Tip one.</strong> Camera and equipment.</a></p></li>
+                    <li><p><a data-orbit-link="tip-2" href="#"><strong>Tip Two.</strong> Focus and settings.</a></p></li>
+                    <li><p><a data-orbit-link="tip-3" href="#"><strong>Tip Three.</strong> Light Illumination.</a></p></li>
+                    <li><p><a data-orbit-link="tip-4" href="#"><strong>Tip Four.</strong> Painting with light.</a></p></li>
+                    <li><p><a data-orbit-link="tip-5" href="#"><strong>Tip Five.</strong> Using flash.</a></p></li>
+                    <li><p><a data-orbit-link="tip-6" href="#"><strong>Tip Six.</strong> Capturing people.</a></p></li>
+                    <li><p><a data-orbit-link="tip-7" href="#"><strong>Tip Seven.</strong> Composition.</a></p></li>
                 </ul>
             </div>
         </div>
@@ -244,6 +309,14 @@ include '../includes/instagram-js.php';
 
 $(function(){
 
+    <?if ($competitionId == 2)
+    {
+    ?>
+    $('#enterVividComp').trigger('click');
+    <?php
+    }
+    ?>
+
     var cl = new CanvasLoader('map-canvas-loader');
     cl.setColor('#ffffff');
     cl.setShape('square'); // default is 'oval'
@@ -260,10 +333,11 @@ $(function(){
 function initialize() {
 
     var stdGrey = '#272e35';
+    var orange = '#ffa200';
 
     var mapOptions = {
-        center: new google.maps.LatLng(-33.836311,151.208267),
-        zoom: 12,
+        center: new google.maps.LatLng(-33.848287,151.20904),
+        zoom: 13,
         mapTypeControlOptions: {
             mapTypeIds: [google.maps.MapTypeId.TERRAIN, 'map_style'],
             position: google.maps.ControlPosition.BOTTOM_CENTER
@@ -1227,60 +1301,94 @@ function initialize() {
     var thmbBase = '<?=$baseURL?>/img/locations/thumbnails/';
     var markerLocations = [
         {
-            id: 25,
-            title: "Sydney Observatory",
-            lat: -33.85992010,
-            lng: 151.20475279,
+            routeFrom: "Circular Quay",
+            routeTo: "Eastern Suburbs",
+            lat: -33.856959,
+            lng: 151.220294,
             icon: iconBase + 'lightCameraMarker.png',
-            image_thumb: thmbBase + 'Sydney-Observatory.jpg',
-            alt: "",
-            category: "attractions",
-            sub_heading: "experiences"
+            content: '<p>Stand at the front of the boat : contrast of the Eastern side of the Opera House in darkness with the illuminated Harbour Bridge and MCA in the background.</p>'
         },
         {
-            id: 61,
-            title: "Museum of Contemporary Art Australia",
-            lat: -33.85981686,
-            lng: 151.20900729,
+            routeFrom: "Manly",
+            routeTo: "Circular Quay",
+            lat: -33.852992,
+            lng: 151.251783,
             icon: iconBase + 'lightCameraMarker.png',
-            image_thumb: thmbBase + 'Museum-Contemporary-Art.jpg',
-            alt: "Museum of Contemporary Art Australia",
-            category: "attractions",
-            sub_heading: "experiences"
+            content: '<p>Stand on the front outer deck, your line of sight will be as high as the images on the Opera House.</p>'
         },
         {
-            id: 19,
-            title: "North Head Quarantine Station's",
-            lat: -33.81635700,
-            lng: 151.28637300,
+            routeFrom: "Circular Quay",
+            routeTo: "Manly",
+            lat: -33.860644,
+            lng: 151.21081,
             icon: iconBase + 'lightCameraMarker.png',
-            image_thumb: thmbBase + 'Manly-Q-Station.jpg',
-            alt: "Image of North Head Quarantine Stations",
-            category: "attractions",
-            sub_heading: "experiences"
+            content: '<p>Go to the back of the boat. As the ferry pulls away from the wharf, try to capture both the MCA to your right, the Opera House on your left and the illuminated First Fleet Ferries at Circular Quay in the one photo.</p>'
         },
         {
-            id: 18,
-            title: "Fort Denison",
-            lat: -33.85487400,
-            lng: 151.22551900,
+            routeFrom: "Circular Quay",
+            routeTo: "Taronga",
+            lat: -33.84809,
+            lng: 151.237578,
             icon: iconBase + 'lightCameraMarker.png',
-            image_thumb: thmbBase + 'fortDenison.jpg',
-            alt: "Image of Fort Denison",
-            category: "attractions",
-            sub_heading: "experiences"
+            content: '<p>One of the least busiest ferry routes during Vivid, take the 40 minute round trip in the early evening with the local commuters to get a great overview of Harbour Lights on the Ferries to the east of Circular Quay.</p>'
         },
         {
-            id: 5,
-            title: "Maritime Museum",
-            lat: -33.86949600,
-            lng: 151.19865400,
+            routeFrom: "Circular Quay",
+            routeTo: "Mosman",
+            lat: -33.842743,
+            lng: 151.231399,
             icon: iconBase + 'lightCameraMarker.png',
-            image_thumb: thmbBase + 'Aust-National-Maritime-Museum.jpg',
-            alt: "Icon: History",
-            category: "attractions",
-            sub_heading: "experiences"
+            content: '<p>If you want to get away from the crowds but still see the lights, the  return trip to Mosman Bay will allow you to relax on a ferry with a full view of the Opera House, Bridge and MCA.</p>'
+        },
+        {
+            routeFrom: "Circular Quay",
+            routeTo: "Darling Harbour",
+            lat: -33.861775,
+            lng: 151.199384,
+            icon: iconBase + 'lightCameraMarker.png',
+            content: '<p>Take a seat at the front of the top deck of the Ferry for the best view of Aquatic Lights on the sails of the Australian National Maritime Museum.</p>'
+        },
+        {
+            routeFrom: "Darling Harbour",
+            routeTo: "Circular Quay",
+            lat: -33.854648,
+            lng: 151.201186,
+            icon: iconBase + 'lightCameraMarker.png',
+            content: '<p>Berthing at McMahons and Milsons Point provides unrivalled views of the western side of the Bridge and Harbour Lights vessels on Parramatta River. If you can line up the angle correctly from the front of the ferry, see if you can capture the Opera House sails under the Harbour Bridge.</p>'
+        },
+        {
+            routeFrom: "Circular Quay",
+            routeTo: "Parramatta",
+            lat: -33.849801,
+            lng: 151.199641,
+            icon: iconBase + 'lightCameraMarker.png',
+            content: '<p>Stand on the front outside deck, you\'ll be barely above the water level, for the beat reflections of the Harbour Bridge on Sydney Harbour.</p>'
+        },
+        {
+            routeFrom: "Parramatta",
+            routeTo: "Circular Quay",
+            lat: -33.845096,
+            lng: 151.166167,
+            icon: iconBase + 'lightCameraMarker.png',
+            content: '<p>On approach from the west, capture the wonderful contrast of the stillness of Cockatoo Island and Goat Island in the foreground as the Harbour Bridge lights up the night sky beyond.</p>'
+        },
+        {
+            routeFrom: "Circular Quay",
+            routeTo: "Neutral Bay",
+            lat: -33.843785,
+            lng: 151.219103,
+            icon: iconBase + 'lightCameraMarker.png',
+            content: '<p>Another great way to escape the crowds but still be entralled by the lights around Circular Quay. Try to capture the Harbour Lights vessels on their way to Circualr Quay, or capture the lights from the Opera Hosue reflecting off the rocks in front of Admiralty House.</p>'
+        },
+        {
+            routeFrom: "Cockatoo Island",
+            routeTo: "Circular Quay",
+            lat: -33.845096,
+            lng: 151.166167,
+            icon: iconBase + 'lightCameraMarker.png',
+            content: '<p>This is the panoroamic way to see Harbour Lights. You might only get a glimpse of Darling Harbour, but you will get brilliant views of the Bridge standing behind the Balls Head, McMahons Point and Birchgrove.</p>'
         }
+
     ];
 
 
@@ -1406,7 +1514,7 @@ function initialize() {
 
     //console.dir(markerArray);
 
-    $('.mapFilter').on('click', function(e){
+    /*$('.mapFilter').on('click', function(e){
         e.preventDefault();
         var targetCategory = $(this).attr('data-category');
         for (var i = 0; i < markerArray.length; i++) {
@@ -1427,7 +1535,7 @@ function initialize() {
                 }
             }
         }
-    });
+    });*/
 
     function showLocations(locations)
     {
@@ -1449,13 +1557,13 @@ function initialize() {
 
 
                 var locationContent = '';
-                locationContent += '<div class="imgHolder" data-category="'+location.category+'">';
+                locationContent += '<div class="contentHolder">';
                 locationContent += '<div class="closeBg"></div>';
-                locationContent += '<img src="'+location.image_thumb+'" alt="'+location.alt+'" />';
+                locationContent += location.content;
                 locationContent += '</div>';
                 locationContent += '<div class="textHolder">';
-                locationContent += '<span>'+location.sub_heading+'</span>';
-                locationContent += '<h5><a href="#" class="panelFlyoutTrigger" data-location="'+location.id+'" data-target="mapContainer" onClick="trackInternalLink(\'Tile on Vivid map - click\', \''+location.title.replace(/'/g, "\\'")+'\'); return false;">'+location.title+'</a></h5>';
+                locationContent += '<span>'+location.routeFrom+' to:</span>';
+                locationContent += '<h5>'+location.routeTo+'</h5>';
                 locationContent += '</div>';
 
                 var locationBubble = new InfoBubble({
@@ -1464,19 +1572,20 @@ function initialize() {
                     position: latLng,
                     shadowStyle: 1,
                     padding: 0,
-                    backgroundColor: stdGrey,
+                    backgroundColor: orange,
                     borderRadius: 0,
                     arrowSize: 10,
                     borderWidth: 0,
-                    borderColor: stdGrey,
+                    borderColor: orange,
                     disableAutoPan: false,
                     hideCloseButton: false,
                     arrowPosition: 25,
-                    backgroundClassName: 'locationBubbleWrapper',
+                    backgroundClassName: 'locationBubbleWrapper photoSpots',
                     arrowStyle: 0,
                     disableAutoPan: true,
                     maxWidth: 260,
-                    minHeight: 270
+                    minHeight: 200,
+                    maxHeight: 400
                 });
 
                 google.maps.event.addListener(marker, 'click', function(){
@@ -1627,8 +1736,6 @@ $(function() {
     $('#photoTipsHolder').foundation('orbit');
 
     $('#photoTipsHolder').on('after-slide-change.fndtn.orbit', function(event, orbit) {
-        console.info('after slide change');
-        console.info('slide ' + orbit.slide_number + ' of ' + orbit.total_slides);
         $('#photoTipsNav ul li.active').removeClass('active');
         $('#photoTipsNav ul li:eq('+orbit.slide_number+')').addClass('active');
     });
