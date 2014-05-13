@@ -229,7 +229,7 @@ foreach ($routes as $route)
     <input type="text" id="txtTags" name="txtTags" value="<?=$route['tags']?>" placeholder="No # and separate by comma" />
 
     <label for="txtContentHeader">Content Heading:</label>
-    <input type="text" d="txtContentHeader" name="txtContentHeader" value="<?=stripcslashes($route['content_header'])?>" placeholder="Appears above the content" />
+    <input type="text" d="txtContentHeader" name="txtContentHeader" value="<?=stripslashes(stripslashes(stripcslashes(stripcslashes($route['content_header']))))?>" placeholder="Appears above the content" />
 
     <label for="txtContent">Content:</label>
     <textarea id="txtContent" name="txtContent" cols="100" rows="5"><?=stripcslashes($route['content'])?></textarea>

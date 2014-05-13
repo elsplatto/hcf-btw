@@ -99,7 +99,7 @@ $(function(){
     });
 
 
-    $('.panelFlyoutTrigger').on('click', function(e) {
+    $('body').on('click','.panelFlyoutTrigger', function(e) {
         e.preventDefault();
         var target = $('#'+$(this).attr('data-target'));
         var id = $(this).attr('data-location');

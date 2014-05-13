@@ -26,7 +26,7 @@ include 'includes/nav.php';
                     bullets: false;
                     slide_number: false;">
         <li>
-            <img src="img/featureImages/lightPlay-2.jpg" data-latlng="33 47.877 S, 151 17.365 E" data-place="Manly Beach" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />
+            <img src="img/featureImages/lightPlay-2.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards, Understand Down Under" />
         </li>
 
     </ul>
@@ -42,7 +42,7 @@ include 'includes/nav.php';
                     bullets: false;
                     slide_number: false;">
         <li>
-            <img src="img/featureImages/phone/lightPlay-2.jpg" data-latlng="33 47.877 S, 151 17.365 E" data-place="Manly Beach" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />
+            <img src="img/featureImages/phone/lightPlay-2.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards, Understand Down Under" />
         </li>
 
     </ul>
@@ -67,11 +67,11 @@ include 'includes/nav.php';
         </div>
     </a>
     <div id="featureCreditPanel" class="creditPanel">
-        <span class="latLng">33 47.877 S, 151 17.365 E</span>
-        <span class="location">MANLY BEACH</span>
+        <span class="latLng">33 48 2.3652 S, 151 17 54.1998 E</span>
+        <span class="location">Shelly BEACH</span>
         <span class="routes manly">Manly</span>
-        <span class="credit">Photo by Joel Coleman</span>
-        <span><a href="<?=$baseURL?>/gallery#featuredPhotographer">View more</a></span>
+        <span class="credit">Photo by Andy Richards - Understand Down Under</span>
+        <span><a href="#" class="panelFlyoutTrigger" data-location="136" data-target="mapContainer" onclick="trackInternalLink('Photo credit panel - click', 'After dark tours'); return false;">View details</a></span>
     </div>
     <section class="promoHolder">
         <div class="row">
@@ -150,13 +150,23 @@ include 'includes/nav.php';
 
 
 
-            <div class="large-3 medium-3 small-12 columns hide-for-small-only">
+            <!--div class="large-3 medium-3 small-12 columns hide-for-small-only">
                 <div class="imgHolder">
                     <img src="img/promoImages/promo3.jpg" alt="Image of Sydney Harbour from Watsons Bay" />
                 </div>
                 <div class="textHolder">
                    <span>Itinerary</span>
                     <h5><a href="<?=$baseURL?>/docs/beyondthewharf-family.pdf" target="_blank">Sunday - Family Day</a></h5>
+                </div>
+            </div-->
+
+            <div class="large-3 medium-3 small-12 columns hide-for-small-only">
+                <div class="imgHolder">
+                    <img src="img/promoImages/after-dark-tours.jpg" alt="After Dark Tours." />
+                </div>
+                <div class="textHolder">
+                    <span>Experiences</span>
+                    <h5><a href="#" class="panelFlyoutTrigger" data-location="136" data-target="mapContainer" onclick="trackInternalLink('Photo credit panel - click', 'After dark tours'); return false;">After Dark Tours</a></h5>
                 </div>
             </div>
             <?php
@@ -280,13 +290,26 @@ $(function() {
         var route = target.attr('data-route');
         var routeClass = target.attr('data-class');
         var credit = target.attr('data-credit');
+        var creditURL = target.attr('data-url');
+        var dataLocationID = target.attr('data-location');
+        var dataTarget = target.attr('data-target');
+        var dataLinkType = target.attr('data-linkType');
+        var creditDirective = target.attr('data-directive');
 
         var creditHTML = '';
         creditHTML += '<span class="latLng">'+latlng+'</span>';
         creditHTML += '<span class="location">'+place+'</span>';
         creditHTML += '<span class="routes '+routeClass+'">'+route+'</span>';
         creditHTML += '<span class="credit">Photo by '+credit+'</span>';
-        creditHTML += '<span><a href="<?=$baseURL?>/gallery#featuredPhotographer">View more</a></span>';
+        if (dataLinkType == 'internal')
+        {
+            creditHTML += '<span><a href="'+creditURL+'" class="panelFlyoutTrigger" data-target="'+dataTarget+'" data-location="'+dataLocationID+'">'+creditDirective+'</a></span>';
+        }
+        else
+        {
+            creditHTML += '<span><a href="'+creditURL+'">'+creditDirective+'</a></span>';
+        }
+
 
         $('#featureCreditPanel').html(creditHTML);
         $('#featureImgHolder').removeAttr('style');
@@ -309,13 +332,13 @@ $(function() {
 
         var imgHTML = '';
         imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/'+folder+'bridgeSunset.jpg" data-latlng="33 50.682 S, 151 17.365 E" data-place="Watsons Bay" data-route="Eastern Suburbs" data-class="eastern" data-credit="Joel Coleman" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'bridgeSunset.jpg" data-url="<?=$baseURL?>/gallery#featuredPhotographer" data-directive="View more" data-latlng="33 50.682 S, 151 17.365 E" data-place="Watsons Bay" data-route="Eastern Suburbs" data-class="eastern" data-credit="Joel Coleman" />';
         imgHTML += '</li>';
         imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay.jpg" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards - Understand Down Under" />';
         imgHTML += '</li>';
         imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/'+folder+'ferries.jpg" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'ferries.jpg" data-url="<?=$baseURL?>/gallery#featuredPhotographer" data-directive="View more" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
         imgHTML += '</li>';
 
         $(imgHTML).appendTo('#featureImageCarousel');

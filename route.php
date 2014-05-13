@@ -95,7 +95,7 @@ $routeTiles = getRoutesSelectedTiles($routeId,$DB_SERVER, $DB_USERNAME, $DB_PASS
                     ?>
 
                     <h2 class="block clearfix text-left"><?=$routeContentHeader?></h2>
-                    <?=stripcslashes($routeContent)?>
+                    <?=stripcslashes(stripcslashes($routeContent))?>
                 </div>
             </div>
         </div>
