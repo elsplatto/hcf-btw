@@ -99,6 +99,10 @@ $(function () {
 
     function followSuccessHandler(data, el) {
         var obj = JSON.parse(data);
+        //var obj = data;
+
+        //console.log('[<?=$baseURL?>]');
+        //console.dir(data);
 
         if (obj.hasOwnProperty('meta')) {
             if (obj.meta.code === 200) {
@@ -117,6 +121,10 @@ $(function () {
 
     function unfollowSuccessHandler(data, el) {
         var obj = JSON.parse(data);
+        //var obj = data;
+
+        //console.log('[<?=$baseURL?>]');
+        //console.dir(data);
 
         if (obj.hasOwnProperty('meta')) {
             if (obj.meta.code === 200) {
@@ -225,8 +233,8 @@ $(function () {
     }
 
     function unLikeSuccessHandler(data) {
-        var obj = JSON.parse(data);
-
+        //var obj = JSON.parse(data);
+        var obj = data;
         if (obj.hasOwnProperty('meta')) {
             if (obj.meta.code === 200) {
                 //console.log('unlike server response successful');
@@ -239,7 +247,9 @@ $(function () {
     }
 
     function likeSuccessHandler(data) {
-        var obj = JSON.parse(data);
+        //var obj = JSON.parse(data);
+
+        var obj = data;
 
         if (obj.hasOwnProperty('meta')) {
             if (obj.meta.code === 200) {

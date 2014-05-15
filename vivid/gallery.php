@@ -220,9 +220,9 @@ if (isset($sharedPhoto))
         $tokenSet = false;
     }
 
-    $shotOfTheDayID = getShotOfTheDayID($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    //$shotOfTheDayID = getShotOfTheDayID($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
-    $shotOfTheDayResults = $instagram->getMedia($shotOfTheDayID, $tokenSet);
+    //$shotOfTheDayResults = $instagram->getMedia($shotOfTheDayID, $tokenSet);
 
 
 
@@ -249,90 +249,6 @@ if (isset($sharedPhoto))
     $count = 0;
 
 
-    if ($shotOfTheDayResults->meta->code == 200)
-    {
-
-        if ($instagramUserLoggedIn)
-        {
-            $blnUserLiked = $shotOfTheDayResults->data->user_has_liked;
-            if (isset($blnUserLiked))
-            {
-                if ($blnUserLiked) {
-                    $userLikedClass = ' userLikes';
-                    $likeURL = $baseURL . '/services/instagram-unlike-media.php?media_id='.$shotOfTheDayResults->data->id;
-                    $likeText = 'You like this media - click to unlike.';
-                }
-                else
-                {
-                    $userLikedClass = ' userNoLikes';
-                    $likeURL = $baseURL . '/services/instagram-like-media.php?media_id='.$shotOfTheDayResults->data->id;
-                    $likeText = 'Click to like.';
-                }
-
-            }
-        }
-        else
-        {
-            $likeURL = $baseURL . '/overlays/instagram-login.php?call_page='.$callbackURL;
-            $likeText = 'You are not logged in. Log in to like.';
-        }
-
-        /*Add video capability*/
-
-        if ($shotOfTheDayResults->data->type == 'video')
-        {
-            $videoClass = ' video';
-        }
-        else
-        {
-            $videoClass = '';
-        }
-        ?>
-
-        <div class="small-12 large-6 medium-6 columns right">
-            <div class="large-12 medium-12 small-12 insta">
-                <a href="<?=$instagramPicLink?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="reveal-init<?=$videoClass?>" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>"><img src="<?=$shotOfTheDayResults->data->images->standard_resolution->url?>" alt="<?=$shotOfTheDayResults->data->caption->text?>" /></a>
-                <a href="<?=$instagramCommentURL?>?media_id=<?=$shotOfTheDayResults->data->id?>" data-reveal-ajax="true" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"><span><?=$shotOfTheDayResults->data->comments->count?></span></a>
-                <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$shotOfTheDayResults->data->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$shotOfTheDayResults->data->id?>" data-likesCount="<?=$shotOfTheDayResults->data->likes->count?>" data-displayCount><?=likeNumberFormatter($shotOfTheDayResults->data->likes->count)?></span></a>
-                <div class="infoContainer">
-                    <div class="inner">
-
-                                <?php
-                                if (property_exists($shotOfTheDayResults->data,'location'))
-                                {
-                                    if (is_null($shotOfTheDayResults->data->location) || $shotOfTheDayResults->data->location == null)
-                                    {
-                                        echo '<span class="location">&nbsp;</span>';
-                                    }
-
-                                    else if (property_exists($shotOfTheDayResults->data->location,'name'))
-                                    {
-                                        echo '<span class="location">'.$shotOfTheDayResults->data->location->name.'</span>';
-                                    }
-                                    else if (property_exists($shotOfTheDayResults->data->location,'latitude') && property_exists($shotOfTheDayResults->data->location,'longitude') && !property_exists($shotOfTheDayResults->data->location,'name'))
-                                    {
-                                        echo '<span class="location raw">'.$shotOfTheDayResults->data->location->latitude . ' ,'. $shotOfTheDayResults->data->location->longitude.'</span>';
-                                    }
-
-                                }
-                                else
-                                {
-                                    echo '<span class="location">&nbsp;</span>';
-                                }
-                                ?>
-                        <span class="credit"><?=$shotOfTheDayResults->data->user->username?></span>
-
-                        <a href="https://twitter.com/share?url=<?=$baseURL?>/gallery/<?=$shotOfTheDayResults->data->id?>&text=Check out shot of the day&hashtag=vividsydney&count=none" class="twitter-share-button shot-of-day-tweet" data-lang="en">Tweet</a>
-                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-                        <span class="button green photo-of-the-day">Photo of the day</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php
-    }
-
     if ($instagramResults->meta->code == 200)
     {
         $post = $instagramResults->data;
@@ -342,7 +258,7 @@ if (isset($sharedPhoto))
         echo 'console.dir('.json_encode($post).')';
         echo '</script>';
 
-        $breakCount = 4;
+        $breakCount = 8;
 
         for ($i = 0; $i < $breakCount; $i++) {
 
@@ -684,11 +600,13 @@ $(function(){
         //console.log('['+maxId+']');
         var url = $(this).attr('href');
         var el = $(this);
+        var tag = 'vividsydney';
         $.ajax({
             type: 'POST',
             url: url,
             data: {
-                max_id: maxId
+                max_id: maxId,
+                tag: tag
             },
             dataType: 'json',
             cache: false,

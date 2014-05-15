@@ -51,6 +51,14 @@ include '../includes/nav.php';
 
               <div class="large-9 left">
                   <img src="<?=$baseURL?>/img/promoImages/vivid-lighting-boats.jpg" alt="Sydney ferries decorated with lights" />
+                  <div class="large-9 lightPurpleBackground paddingLeft32 paddingRight32 floated">
+                      <h3 class="block white">Harbour Lights</h3>
+                      <p>
+                          Many of the cruise vessels, ferries and water taxis that regularly travel around the harbour will become part of Vivid Lights this year when
+                          they are decorated with brilliant LED lights that change colour as they enter different parts of the harbour. These 'colour precincts' will be
+                          computer-controlled using Intel technology and the latest in sat-nav geo-positioning.
+                      </p>
+                  </div>
               </div>
           </div>
       </div>
@@ -58,7 +66,7 @@ include '../includes/nav.php';
   </div>
 </section>
 
-<section class="darkPurpleBackground paddingTopBottom20">
+<!--section class="darkPurpleBackground paddingTopBottom20">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Vivid App</h3>
         <div class="large-12 columns">
@@ -79,7 +87,7 @@ include '../includes/nav.php';
             </div>
         </div>
     </div>
-</section>
+</section-->
 
 <section class="lightPurpleBackground paddingTopBottom20">
     <div class="row marginBottom20">
@@ -87,12 +95,12 @@ include '../includes/nav.php';
         <div class="large-12">
             <div class="large-6 insta columns left">
                 <div class="large-12 left pinkBackground padding16 text-center">
-                    <img src="<?=$baseURL?>/img/gallery/vivid/pro/sample-01.jpg" alt="Example image" />
+                    <img src="<?=$baseURL?>/img/content/vivid-in-lights.jpg" alt="Night time photograph - Vivid spelt with lights" />
                     <div class="large-12 padding16 ultraDarkGrey">
                         <h4 class="block">FEATURED PROFESSIONAL PHOTOGRAPHER</h4>
                     </div>
                     <div class="large-12 paddingTop40 pinkBackground text-center">
-                        <a href="#" class="button">Go to Gallery</a>
+                        <a href="<?=$baseURL?>/vivid/gallery-pro" class="button">Go to Gallery</a>
                         <h4>Night photographer takes moon walks to <br />photograph <span class="block">VIVID</span></h4>
                     </div>
                 </div>
@@ -103,7 +111,7 @@ include '../includes/nav.php';
                 include '../includes/instagram-get-latest.php';
                 ?>
                 <div class="large-12 overflow paddingTop30 text-center">
-                    <a href="#" class="button">Go to Gallery</a>
+                    <a href="<?=$baseURL?>/vivid/gallery" class="button">Go to Gallery</a>
                     <h4 class="white"><span class="block">SHARE YOUR  EXPERIENCE</span> <br />Tag your instagram photos with <span class="block green">#VIVIDSYDNEY</span></h4>
                 </div>
             </div>
@@ -111,7 +119,7 @@ include '../includes/nav.php';
     </div>
 </section>
 
-<section class="darkPurpleBackground paddingTopBottom20">
+<!--section class="darkPurpleBackground paddingTopBottom20">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Instameet Event</h3>
         <div class="large-12 columns">
@@ -135,17 +143,49 @@ include '../includes/nav.php';
             </div>
         </div>
     </div>
-</section>
+</section-->
 
 <section class="darkPurpleBackground paddingTopBottom20">
+    <div class="row marginBottomStandard">
+        <h3 class="text-center">Night Photography Course</h3>
+        <div class="large-12 columns">
+            <div class="large-12 lightPurpleBackground">
+                <div class="large-12 padding32 overflow">
+                    <div class="large-6 left paddingRight32">
+                        <h2 class="block text-left">UDU NIGHT PHOTOGRAPHY CLASS</h2>
+                        <span>Make the most of VIVID festival by learning how to master night photography and long exposures. Enjoy the art of playing with light, and create magical images with writing and drawing or sublime studio style portraits... using only a torch!</span>
+                        <!--p class="paddingTop10">
+                            Lauren had already accumulated close to 345,000 followers, and travels around the world, posting photos on her Instagram account to a huge market audience and getting paid big bucks to do it.
+                        </p-->
+                        <h4 class="block text-center paddingTopBottom40">Duration: 90 Minutes <br />From AUD $50.00</h4>
+                        <p>
+                            Sessions are at 6:00pm or 8:00pm, Bookings are accepted through our easy to use online system.
+                        </p>
+                        <div class="large-12 text-center paddingTop20">
+                            <a href="https://udu.rezdy.com/25571/vivid-special-learn-night-photography" class="button orange"  rel="nofollow" onClick="trackOutboundLink('https://udu.rezdy.com/25571/vivid-special-learn-night-photography'); return false;">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="large-6 orangeBackground left padding32 text-center">
+                        <img src="<?=$baseURL?>/img/content/beyondthewharf-lights.jpg" alt="Beyond The Wharf spelt out with lights for Vivid Sydney 2014" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="darkPurpleBackground paddingTopBottom20 vividComp">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Competitions</h3>
         <div class="large-12 columns">
             <div class="large-6 medium-12 small-12 standardDarkGrey padding32 left fixedHeight33">
                 <h2 class="block text-left tightHeight">BEYOND THE WHARF VIVID PHOTO COMPETITION</h2>
-                <span>Details to come.</span>
+                <span>The competition runs between 23<sup>rd</sup> May 2014 to 9<sup>th</sup> June 2014.</span>
+                <p style="margin-top: 1rem">
+                    Take a great shot of VIVID SYDNEY 2014, share it on Instagram & WIN.
+                </p>
                 <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.
+                    Don't forget to check out our professional night <a href="#phototips">photography tips</a> and share your images with your friends to improve your chances.
                 </p>
                 <h4 class="white text-center">Submit your photos with to<br /> <span class="block">#VIVIDSYDNEY</span><br /> with Instagram to be in to win</h4>
                 <div class="large-12 text-center paddingTop20">
@@ -154,11 +194,11 @@ include '../includes/nav.php';
             </div>
 
             <div class="large-6 medium-12 small-12 pinkBackground padding32 right fixedHeight33 text-center">
-                <h2 class="block text-left tightHeight">WIN A CANON EOS1200D</h2>
-                <span class="white clearfix left">Details to come.</span>
-                <img src="<?=$baseURL?>/img/content/camera.jpg" class="paddingTopBottom20" style="display: block" alt="Canon EOS1200D" />
-                <h2 class="block text-left tightHeight">WEEKLY PRIZES TO WIN MARITIME MUSEUM TICKETS</h2>
-                <span class="white left">Details to come.</span>
+                <h2 class="block text-left tightHeight">WIN THE NEW CANON EOS 1200D</h2>
+                <span class="white clearfix left">THE EASY WAY TO CAPTURE MAGIC MOMENTS</span><br />
+                <img src="<?=$baseURL?>/img/content/camera.jpg" class="paddingTopBottom20 text-center" style="margin: 0 auto; display: block" alt="Canon EOS1200D" />
+                <h3 class="block text-left tightHeight">WEEKLY PRIZES TO WIN MARITIME MUSEUM TICKETS</h3>
+                <span class="white clearfix left text-left">In addition to the big prize we’ll be giving away weekly family passes to the Australian National Maritime Museum for the best family photo.</span>
             </div>
 
         </div>
@@ -190,6 +230,7 @@ include '../includes/nav.php';
 
 
 <section class="mapHolder lightPurpleBackground paddingTopBottom20">
+    <a name="phototips"></a>
     <div class="row marginBottomStandard">
         <h3 class="text-center">Vivid Sydney - Night Photography Tips</h3>
         <div class="large-12 columns">
@@ -262,7 +303,7 @@ include '../includes/nav.php';
     </div>
 </section>
 
-<section class="paddingTopBottom20 themeFeature">
+<!--section class="paddingTopBottom20 themeFeature">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Behind the Scenes</h3>
 
@@ -282,14 +323,14 @@ include '../includes/nav.php';
                     <img src="../img/themedPromos/ferryLights.jpg" alt="Harbour ferry with Vivid lighting." />
                     <div class="large-6 medium-6 small-6 themedPromoOverlay">
                         <a href="<?=$baseURL?>/overlays/show-video.php?src=//player.vimeo.com/video/87308642&title=Behind%20The%20Scenes" class="button red play tungsten small reveal-init" data-size="medium">Watch the video</a>
-                        <!--a href="http://localhost/~jasontaikato/hcf-btw/page/aboriginal-harbour-journeys" class="button wire white">Hear Tracey's Story</a-->
+
                     </div>
                 </div>
 
         </div>
 
     </div>
-</section>
+</section-->
 
 <?php
 include '../includes/footer.php';

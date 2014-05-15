@@ -180,6 +180,19 @@ video {
   .button.stdDarkGrey .social {
     margin-bottom: -0.1rem; }
 
+.button.block {
+  font-family: "Tungsten A", "Tungsten B" !important;
+  text-transform: uppercase; }
+
+.button.block.small {
+  font-size: 1.25rem !important; }
+
+.button.block.med {
+  font-size: 1.75rem !important; }
+
+.button.block.large {
+  font-size: 2.25rem !important; }
+
 .button.stdGreen {
   background-color: #30bda1;
   color: white;
@@ -350,6 +363,9 @@ h2.block, h3.block, h4.block {
   font-style: normal !important;
   text-transform: uppercase; }
 
+h3.block.white {
+  color: white !important; }
+
 h2.block {
   font-size: 3rem; }
 
@@ -410,9 +426,6 @@ p {
 
 .white90 {
   background-color: rgba(255, 255, 255, 0.9); }
-
-span ~ p {
-  padding-top: 1rem; }
 
 img.circle ~ span {
   display: block;
@@ -815,7 +828,8 @@ ul.arrowed {
   margin: 0 !important; }
   #featureImageCarousel li {
     float: left;
-    width: 100%; }
+    width: 100%;
+    height: auto !important; }
 
 .homepage.featureImgHolder {
   min-height: 43.077rem; }
@@ -1065,6 +1079,9 @@ ul.arrowed {
     background-repeat: no-repeat;
     background-position: center 18rem; }
 
+.proGallerySection img {
+  margin-bottom: 2rem; }
+
 .route-anchors a {
   color: #272e35;
   text-decoration: underline;
@@ -1200,6 +1217,50 @@ ul.arrowed {
 .textHolder.mariner:before {
   top: 0.75rem;
   right: 1rem; }
+
+.headerText {
+  height: auto;
+  margin: 0 auto;
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  margin: 0 auto; }
+  .headerText .text-center {
+    text-align: center; }
+  .headerText .inner.text-left h2 {
+    text-align: left; }
+  .headerText .inner.text-left hr {
+    margin: 0; }
+  .headerText .inner {
+    max-width: 75rem !important;
+    margin: 0 auto;
+    padding: 0 1.25rem; }
+    .headerText .inner hr {
+      position: relative;
+      border: none;
+      margin: 0 auto;
+      width: 12.5rem;
+      height: 0.938rem; }
+      .headerText .inner hr:after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 12.5rem;
+        height: 0.938rem;
+        background-image: url("img/icons.png");
+        background-position: -82px -88px; }
+    .headerText .inner h2 {
+      font-size: 4rem;
+      line-height: 4.25rem;
+      margin: 0; }
+    .headerText .inner h2.sub {
+      font-size: 2rem;
+      line-height: 2.25rem;
+      margin: 0; }
+    .headerText .inner h3 {
+      font-size: 1.5rem;
+      color: white; }
 
 .featureImgHolder.child:before, .featureImgHolder.ancestral:before, .featureImgHolder.entertainer:before, .featureImgHolder.mariner:before {
   display: none;
@@ -2304,29 +2365,31 @@ img.circle {
     width: 1.308rem;
     height: 1.231rem; }
 
-  #photoHolder01 div a.comments, #photoHolder01 div a.likes, #photoHolder2 div a.comments, #photoHolder2 div a.likes, .galleryHolder div a.comments, .galleryHolder div a.likes {
+  a.comments, a.likes {
     padding: 0.5rem 0 0 0; }
-    #photoHolder01 div a.comments span, #photoHolder01 div a.likes span, #photoHolder2 div a.comments span, #photoHolder2 div a.likes span, .galleryHolder div a.comments span, .galleryHolder div a.likes span {
+    a.comments span, a.likes span {
       font-size: 1.15rem; }
-  #photoHolder01 div a.comments, #photoHolder2 div a.comments, .galleryHolder div a.comments {
+
+  a.comments {
     right: 0.6em;
     width: 2.5rem;
     height: 2.5rem; }
-    #photoHolder01 div a.comments:before, #photoHolder2 div a.comments:before, .galleryHolder div a.comments:before {
+    a.comments:before {
       width: 2.5rem;
       height: 2.5rem;
       background-position: 0 0; }
-    #photoHolder01 div a.comments:hover:before, #photoHolder2 div a.comments:hover:before, .galleryHolder div a.comments:hover:before {
+    a.comments:hover:before {
       background-position: -42px 0; }
-  #photoHolder01 div a.likes, #photoHolder2 div a.likes, .galleryHolder div a.likes {
+
+  a.likes {
     right: 3.5rem;
     width: 2.5rem;
     height: 2.5rem; }
-    #photoHolder01 div a.likes:before, #photoHolder2 div a.likes:before, .galleryHolder div a.likes:before {
+    a.likes:before {
       width: 2.5rem;
       height: 2.5rem;
       background-position: 0 -33px; }
-    #photoHolder01 div a.likes:hover:before, #photoHolder2 div a.likes:hover:before, .galleryHolder div a.likes:hover:before {
+    a.likes:hover:before {
       background-position: -41px -33px; }
 
   .themeFeature .themedPromoText a.button {
@@ -2400,6 +2463,18 @@ img.circle {
     .featureImgHolder .headerHolder hr:after {
       width: 15.25rem;
       height: 1rem; }
+
+  .headerText {
+    top: 15%; }
+    .headerText .inner hr {
+      width: 15.25rem;
+      height: 1rem;
+      margin: 0.5rem auto; }
+      .headerText .inner hr:after {
+        width: 15.25rem;
+        height: 1rem; }
+    .headerText .inner.text-left hr {
+      margin: 0; }
 
   .instagram.small:before {
     width: 1.3rem;
@@ -2498,6 +2573,33 @@ img.circle {
           background-image: url("img/icons.png");
           background-position: -954px -217px; }
 
+  a.comments, a.likes {
+    padding: 0.5rem 0 0 0; }
+    a.comments span, a.likes span {
+      font-size: 1.15rem; }
+
+  a.comments {
+    right: 0.6em;
+    width: 2.5rem;
+    height: 2.5rem; }
+    a.comments:before {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-position: 0 0; }
+    a.comments:hover:before {
+      background-position: -42px 0; }
+
+  a.likes {
+    right: 3.5rem;
+    width: 2.5rem;
+    height: 2.5rem; }
+    a.likes:before {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-position: 0 -33px; }
+    a.likes:hover:before {
+      background-position: -41px -33px; }
+
   .navHolder nav.top-bar {
     display: none; }
 
@@ -2520,6 +2622,19 @@ img.circle {
       width: 10.462rem;
       height: 0.769rem;
       background-position: -82px -71px; }
+
+  .headerText {
+    top: 15%; }
+    .headerText .inner hr {
+      width: 10.462rem;
+      height: 0.769rem;
+      margin: 0.5rem auto; }
+      .headerText .inner hr:after {
+        width: 10.462rem;
+        height: 0.769rem;
+        background-position: -82px -71px; }
+    .headerText .inner.text-left hr {
+      margin: 0; }
 
   #mapControlPanelHolder {
     display: none; }
@@ -2669,6 +2784,19 @@ img.circle {
         height: 0.769rem;
         background-position: -82px -71px; }
 
+  .headerText {
+    top: 5%; }
+    .headerText .inner hr {
+      width: 10.462rem;
+      height: 0.769rem;
+      margin: 0.5rem auto; }
+      .headerText .inner hr:after {
+        width: 10.462rem;
+        height: 0.769rem;
+        background-position: -82px -71px; }
+    .headerText .inner.text-left hr {
+      margin: 0; }
+
   .navHolder nav.top-bar .title-area .name {
     height: 4rem; }
     .navHolder nav.top-bar .title-area .name h1 {
@@ -2691,29 +2819,31 @@ img.circle {
     .featureImgHolder.child .headerHolder span.child, .featureImgHolder.child .headerHolder span.ancestral, .featureImgHolder.child .headerHolder span.entertainer, .featureImgHolder.child .headerHolder span.mariner, .featureImgHolder.ancestral .headerHolder span.child, .featureImgHolder.ancestral .headerHolder span.ancestral, .featureImgHolder.ancestral .headerHolder span.entertainer, .featureImgHolder.ancestral .headerHolder span.mariner, .featureImgHolder.entertainer .headerHolder span.child, .featureImgHolder.entertainer .headerHolder span.ancestral, .featureImgHolder.entertainer .headerHolder span.entertainer, .featureImgHolder.entertainer .headerHolder span.mariner, .featureImgHolder.mariner .headerHolder span.child, .featureImgHolder.mariner .headerHolder span.ancestral, .featureImgHolder.mariner .headerHolder span.entertainer, .featureImgHolder.mariner .headerHolder span.mariner {
       display: none; }
 
-  #photoHolder01 div a.comments, #photoHolder01 div a.likes, #photoHolder2 div a.comments, #photoHolder2 div a.likes, .galleryHolder div a.comments, .galleryHolder div a.likes {
+  a.comments, a.likes {
     padding: 0.5rem 0 0 0; }
-    #photoHolder01 div a.comments span, #photoHolder01 div a.likes span, #photoHolder2 div a.comments span, #photoHolder2 div a.likes span, .galleryHolder div a.comments span, .galleryHolder div a.likes span {
+    a.comments span, a.likes span {
       font-size: 1.15rem; }
-  #photoHolder01 div a.comments, #photoHolder2 div a.comments, .galleryHolder div a.comments {
+
+  a.comments {
     right: 0.6em;
     width: 2.5rem;
     height: 2.5rem; }
-    #photoHolder01 div a.comments:before, #photoHolder2 div a.comments:before, .galleryHolder div a.comments:before {
+    a.comments:before {
       width: 2.5rem;
       height: 2.5rem;
       background-position: 0 0; }
-    #photoHolder01 div a.comments:hover:before, #photoHolder2 div a.comments:hover:before, .galleryHolder div a.comments:hover:before {
+    a.comments:hover:before {
       background-position: -42px 0; }
-  #photoHolder01 div a.likes, #photoHolder2 div a.likes, .galleryHolder div a.likes {
+
+  a.likes {
     right: 3.5rem;
     width: 2.5rem;
     height: 2.5rem; }
-    #photoHolder01 div a.likes:before, #photoHolder2 div a.likes:before, .galleryHolder div a.likes:before {
+    a.likes:before {
       width: 2.5rem;
       height: 2.5rem;
       background-position: 0 -33px; }
-    #photoHolder01 div a.likes:hover:before, #photoHolder2 div a.likes:hover:before, .galleryHolder div a.likes:hover:before {
+    a.likes:hover:before {
       background-position: -41px -33px; }
 
   .insta a.video:before, .eventFeature a.video:before {

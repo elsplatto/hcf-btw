@@ -58,21 +58,37 @@ $instagramLoginURL = $instagram->getLoginUrl(array('basic','likes','relationship
 
 if ($instagramUserLoggedIn)
 {
-    $instagramCommentURL = 'overlays/instagram-comment.php';
+    $instagramCommentURL = $baseURL . '/overlays/instagram-comment.php';
     $instagramCommentOverlaySize = 'large';
     $instagramLikeURL = '#';
     $instagramLikeOverlaySettings = '';
     $userLikedClass = '';
 } else {
-    $instagramCommentURL = 'overlays/instagram-login.php';
+    $instagramCommentURL = $baseURL . '/overlays/instagram-login.php';
     $instagramCommentOverlaySize = 'small';
-    $instagramLikeURL = 'overlays/instagram-login.php';
+    $instagramLikeURL = $baseURL . '/overlays/instagram-login.php';
     $instagramLikeOverlaySettings = ' data-reveal-ajax="true"';
     $userLikedClass = ' reveal-init';
 }
 
 $count = 0;
 
+if (!isset($instaMaxCount))
+{
+    $instaMaxCount = 4;
+}
+
+
+if (!isset($instaFeature))
+{
+    $instaFeature = false;
+    $instaMaxCount = 4;
+}
+
+if ($instaFeature == true)
+{
+    $instaMaxCount = 5;
+}
 
 
 if ($instagramResults->meta->code == 200)
@@ -83,7 +99,7 @@ if ($instagramResults->meta->code == 200)
 
             $count++;
             array_push($photographerList, $photographerID);
-            if ($count < 5)
+            if ($count <= $instaMaxCount)
             {
                 if ($instagramUserLoggedIn)
                 {
@@ -93,13 +109,13 @@ if ($instagramResults->meta->code == 200)
                     {
                         if ($blnUserLiked) {
                             $userLikedClass = ' userLikes';
-                            $likeURL = 'services/instagram-unlike-media.php?media_id='.$post->id;
+                            $likeURL = $baseURL . '/services/instagram-unlike-media.php?media_id='.$post->id;
                             $likeText = 'You like this media - click to unlike.';
                         }
                         else
                         {
                             $userLikedClass = ' userNoLikes';
-                            $likeURL = 'services/instagram-like-media.php?media_id='.$post->id;
+                            $likeURL = $baseURL . '/services/instagram-like-media.php?media_id='.$post->id;
                             $likeText = 'Click to like.';
                         }
 
@@ -107,7 +123,7 @@ if ($instagramResults->meta->code == 200)
                 }
                 else
                 {
-                    $likeURL = 'overlays/instagram-login.php';
+                    $likeURL = $baseURL . '/overlays/instagram-login.php';
                     $likeText = 'You are not logged in. Log in to like.';
                 }
 
@@ -119,11 +135,33 @@ if ($instagramResults->meta->code == 200)
                 {
                     $videoClass = '';
                 }
+
+                if ($instaFeature == true && $count == 1)
+                {
+                    $classList = 'small-12 medium-6 large-6';
+                }
+                else if ($instaFeature == true && $count > 1)
+                {
+                    $classList = 'small-12 medium-6 large-3';
+                }
+                else
+                {
+                    $classList = 'small-6 medium-3 large-6';
+                }
                 ?>
 
-                <div class="small-6 medium-6 large-6 columns">
+                <div class="<?=$classList?> columns">
                     <div class="small-12 large-12 insta">
-                        <a href="<?=$instagramPicLink?>?media_id=<?=$post->id?>" data-reveal-ajax="true" class="reveal-init<?=$videoClass?>" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>"><img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" /></a>
+                        <a href="<?=$instagramPicLink?>?media_id=<?=$post->id?>" data-reveal-ajax="true" class="reveal-init<?=$videoClass?>" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>"><?php
+                        if ($instaFeature == true && $count == 1)
+                        {
+                            ?><img src="<?=$post->images->standard_resolution->url?>" alt="<?=$post->caption->text?>" /><?php
+                        }
+                        else
+                        {
+                            ?><img src="<?=$post->images->low_resolution->url?>" alt="<?=$post->caption->text?>" /><?php
+                        }
+                            ?></a>
                         <a href="<?=$instagramCommentURL?>?media_id=<?=$post->id?>" class="comments reveal-init" data-size="<?=$instagramCommentOverlaySize?>" data-mediaId="<?=$post->id?>" role="button"><span><?=$post->comments->count?></span></a>
                         <a href="<?=$instagramLikeURL?>" data-url="<?=$likeURL?>" class="likes<?=$userLikedClass?>" title="<?=$likeText?>" data-mediaId="<?=$post->id?>" role="button"<?=$instagramLikeOverlaySettings?>><span data-mediaId="<?=$post->id?>" data-likesCount="<?=$post->likes->count?>" data-displayCount><?=likeNumberFormatter($post->likes->count)?></span></a>
                         <div class="infoContainer">

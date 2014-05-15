@@ -71,7 +71,7 @@ if (isset($_GET['killCookie']))
     if ($pageSection == 'vivid')
     {
     ?>
-        <link rel="stylesheet" href="<?=$baseURL?>/css/vivd.css" />
+        <link rel="stylesheet" href="<?=$baseURL?>/css/vivid.css" />
     <?php
     }
 

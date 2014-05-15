@@ -10,6 +10,11 @@ if (isset($_POST['max_id']))
     $maxID = $_POST['max_id'];
 }
 
+if (isset($_POST['tag']))
+{
+    $tag = $_POST['tag'];
+}
+
 if (isset($instagramData))
 {
     $instagram->setAccessToken($instagramData);

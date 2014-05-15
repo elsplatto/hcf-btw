@@ -26,7 +26,15 @@ include 'includes/nav.php';
                     bullets: false;
                     slide_number: false;">
         <li>
-            <img src="img/featureImages/lightPlay-2.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards, Understand Down Under" />
+            <img src="img/featureImages/bridgeSunset.jpg" data-url="<?=$baseURL?>/gallery#featuredPhotographer" data-directive="View more" data-latlng="33 50.682 S, 151 17.365 E" data-place="Watsons Bay" data-route="Eastern Suburbs" data-class="eastern" data-credit="Joel Coleman" />
+            <div class="headerText">
+                <div class="inner text-center">
+                    <h2 class="sub">Secrets</h2>
+                    <h2>Beyond the Wharf</h2>
+                    <hr />
+                    <h3>Discover. Share. Experience.</h3>
+                </div>
+            </div>
         </li>
 
     </ul>
@@ -42,14 +50,14 @@ include 'includes/nav.php';
                     bullets: false;
                     slide_number: false;">
         <li>
-            <img src="img/featureImages/phone/lightPlay-2.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards, Understand Down Under" />
+            <img src="img/featureImages/phone/bridgeSunset.jpg" data-url="<?=$baseURL?>/gallery#featuredPhotographer" data-directive="View more" data-latlng="33 50.682 S, 151 17.365 E" data-place="Watsons Bay" data-route="Eastern Suburbs" data-class="eastern" data-credit="Joel Coleman" />
         </li>
 
     </ul>
     <?php
     }
     ?>
-    <div class="headerHolder">
+    <!--div class="headerHolder">
 
 
 
@@ -57,7 +65,7 @@ include 'includes/nav.php';
         <h2>Beyond the Wharf</h2>
         <hr />
         <h3>Discover. Share. Experience.</h3>
-    </div>
+    </div-->
     <a href="#" id="creditToggle" data-target="featureCreditPanel" class="triggerContainer" title="Click here for photo credits">
         <div class="flip-container">
             <div class="flipper">
@@ -282,6 +290,10 @@ $(function() {
     loadHomeImages();
     fetchTweets();
 
+    /*$('#featureImageCarousel li').click(function(e) {
+        loadHomeImages();
+    });*/
+
     $("#featureImageCarousel").on("after-slide-change.fndtn.orbit", function(event, orbit) {
 
         var target = $('#featureImageCarousel li.active img');
@@ -330,15 +342,41 @@ $(function() {
         }
         ?>
 
+
+
         var imgHTML = '';
         imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/'+folder+'bridgeSunset.jpg" data-url="<?=$baseURL?>/gallery#featuredPhotographer" data-directive="View more" data-latlng="33 50.682 S, 151 17.365 E" data-place="Watsons Bay" data-route="Eastern Suburbs" data-class="eastern" data-credit="Joel Coleman" />';
-        imgHTML += '</li>';
-        imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards - Understand Down Under" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay-2.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards, Understand Down Under" />';
+        imgHTML += '<div class="headerText">';
+        imgHTML += '<div class="inner text-left">';
+        imgHTML += '<h2 class="sub">Secrets</h2>';
+        imgHTML += '<h2>Beyond the Wharf</h2>';
+        imgHTML += '<hr />';
+        imgHTML += '<h3>Discover. Share. Experience.</h3>';
+        imgHTML += '</div>';
+        imgHTML += '</div>';
         imgHTML += '</li>';
         imgHTML += '<li>';
         imgHTML += '<img src="img/featureImages/'+folder+'ferries.jpg" data-url="<?=$baseURL?>/gallery#featuredPhotographer" data-directive="View more" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
+        imgHTML += '<div class="headerText">';
+        imgHTML += '<div class="inner text-left">';
+        imgHTML += '<h2 class="sub">Secrets</h2>';
+        imgHTML += '<h2>Beyond the Wharf</h2>';
+        imgHTML += '<hr />';
+        imgHTML += '<h3>Discover. Share. Experience.</h3>';
+        imgHTML += '</div>';
+        imgHTML += '</div>';
+        imgHTML += '</li>';
+        imgHTML += '<li>';
+        imgHTML += '<div class="headerText">';
+        imgHTML += '<div class="inner text-left">';
+        imgHTML += '<h2 class="sub">Secrets</h2>';
+        imgHTML += '<h2>Beyond the Wharf</h2>';
+        imgHTML += '<hr />';
+        imgHTML += '<h3>Discover. Share. Experience.</h3>';
+        imgHTML += '</div>';
+        imgHTML += '</div>';
+        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards - Understand Down Under" />';
         imgHTML += '</li>';
 
         $(imgHTML).appendTo('#featureImageCarousel');

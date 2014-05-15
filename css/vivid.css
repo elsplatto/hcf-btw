@@ -62,6 +62,9 @@
   .photoTips .orbit-container .orbit-prev {
     left: 0; }
 
+.vividComp p:first-child {
+  margin-top: 1rem !important; }
+
 .photoTipsNav {
   padding: 2rem 1rem; }
 
@@ -127,6 +130,11 @@
   padding-top: 2rem;
   font-family: "Inconsolata", sans-serif !important;
   font-weight: 700; }
+.vividPromo .floated {
+  position: absolute;
+  z-index: 20;
+  bottom: 2rem;
+  right: 2rem; }
 
 @media only screen and (min-width: 40.063em) and (max-width: 64em), (max-width: 74.938em) {
   .photoTips.setHeight, .photoTipsNav.setHeight {
@@ -140,3 +148,25 @@
       .photoTips ul li p {
         font-size: 1rem;
         line-height: 1.5rem; } }
+@media only screen and (max-width: 60.313em) {
+  .vividPromo .infoRibbon {
+    position: absolute; }
+  .vividPromo h3.block span {
+    font-family: inherit !important; }
+  .vividPromo .floated {
+    position: relative; }
+
+  .photoTips.setHeight, .photoTipsNav.setHeight {
+    height: auto;
+    overflow: hidden; } }
+@media only screen and (max-width: 40em) {
+  .vividPromo .infoRibbon {
+    position: absolute; }
+  .vividPromo h3.block span {
+    font-family: inherit !important; }
+  .vividPromo .floated {
+    position: relative; }
+
+  .photoTips.setHeight, .photoTipsNav.setHeight {
+    height: auto;
+    overflow: hidden; } }

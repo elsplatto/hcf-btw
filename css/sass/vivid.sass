@@ -85,6 +85,10 @@ $std-dark-grey: rgba(39, 46, 53, 1)
     .orbit-prev
       left: 0
 
+.vividComp
+  p:first-child
+    margin-top: 1rem !important
+
 .photoTipsNav
   padding: 2rem 1rem
 
@@ -157,7 +161,11 @@ $std-dark-grey: rgba(39, 46, 53, 1)
       padding-top: 2rem
       font-family: $inconsolata
       font-weight: 700
-
+  .floated
+    position: absolute
+    z-index: 20
+    bottom: 2rem
+    right: 2rem
 
 
 
@@ -177,7 +185,32 @@ $std-dark-grey: rgba(39, 46, 53, 1)
           line-height: 1.5rem
 
 //manage screens between phone and tablet
-//@media only screen and (max-width: 60.313em)
+@media only screen and (max-width: 60.313em)
 
+  .vividPromo
+    .infoRibbon
+      position: absolute
+    h3.block
+      span
+        font-family: inherit !important
+    .floated
+      position: relative
 
-//@media only screen and (max-width: 40em)
+  .photoTips.setHeight, .photoTipsNav.setHeight
+    height: auto
+    overflow: hidden
+
+@media only screen and (max-width: 40em)
+
+  .vividPromo
+    .infoRibbon
+      position: absolute
+    h3.block
+      span
+        font-family: inherit !important
+    .floated
+      position: relative
+
+  .photoTips.setHeight, .photoTipsNav.setHeight
+    height: auto
+    overflow: hidden

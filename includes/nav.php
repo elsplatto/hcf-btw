@@ -63,7 +63,7 @@ function getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
                     <li><a href="<?=$baseURL?>/events">Events</a></li>
                     <li><a href="<?=$baseURL?>/gallery">Gallery</a></li>
                     <li><a href="<?=$baseURL?>/page/local-insights">Local Insights</a></li>
-                    <li><a href="<?=$baseURL?>/vivid" class="vivid">Vivid</a></li>
+                    <!--li><a href="<?=$baseURL?>/vivid" class="vivid">Vivid</a></li-->
                 </ul>
             </aside>
 
@@ -128,7 +128,7 @@ function getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
                                 <li><a href="<?=$baseURL?>/events">Events</a></li>
                                 <li><a href="<?=$baseURL?>/gallery">Gallery</a></li>
                                 <li><a href="<?=$baseURL?>/page/local-insights">Local Insights</a></li>
-                                <li><a href="<?=$baseURL?>/vivid" class="vivid">Vivid</a></li>
+                                <!--li><a href="<?=$baseURL?>/vivid" class="vivid">Vivid</a></li-->
                             </ul>
 
 
