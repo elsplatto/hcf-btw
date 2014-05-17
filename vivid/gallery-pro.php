@@ -39,31 +39,29 @@ include '../includes/nav.php';
 
     <div class="row">
 
+
         <div class="small-12 medium-6 large-6 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-2014.jpg" alt="Vivid!" />
         </div>
 
         <div class="small-12 medium-6 large-3 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-btw.jpg" alt="Beyond the wharf" />
         </div>
 
         <div class="small-12 medium-6 large-3 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-light-streams.jpg" alt="Light waves" />
         </div>
 
-
-        <div class="small-12 medium-6 large-6 columns right">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
-        </div>
-
-
-
-        <div class="small-12 medium-6 large-3 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+        <div class="small-12 medium-6 large-6 right columns">
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-angel-family.jpg" alt="Angel wings" />
         </div>
 
         <div class="small-12 medium-6 large-3 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-light-ferries.jpg" alt="Boats drawn with light" />
+        </div>
+
+        <div class="small-12 medium-6 large-3 columns">
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-light-ferries02.jpg" alt="Light play on harbour" />
         </div>
 
     </div>
@@ -103,23 +101,24 @@ include '../includes/nav.php';
     <div class="row">
 
         <div class="small-12 medium-6 large-6 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-light-streams03.jpg" alt="Light streams" />
         </div>
 
 
         <div class="small-12 medium-6 large-6 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-zak.jpg" alt="ZAK" />
         </div>
 
 
         <div class="small-12 medium-6 large-6 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-double-family.jpg" alt="Family and City" />
         </div>
 
 
         <div class="small-12 medium-6 large-6 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-angels.jpg" alt="Angels" />
         </div>
+
     </div>
 </section>
 
@@ -190,23 +189,14 @@ include '../includes/nav.php';
     <div class="row">
 
         <div class="small-12 medium-6 large-6 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-light-writing01.jpg" alt="SYDNEY!!" />
         </div>
 
 
         <div class="small-12 medium-6 large-6 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
+            <img src="<?=$baseURL?>/img/gallery/vivid/pro/vivid-sydney-btwvivid.jpg" alt="#BTWVIVID" />
         </div>
 
-
-        <div class="small-12 medium-6 large-6 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
-        </div>
-
-
-        <div class="small-12 medium-6 large-6 columns">
-            <img src="../img/gallery/vivid/pro/sample-01.jpg" alt="Vivid" />
-        </div>
     </div>
 </section>
 

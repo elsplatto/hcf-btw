@@ -68,7 +68,7 @@ if (isset($_GET['killCookie']))
     <link rel="stylesheet" href="<?=$baseURL?>/css/foundation.css" />
     <link rel="stylesheet" href="<?=$baseURL?>/css/style.css" />
     <?php
-    if ($pageSection == 'vivid')
+    if (strpos($pageSection,'vivid') !== false)
     {
     ?>
         <link rel="stylesheet" href="<?=$baseURL?>/css/vivid.css" />

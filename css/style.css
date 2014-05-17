@@ -288,6 +288,9 @@ span {
   color: #59acb3;
   font-size: 0.839rem; }
 
+span.spreadMed {
+  line-height: 1.5rem; }
+
 span.white {
   color: white !important; }
 
@@ -2794,6 +2797,15 @@ img.circle {
         width: 10.462rem;
         height: 0.769rem;
         background-position: -82px -71px; }
+    .headerText .inner h2 {
+      font-size: 2rem;
+      line-height: 2.25rem; }
+    .headerText .inner h2.sub {
+      font-size: 1.25rem;
+      line-height: 1.5rem; }
+    .headerText .inner h3 {
+      font-size: 1rem;
+      line-height: 1.25rem; }
     .headerText .inner.text-left hr {
       margin: 0; }
 

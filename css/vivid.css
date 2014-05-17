@@ -59,11 +59,29 @@
     .photoTips ul li p {
       font-size: 1.75rem;
       line-height: 2.5rem; }
-  .photoTips .orbit-container .orbit-prev {
-    left: 0; }
+  .photoTips .orbit-container {
+    overflow: visible !important; }
+    .photoTips .orbit-container .orbit-prev {
+      left: 0; }
+    .photoTips .orbit-container .orbit-bullets-container {
+      margin-top: -2.5rem; }
+      .photoTips .orbit-container .orbit-bullets-container .orbit-bullets {
+        margin: 0 auto; }
+        .photoTips .orbit-container .orbit-bullets-container .orbit-bullets li {
+          background-color: white;
+          margin-right: 1rem;
+          height: 0.83rem;
+          width: 0.83rem; }
+        .photoTips .orbit-container .orbit-bullets-container .orbit-bullets .active {
+          background-color: #4d3373; }
+
+.touch .photoTips .orbit-bullets {
+  display: inline-block; }
 
 .vividComp p:first-child {
   margin-top: 1rem !important; }
+.vividComp .setHeight {
+  height: 35rem; }
 
 .photoTipsNav {
   padding: 2rem 1rem; }
@@ -147,7 +165,10 @@
       height: inherit; }
       .photoTips ul li p {
         font-size: 1rem;
-        line-height: 1.5rem; } }
+        line-height: 1.5rem; }
+
+  .vividComp .setHeight {
+    height: 40rem; } }
 @media only screen and (max-width: 60.313em) {
   .vividPromo .infoRibbon {
     position: absolute; }
@@ -158,7 +179,10 @@
 
   .photoTips.setHeight, .photoTipsNav.setHeight {
     height: auto;
-    overflow: hidden; } }
+    overflow: hidden; }
+
+  .vividComp .setHeight {
+    height: auto; } }
 @media only screen and (max-width: 40em) {
   .vividPromo .infoRibbon {
     position: absolute; }
@@ -169,4 +193,7 @@
 
   .photoTips.setHeight, .photoTipsNav.setHeight {
     height: auto;
-    overflow: hidden; } }
+    overflow: hidden; }
+
+  .vividComp .setHeight {
+    height: auto; } }

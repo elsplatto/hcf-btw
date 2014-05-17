@@ -1,6 +1,6 @@
 <?php
-$pageMetaTitle = "Gallery - Great photos from around the harbour.";
-$pageSection = "gallery";
+$pageMetaTitle = "Vivid Gallery - Great photos from around the harbour.";
+$pageSection = "vividGallery";
 $pageMetaDesc = "Submit, share and view your photos of Sydney Harbour.";
 $pageMetaKeywords = "Sydney, photos, gallery, harbour, experiences";
 include '../includes/head.php';
@@ -371,76 +371,45 @@ if (isset($sharedPhoto))
     </div>
 </section>
 
-<section id="featuredPhotographer" class="featurePhotographerHolder standardLightGrey">
-    <div class="row paddingBottom40">
-        <div class="large-12 columns marginTop40">
-            <h3 class="text-center" style="margin-bottom: 0">Featured Photographer - Joel Coleman (Saltmotion)</h3>
-            <h4 class="text-center">Visit <a href="http://saltmotion.com" target="_blank" rel="nofollow" class="underline">Saltmotion</a></h4>
+<section class="lightPurpleBackground paddingTopBottom20">
+    <div class="row marginBottom20">
+        <h3 class="text-center galleryTitle">Featured Photographer, Andy Richards - <a href="http://www.udu.com.au/" style="color: #fff; text-decoration: underline" target="_blank">Understand Down Under</a></h3>
+        <div class="large-12">
+            <div class="large-6 insta columns left">
+                <div class="large-12 left text-center">
+                    <img src="<?=$baseURL?>/img/gallery/vivid/preview/vivid-sydney-03.jpg" alt="Cityscape at night" />
+                </div>
+            </div>
+
+            <div class="small-6 medium-3 large-3 columns">
+                <div class="small-12 medium-12 large-12 insta">
+                    <img src="<?=$baseURL?>/img/gallery/vivid/preview/vivid-sydney-01.jpg" alt="Light waves" />
+                </div>
+            </div>
+            <div class="small-6 medium-3 large-3 columns">
+                <div class="small-12 medium-12 large-12 insta">
+                    <img src="<?=$baseURL?>/img/gallery/vivid/preview/vivid-sydney-02.jpg" alt="Light waves" />
+                </div>
+            </div>
+            <div class="small-6 medium-3 large-3 columns">
+                <div class="small-12 medium-12 large-12 insta">
+                    <img src="<?=$baseURL?>/img/gallery/vivid/preview/vivid-sydney-04.jpg" alt="City light play" />
+                </div>
+            </div>
+            <div class="small-6 medium-3 large-3 columns">
+                <div class="small-12 medium-12 large-12 insta">
+                    <img src="<?=$baseURL?>/img/gallery/vivid/preview/vivid-sydney-05.jpg" alt="Angel girl" />
+                </div>
+            </div>
         </div>
-
-
-            <div class="small-12 medium-6 large-6 columns left">
-                <div class="large-12 medium-12 small-12 insta">
-                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/gallery/?competitionId=1" id="competitionPromo" class="reveal-init" data-size="small"><img src="<?=$baseURL?>/img/featuredPhotographer/medium/competition-1.jpg" alt="Click here to enter photo competition." /></a>
-                </div>
-            </div>
-
-            <div class="small-6 medium-3 large-3 columns">
-                <div class="small-12 medium-12 medium-12 large-12 insta">
-                    <img src="<?=$baseURL?>/img/featuredPhotographer/small/surfboards.jpg" alt="Ocean Scene" />
-                    <div class="infoContainer">
-                        <div class="inner">
-                            <span class="location">Manly</span>
-                            <span class="credit">Joel Coleman</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="small-6 medium-3 large-3 columns">
-                <div class="small-12 medium-12 large-12 insta">
-                    <img src="<?=$baseURL?>/img/featuredPhotographer/small/water1.jpg" alt="Ocean Scene" />
-                    <div class="infoContainer">
-                        <div class="inner">
-                            <span class="location">Sydney Harbour</span>
-                            <span class="credit">Joel Coleman</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="small-6 medium-3 large-3 columns">
-                <div class="small-12 medium-12 large-12 insta">
-                    <img src="<?=$baseURL?>/img/featuredPhotographer/small/splash.jpg" alt="Ocean Scene" />
-                    <div class="infoContainer">
-                        <div class="inner">
-                            <span class="location">Manly Beach</span>
-                            <span class="credit">Joel Coleman</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="small-6 medium-3 large-3 columns">
-                <div class="small-12 medium-12 large-12 insta">
-                    <img src="<?=$baseURL?>/img/featuredPhotographer/small/dolphin.jpg" alt="Ocean Scene" />
-                    <div class="infoContainer">
-                        <div class="inner">
-                            <span class="location">Sydney Harbour</span>
-                            <span class="credit">Joel Coleman</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="large-12 overflow paddingTop40 text-center">
+            <a href="<?=$baseURL?>/vivid/gallery-pro" class="button">Go to Gallery</a>
+            <h4>Night photographer Andy Richards & Understand Down Under</h4>
         </div>
-
-
+    </div>
 </section>
+
+
 
 
 

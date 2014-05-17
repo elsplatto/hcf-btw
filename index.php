@@ -51,6 +51,14 @@ include 'includes/nav.php';
                     slide_number: false;">
         <li>
             <img src="img/featureImages/phone/bridgeSunset.jpg" data-url="<?=$baseURL?>/gallery#featuredPhotographer" data-directive="View more" data-latlng="33 50.682 S, 151 17.365 E" data-place="Watsons Bay" data-route="Eastern Suburbs" data-class="eastern" data-credit="Joel Coleman" />
+            <div class="headerText">
+                <div class="inner text-center">
+                    <h2 class="sub">Secrets</h2>
+                    <h2>Beyond the Wharf</h2>
+                    <hr />
+                    <h3>Discover. Share. Experience.</h3>
+                </div>
+            </div>
         </li>
 
     </ul>

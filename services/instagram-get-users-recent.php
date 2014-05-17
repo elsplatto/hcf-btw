@@ -4,6 +4,11 @@ require '../includes/instagram.class.php';
 require '../includes/instagram.config.php';
 
 $tag = 'beyondthewharf';
+if (isset($_POST['tag']))
+{
+    $tag = $_POST['tag'];
+}
+
 $userData=$_SESSION['userdetails'];
 $userInstagramId = $userData->user->id;
 $instagram->setAccessToken($userData);

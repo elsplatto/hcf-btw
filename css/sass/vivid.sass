@@ -82,12 +82,31 @@ $std-dark-grey: rgba(39, 46, 53, 1)
         font-size: 1.75rem
         line-height: 2.5rem
   .orbit-container
+    overflow: visible !important
     .orbit-prev
       left: 0
+    .orbit-bullets-container
+      margin-top: -2.5rem
+      .orbit-bullets
+        margin: 0 auto
+        li
+          background-color: #fff
+          margin-right: 1rem
+          height: 0.83rem
+          width: 0.83rem
+        .active
+          background-color: $purple-light
+.touch
+  .photoTips
+    .orbit-bullets
+      display: inline-block
+
 
 .vividComp
   p:first-child
     margin-top: 1rem !important
+  .setHeight
+    height: 35rem
 
 .photoTipsNav
   padding: 2rem 1rem
@@ -184,6 +203,10 @@ $std-dark-grey: rgba(39, 46, 53, 1)
           font-size: 1rem
           line-height: 1.5rem
 
+  .vividComp
+    .setHeight
+      height: 40rem
+
 //manage screens between phone and tablet
 @media only screen and (max-width: 60.313em)
 
@@ -200,6 +223,10 @@ $std-dark-grey: rgba(39, 46, 53, 1)
     height: auto
     overflow: hidden
 
+  .vividComp
+    .setHeight
+      height: auto
+
 @media only screen and (max-width: 40em)
 
   .vividPromo
@@ -214,3 +241,7 @@ $std-dark-grey: rgba(39, 46, 53, 1)
   .photoTips.setHeight, .photoTipsNav.setHeight
     height: auto
     overflow: hidden
+
+  .vividComp
+    .setHeight
+      height: auto

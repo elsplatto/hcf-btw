@@ -34,7 +34,7 @@ include '../includes/nav.php';
           <div class="large-12 darkPurpleBackground overflow">
               <div class="large-3 promoText left ">
                 <div class="large-12">
-                    <img src="<?=$baseURL?>/img/vividLogo-1.jpg" alt="Vivid Sydney Logo" />
+                    <a href="http://www.vividsydney.com/" target="_blank" rel="nofollow" onClick="trackOutboundLink('http://www.vividsydney.com/'); return false;"><img src="<?=$baseURL?>/img/vividLogo-1.jpg" alt="Vivid Sydney Logo" /></a>
                 </div>
                 <div class="large-12 padding32">
                   <p>
@@ -91,7 +91,7 @@ include '../includes/nav.php';
 
 <section class="lightPurpleBackground paddingTopBottom20">
     <div class="row marginBottom20">
-        <h3 class="text-center galleryTitle">Galleries</h3>
+        <h3 class="text-center galleryTitle">Vivid Galleries</h3>
         <div class="large-12">
             <div class="large-6 insta columns left">
                 <div class="large-12 left pinkBackground padding16 text-center">
@@ -101,7 +101,7 @@ include '../includes/nav.php';
                     </div>
                     <div class="large-12 paddingTop40 pinkBackground text-center">
                         <a href="<?=$baseURL?>/vivid/gallery-pro" class="button">Go to Gallery</a>
-                        <h4>Night photographer takes moon walks to <br />photograph <span class="block">VIVID</span></h4>
+                        <h4>Night photographer Andy Richards & Understand Down Under</h4>
                     </div>
                 </div>
             </div>
@@ -152,12 +152,11 @@ include '../includes/nav.php';
             <div class="large-12 lightPurpleBackground">
                 <div class="large-12 padding32 overflow">
                     <div class="large-6 left paddingRight32">
-                        <h2 class="block text-left">UDU NIGHT PHOTOGRAPHY CLASS</h2>
-                        <span>Make the most of VIVID festival by learning how to master night photography and long exposures. Enjoy the art of playing with light, and create magical images with writing and drawing or sublime studio style portraits... using only a torch!</span>
-                        <!--p class="paddingTop10">
-                            Lauren had already accumulated close to 345,000 followers, and travels around the world, posting photos on her Instagram account to a huge market audience and getting paid big bucks to do it.
-                        </p-->
-                        <h4 class="block text-center paddingTopBottom40">Duration: 90 Minutes <br />From AUD $50.00</h4>
+                        <h2 class="block text-left">UNDERSTAND DOWN UNDER</h2>
+                        <h3 class="block text-left">NIGHT PHOTOGRAPHY CLASS</h3>
+                        <span class="spreadMed">Make the most of VIVID festival by learning how to master night photography and long exposures. Enjoy the art of playing with light, and create magical images with writing and drawing or sublime studio style portraits... using only a torch!</span>
+
+                        <h4 class="block text-center paddingTopBottom20">Duration: 90 Minutes <br />From AUD $50.00</h4>
                         <p>
                             Sessions are at 6:00pm or 8:00pm, Bookings are accepted through our easy to use online system.
                         </p>
@@ -178,7 +177,7 @@ include '../includes/nav.php';
     <div class="row marginBottomStandard">
         <h3 class="text-center">Competitions</h3>
         <div class="large-12 columns">
-            <div class="large-6 medium-12 small-12 standardDarkGrey padding32 left fixedHeight33">
+            <div class="large-6 medium-12 small-12 standardDarkGrey padding32 left setHeight">
                 <h2 class="block text-left tightHeight">BEYOND THE WHARF VIVID PHOTO COMPETITION</h2>
                 <span>The competition runs between 23<sup>rd</sup> May 2014 to 9<sup>th</sup> June 2014.</span>
                 <p style="margin-top: 1rem">
@@ -193,8 +192,9 @@ include '../includes/nav.php';
                 </div>
             </div>
 
-            <div class="large-6 medium-12 small-12 pinkBackground padding32 right fixedHeight33 text-center">
-                <h2 class="block text-left tightHeight">WIN THE NEW CANON EOS 1200D</h2>
+            <div class="large-6 medium-12 small-12 pinkBackground padding32 right setHeight text-center">
+                <h2 class="block text-left tightHeight">WIN THE NEW CANON EOS 1200D Single Kit with EF-S 18-55mm f/3.5-5.6 III Lens
+                    RRP $649</h2>
                 <span class="white clearfix left">THE EASY WAY TO CAPTURE MAGIC MOMENTS</span><br />
                 <img src="<?=$baseURL?>/img/content/camera.jpg" class="paddingTopBottom20 text-center" style="margin: 0 auto; display: block" alt="Canon EOS1200D" />
                 <h3 class="block text-left tightHeight">WEEKLY PRIZES TO WIN MARITIME MUSEUM TICKETS</h3>
@@ -232,7 +232,7 @@ include '../includes/nav.php';
 <section class="mapHolder lightPurpleBackground paddingTopBottom20">
     <a name="phototips"></a>
     <div class="row marginBottomStandard">
-        <h3 class="text-center">Vivid Sydney - Night Photography Tips</h3>
+        <h3 class="text-center">Andy Richard's  - Night Photography Tips</h3>
         <div class="large-12 columns">
             <div class="large-9 medium-12 small-12 left orangeBackground setHeight photoTips">
 
@@ -240,7 +240,7 @@ include '../includes/nav.php';
                     pause_on_hover: false;
                     animation_speed: 500;
                     navigation_arrows: true;
-                    bullets: false;
+                    bullets: true;
                     slide_number: false;">
                     <li data-orbit-slide="tip-1">
                         <h3>Tip One. <span class="block">Camera and equipment</span></h3>

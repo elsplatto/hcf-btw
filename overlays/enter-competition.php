@@ -6,9 +6,6 @@ include '../includes/global-functions.php';
 require '../includes/instagram.class.php';
 require '../includes/instagram.config.php';
 
-
-
-
 $device = new Mobile_Detect;
 
 $deviceType = ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'computer');
@@ -18,17 +15,40 @@ function getStepOneData($compId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DAT
     //echo '['.$compId.']['.$DB_SERVER.']['.$DB_USERNAME.']['.$DB_PASSWORD.']['.$DB_DATABASE.']';
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
-    $stmt = $mysqli->prepare('SELECT intro_text, how_to_win FROM competitions WHERE id= ?');
+    $stmt = $mysqli->prepare('SELECT intro_text, how_to_win, terms FROM competitions WHERE id= ?');
     $stmt->bind_param('i', $compId);
     $stmt->execute();
-    $stmt->bind_result($intro_text, $how_to_win);
+    $stmt->bind_result($intro_text, $how_to_win, $terms);
     $results = array();
     $results['intro_text'] = '';
     $results['how_to_win'] = '';
+    $results['terms'] = '';
     while($stmt->fetch())
     {
         $results['intro_text'] = $intro_text;
         $results['how_to_win'] = $how_to_win;
+        $results['terms'] = $terms;
+    }
+    $stmt->close();
+    $mysqli->close();
+
+    return $results;
+}
+
+function getStepTwoData($compId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
+{
+    //echo '['.$compId.']['.$DB_SERVER.']['.$DB_USERNAME.']['.$DB_PASSWORD.']['.$DB_DATABASE.']';
+    $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+
+    $stmt = $mysqli->prepare('SELECT terms FROM competitions WHERE id= ?');
+    $stmt->bind_param('i', $compId);
+    $stmt->execute();
+    $stmt->bind_result($terms);
+    $results = array();
+    $results['terms'] = '';
+    while($stmt->fetch())
+    {
+        $results['terms'] = $terms;
     }
     $stmt->close();
     $mysqli->close();
@@ -82,10 +102,17 @@ function userEntered($userId, $competitionId, $DB_SERVER, $DB_USERNAME, $DB_PASS
 }
 
 $competitionId = 1;
+$compTag = 'beyondthewharf';
 if (isset($_GET['competitionId']))
 {
     $competitionId = $_GET['competitionId'];
 }
+
+if ($competitionId == 2)
+{
+    $compTag = 'vividsydney';
+}
+
 $wharfs = getFileContents('../json/wharfs.json');
 $userEntered = 0;
 
@@ -156,18 +183,11 @@ if ($step == 1)
 <section class="steps">
 
     <?=$compIntroText?>
-    <!--h3 class="block marginBottom20">SHARE YOUR EXPERIENCE OF SYDNEY HARBOUR OR PARRAMATTA RIVER BEFORE THE END OF JUNE ON INSTAGRAM &amp; WIN AN AMAZING SIGNED ARTWORK FROM ACCLAIMED OCEAN PHOTOGRAPHER JOEL COLEMAN VALUED AT $700.</h3>
-
-    <h3 class="block marginBottom20">HOW TO WIN.</h3-->
-
-    <!--h3 class="block marginBottom20">WIN A CANON EOS1200D OR A WEEKLY PRIZE OF MARITIME MUSEUM TICKETS - SIMPLY TAG YOUR INSTAGRAM POSTS #VIVIDSYDNEY</h3>
-
-    <h3 class="block marginBottom20">HOW TO WIN.</h3-->
 
 
 
 
-    <a href="<?=$instagramLoginURL?>" class="button instagram" onClick="trackInternalLink('Competition Overlay - <?=$deviceType?>','Clicked Log into Instgram Button - Step 1');">Log into Instagram &amp; Enter</a>
+    <a href="<?=$instagramLoginURL?>" class="button instagram" onClick="trackInternalLink('Competition Overlay - <?=$deviceType?>','Clicked Log into Instgram Button - Step 1 - CompID: <?=$competitionId?>');">Log into Instagram &amp; Enter</a>
 
 
     <?=$compHowToWin?>
@@ -222,12 +242,18 @@ if ($step == 1)
         </li>
     </ul-->
 
-    <a href="<?=$instagramLoginURL?>" class="button instagram" onClick="trackInternalLink('Competition Overlay - <?=$deviceType?>','Clicked Log into Instgram Button - Step 1');">Log into Instagram &amp; Enter</a>
+    <a href="<?=$instagramLoginURL?>" class="button instagram" onClick="trackInternalLink('Competition Overlay - <?=$deviceType?>','Clicked Log into Instgram Button - Step 1 - CompID: <?=$competitionId?>');">Log into Instagram &amp; Enter</a>
 </section>
 <?php
 }
 else if ($step == 2)
 {
+    $competitionDetails = getStepTwoData($competitionId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+    $compTerms = '';
+    if (isset($competitionDetails))
+    {
+        $compTerms = $competitionDetails['terms'];
+    }
 ?>
 <section class="steps" id="step2">
     <?php
@@ -271,111 +297,7 @@ else if ($step == 2)
     </form>
 
     <div class="large-12 hide" id="compTandC">
-        <h3>Beyondthewharf Promotion Terms and Conditions</h3>
-
-        <ol>
-            <li>Information on how to enter and prizes form part of these Terms and Conditions. Participation in this promotion is deemed acceptance of these Terms and Conditions.</li>
-            <li>Employees (and their immediate families) of the Promoter and agencies associated with this promotion are ineligible to enter. Immediate family means any
-                of the following: spouse, ex-spouse, de-facto spouse, child or step-child (whether natural or by adoption), parent, step-parent, grandparent,
-                step-grandparent, uncle, aunt, niece, nephew, brother, sister, step-brother, step-sister or 1st cousin.</li>
-            <li>Promotion commences at 9:00 am on20/03/2014 and closes at 11:59pm on 20/6/2014, unless extended in the absolute discretion of the Promoter (“Promotional
-                Period”). The Promoter reserves the right to extend the Promotional Period until 11.59pm on 20/7/2014. All times throughout the terms and conditions will
-                be based on Sydney local time, which will be either AEDST or AEST, depending upon the date.</li>
-            <li>To enter, the entrant must first create an image that includes something on or something to do around Sydney harbour.</li>
-            <li>To enter, the entrant must complete the following steps:
-                <ol style="list-style: lower-alpha;">
-                    <li>visit the Website;</li>
-                    <li>follow the prompts and register by completing all requested details including, name, and email address</li>
-                    <li>Upload a photograph by simply tagging their photo #beyondthewharf;</li>
-                    <li>Read and accept the terms and conditions; and</li>
-                    <li>Submit their entry.</li>
-                </ol>
-            </li>
-            <li>The Entrants and Content
-                <ol style="list-style: lower-alpha;">
-                    <li>When an entrant submits any materials via the Promotion including photographs and images (“Content”), the entrant, unless the Promoter advises
-                        otherwise, licenses and grants the Promoter, its affiliates and sub-licensees a non-exclusive, royalty-free, perpetual, worldwide, irrevocable, and
-                        sub-licensable right to use, reproduce, modify, adapt, publish and display such Content for any purpose in any media, without compensation, restriction on
-                        use, or attribution. The entrant agrees not to assert any moral rights in relation to such use. The entrant warrants that they have the full authority to
-                        grant these rights.</li>
-                    <li>The entrant acknowledges that that the Promoter may use photos or images submitted, or part thereof, in a film recording produced by the Promoter or its
-                        affiliates and sub-licensees, and this may appear in any media, without compensation, restriction on use, or attribution.</li>
-                    <li>The entrant agrees that they are fully responsible for the Content they submit. The Promoter shall not be liable in any way for such Content to the full
-                        extent permitted by law. The Promoter may remove any Content it may display in any media without notice for any reason whatsoever.</li>
-                    <li>Entrants warrant and promise that any entries submitted are the sole and original creation of the entrant and have not been copied in whole or in part
-                        from any other work.</li>
-                    <li>Entries must not advertise or promote third parties' or your own goods or services. Entries must not use third party artistic works, copyrights,
-                        trademarks, trade names, logos, similar brand identifying marks, trade secrets or other proprietary rights.</li>
-                    <li>Entries must not refer to drinking alcohol or people who are, or appear to be, under the legal drinking age in Australia. Entries must not suggest the
-                        Promoter's products or alcohol in general make you more confident, popular or attractive or that it is acceptable, glamorous or generally positive to be
-                        intoxicated.</li>
-                    <li>Entries must not (1) depict or refer to people conducting themselves in an inappropriate manner, (2) contain any material that would degrade or demean
-                        the human form, image or status of women, men or the members of any group based on race, religion, ethnic background, sexual orientation or any other
-                        minority status, (3) be offensive towards anyone, or (4) refer any other participant in the promotion.</li>
-                    <li>Entries should not show, imply, encourage or refer to aggression or unruly, irresponsible or anti-social, obscene, provocative, sexually overt, lewd or
-                        otherwise objectionable content or entries which reflect poorly on the brands of the Promoter and its affiliates will not be considered.</li>
-                    <li>Determination of the appropriateness and acceptance of any entry is at the sole discretion of the Promoter, including as a result of breaching of Terms
-                        and Conditions herein.</li>
-                    <li>Entrants warrant and agree that they will comply with all applicable laws and regulations, including without limitation, those governing copyright,
-                        content, defamation, privacy, publicity and the access or use of others' computer or communication systems. Without limiting any other terms herein, the
-                        entrant agrees to indemnify the Promoter against any claim that arises as a result of the entrant breaching of these Terms and Conditions.</li>
-                </ol>
-            </li>
-            <li>The Promoter reserves the right, at any time, to verify the validity of entries and entrants (including an entrant's identity, age and place of
-                residence) and to disqualify any entrant who submits an entry that is not in accordance with these Terms and Conditions or who tampers with the entry
-                process. Errors and omissions will be accepted at the Promoter's discretion. Failure by the Promoter to enforce any of its rights at any stage does not
-                constitute a waiver of those rights.</li>
-            <li>Incomplete, indecipherable, or illegible entries will be deemed invalid. Multiple entries accepted, subject to: (a) limit fifteen entries per person per
-                day based on Sydney Local time; (b) each entry must be submitted separately and in accordance with the terms and conditions; and (c) each entry must be
-                substantially unique (i.e. must contain a substantially unique image).</li>
-            <li>If there is a dispute as to the identity of an entrant, the Promoter reserves the right, in its sole discretion, to determine the identity of the
-                entrant.</li>
-            <li>This is a game of skill and chance plays no part in determining the winners. Each entry will be individually judged based on creative merit of the
-                photo. The Promoter's decision is final and no correspondence will be entered into. Winners will be notified by email or via our website. The Promoter
-                reserves the right to select reserves based on merit and use them in the event the original individuals selected to win a prize are deemed ineligible or do
-                not claim their prize by the required time.</li>
-            <li>The winners must claim their prize, in accordance with the instructions provided, within 28 days of the date the email notification is sent by
-                Promoter, otherwise their right to the prize will be forfeited, and the Promoter, in its absolute discretion, reserves the right to award the unclaimed
-                prize to another entrant, but is under no obligation to do so.</li>
-            <li>The best valid entry in each Round that has been entered will win a signed poster by acclaimed photographer Joel Coleman. That will be posted to the
-                winner.</li>
-            <li>If for any reason a winner does not take a prize by the time stipulated by these Terms and Conditions then the winner will be deemed to have forfeited
-                such prize and no compensation will be payable by the Promoter</li>
-            <li>Prizes are not transferable or exchangeable and cannot be taken as cash, unless otherwise specified.</li>
-            <li>Entrants consent to the Promoter using the entrant's name, likeness, image and/or voice in the event they are a winner (including photograph, film
-                and/or recording of the same) in any media for an unlimited period without remuneration for the purpose of promoting this competition (including any
-                outcome), and promoting any products manufactured, distributed and/or supplied by the Promoter.</li>
-            <li>If this promotion is interfered with in any way or is not capable of being conducted as reasonably anticipated due to any reason beyond the reasonable
-                control of the Promoter, including but not limited to technical difficulties, unauthorised intervention or fraud, the Promoter reserves the right, in its
-                sole discretion, to the fullest extent permitted by law (a) to disqualify any entrant; or (b) to modify, suspend, terminate or cancel the promotion, as
-                appropriate.</li>
-            <li>Any cost associated with accessing the Website is the entrant's responsibility and is dependent on the Internet service provider used. The use of any
-                automated entry software or any other mechanical or electronic means that allows an entrant to automatically enter repeatedly is prohibited and will render
-                all entries submitted by that entrant invalid.</li>
-            <li>Nothing in these Terms and Conditions limit, exclude or modify or purports to limit, exclude or modify the statutory consumer guarantees as provided
-                under the Competition and Consumer Act, as well as any other implied warranties under similar consumer protection laws in the State and Territories of
-                Australia (“Non-Excludable Guarantees”). Except for any liability that cannot by law be excluded, including the Non-Excludable Guarantees, the Promoter and
-                its advertising agency (including their respective officers, employees and agents) exclude all liability (including negligence), for any personal injury;
-                or any loss or damage (including loss of opportunity); whether direct, indirect, special or consequential, arising in any way out of the promotion.</li>
-            <li>Except for any liability that cannot by law be excluded, including the Non- Excludable Guarantees, the Promoter and its advertising agency (including
-                their respective officers, employees and agents) are not responsible for and exclude all liability (including negligence), for any personal injury; or any
-                loss or damage (including loss of opportunity); whether direct, indirect, special or consequential, arising in any way out of: (a) any technical
-                difficulties or equipment malfunction (whether or not under the Promoter's control); (b) any theft, unauthorised access or third party interference; (c)
-                any entry or prize that is late, lost, altered, damaged or misdirected (whether or not after their receipt by the Promoter) due to any reason beyond the
-                reasonable control of the Promoter; (d) any variation in prize value to that stated in these Terms and Conditions; (e) any tax liability incurred by a
-                winner or entrant; or (g) use of a prize.</li>
-            <li>All entries become the property of the Promoter. The Promoter collects entrants' personal information to enable you to participate in this promotion.
-                To facilitate your participation, the Promoter may disclose your personal information to companies it has engaged to assist it in conducting the promotion.
-                If you do not provide your personal information, the Promoter will not be able to enter you into this promotion. The Promoter may, for an indefinite
-                period, unless otherwise advised, use the information for promotional, marketing, publicity, research and profiling purposes, including sending electronic
-                messages or telephoning the entrant. A request to access, update or correct any information should be directed to the Promoter at
-                <a href="mailto:privacy@harbourcityferries.com.au">privacy@harbourcityferries.com.au</a>.</li>
-            <li>The Promoter is Harbour City Ferries Pty Ltd of Level 19, 9 Hunter Street, Sydney NSW 2000.</li>
-        </ol>
-
-
-
-
+        <?=$compTerms?>
     </div>
 
     <?php
@@ -454,7 +376,7 @@ else if ($step == 3)
 
             if ($('[data-invalid]').length == 0)
             {
-                trackInternalLink('Competition Overlay - <?=$deviceType?>','Submitted Entry Form - Step 2');
+                trackInternalLink('Competition Overlay - <?=$deviceType?>','Submitted Entry Form - Step 2 - CompID: <?=$competitionId?>');
                 var el = $(this);
                 var url = $(this).attr('action');
                 var firstname, lastname, email, wharf, competitionId;
@@ -523,9 +445,10 @@ else if ($step == 3)
             //console.log('success');
             //$('#postEntryLoader').remove();
             //el.parent('section').html('');
-            var html = '<h3>Thank you for entering.</h3>';
-            html += '<p>Thanks for joining us in our quest to capture the essence of Sydney Harbour. Don\'t forget to tag your photos with #beyondthewharf and promote your images with our social sharing tools.</p>';
-            trackInternalLink('Competition Overlay - <?=$deviceType?>','Entry Successful - Step 3');
+            var html = '';
+            html += '<h3>Thank you for entering.</h3>';
+            html += '<p>Thanks for joining us in our quest to capture the essence of Sydney Harbour. Don\'t forget to tag your photos with #<?=$compTag?> and promote your images with our social sharing tools.</p>';
+            trackInternalLink('Competition Overlay - <?=$deviceType?>','Entry Successful - Step 3 - CompID: <?=$competitionId?>');
             el.parent('section').html(html);
         }
 
@@ -550,6 +473,9 @@ else if ($step == 3)
             $.ajax({
                 type: 'POST',
                 url: url,
+                data: {
+                    tag: '<?=$compTag?>'
+                },
                 dataType: 'json',
                 cache: false,
                 beforeSend: function()
@@ -621,7 +547,7 @@ else if ($step == 3)
                     loadHTML += '<div class="inner">';
 
 
-                    loadHTML += '<a href="https://twitter.com/share?url=<?=$baseURL?>/gallery/'+dataObj[i].id+'&text=Check this photo out&hashtag=beyondthewharf&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>';
+                    loadHTML += '<a href="https://twitter.com/share?url=<?=$baseURL?>/gallery/'+dataObj[i].id+'&text=Check this photo out&hashtag=<?=$compTag?>&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>';
                     loadHTML += '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");<\/script>';
 
                     loadHTML += '</div>';
