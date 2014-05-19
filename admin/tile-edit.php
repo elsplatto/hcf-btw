@@ -278,7 +278,7 @@ include 'includes/header.php';
             </label>
 
 
-            <a href="#" class="showHide" data-target="#mapArea" data-hideText="Hide Map" data-showText="Show Map">Show Map</a>
+            <a href="#" class="showHide showMap" data-target="#mapArea" data-hideText="Hide Map" data-showText="Show Map">Show Map</a>
             <div id="mapArea" class="hide">
 
                 <label for="txtLat">Lat:
@@ -326,7 +326,8 @@ include 'includes/header.php';
 }
 ?>
 <script>
-    initialize();
+    //initialize();
+    var mapShown = false;
     var map;
     function initialize() {
         <?php
@@ -419,21 +420,13 @@ include 'includes/header.php';
             target.val(target.val() + tagHTML);
         });
 
-        $('.useMap').click(function(e) {
-            e.preventDefault();
-            var target = $('#' + $(this).attr('data-target'));
-
-            if (target.is(':hidden'))
+        $('.showMap').click(function(e){
+            if (!mapShown)
             {
-                target.show();
-                $(this).text('Hide map');
+                initialize();
+                mapShown = true;
             }
-            else
-            {
-                target.hide();
-                $(this).text('Show map');
-            }
-        });
+        })
 
         $('.dateTimePickerInput').datetimepicker({
             dateFormat: 'dd-MM-yy'
