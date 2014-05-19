@@ -1344,8 +1344,8 @@ function initialize() {
         {
             routeFrom: "Circular Quay",
             routeTo: "Eastern Suburbs",
-            lat: -33.856959,
-            lng: 151.220294,
+            lat: -33.85711378212902,
+            lng: 151.22854423593265,
             icon: iconBase + 'lightCameraMarker.png',
             height: 260,
             content: '<p>Stand at the front of the boat : contrast of the Eastern side of the Opera House in darkness with the illuminated Harbour Bridge and MCA in the background.</p>'
@@ -1353,8 +1353,8 @@ function initialize() {
         {
             routeFrom: "Manly",
             routeTo: "Circular Quay",
-            lat: -33.852992,
-            lng: 151.251783,
+            lat: -33.85498700,
+            lng: 151.24714900,
             icon: iconBase + 'lightCameraMarker.png',
             height: 220,
             content: '<p>Stand on the front outer deck, your line of sight will be as high as the images on the Opera House.</p>'
@@ -1371,8 +1371,8 @@ function initialize() {
         {
             routeFrom: "Circular Quay",
             routeTo: "Taronga",
-            lat: -33.84809,
-            lng: 151.237578,
+            lat: -33.847170152581484,
+            lng: 151.23955202200932,
             height: 320,
             icon: iconBase + 'lightCameraMarker.png',
             content: '<p>One of the least busiest ferry routes during Vivid, take the 40 minute round trip in the early evening with the local commuters to get a great overview of Harbour Lights on the Ferries to the east of Circular Quay.</p>'
@@ -1398,8 +1398,8 @@ function initialize() {
         {
             routeFrom: "Darling Harbour",
             routeTo: "Circular Quay",
-            lat: -33.854648,
-            lng: 151.201186,
+            lat: -33.85583079680752,
+            lng: 151.19758081534428,
             icon: iconBase + 'lightCameraMarker.png',
             height: 373,
             content: '<p>Berthing at McMahons and Milsons Point provides unrivalled views of the western side of the Bridge and Harbour Lights vessels on Parramatta River. If you can line up the angle correctly from the front of the ferry, see if you can capture the Opera House sails under the Harbour Bridge.</p>'
@@ -1407,8 +1407,8 @@ function initialize() {
         {
             routeFrom: "Circular Quay",
             routeTo: "Parramatta",
-            lat: -33.849801,
-            lng: 151.199641,
+            lat: -33.848310699142104,
+            lng: 151.19007063010258,
             icon: iconBase + 'lightCameraMarker.png',
             height: 260,
             content: '<p>Stand on the front outside deck, you\'ll be barely above the water level, for the beat reflections of the Harbour Bridge on Sydney Harbour.</p>'
@@ -1416,8 +1416,8 @@ function initialize() {
         {
             routeFrom: "Parramatta",
             routeTo: "Circular Quay",
-            lat: -33.845096,
-            lng: 151.166167,
+            lat: -33.8448890137815,
+            lng: 151.1829037676148,
             icon: iconBase + 'lightCameraMarker.png',
             height: 280,
             content: '<p>On approach from the west, capture the wonderful contrast of the stillness of Cockatoo Island and Goat Island in the foreground as the Harbour Bridge lights up the night sky beyond.</p>'
@@ -1434,8 +1434,8 @@ function initialize() {
         {
             routeFrom: "Cockatoo Island",
             routeTo: "Circular Quay",
-            lat: -33.845096,
-            lng: 151.166167,
+            lat: -33.84524544573367,
+            lng: 151.16917085745854,
             icon: iconBase + 'lightCameraMarker.png',
             height: 300,
             content: '<p>This is the panoroamic way to see Harbour Lights. You might only get a glimpse of Darling Harbour, but you will get brilliant views of the Bridge standing behind the Balls Head, McMahons Point and Birchgrove.</p>'
