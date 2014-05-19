@@ -18,7 +18,7 @@ include '../includes/nav.php';
 <section class="breadcrumbsHolder">
     <div class="row">
         <div class="large-12 columns breadcrumbs">
-            <a href="<?=$baseURL?>/">Home</a><span>Vivid</span>
+            <a href="<?=$baseURL?>/">Home</a><span>Vivid Sydney</span>
         </div>
     </div>
 </section>
@@ -91,7 +91,7 @@ include '../includes/nav.php';
 
 <section class="lightPurpleBackground paddingTopBottom20">
     <div class="row marginBottom20">
-        <h3 class="text-center galleryTitle">Vivid Galleries</h3>
+        <h3 class="text-center galleryTitle">Vivid Sydney Galleries</h3>
         <div class="large-12">
             <div class="large-6 insta columns left">
                 <div class="large-12 left pinkBackground padding16 text-center">
@@ -100,7 +100,7 @@ include '../includes/nav.php';
                         <h4 class="block">FEATURED PROFESSIONAL PHOTOGRAPHER</h4>
                     </div>
                     <div class="large-12 paddingTop40 pinkBackground text-center">
-                        <a href="<?=$baseURL?>/vivid/gallery-pro" class="button">Go to Gallery</a>
+                        <a href="<?=$baseURL?>/vivid/gallery-pro" class="button">More from Andy Richards</a>
                         <h4>Night photographer Andy Richards & Understand Down Under</h4>
                     </div>
                 </div>
@@ -111,7 +111,7 @@ include '../includes/nav.php';
                 include '../includes/instagram-get-latest.php';
                 ?>
                 <div class="large-12 overflow paddingTop30 text-center">
-                    <a href="<?=$baseURL?>/vivid/gallery" class="button">Go to Gallery</a>
+                    <a href="<?=$baseURL?>/vivid/gallery" class="button marginTop16">Go to Vivid Sydney Gallery</a>
                     <h4 class="white"><span class="block">SHARE YOUR  EXPERIENCE</span> <br />Tag your instagram photos with <span class="block green">#VIVIDSYDNEY</span></h4>
                 </div>
             </div>
@@ -186,7 +186,7 @@ include '../includes/nav.php';
                 <p>
                     Don't forget to check out our professional night <a href="#phototips">photography tips</a> and share your images with your friends to improve your chances.
                 </p>
-                <h4 class="white text-center">Submit your photos with to<br /> <span class="block">#VIVIDSYDNEY</span><br /> with Instagram to be in to win</h4>
+                <h4 class="white text-center">Enter the competition and tag your photos with<br /> <span class="block">#VIVIDSYDNEY</span><br /> to win!</h4>
                 <div class="large-12 text-center paddingTop20">
                     <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&competitionId=2&call_page=<?=$baseURL?>/vivid/?competitionId=2" class="reveal-init button orange" id="enterVividComp">Enter Competition</a>
                 </div>
@@ -207,7 +207,7 @@ include '../includes/nav.php';
 
 <section class="mapHolder lightPurpleBackground paddingTopBottom20">
     <div class="row marginBottomStandard">
-        <h3 class="text-center">Vivid Sydney - Best Photography Locations</h3>
+        <h3 class="text-center">Vivid Sydney - Best Photography Locations from a Ferry</h3>
         <div class="large-12 columns" id="mapContainer">
 
             <div class="large-12" id="map-canvas">
@@ -217,10 +217,10 @@ include '../includes/nav.php';
 
             <div id="mapControlPanelHolder" class="controlPanelHolder medium-6 small-6 large-3">
                 <div id="mapControlPanel" class="controlPanel text-center">
-                    <h4 class="marginTop10">Vivid Photo Locations From a Ferry</h4>
+                    <!--h4 class="marginTop10">Vivid Photo Locations From a Ferry</h4-->
                     <img src="../img/iHaig.jpg" class="circle" alt="Iain Haig" />
-                    <p>
-                        <span>Tips on the best places to take photos of Vivid from a Ferry by Haig Gilchrist, a member of our Ferry Crew.</span>
+                    <p style="line-height: 1.5rem;">
+                        <span>Haig Gilchrist, Ferry Crew: With a modern point to shoot camera and or smart phone, you can get good quality photos and videos of Vivid. Around icons such as the Harbour Bridge and Opera House, ferries travel at slow speeds which will allow you to get great shots.</span>
                     </p>
                 </div>
             </div>
@@ -1347,6 +1347,7 @@ function initialize() {
             lat: -33.856959,
             lng: 151.220294,
             icon: iconBase + 'lightCameraMarker.png',
+            height: 260,
             content: '<p>Stand at the front of the boat : contrast of the Eastern side of the Opera House in darkness with the illuminated Harbour Bridge and MCA in the background.</p>'
         },
         {
@@ -1355,6 +1356,7 @@ function initialize() {
             lat: -33.852992,
             lng: 151.251783,
             icon: iconBase + 'lightCameraMarker.png',
+            height: 220,
             content: '<p>Stand on the front outer deck, your line of sight will be as high as the images on the Opera House.</p>'
         },
         {
@@ -1363,6 +1365,7 @@ function initialize() {
             lat: -33.860644,
             lng: 151.21081,
             icon: iconBase + 'lightCameraMarker.png',
+            height: 300,
             content: '<p>Go to the back of the boat. As the ferry pulls away from the wharf, try to capture both the MCA to your right, the Opera House on your left and the illuminated First Fleet Ferries at Circular Quay in the one photo.</p>'
         },
         {
@@ -1370,6 +1373,7 @@ function initialize() {
             routeTo: "Taronga",
             lat: -33.84809,
             lng: 151.237578,
+            height: 320,
             icon: iconBase + 'lightCameraMarker.png',
             content: '<p>One of the least busiest ferry routes during Vivid, take the 40 minute round trip in the early evening with the local commuters to get a great overview of Harbour Lights on the Ferries to the east of Circular Quay.</p>'
         },
@@ -1379,6 +1383,7 @@ function initialize() {
             lat: -33.842743,
             lng: 151.231399,
             icon: iconBase + 'lightCameraMarker.png',
+            height: 273,
             content: '<p>If you want to get away from the crowds but still see the lights, the  return trip to Mosman Bay will allow you to relax on a ferry with a full view of the Opera House, Bridge and MCA.</p>'
         },
         {
@@ -1387,6 +1392,7 @@ function initialize() {
             lat: -33.861775,
             lng: 151.199384,
             icon: iconBase + 'lightCameraMarker.png',
+            height: 260,
             content: '<p>Take a seat at the front of the top deck of the Ferry for the best view of Aquatic Lights on the sails of the Australian National Maritime Museum.</p>'
         },
         {
@@ -1395,6 +1401,7 @@ function initialize() {
             lat: -33.854648,
             lng: 151.201186,
             icon: iconBase + 'lightCameraMarker.png',
+            height: 373,
             content: '<p>Berthing at McMahons and Milsons Point provides unrivalled views of the western side of the Bridge and Harbour Lights vessels on Parramatta River. If you can line up the angle correctly from the front of the ferry, see if you can capture the Opera House sails under the Harbour Bridge.</p>'
         },
         {
@@ -1403,6 +1410,7 @@ function initialize() {
             lat: -33.849801,
             lng: 151.199641,
             icon: iconBase + 'lightCameraMarker.png',
+            height: 260,
             content: '<p>Stand on the front outside deck, you\'ll be barely above the water level, for the beat reflections of the Harbour Bridge on Sydney Harbour.</p>'
         },
         {
@@ -1411,6 +1419,7 @@ function initialize() {
             lat: -33.845096,
             lng: 151.166167,
             icon: iconBase + 'lightCameraMarker.png',
+            height: 280,
             content: '<p>On approach from the west, capture the wonderful contrast of the stillness of Cockatoo Island and Goat Island in the foreground as the Harbour Bridge lights up the night sky beyond.</p>'
         },
         {
@@ -1419,6 +1428,7 @@ function initialize() {
             lat: -33.843785,
             lng: 151.219103,
             icon: iconBase + 'lightCameraMarker.png',
+            height: 360,
             content: '<p>Another great way to escape the crowds but still be entralled by the lights around Circular Quay. Try to capture the Harbour Lights vessels on their way to Circualr Quay, or capture the lights from the Opera Hosue reflecting off the rocks in front of Admiralty House.</p>'
         },
         {
@@ -1427,6 +1437,7 @@ function initialize() {
             lat: -33.845096,
             lng: 151.166167,
             icon: iconBase + 'lightCameraMarker.png',
+            height: 300,
             content: '<p>This is the panoroamic way to see Harbour Lights. You might only get a glimpse of Darling Harbour, but you will get brilliant views of the Bridge standing behind the Balls Head, McMahons Point and Birchgrove.</p>'
         }
 
@@ -1595,8 +1606,6 @@ function initialize() {
                 //console.log('marker-'+i);
                 markerArray.push(marker);
 
-
-
                 var locationContent = '';
                 locationContent += '<div class="contentHolder">';
                 locationContent += '<div class="closeBg"></div>';
@@ -1625,8 +1634,8 @@ function initialize() {
                     arrowStyle: 0,
                     disableAutoPan: true,
                     maxWidth: 260,
-                    minHeight: 200,
-                    maxHeight: 400
+                    minHeight: location.height,
+                    maxHeight: 1000
                 });
 
                 google.maps.event.addListener(marker, 'click', function(){
@@ -1636,7 +1645,6 @@ function initialize() {
                 google.maps.event.addListener(locationBubble,'domready', function(){
                     $('.panelFlyoutTrigger').on('click', function(e) {
                         e.preventDefault();
-                        //console.log('here');
                         var target = $('#'+$(this).attr('data-target'));
                         var id = $(this).attr('data-location');
 

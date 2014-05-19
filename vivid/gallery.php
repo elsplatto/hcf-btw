@@ -1,5 +1,5 @@
 <?php
-$pageMetaTitle = "Vivid Gallery - Great photos from around the harbour.";
+$pageMetaTitle = "Vivid Sydney Gallery - Great photos from around the harbour.";
 $pageSection = "vividGallery";
 $pageMetaDesc = "Submit, share and view your photos of Sydney Harbour.";
 $pageMetaKeywords = "Sydney, photos, gallery, harbour, experiences";
@@ -68,7 +68,7 @@ if (isset($sharedPhoto))
 <section class="breadcrumbsHolder">
     <div class="row">
         <div class="large-12 columns breadcrumbs">
-            <a href="<?=$baseURL?>/">Home</a> <a href="<?=$baseURL?>/vivid/">Vivid</a><span>Gallery</span>
+            <a href="<?=$baseURL?>/">Home</a> <a href="<?=$baseURL?>/vivid/">Vivid Sydney</a><span>Gallery</span>
         </div>
     </div>
 </section>
@@ -77,7 +77,7 @@ if (isset($sharedPhoto))
 
     <div class="row paddingTop20">
         <div class="large-12 columns">
-            <h2 class="block clearfix text-left">Gallery</h2>
+            <h2 class="block clearfix text-left">Vivid Sydney Gallery</h2>
 
             <?php
             /*if (isset($instagramData))
@@ -403,8 +403,7 @@ if (isset($sharedPhoto))
             </div>
         </div>
         <div class="large-12 overflow paddingTop40 text-center">
-            <a href="<?=$baseURL?>/vivid/gallery-pro" class="button">Go to Gallery</a>
-            <h4>Night photographer Andy Richards & Understand Down Under</h4>
+            <a href="<?=$baseURL?>/vivid/gallery-pro" class="button">More from Andy Richards</a>
         </div>
     </div>
 </section>

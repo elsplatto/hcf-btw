@@ -1,6 +1,6 @@
 <?php
-$pageMetaTitle = "Pro Gallery - Vivid Sydney Pro Gallery.";
-$pageSection = "vivid";
+$pageMetaTitle = "Vivid Sydney - Pro Gallery.";
+$pageSection = "vividProGallery";
 $pageMetaDesc = "View great night time photos taken for Vivid Sydney by Understand Down Under photographer Andy Richards..";
 $pageMetaKeywords = "Sydney, vivid, 2014, photos, gallery, harbour, experiences";
 include '../includes/head.php';
@@ -18,7 +18,7 @@ include '../includes/nav.php';
 <section class="breadcrumbsHolder">
     <div class="row">
         <div class="large-12 columns breadcrumbs">
-            <a href="<?=$baseURL?>/">Home</a> <a href="<?=$baseURL?>/vivid/">Vivid</a><span>Pro Gallery</span>
+            <a href="<?=$baseURL?>/">Home</a> <a href="<?=$baseURL?>/vivid/">Vivid Sydney</a><span>Pro Gallery</span>
         </div>
     </div>
 </section>
@@ -75,7 +75,7 @@ include '../includes/nav.php';
                 <div class="large-12 padding32 overflow">
                     <div class="large-6 left paddingRight32">
                         <h2 class="block text-left">UDU NIGHT PHOTOGRAPHY CLASS</h2>
-                        <span>Make the most of VIVID festival by learning how to master night photography and long exposures. Enjoy the art of playing with light, and create magical images with writing and drawing or sublime studio style portraits... using only a torch!</span>
+                        <span>Make the most of VIVID SYDNEY festival by learning how to master night photography and long exposures. Enjoy the art of playing with light, and create magical images with writing and drawing or sublime studio style portraits... using only a torch!</span>
                         <!--p class="paddingTop10">
                             Lauren had already accumulated close to 345,000 followers, and travels around the world, posting photos on her Instagram account to a huge market audience and getting paid big bucks to do it.
                         </p-->
@@ -125,7 +125,7 @@ include '../includes/nav.php';
 <section class="lightPurpleBackground paddingTopBottom20">
     <div class="row marginBottom20">
         <div class="large-12 columns">
-            <h3 class="text-center galleryTitle">Vivid Sydney Instagram Gallery</h3>
+            <h3 class="text-center galleryTitle">Vivid Sydney Gallery</h3>
             <?php
             if (isset($instagramData))
             {
@@ -150,7 +150,7 @@ include '../includes/nav.php';
         </div>
         <div class="large-12 paddingTop40 columns text-center">
 
-            <a href="<?=$baseURL?>/vivid/gallery" class="button">Go to Gallery</a>
+            <a href="<?=$baseURL?>/vivid/gallery" class="button">Go to Vivid Sydney Gallery</a>
 
             <h3 class="block">
                 Share your experience

@@ -64,6 +64,7 @@
     .photoTips .orbit-container .orbit-prev {
       left: 0; }
     .photoTips .orbit-container .orbit-bullets-container {
+      display: none;
       margin-top: -2.5rem; }
       .photoTips .orbit-container .orbit-bullets-container .orbit-bullets {
         margin: 0 auto; }
@@ -166,6 +167,8 @@
       .photoTips ul li p {
         font-size: 1rem;
         line-height: 1.5rem; }
+    .photoTips .orbit-bullets-container {
+      display: block; }
 
   .vividComp .setHeight {
     height: 40rem; } }
@@ -180,6 +183,8 @@
   .photoTips.setHeight, .photoTipsNav.setHeight {
     height: auto;
     overflow: hidden; }
+    .photoTips.setHeight .orbit-bullets-container, .photoTipsNav.setHeight .orbit-bullets-container {
+      display: block; }
 
   .vividComp .setHeight {
     height: auto; } }
@@ -194,6 +199,8 @@
   .photoTips.setHeight, .photoTipsNav.setHeight {
     height: auto;
     overflow: hidden; }
+    .photoTips.setHeight .orbit-bullets-container, .photoTipsNav.setHeight .orbit-bullets-container {
+      display: block; }
 
   .vividComp .setHeight {
     height: auto; } }
