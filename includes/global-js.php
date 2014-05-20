@@ -28,18 +28,19 @@ $(function(){
         $('.off-canvas-wrap').removeClass('move-right move-left');
     });
 
-    var hashtag = location.hash;
-    //console.log('['+hashtag+']');
-    if (hashtag.length > 0)
-    {
-        if ($(hashtag).length > 0)
+    $(document).ready(function () {
+        var hashtag = location.hash;
+        if (hashtag.length > 0)
         {
-            var landScrollHeight = ($(hashtag).offset().top - $('#navHolder').outerHeight());
-            $('html').animate({
-                scrollTop: landScrollHeight
-            },'slow');
+            if ($(hashtag).length > 0)
+            {
+                var landScrollHeight = ($(hashtag).offset().top - $('#navHolder').outerHeight());
+                $('body').animate({
+                    scrollTop: landScrollHeight
+                },'slow');
+            }
         }
-    }
+    });
 
     $('.slow-scroll').click(function(e) {
         e.preventDefault();

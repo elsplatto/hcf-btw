@@ -112,7 +112,7 @@ include '../includes/nav.php';
                 ?>
                 <div class="large-12 overflow paddingTop30 text-center">
                     <a href="<?=$baseURL?>/vivid/gallery" class="button marginTop16">Go to Vivid Sydney Gallery</a>
-                    <h4 class="white"><span class="block">SHARE YOUR  EXPERIENCE</span> <br />Tag your instagram photos with <span class="block green">#VIVIDSYDNEY</span></h4>
+                    <h4 class="white"><span class="block">SHARE YOUR  EXPERIENCE</span> <br />Tag your instagram photos with <span class="block green">#BEYONDTHEWHARF</span></h4>
                 </div>
             </div>
         </div>
@@ -145,7 +145,8 @@ include '../includes/nav.php';
     </div>
 </section-->
 
-<section class="darkPurpleBackground paddingTopBottom20">
+
+<section class="darkPurpleBackground paddingTopBottom20" id="udu">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Night Photography Course</h3>
         <div class="large-12 columns">
@@ -173,7 +174,7 @@ include '../includes/nav.php';
     </div>
 </section>
 
-<section class="darkPurpleBackground paddingTopBottom20 vividComp">
+<section class="darkPurpleBackground paddingTopBottom20 vividComp" id="competition">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Competitions</h3>
         <div class="large-12 columns">
@@ -186,7 +187,7 @@ include '../includes/nav.php';
                 <p>
                     Don't forget to check out our professional night <a href="#phototips">photography tips</a> and share your images with your friends to improve your chances.
                 </p>
-                <h4 class="white text-center">Enter the competition and tag your photos with<br /> <span class="block">#VIVIDSYDNEY</span><br /> to win!</h4>
+                <h4 class="white text-center">Enter the competition and tag your photos with<br /> <span class="block">#BEYONDTHEWHARF</span><br /> to win!</h4>
                 <div class="large-12 text-center paddingTop20">
                     <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&competitionId=2&call_page=<?=$baseURL?>/vivid/?competitionId=2" class="reveal-init button orange" id="enterVividComp">Enter Competition</a>
                 </div>
@@ -1342,8 +1343,8 @@ function initialize() {
     var thmbBase = '<?=$baseURL?>/img/locations/thumbnails/';
     var markerLocations = [
         {
-            routeFrom: "Circular Quay",
-            routeTo: "Eastern Suburbs",
+            routeFrom: "Eastern Suburbs",
+            routeTo: "Circular Quay",
             lat: -33.85711378212902,
             lng: 151.22854423593265,
             icon: iconBase + 'lightCameraMarker.png',

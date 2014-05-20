@@ -26,13 +26,13 @@ include 'includes/nav.php';
                     bullets: false;
                     slide_number: false;">
         <li>
-            <img src="img/featureImages/bridgeSunset.jpg" data-url="<?=$baseURL?>/gallery#featuredPhotographer" data-directive="View more" data-latlng="33 50.682 S, 151 17.365 E" data-place="Watsons Bay" data-route="Eastern Suburbs" data-class="eastern" data-credit="Joel Coleman" />
+            <img src="img/featureImages/vivid-sydney-cityscape.jpg" data-url="#" data-linkType="internal" data-location="136" data-directive="View more" data-latlng="33 50 47.67 S, 151 13 47.0856 E" data-place="Cremorne" data-route="Mosman Bay" data-class="mosman" data-credit="Andy Richards" />
             <div class="headerText">
-                <div class="inner text-center">
-                    <h2 class="sub">Secrets</h2>
-                    <h2>Beyond the Wharf</h2>
-                    <hr />
-                    <h3>Discover. Share. Experience.</h3>
+                <div class="inner text-left">
+                    <h2 class="sub">Vivid Sydney</h2><br />
+                    <h2>Beyond the Wharf</h2><br />
+                    <h3>Discover. Share. Experience.</h3><br />
+                    <a href="<?=$baseURL?>/vivid/" class="button block med verboten">Read More</a>
                 </div>
             </div>
         </li>
@@ -50,13 +50,13 @@ include 'includes/nav.php';
                     bullets: false;
                     slide_number: false;">
         <li>
-            <img src="img/featureImages/phone/bridgeSunset.jpg" data-url="<?=$baseURL?>/gallery#featuredPhotographer" data-directive="View more" data-latlng="33 50.682 S, 151 17.365 E" data-place="Watsons Bay" data-route="Eastern Suburbs" data-class="eastern" data-credit="Joel Coleman" />
+            <img src="img/featureImages/phone/vivid-sydney-cityscape.jpg" data-url="<?=$baseURL?>/vivid/gallery-pro" data-directive="View more" data-latlng="33 50 47.67 S, 151 13 47.0856 E" data-place="Cremorne" data-route="Mosman Bay" data-class="mosman" data-credit="Andy Richards" />
             <div class="headerText">
                 <div class="inner text-center">
-                    <h2 class="sub">Secrets</h2>
-                    <h2>Beyond the Wharf</h2>
-                    <hr />
-                    <h3>Discover. Share. Experience.</h3>
+                    <h2 class="sub">Secrets</h2><br />
+                    <h2>Beyond the Wharf</h2><br />
+                    <h3>Discover. Share. Experience.</h3><br />
+                    <a href="<?=$baseURL?>/vivid/" class="button block med verboten">Read More</a>
                 </div>
             </div>
         </li>
@@ -83,9 +83,9 @@ include 'includes/nav.php';
         </div>
     </a>
     <div id="featureCreditPanel" class="creditPanel">
-        <span class="latLng">33 48 2.3652 S, 151 17 54.1998 E</span>
-        <span class="location">Shelly BEACH</span>
-        <span class="routes manly">Manly</span>
+        <span class="latLng">33 50 47.67 S, 151 13 47.0856 E</span>
+        <span class="location">Cremorne Point</span>
+        <span class="routes mosman">Mosman Bay</span>
         <span class="credit">Photo by Andy Richards - Understand Down Under</span>
         <span><a href="#" class="panelFlyoutTrigger" data-location="136" data-target="mapContainer" onclick="trackInternalLink('Photo credit panel - click', 'After dark tours'); return false;">View details</a></span>
     </div>
@@ -156,11 +156,11 @@ include 'includes/nav.php';
 
             <div class="large-3 medium-3 small-12 columns hide-for-small-only">
                 <div class="imgHolder">
-                    <img src="img/promoImages/Biennale-of-Sydney.jpg" alt="Image of Biennale of Sydney." />
+                    <img src="img/promoImages/vivid-sydney-light-waves.jpg" alt="Vivid Sydney - Light waves." />
                 </div>
                 <div class="textHolder">
                     <span>Events</span>
-                    <h5><a href="<?=$baseURL?>/events">Biennale of Sydney</a></h5>
+                    <h5><a href="<?=$baseURL?>/vivid">Vivid Sydney 2014</a></h5>
                 </div>
             </div>
 
@@ -354,37 +354,39 @@ $(function() {
 
         var imgHTML = '';
         imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay-2.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards, Understand Down Under" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'vivid-sydney-light-play2.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards, Understand Down Under" />';
         imgHTML += '<div class="headerText">';
         imgHTML += '<div class="inner text-left">';
-        imgHTML += '<h2 class="sub">Secrets</h2>';
-        imgHTML += '<h2>Beyond the Wharf</h2>';
-        imgHTML += '<hr />';
+        imgHTML += '<h2 class="sub">Secrets of Sydney Harbour</h2><br />';
+        imgHTML += '<h2>Beyond the Wharf</h2><br />';
+        //imgHTML += '<hr />';
         imgHTML += '<h3>Discover. Share. Experience.</h3>';
         imgHTML += '</div>';
         imgHTML += '</div>';
         imgHTML += '</li>';
         imgHTML += '<li>';
-        imgHTML += '<img src="img/featureImages/'+folder+'ferries.jpg" data-url="<?=$baseURL?>/gallery#featuredPhotographer" data-directive="View more" data-latlng="33 50.682 S, 151 16.990 E" data-place="Nth/Sth Head" data-route="Manly" data-class="manly" data-credit="Joel Coleman" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'vivid-sydney-boats.jpg"  data-url="#" data-linkType="internal" data-location="136" data-directive="View more" data-latlng="33 50 47.67 S, 151 13 47.0856 E" data-place="Cremorne" data-route="Mosman Bay" data-class="mosman" data-credit="Andy Richards, Understand Down Under" />';
         imgHTML += '<div class="headerText">';
         imgHTML += '<div class="inner text-left">';
-        imgHTML += '<h2 class="sub">Secrets</h2>';
-        imgHTML += '<h2>Beyond the Wharf</h2>';
-        imgHTML += '<hr />';
-        imgHTML += '<h3>Discover. Share. Experience.</h3>';
+        imgHTML += '<h2 class="sub">Vivid Sydney</h2><br />';
+        imgHTML += '<h2>Beyond the Wharf</h2><br />';
+        //imgHTML += '<hr />';
+        imgHTML += '<h3>Discover. Share. Experience.</h3><br />';
+        imgHTML += '<a href="<?=$baseURL?>/vivid/" class="button block med verboten">Read More</a>';
         imgHTML += '</div>';
         imgHTML += '</div>';
         imgHTML += '</li>';
         imgHTML += '<li>';
         imgHTML += '<div class="headerText">';
         imgHTML += '<div class="inner text-left">';
-        imgHTML += '<h2 class="sub">Secrets</h2>';
-        imgHTML += '<h2>Beyond the Wharf</h2>';
-        imgHTML += '<hr />';
-        imgHTML += '<h3>Discover. Share. Experience.</h3>';
+        imgHTML += '<h2 class="sub">Unique Experiences</h2><br />';
+        imgHTML += '<h2>Beyond the Wharf</h2><br />';
+        //imgHTML += '<hr />';
+        imgHTML += '<h3>After Dark Tours</h3><br />';
+        imgHTML += '<a href="#" class="panelFlyoutTrigger button block med verboten" data-location="136" data-target="mapContainer" onclick="trackInternalLink(\'Photo credit panel - click\', \'After dark tours\'); return false;">Find out more</a>';
         imgHTML += '</div>';
         imgHTML += '</div>';
-        imgHTML += '<img src="img/featureImages/'+folder+'lightPlay.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards - Understand Down Under" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'vivid-sydney-light-play.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards - Understand Down Under" />';
         imgHTML += '</li>';
 
         $(imgHTML).appendTo('#featureImageCarousel');

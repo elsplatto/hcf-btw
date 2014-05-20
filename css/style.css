@@ -1256,14 +1256,21 @@ ul.arrowed {
     .headerText .inner h2 {
       font-size: 4rem;
       line-height: 4.25rem;
-      margin: 0; }
+      margin: 0;
+      clear: both;
+      display: inline-block;
+      background-color: rgba(39, 46, 53, 0.75);
+      padding: 0 1rem; }
     .headerText .inner h2.sub {
       font-size: 2rem;
       line-height: 2.25rem;
       margin: 0; }
     .headerText .inner h3 {
       font-size: 1.5rem;
-      color: white; }
+      color: white;
+      display: inline-block;
+      background-color: rgba(39, 46, 53, 0.75);
+      padding: 0 1rem; }
 
 .featureImgHolder.child:before, .featureImgHolder.ancestral:before, .featureImgHolder.entertainer:before, .featureImgHolder.mariner:before {
   display: none;
@@ -2479,6 +2486,9 @@ img.circle {
       .headerText .inner hr:after {
         width: 15.25rem;
         height: 1rem; }
+    .headerText .inner .button.block.med {
+      font-size: 1.5rem !important;
+      margin-top: -1rem; }
     .headerText .inner.text-left hr {
       margin: 0; }
 
@@ -2639,6 +2649,9 @@ img.circle {
         width: 10.462rem;
         height: 0.769rem;
         background-position: -82px -71px; }
+    .headerText .inner .button.block.med {
+      font-size: 1.25rem !important;
+      margin-top: -1rem; }
     .headerText .inner.text-left hr {
       margin: 0; }
 

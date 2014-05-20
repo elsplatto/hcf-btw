@@ -155,7 +155,7 @@ include '../includes/nav.php';
             <h3 class="block">
                 Share your experience
             </h3>
-            <h4>Tag your instagram photos with <span class="tag">#vividsydney</span></h4>
+            <h4>Tag your instagram photos with <span class="tag">#vividsydney &amp; #beyondthewharf</span></h4>
             <?php
             if ($instagramUserLoggedIn)
             {
