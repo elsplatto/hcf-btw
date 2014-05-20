@@ -106,14 +106,16 @@ include '../includes/nav.php';
                 </div>
             </div>
 
-            <div class="large-6 right">
-                <?php
-                include '../includes/instagram-get-latest.php';
-                ?>
-                <div class="large-12 overflow paddingTop30 text-center">
-                    <a href="<?=$baseURL?>/vivid/gallery" class="button marginTop16">Go to Vivid Sydney Gallery</a>
-                    <h4 class="white"><span class="block">SHARE YOUR  EXPERIENCE</span> <br />Tag your instagram photos with <span class="block green">#BEYONDTHEWHARF</span></h4>
+            <div class="large-6 medium-12 small-12 right">
+                <div class="large-12 left overflow">
+                    <?php
+                    include '../includes/instagram-get-latest.php';
+                    ?>
                 </div>
+                    <div class="large-12 paddingTop30 left text-center">
+                        <a href="<?=$baseURL?>/vivid/gallery" class="button marginTop16">Go to Vivid Sydney Gallery</a>
+                        <h4 class="white"><span class="block">SHARE YOUR  EXPERIENCE</span> <br />Tag your instagram photos with <span class="block green">#BEYONDTHEWHARF</span></h4>
+                    </div>
             </div>
         </div>
     </div>

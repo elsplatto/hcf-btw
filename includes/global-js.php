@@ -35,7 +35,7 @@ $(function(){
             if ($(hashtag).length > 0)
             {
                 var landScrollHeight = ($(hashtag).offset().top - $('#navHolder').outerHeight());
-                $('body').animate({
+                $('html, body').animate({
                     scrollTop: landScrollHeight
                 },'slow');
             }
