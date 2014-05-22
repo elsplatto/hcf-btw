@@ -156,6 +156,17 @@
   right: 2rem; }
 
 @media only screen and (min-width: 40.063em) and (max-width: 64em), (max-width: 74.938em) {
+  .vividPromo .infoRibbon {
+    position: absolute;
+    top: 8.75rem; }
+  .vividPromo h3.block span {
+    font-family: inherit !important; }
+  .vividPromo .floated {
+    position: relative;
+    right: 0;
+    bottom: 0rem;
+    padding: 2rem; }
+
   .photoTips.setHeight, .photoTipsNav.setHeight {
     height: 45rem; }
 
@@ -174,11 +185,15 @@
     height: 40rem; } }
 @media only screen and (max-width: 60.313em) {
   .vividPromo .infoRibbon {
-    position: absolute; }
+    position: absolute;
+    top: 8.75rem; }
   .vividPromo h3.block span {
     font-family: inherit !important; }
   .vividPromo .floated {
-    position: relative; }
+    position: relative;
+    right: 0;
+    bottom: 0rem;
+    padding: 2rem; }
 
   .photoTips.setHeight, .photoTipsNav.setHeight {
     height: auto;
@@ -190,11 +205,15 @@
     height: auto; } }
 @media only screen and (max-width: 40em) {
   .vividPromo .infoRibbon {
-    position: absolute; }
+    position: absolute;
+    top: 8.75rem; }
   .vividPromo h3.block span {
     font-family: inherit !important; }
   .vividPromo .floated {
-    position: relative; }
+    position: relative;
+    right: 0;
+    bottom: 0rem;
+    padding: 2rem; }
 
   .photoTips.setHeight, .photoTipsNav.setHeight {
     height: auto;

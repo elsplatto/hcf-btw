@@ -15,7 +15,7 @@ if (isset($instagramData))
 
 <div class="row marginTop20">
     <div class="large-12 columns">
-        <h3 class="text-center galleryTitle">Gallery</h3>
+        <h3 class="text-center galleryTitle">#Beyondthewharf Gallery</h3>
         <?php
         if (isset($instagramData))
         {
@@ -354,7 +354,7 @@ else {
 <div class="row marginTop20">
     <div class="large-12 columns text-center">
 
-        <a href="<?=$baseURL?>/gallery" class="button">Go to Gallery</a>
+        <a href="<?=$baseURL?>/gallery" class="button">Go to #BeyondTheWharf Gallery</a>
 
         <h3 class="block">
             Share your experience
