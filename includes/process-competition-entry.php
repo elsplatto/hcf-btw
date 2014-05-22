@@ -8,12 +8,12 @@ include 'db.php';
 $audit_trail = '';
 $user_msg = '';
 
-if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email']))
+if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['instagramUsername']))
 {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
-    $wharf = $_POST['wharf'];
+    $instagram_username = $_POST['instagramUsername'];
     $is_subscribed = $_POST['subscribe'];
     $date_subscribed = time();
     $date_registered = time();
@@ -27,58 +27,108 @@ if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['
     {
         $instagramID = $instagramData->user->id;
     }
-    else
-    {
-        $instagramID = '';
-    }
 
     //echo 'Get is fine<br />';
     $audit_trail .= 'Received values.';
     //is user in member table?
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $stmt = $mysqli->query('SELECT id FROM user_members WHERE email = "'.$email.'" AND instagram_id = "'.$instagramID.'"');
-
-
-    if ($stmt->num_rows > 0)
+    if (isset($instagramData))
     {
-        //echo 'Is a member<br />';
-        $audit_trail .= 'User is a member.';
-        //yes - user is member
-        $stmt = $mysqli->prepare('SELECT id FROM user_members WHERE email = ? AND instagram_id = ?');
-        $stmt->bind_param('ss',$email, $instagramID);
-        $stmt->execute();
-        $stmt->bind_result($member_id);
-        while($stmt->fetch())
+        $audit_trail .= 'Received instagramID.';
+        $stmt = $mysqli->query('SELECT id FROM user_members WHERE instagram_id = "'.$instagramID.'"');
+
+        if ($stmt->num_rows > 0)
         {
-            $id = $member_id;
+            //echo 'Is a member<br />';
+            $audit_trail .= 'User is a member.';
+            //yes - user is member
+            $stmt = $mysqli->prepare('SELECT id FROM user_members WHERE instagram_id = ?');
+            $stmt->bind_param('s',$instagramID);
+            $stmt->execute();
+            $stmt->bind_result($member_id);
+            while($stmt->fetch())
+            {
+                $id = $member_id;
+            }
+        }
+        else
+        {
+            //echo 'Is not a member<br />';
+            $audit_trail .= 'User is NOT a member.';
+            //no - user is NOT member - insert user into member table
+            if ($is_subscribed == 1)
+            {
+                $query = 'INSERT INTO user_members (firstname, lastname, email, instagram_username, instagram_id, date_registered, is_subscribed, date_subscribed) VALUES (?,?,?,?,?,?,?,?)';
+            }
+            else
+            {
+                $query = 'INSERT INTO user_members (firstname, lastname, email, instagram_username, instagram_id, date_registered) VALUES (?,?,?,?,?,?)';
+            }
+            $stmt = $mysqli->prepare($query);
+            if ($is_subscribed == 1)
+            {
+                $stmt->bind_param('sssssiii', $firstname, $lastname, $email, $instagram_username, $instagramID, $date_registered, $is_subscribed, $date_subscribed);
+            }
+            else
+            {
+                $stmt->bind_param('sssssi', $firstname, $lastname, $email, $instagram_username, $instagramID, $date_registered);
+            }
+            $stmt->execute();
+            //echo 'latest id: ['.$stmt->insert_id.']';
+            $id = $stmt->insert_id;
         }
     }
     else
     {
-        //echo 'Is not a member<br />';
-        $audit_trail .= 'User is NOT a member.';
-        //no - user is NOT member - insert user into member table
-        if ($is_subscribed == 1)
+        $audit_trail .= 'No instagramID.';
+        if (isset($instagram_username))
         {
-            $query = 'INSERT INTO user_members (firstname, lastname, email, home_wharf, instagram_id, date_registered, is_subscribed, date_subscribed) VALUES (?,?,?,?,?,?,?,?)';
+            $stmt = $mysqli->query('SELECT id FROM user_members WHERE instagram_username = "'.$instagram_username.'"');
+        }
+
+        if ($stmt->num_rows > 0)
+        {
+            //echo 'Is a member<br />';
+            $audit_trail .= 'User is a member.';
+            //yes - user is member
+            $stmt = $mysqli->prepare('SELECT id FROM user_members WHERE instagram_username = ?');
+            $stmt->bind_param('s',$instagram_username);
+            $stmt->execute();
+            $stmt->bind_result($member_id);
+            while($stmt->fetch())
+            {
+                $id = $member_id;
+            }
         }
         else
         {
-            $query = 'INSERT INTO user_members (firstname, lastname, email, home_wharf, instagram_id, date_registered) VALUES (?,?,?,?,?,?)';
+            //echo 'Is not a member<br />';
+            $audit_trail .= 'User is NOT a member.';
+            //no - user is NOT member - insert user into member table
+            if ($is_subscribed == 1)
+            {
+                $query = 'INSERT INTO user_members (firstname, lastname, email, instagram_username, date_registered, is_subscribed, date_subscribed) VALUES (?,?,?,?,?,?,?)';
+            }
+            else
+            {
+                $query = 'INSERT INTO user_members (firstname, lastname, email, instagram_username, date_registered) VALUES (?,?,?,?,?)';
+            }
+            $stmt = $mysqli->prepare($query);
+            if ($is_subscribed == 1)
+            {
+                $stmt->bind_param('ssssiii', $firstname, $lastname, $email, $instagram_username, $date_registered, $is_subscribed, $date_subscribed);
+            }
+            else
+            {
+                $stmt->bind_param('ssssi', $firstname, $lastname, $email, $instagram_username, $date_registered);
+            }
+            $stmt->execute();
+            //echo 'latest id: ['.$stmt->insert_id.']';
+            $id = $stmt->insert_id;
         }
-        $stmt = $mysqli->prepare($query);
-        if ($is_subscribed == 1)
-        {
-            $stmt->bind_param('sssssiii', $firstname, $lastname, $email, $wharf, $instagramID, $date_registered, $is_subscribed, $date_subscribed);
-        }
-        else
-        {
-            $stmt->bind_param('sssssi', $firstname, $lastname, $email, $wharf, $instagramID, $date_registered);
-        }
-        $stmt->execute();
-        //echo 'latest id: ['.$stmt->insert_id.']';
-        $id = $stmt->insert_id;
     }
+
+
 
     //echo 'ID = ['.$id.']<br />';
     if ($id > 0)
@@ -111,6 +161,10 @@ if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['
             {
                 $instagramUsername = $instagramData->user->username;
             }
+            else if (!isset($instagramData) && isset($instagram_username))
+            {
+                $instagramUsername = $instagram_username;
+            }
             else
             {
                 $instagramUsername = 'Unknown';
@@ -133,6 +187,10 @@ if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['
 }
 else
 {
+    if (empty($_POST['instagramUsername']))
+    {
+        $audit_trail .= 'Instagram username empty.';
+    }
     if (empty($_POST['firstname']))
     {
         $audit_trail .= 'First name empty.';

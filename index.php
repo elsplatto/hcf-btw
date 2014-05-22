@@ -99,11 +99,11 @@ include 'includes/nav.php';
 
                 <div class="large-3 medium-3 small-12 promoTile columns<?=$deviceClass?>">
                     <div class="imgHolder">
-                        <img src="img/promoImages/<?=$folder?>sm-shelly.jpg" alt="Saltmotion image of Shelly Beach - by Joel Coleman" />
+                        <img src="img/promoImages/<?=$folder?>sm-shelly.jpg" alt="WIN THE NEW CANON EOS 1200D SINGLE KIT WITH EF-S 18-55MM F/3.5-5.6 III LENS RRP $649" />
                     </div>
                     <div class="textHolder">
                         <span>Photo Competition</span>
-                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/?competitionId=1" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - mobile click', 'Competition 1 - Win $700 Art Print'); return false;">Win a $700 Art Print</a>
+                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=2&competitionId=2" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - mobile click', 'Competition 2 - Win the new CANON EOS 1200D'); return false;">Win a CANON EOS 1200D</a>
                     </div>
                 </div>
 
@@ -136,11 +136,11 @@ include 'includes/nav.php';
             </div>
             <div class="large-3 medium-3 small-12 promoTile columns">
                 <div class="imgHolder">
-                    <img src="img/promoImages/sm-shelly.jpg" alt="Saltmotion image of Shelly Beach - by Joel Coleman" />
+                    <img src="img/promoImages/vivid-sydney-competition.jpg" alt="WIN THE NEW CANON EOS 1200D SINGLE KIT WITH EF-S 18-55MM F/3.5-5.6 III LENS RRP $649" />
                 </div>
                 <div class="textHolder">
-                    <span>Photo Competition</span>
-                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/?competitionId=1" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - click', 'Competition 1 - Win $700 Art Print'); return false;">Win a $700 Art Print</a>
+                    <span>Vivid Sydney Photo Competition</span>
+                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=2&competitionId=2" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - click', 'Competition 2 - Win the new CANON EOS 1200D'); return false;">Win a CANON EOS 1200D</a>
                 </div>
             </div>
 

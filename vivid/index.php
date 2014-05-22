@@ -113,8 +113,8 @@ include '../includes/nav.php';
                     ?>
                 </div>
                     <div class="large-12 paddingTop30 left text-center">
-                        <a href="<?=$baseURL?>/vivid/gallery" class="button marginTop16">Go to Vivid Sydney Gallery</a>
-                        <h4 class="white"><span class="block">SHARE YOUR  EXPERIENCE</span> <br />Tag your instagram photos with <span class="block green">#BEYONDTHEWHARF</span></h4>
+                        <a href="<?=$baseURL?>/vivid/gallery" class="button marginTop16">Go to #VividSydney Gallery</a>
+                        <h4 class="white"><span class="block">SHARE YOUR  EXPERIENCE</span> <br />Tag your Instagram photos with <span class="block green">#VIVIDSYDNEY</span></h4>
                     </div>
             </div>
         </div>
@@ -191,7 +191,7 @@ include '../includes/nav.php';
                 </p>
                 <h4 class="white text-center">Enter the competition and tag your photos with<br /> <span class="block">#BEYONDTHEWHARF</span><br /> to win!</h4>
                 <div class="large-12 text-center paddingTop20">
-                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&competitionId=2&call_page=<?=$baseURL?>/vivid/?competitionId=2" class="reveal-init button orange" id="enterVividComp">Enter Competition</a>
+                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&competitionId=2&step=2&call_page=<?=$baseURL?>/vivid/?competitionId=2" class="reveal-init button orange" id="enterVividComp">Enter Competition</a>
                 </div>
             </div>
 
@@ -232,8 +232,7 @@ include '../includes/nav.php';
 </section>
 
 
-<section class="mapHolder lightPurpleBackground paddingTopBottom20">
-    <a name="phototips"></a>
+<section class="mapHolder lightPurpleBackground paddingTopBottom20" id="phototips">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Andy Richard's  - Night Photography Tips</h3>
         <div class="large-12 columns">
@@ -1441,7 +1440,7 @@ function initialize() {
             lng: 151.16917085745854,
             icon: iconBase + 'lightCameraMarker.png',
             height: 300,
-            content: '<p>This is the panoroamic way to see Harbour Lights. You might only get a glimpse of Darling Harbour, but you will get brilliant views of the Bridge standing behind the Balls Head, McMahons Point and Birchgrove.</p>'
+            content: '<p>This is the panoramic way to see Harbour Lights. You might only get a glimpse of Darling Harbour, but you will get brilliant views of the Bridge as the ferry comes around Balls Head, McMahons Point and Birchgrove.</p>'
         }
 
     ];

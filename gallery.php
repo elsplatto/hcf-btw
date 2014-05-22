@@ -2,7 +2,7 @@
 $pageMetaTitle = "Gallery - Great photos from around the harbour.";
 $pageSection = "gallery";
 $pageMetaDesc = "Submit, share and view your photos of Sydney Harbour.";
-$pageMetaKeywords = "Sydney, photos, gallery, harbour, experiences";
+$pageMetaKeywords = "Sydney, photos, gallery, harbour, experiences, #beyondthewharf";
 include 'includes/head.php';
 /*global includes in head.php*/
 
@@ -68,7 +68,7 @@ if (isset($sharedPhoto))
 <section class="breadcrumbsHolder">
     <div class="row">
         <div class="large-12 columns breadcrumbs">
-            <a href="<?=$baseURL?>/">Home</a><span>Gallery</span>
+            <a href="<?=$baseURL?>/">Home</a><span>#BeyondTheWharf Gallery</span>
         </div>
     </div>
 </section>
@@ -77,7 +77,7 @@ if (isset($sharedPhoto))
 
     <div class="row paddingTop20">
         <div class="large-12 columns">
-            <h2 class="block clearfix text-left">Gallery</h2>
+            <h2 class="block clearfix text-left">#BEYONDTHEWHARF Gallery</h2>
 
             <?php
             /*if (isset($instagramData))
@@ -465,7 +465,7 @@ if (isset($sharedPhoto))
 
             <div class="small-12 medium-6 large-6 columns left">
                 <div class="large-12 medium-12 small-12 insta">
-                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/gallery/?competitionId=1" id="competitionPromo" class="reveal-init" data-size="small"><img src="<?=$baseURL?>/img/featuredPhotographer/medium/competition-1.jpg" alt="Click here to enter photo competition." /></a>
+                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&call_page=<?=$baseURL?>/gallery/?competitionId=1&competitionId=1&step=2" id="competitionPromo" class="reveal-init" data-size="small"><img src="<?=$baseURL?>/img/featuredPhotographer/medium/competition-1.jpg" alt="Click here to enter photo competition." /></a>
                 </div>
             </div>
 

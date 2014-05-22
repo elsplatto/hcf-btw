@@ -15,19 +15,21 @@ function getStepOneData($compId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DAT
     //echo '['.$compId.']['.$DB_SERVER.']['.$DB_USERNAME.']['.$DB_PASSWORD.']['.$DB_DATABASE.']';
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
-    $stmt = $mysqli->prepare('SELECT intro_text, how_to_win, terms FROM competitions WHERE id= ?');
+    $stmt = $mysqli->prepare('SELECT intro_text, how_to_win, terms, success_message FROM competitions WHERE id= ?');
     $stmt->bind_param('i', $compId);
     $stmt->execute();
-    $stmt->bind_result($intro_text, $how_to_win, $terms);
+    $stmt->bind_result($intro_text, $how_to_win, $terms, $success_message);
     $results = array();
     $results['intro_text'] = '';
     $results['how_to_win'] = '';
     $results['terms'] = '';
+    $results['success_message'] = '';
     while($stmt->fetch())
     {
         $results['intro_text'] = $intro_text;
         $results['how_to_win'] = $how_to_win;
         $results['terms'] = $terms;
+        $results['success_message'] = $success_message;
     }
     $stmt->close();
     $mysqli->close();
@@ -40,15 +42,17 @@ function getStepTwoData($compId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DAT
     //echo '['.$compId.']['.$DB_SERVER.']['.$DB_USERNAME.']['.$DB_PASSWORD.']['.$DB_DATABASE.']';
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
-    $stmt = $mysqli->prepare('SELECT terms FROM competitions WHERE id= ?');
+    $stmt = $mysqli->prepare('SELECT terms, success_message FROM competitions WHERE id= ?');
     $stmt->bind_param('i', $compId);
     $stmt->execute();
-    $stmt->bind_result($terms);
+    $stmt->bind_result($terms, $success_message);
     $results = array();
     $results['terms'] = '';
+    $results['success_message'] = '';
     while($stmt->fetch())
     {
         $results['terms'] = $terms;
+        $results['success_message'] = $success_message;
     }
     $stmt->close();
     $mysqli->close();
@@ -62,10 +66,10 @@ function getUserDetails($instagramId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $D
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
     //yes - user is member
-    $stmt = $mysqli->prepare('SELECT id, firstname, lastname, email, home_wharf FROM user_members WHERE instagram_id = ?');
+    $stmt = $mysqli->prepare('SELECT id, firstname, lastname, email, home_wharf, instagram_username FROM user_members WHERE instagram_id = ?');
     $stmt->bind_param('s', $instagramId);
     $stmt->execute();
-    $stmt->bind_result($id, $firstname, $lastname, $email, $wharf);
+    $stmt->bind_result($id, $firstname, $lastname, $email, $wharf, $instagram_username);
 
     $results = array();
     $results['id'] = '';
@@ -73,6 +77,7 @@ function getUserDetails($instagramId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $D
     $results['lastname'] = '';
     $results['email'] = '';
     $results['home_wharf'] = '';
+    $results['instagram_username'] = '';
     while($stmt->fetch())
     {
         $results['id'] = $id;
@@ -80,6 +85,7 @@ function getUserDetails($instagramId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $D
         $results['lastname'] = $lastname;
         $results['email'] = $email;
         $results['home_wharf'] = $wharf;
+        $results['instagram_username'] = $instagram_username;
     }
     $stmt->close();
     $mysqli->close();
@@ -169,78 +175,30 @@ else if ($step == 2)
 
 
 <?php
+$competitionDetails = getStepOneData($competitionId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
+$compIntroText = '';
+$compHowToWin = '';
+$successMsg = '';
+if (isset($competitionDetails))
+{
+    $compIntroText = $competitionDetails['intro_text'];
+    $compHowToWin = $competitionDetails['how_to_win'];
+    $successMsg = $competitionDetails['success_message'];
+}
+
 if ($step == 1)
 {
-    $competitionDetails = getStepOneData($competitionId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
-    $compIntroText = '';
-    $compHowToWin = '';
-    if (isset($competitionDetails))
-    {
-        $compIntroText = $competitionDetails['intro_text'];
-        $compHowToWin = $competitionDetails['how_to_win'];
-    }
+
 ?>
 <section class="steps">
 
     <?=$compIntroText?>
 
-
-
-
     <a href="<?=$instagramLoginURL?>" class="button instagram" onClick="trackInternalLink('Competition Overlay - <?=$deviceType?>','Clicked Log into Instgram Button - Step 1 - CompID: <?=$competitionId?>');">Log into Instagram &amp; Enter</a>
 
 
     <?=$compHowToWin?>
-    <!--ul class="arrowed show-hide">
-        <li>
-            <h4><a href="#">Capture the Essence of Sydney in a Photograph</a></h4>
-            <div class="extra-info">
-                <p>Take a great photo of Sydney harbour or the Parramatta river. Capture the people, the places and experiences accessed through our iconic ferry service.</p>
-                <p>Jump on a ferry, explore our harbour and capture the essence of Sydney's most authentic experience. </p>
-            </div>
-        </li>
-        <li>
-            <h4><a href="#">Sign-up for the competition</a></h4>
-            <div class="extra-info">
-                <p>Simply sign-in using your Instagram account, provide us with your contact details and start snapping.</p>
-                <p>If you don't already have an Instagram account, <a href="http://instagram.com" target="_blank" rel="nofollow">download the free app now</a>.</p>
-            </div>
-        </li>
-        <li>
-            <h4><a href="#">Share your photos</a></h4>
-            <div class="extra-info">
-                <p>Once you've signed up for the competition, share your best photos on Instagram.</p>
-                <p>Simply tag each image with #beyondthewharf and encourage your friends to 'like' them. We'll also publish all submitted images
-                    on beyondthewharf.com.au and our <a href="http://www.facebook.com/beyondthewharf" target="_blank" rel="nofollow">facebook page</a> for all the world to see.</p>
-            </div>
-        </li>
-        <li>
-            <h4><a href="#">Tips on how to win</a></h4>
-            <div class="extra-info">
-                <p>Our expert panel of judges will select winners based on the creativity and originality of the entries. The judges will be looking for images that present unique
-                    perspectives of our awesome harbour and the communities that surround it. Special credit will be given to images that capture local secrets,
-                    hidden gems and insight into the best and most authentic experiences on offer.</p>
 
-                <p>Don't forget to visit beyondthewharf.com.au and use our tools to promote your images to your network.</p>
-            </div>
-        </li>
-        <li>
-            <h4><a href="#">Monthly winner</a></h4>
-            <div class="extra-info">
-                <p>The monthly winner will receive an awesome Joel Coleman artwork valued at $700.</p>
-
-                <p>One winner will be selected each month for the duration of the competition. All winners will be announced and featured on beyondthewharf.com.au and our <a href="http://www.facebook.com/beyondthewharf" target="_blank" rel="nofollow">facebook page</a>. All winners will be notified by email.</p>
-            </div>
-        </li>
-        <li>
-            <h4><a href="#">Legal stuff</a></h4>
-            <div class="extra-info">
-                <p>The competition runs between 20/03/2014 to 20/06/2014 to enter the competition you must have taken the image yourself and own all legal rights to submit the image.</p>
-
-                <p>Employees (and their immediate families) of the promoter and agencies associated with this promotion are ineligible to enter the competition.</p>
-            </div>
-        </li>
-    </ul-->
 
     <a href="<?=$instagramLoginURL?>" class="button instagram" onClick="trackInternalLink('Competition Overlay - <?=$deviceType?>','Clicked Log into Instgram Button - Step 1 - CompID: <?=$competitionId?>');">Log into Instagram &amp; Enter</a>
 </section>
@@ -250,9 +208,30 @@ else if ($step == 2)
 {
     $competitionDetails = getStepTwoData($competitionId, $DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     $compTerms = '';
+    $successMsg = '';
     if (isset($competitionDetails))
     {
         $compTerms = $competitionDetails['terms'];
+        $successMsg = $competitionDetails['success_message'];
+    }
+    $userFirstname = '';
+    $userLastname = '';
+    $userEmail = '';
+    $userHomewharf = '';
+    $userInstagramName = '';
+
+    if (isset($userDetails))
+    {
+        $userFirstname = $userDetails['firstname'];
+        $userLastname = $userDetails['lastname'];
+        $userEmail = $userDetails['email'];
+        $userHomewharf = $userDetails['home_wharf'];
+        $userInstagramName = $userDetails['home_wharf'];
+    }
+
+    if (isset($instagramUsername) && strlen($instagramUsername) > 0)
+    {
+        $userInstagramName = $instagramUsername;
     }
 ?>
 <section class="steps" id="step2">
@@ -260,28 +239,35 @@ else if ($step == 2)
     if ($userEntered == 0)
     {
     ?>
-    <h3>Hello <?=$instagramUsername?>,</h3>
+    <?=$compIntroText?>
+    <!--h3>Hello <?=$instagramUsername?>,</h3-->
     <p>We just need a few details from you to enter you into the competition.<br /><sup class="red">*</sup>Mandatory Fields.</p>
     <form id="frmCompetition" action="<?=$baseURL?>/includes/process-competition-entry.php" method="post" data-abide="ajax">
         <input type="hidden" id="competitionId" name="competitionId" value="<?=$competitionId?>" />
+
+        <label for="txtInstagramUsername">Instagram Userame:<sup class="red">*</sup>
+            <input type="text" name="txtInstagramUsername" id="txtInstagramUsername" value="<?=$userInstagramName?>" required />
+            <small class="error">Please enter your Instagram username.</small>
+        </label>
+
         <label for="txtFirstname">First Name:<sup class="red">*</sup>
-            <input type="text" name="txtFirstname" id="txtFirstname" value="<?=$userDetails['firstname']?>" required />
+            <input type="text" name="txtFirstname" id="txtFirstname" value="<?=$userFirstname?>" required />
             <small class="error">Please enter your first name.</small>
         </label>
 
         <label for="txtLastname">Surname:<sup class="red">*</sup>
-            <input type="text" name="txtLastname" id="txtLastname" value="<?=$userDetails['lastname']?>" required />
+            <input type="text" name="txtLastname" id="txtLastname" value="<?=$userLastname?>" required />
             <small class="error">Please enter your surname.</small>
         </label>
 
-        <label for="txtEmail">Email Address:<sup class="red">*</sup>
-            <input type="email" name="txtEmail" id="txtEmail" value="<?=$userDetails['email']?>" required />
-            <small class="error">Please enter your email address.</small>
+        <label for="txtEmail">Email Address:<!--sup class="red">*</sup-->
+            <input type="email" name="txtEmail" id="txtEmail" value="<?=$userEmail?>" />
+            <!--small class="error">Please enter your email address.</small-->
         </label>
 
-        <label for="txtWharf">Your local wharf:
-            <input type="text" name="txtWharf" id="txtWharf" value="<?=$userDetails['home_wharf']?>" />
-        </label>
+        <!--label for="txtWharf">Your local wharf:
+            <input type="text" name="txtWharf" id="txtWharf" value="<?=$userHomewharf?>" />
+        </label-->
 
         <label for="chkTerms01">
             <input type="checkbox" name="chkTerms" id="chkTerms01" required />&nbsp;I agree to the <a href="#" id="openTandC" data-target="compTandC">Terms and Conditions</a>.
@@ -330,258 +316,280 @@ else if ($step == 3)
 <script src="<?=$baseURL?>/js/vendor/jquery-ui-1.10.4.custom.min.js"></script>
 <script>
 
-    $(function() {
+$(function() {
 
-        <?php
-        if ($userEntered == 1)
+    <?php
+    if ($userEntered == 1)
+    {
+        echo 'getUsersRecentMedia($(\'#step2\'));';
+    }
+    ?>
+
+    var wharfsArray = <?=$wharfs?>;
+    $( "#txtWharf" ).autocomplete({
+        source: wharfsArray
+    });
+
+    $('#openTandC').click(function(e)
+    {
+        e.preventDefault();
+        var target = $('#'+$(this).attr('data-target'));
+
+        if (target.hasClass('hide'))
         {
-            echo 'getUsersRecentMedia($(\'#step2\'));';
+            target.removeClass('hide');
+            var scrollHeight = ($(this).offset().top - $('#navHolder').outerHeight());
+            $('html, body').animate({
+                scrollTop: scrollHeight
+            },'slow');
         }
-        ?>
-
-        var wharfsArray = <?=$wharfs?>;
-        $( "#txtWharf" ).autocomplete({
-            source: wharfsArray
-        });
-
-        $('#openTandC').click(function(e)
+        else
         {
-            e.preventDefault();
-            var target = $('#'+$(this).attr('data-target'));
+            target.addClass('hide');
+        }
+    });
 
-            if (target.hasClass('hide'))
+    $('#frmCompetition').foundation('abide');
+
+    $('#frmCompetition').submit(function(e) {
+        e.preventDefault();
+
+        if (!$('#chkTerms01').is(':checked'))
+        {
+            $('#chkTerms01').attr('data-invalid','');
+            $('label[for="chkTerms01"]').addClass('error');
+        }
+
+        if ($('[data-invalid]').length == 0)
+        {
+            trackInternalLink('Competition Overlay - <?=$deviceType?>','Submitted Entry Form - Step 2 - CompID: <?=$competitionId?>');
+            var el = $(this);
+            var url = $(this).attr('action');
+            var firstname, lastname, email, instagramUsername, competitionId;
+            var subscribe = 0;
+            competitionId = $('#competitionId').val();
+            firstname = $('#txtFirstname').val();
+            lastname = $('#txtLastname').val();
+            email = $('#txtEmail').val();
+            instagramUsername = $('#txtInstagramUsername').val();
+            if ($('#chkSubscribe').is(':checked'))
             {
-                target.removeClass('hide');
-                var scrollHeight = ($(this).offset().top - $('#navHolder').outerHeight());
-                $('html, body').animate({
-                    scrollTop: scrollHeight
-                },'slow');
+                subscribe = 1;
             }
-            else
-            {
-                target.addClass('hide');
-            }
-        });
-
-        $('#frmCompetition').foundation('abide');
-
-        $('#frmCompetition').submit(function(e) {
-            e.preventDefault();
-
-            if (!$('#chkTerms01').is(':checked'))
-            {
-                $('#chkTerms01').attr('data-invalid','');
-                $('label[for="chkTerms01"]').addClass('error');
-            }
-
-            if ($('[data-invalid]').length == 0)
-            {
-                trackInternalLink('Competition Overlay - <?=$deviceType?>','Submitted Entry Form - Step 2 - CompID: <?=$competitionId?>');
-                var el = $(this);
-                var url = $(this).attr('action');
-                var firstname, lastname, email, wharf, competitionId;
-                var subscribe = 0;
-                competitionId = $('#competitionId').val();
-                firstname = $('#txtFirstname').val();
-                lastname = $('#txtLastname').val();
-                email = $('#txtEmail').val();
-                wharf = $('#txtWharf').val();
-                if ($('#chkSubscribe').is(':checked'))
-                {
-                    subscribe = 1;
-                }
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: {
-                        firstname: firstname,
-                        lastname: lastname,
-                        email: email,
-                        wharf: wharf,
-                        subscribe: subscribe,
-                        competitionId: competitionId
-                    },
-                    dataType: 'json',
-                    cache: false,
-                    beforeSend: function()
-                    {
-                        beforePostHandler(el);
-                    },
-                    success: function(data) {
-                        successPostHandler(data, el);
-                    },
-                    error: function(data) {
-                        errorPostHandler(data, el);
-                    },
-                    complete: function(data)
-                    {
-                        completePostHandler(data, el.parent('section'));
-                    }
-                });
-            }
-        });
-
-        function beforePostHandler(el)
-        {
-            var section = el.parent('section');
-            el.hide();
-            section.addClass('complete');
-            section.append('<div id="postEntryLoader"></div>');
-            var cl = new CanvasLoader('postEntryLoader');
-            cl.setColor('#59acb3');
-            cl.setShape('square'); // default is 'oval'
-            cl.setDiameter(40); // default is 40
-            cl.setDensity(90); // default is 40
-            cl.setRange(1); // default is 1.3
-            cl.setSpeed(3); // default is 2
-            cl.setFPS(24); // default is 24
-            cl.show(); // Hidden by default
-        }
-
-        function successPostHandler(data,el)
-        {
-            var obj = JSON.parse(data);
-            //console.dir(obj);
-            //console.log('success');
-            //$('#postEntryLoader').remove();
-            //el.parent('section').html('');
-            var html = '';
-            html += '<h3>Thank you for entering.</h3>';
-            html += '<p>Thanks for joining us in our quest to capture the essence of Sydney Harbour. Don\'t forget to tag your photos with #<?=$compTag?> and promote your images with our social sharing tools.</p>';
-            trackInternalLink('Competition Overlay - <?=$deviceType?>','Entry Successful - Step 3 - CompID: <?=$competitionId?>');
-            el.parent('section').html(html);
-        }
-
-        function errorPostHandler(data,el)
-        {
-            $('#postEntryLoader').remove();
-            el.parent('section').empty();
-            el.parent('section').append('<p>Something went wrong - please try again later.</p>');
-        }
-
-        function completePostHandler(data, el)
-        {
-            //console.log('complete');
-            //console.dir(el);
-            getUsersRecentMedia($('#step2'));
-        }
-
-        function getUsersRecentMedia(targetEl)
-        {
-            var url = '<?=$baseURL?>/services/instagram-get-users-recent.php';
-
             $.ajax({
                 type: 'POST',
                 url: url,
                 data: {
-                    tag: '<?=$compTag?>'
+                    firstname: firstname,
+                    lastname: lastname,
+                    email: email,
+                    instagramUsername: instagramUsername,
+                    subscribe: subscribe,
+                    competitionId: competitionId
                 },
                 dataType: 'json',
                 cache: false,
                 beforeSend: function()
                 {
-                    beforeGetRecentHandler(targetEl);
+                    beforePostHandler(el);
                 },
                 success: function(data) {
-                    successGetRecentHandler(data, targetEl);
+                    successPostHandler(data, el);
                 },
                 error: function(data) {
-                    //console.log('failed');
-                    //console.dir(data);
+                    errorPostHandler(data, el);
                 },
                 complete: function(data)
                 {
-                    completeGetRecentHandler(data, targetEl);
+                    completePostHandler(data, el.parent('section'));
                 }
-
             });
         }
+    });
 
-        function beforeGetRecentHandler(el)
+    function beforePostHandler(el)
+    {
+        var section = el.parent('section');
+        el.hide();
+        section.addClass('complete');
+        section.append('<div id="postEntryLoader"></div>');
+        var cl = new CanvasLoader('postEntryLoader');
+        cl.setColor('#59acb3');
+        cl.setShape('square'); // default is 'oval'
+        cl.setDiameter(40); // default is 40
+        cl.setDensity(90); // default is 40
+        cl.setRange(1); // default is 1.3
+        cl.setSpeed(3); // default is 2
+        cl.setFPS(24); // default is 24
+        cl.show(); // Hidden by default
+    }
+
+    function successPostHandler(data,el)
+    {
+        var obj = JSON.parse(data);
+        //console.dir(obj);
+        //console.log('success');
+        //$('#postEntryLoader').remove();
+        //el.parent('section').html('');
+        var html = '';
+        <?php
+        if (isset($competitionDetails))
         {
-            el.append('<div id="recentMediaLoader"></div>');
-            el.addClass('complete');
-            var cl = new CanvasLoader('recentMediaLoader');
-            cl.setColor('#59acb3');
-            cl.setShape('square'); // default is 'oval'
-            cl.setDiameter(40); // default is 40
-            cl.setDensity(90); // default is 40
-            cl.setRange(1); // default is 1.3
-            cl.setSpeed(3); // default is 2
-            cl.setFPS(24); // default is 24
-            cl.show(); // Hidden by default
+            $successMsg = $snip = str_replace(array("\n", "\t", "\r"), '', $successMsg);
+        ?>
+
+            html += '<?=addslashes($successMsg)?>';
+        <?php
         }
-
-        function successGetRecentHandler(data, el)
+        else
         {
-            $('#recentMediaLoader').remove();
-            var dataObj = data;
-            var loadHTML = '<h4>Perhaps you would like to promote your photos.</h4>';
-            loadHTML += '<p>Click on the twitter button to broadcast your photo via twitter. Encourage your friends to "Like" your photos.</p>';
-            var altText = '';
-            if (dataObj.length > 0)
-            {
-                for (var i=0; i<dataObj.length;i++)
-                {
+        ?>
+            html += '<h3>Thank you for entering.</h3>';
+            html += '<p>Thanks for joining us in our quest to capture the essence of Sydney Harbour. Don\'t forget to tag your photos with #beyondthewharf and promote your images with our social sharing tools.</p>';
+        <?php
+        }
+        ?>
+        trackInternalLink('Competition Overlay - <?=$deviceType?>','Entry Successful - Step 3 - CompID: <?=$competitionId?>');
+        el.parent('section').html(html);
+    }
 
-                    if (dataObj[i].caption != null)
-                    {
-                        if (dataObj[i].caption.text == null)
-                        {
-                            altText = '';
-                        }
-                        else
-                        {
-                            altText = dataObj[i].caption.text;
-                        }
-                    }
-                    else
+    function errorPostHandler(data,el)
+    {
+        $('#postEntryLoader').remove();
+        el.parent('section').empty();
+        el.parent('section').append('<p>Something went wrong - please try again later.</p>');
+    }
+
+    function completePostHandler(data, el)
+    {
+        //console.log('complete');
+        //console.dir(el);
+        <?php
+        if (isset($instagramData))
+        {
+        ?>
+            getUsersRecentMedia($('#step2'));
+        <?php
+        }
+        ?>
+    }
+
+    function getUsersRecentMedia(targetEl)
+    {
+        var url = '<?=$baseURL?>/services/instagram-get-users-recent.php';
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                tag: '<?=$compTag?>'
+            },
+            dataType: 'json',
+            cache: false,
+            beforeSend: function()
+            {
+                beforeGetRecentHandler(targetEl);
+            },
+            success: function(data) {
+                successGetRecentHandler(data, targetEl);
+            },
+            error: function(data) {
+                //console.log('failed');
+                //console.dir(data);
+            },
+            complete: function(data)
+            {
+                completeGetRecentHandler(data, targetEl);
+            }
+
+        });
+    }
+
+    function beforeGetRecentHandler(el)
+    {
+        el.append('<div id="recentMediaLoader"></div>');
+        el.addClass('complete');
+        var cl = new CanvasLoader('recentMediaLoader');
+        cl.setColor('#59acb3');
+        cl.setShape('square'); // default is 'oval'
+        cl.setDiameter(40); // default is 40
+        cl.setDensity(90); // default is 40
+        cl.setRange(1); // default is 1.3
+        cl.setSpeed(3); // default is 2
+        cl.setFPS(24); // default is 24
+        cl.show(); // Hidden by default
+    }
+
+    function successGetRecentHandler(data, el)
+    {
+        $('#recentMediaLoader').remove();
+        var dataObj = data;
+        var loadHTML = '<h4>Perhaps you would like to promote your photos.</h4>';
+        loadHTML += '<p>Click on the twitter button to broadcast your photo via twitter. Encourage your friends to "Like" your photos.</p>';
+        var altText = '';
+        if (dataObj.length > 0)
+        {
+            for (var i=0; i<dataObj.length;i++)
+            {
+
+                if (dataObj[i].caption != null)
+                {
+                    if (dataObj[i].caption.text == null)
                     {
                         altText = '';
                     }
-
-                    loadHTML += '<div class="small-12 medium-6 large-3 columns">';
-                    loadHTML += '<div class="small-12 large-12 insta">';
-                    loadHTML += '<img src="'+dataObj[i].images.low_resolution.url+'" alt="'+altText+'" />';
-                    loadHTML += '<div class="infoContainer">';
-                    loadHTML += '<div class="inner">';
-
-
-                    loadHTML += '<a href="https://twitter.com/share?url=<?=$baseURL?>/gallery/'+dataObj[i].id+'&text=Check this photo out&hashtag=<?=$compTag?>&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>';
-                    loadHTML += '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");<\/script>';
-
-                    loadHTML += '</div>';
-                    loadHTML += '</div>';
-                    loadHTML += '</div>';
-                    loadHTML += '</div>';
-                    el.append(loadHTML);
-                    loadHTML = '';
+                    else
+                    {
+                        altText = dataObj[i].caption.text;
+                    }
                 }
-            }
-            return false;
-        }
+                else
+                {
+                    altText = '';
+                }
 
-        function completeGetRecentHandler(data, targetEl)
+                loadHTML += '<div class="small-12 medium-6 large-3 columns">';
+                loadHTML += '<div class="small-12 large-12 insta">';
+                loadHTML += '<img src="'+dataObj[i].images.low_resolution.url+'" alt="'+altText+'" />';
+                loadHTML += '<div class="infoContainer">';
+                loadHTML += '<div class="inner">';
+
+
+                loadHTML += '<a href="https://twitter.com/share?url=<?=$baseURL?>/gallery/'+dataObj[i].id+'&text=Check this photo out&hashtag=<?=$compTag?>&count=none" class="twitter-share-button gallery-tweet" data-lang="en">Tweet</a>';
+                loadHTML += '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");<\/script>';
+
+                loadHTML += '</div>';
+                loadHTML += '</div>';
+                loadHTML += '</div>';
+                loadHTML += '</div>';
+                el.append(loadHTML);
+                loadHTML = '';
+            }
+        }
+        return false;
+    }
+
+    function completeGetRecentHandler(data, targetEl)
+    {
+        twttr.widgets.load();
+    }
+
+    $('.show-hide li h4 a').click(function(e){
+        e.preventDefault();
+        var target = $(this).parent('h4').next('.extra-info');
+        var listItem = $(this).closest('li');
+        if (listItem.hasClass('active'))
         {
-            twttr.widgets.load();
+            target.hide();
+            listItem.removeClass('active');
+        }
+        else
+        {
+            target.show();
+            listItem.addClass('active');
         }
 
-        $('.show-hide li h4 a').click(function(e){
-            e.preventDefault();
-            var target = $(this).parent('h4').next('.extra-info');
-            var listItem = $(this).closest('li');
-            if (listItem.hasClass('active'))
-            {
-                target.hide();
-                listItem.removeClass('active');
-            }
-            else
-            {
-                target.show();
-                listItem.addClass('active');
-            }
-
-        })
-    });
+    })
+});
 </script>
 
