@@ -14,7 +14,7 @@ include 'includes/head.php';
 <?php
 include 'includes/nav.php';
 ?>
-<section id="featureImgHolder" class="homepage featureImgHolder marginBottomStandard">
+<section id="featureImgHolder" class="homepage featureImgHolder standardDarkGrey">
     <?php
     if ($deviceType != 'phone')
     {
@@ -87,7 +87,7 @@ include 'includes/nav.php';
         <span class="location">Cremorne Point</span>
         <span class="routes mosman">Mosman Bay</span>
         <span class="credit">Photo by Andy Richards - Understand Down Under</span>
-        <span><a href="#" class="panelFlyoutTrigger" data-location="136" data-target="mapContainer" onclick="trackInternalLink('Photo credit panel - click', 'After dark tours'); return false;">View details</a></span>
+        <span><a href="<?=$baseURL?>/vivid/gallery-pro">View details</a></span>
     </div>
     <section class="promoHolder">
         <div class="row">
@@ -95,19 +95,31 @@ include 'includes/nav.php';
             <?php
             if ($deviceType == 'phone')
             {
+
             ?>
 
                 <div class="large-3 medium-3 small-12 promoTile columns<?=$deviceClass?>">
                     <div class="imgHolder">
-                        <img src="img/promoImages/<?=$folder?>sm-shelly.jpg" alt="WIN THE NEW CANON EOS 1200D SINGLE KIT WITH EF-S 18-55MM F/3.5-5.6 III LENS RRP $649" />
+                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=2&competitionId=2" id="competitionPromo" class="reveal-init" data-size="small" onClick="trackInternalLink('Homepage promo panel - mobile click', 'Competition 2 - Win the new CANON EOS 1200D'); return false;"><img src="img/promoImages/<?=$folder?>vivid-sydney-competition.jpg" alt="WIN THE NEW CANON EOS 1200D SINGLE KIT WITH EF-S 18-55MM F/3.5-5.6 III LENS RRP $649" /></a>
+
                     </div>
                     <div class="textHolder">
                         <span>Photo Competition</span>
-                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=2&competitionId=2" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - mobile click', 'Competition 2 - Win the new CANON EOS 1200D'); return false;">Win a CANON EOS 1200D</a>
+                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=2&competitionId=2" id="competitionPromo" class="reveal-init button pink" data-size="small" onClick="trackInternalLink('Homepage promo panel - mobile click', 'Competition 2 - Win the new CANON EOS 1200D'); return false;">Win a CANON EOS 1200D</a>
                     </div>
                 </div>
 
-                <div class="large-3 medium-3 small-12 tweetSlider">
+                <div class="large-3 medium-3 small-12  promoTile columns<?=$deviceClass?>">
+                    <div class="imgHolder">
+                        <a href="<?=$baseURL?>/vivid"><img src="img/promoImages/<?=$folder?>vivid-sydney-light-waves.jpg" alt="Vivid Sydney - Light waves." /></a>
+                    </div>
+                    <div class="textHolder">
+                        <span>Events</span>
+                        <h5><a href="<?=$baseURL?>/vivid">Vivid Sydney 2014</a></h5>
+                    </div>
+                </div>
+
+                <!--div class="large-3 medium-3 small-12 tweetSlider">
                     <ul id="tweetList" data-orbit data-options="animation: slide; timer_speed: 10000;
             pause_on_hover: false;
             animation_speed: 500;
@@ -116,7 +128,7 @@ include 'includes/nav.php';
             slide_number: false">
                         <li class="preloader"></li>
                     </ul>
-                </div>
+                </div-->
 
             <?php
             }
@@ -134,13 +146,14 @@ include 'includes/nav.php';
                     <li class="preloader"></li>
                 </ul>
             </div>
+
             <div class="large-3 medium-3 small-12 promoTile columns">
                 <div class="imgHolder">
                     <img src="img/promoImages/vivid-sydney-competition.jpg" alt="WIN THE NEW CANON EOS 1200D SINGLE KIT WITH EF-S 18-55MM F/3.5-5.6 III LENS RRP $649" />
                 </div>
                 <div class="textHolder">
                     <span>Vivid Sydney Photo Competition</span>
-                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=2&competitionId=2" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - click', 'Competition 2 - Win the new CANON EOS 1200D'); return false;">Win a CANON EOS 1200D</a>
+                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=2&competitionId=2" id="competitionPromo" class="reveal-init button pink" data-size="small" onClick="trackInternalLink('Homepage promo panel - click', 'Competition 2 - Win the new CANON EOS 1200D'); return false;">Win a CANON EOS 1200D</a>
                 </div>
             </div>
 
@@ -182,7 +195,7 @@ include 'includes/nav.php';
                 </div>
                 <div class="textHolder">
                     <span>Experiences</span>
-                    <h5><a href="#" class="panelFlyoutTrigger" data-location="136" data-target="mapContainer" onclick="trackInternalLink('Photo credit panel - click', 'After dark tours'); return false;">After Dark Tours</a></h5>
+                    <h5><a href="#" class="panelFlyoutTrigger" data-location="136" data-target="promoFlyoutHolder" onclick="trackInternalLink('Photo credit panel - click', 'After dark tours'); return false;">After Dark Tours</a></h5>
                 </div>
             </div>
             <?php
@@ -191,6 +204,14 @@ include 'includes/nav.php';
 
         </div>
     </section>
+</section>
+
+<section>
+    <div class="row marginBottomStandard">
+        <div class="large-12" id="promoFlyoutHolder">
+
+        </div>
+    </div>
 </section>
 
 <?php
@@ -383,10 +404,10 @@ $(function() {
         imgHTML += '<h2>Beyond the Wharf</h2><br />';
         //imgHTML += '<hr />';
         imgHTML += '<h3>After Dark Tours</h3><br />';
-        imgHTML += '<a href="#" class="panelFlyoutTrigger button block med verboten" data-location="136" data-target="mapContainer" onclick="trackInternalLink(\'Photo credit panel - click\', \'After dark tours\'); return false;">Find out more</a>';
+        imgHTML += '<a href="#" class="panelFlyoutTrigger button block med verboten" data-location="136" data-target="promoFlyoutHolder" onclick="trackInternalLink(\'Photo credit panel - click\', \'After dark tours\'); return false;">Find out more</a>';
         imgHTML += '</div>';
         imgHTML += '</div>';
-        imgHTML += '<img src="img/featureImages/'+folder+'vivid-sydney-light-play.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="mapContainer" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards - Understand Down Under" />';
+        imgHTML += '<img src="img/featureImages/'+folder+'vivid-sydney-light-play.jpg" data-url="#" data-linkType="internal" data-location="136" data-target="promoFlyoutHolder" data-directive="View details" data-latlng="33 48 2.3652 S, 151 17 54.1998 E" data-place="Shelly Beach" data-route="Manly" data-class="manly" data-credit="Andy Richards - Understand Down Under" />';
         imgHTML += '</li>';
 
         $(imgHTML).appendTo('#featureImageCarousel');

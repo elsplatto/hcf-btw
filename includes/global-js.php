@@ -7,7 +7,7 @@
 <script>
 
 
-
+var scrollPos = 0;
 
 $(function(){
 
@@ -54,8 +54,6 @@ $(function(){
 
     $('body').on('click', '.reveal-init', function(e)
     {
-
-        //e.stopPropagation();
         e.preventDefault();
         var url = $(this).attr('href');
         $('#modalShell').html('<div id="canvasLoader"></div>');
@@ -102,8 +100,11 @@ $(function(){
 
     $('body').on('click','.panelFlyoutTrigger', function(e) {
         e.preventDefault();
+
         var target = $('#'+$(this).attr('data-target'));
         var id = $(this).attr('data-location');
+
+        scrollPos = $(window).scrollTop();
 
         beforeLocationRetrieveHandler(target);
         $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/');
@@ -111,6 +112,10 @@ $(function(){
 
     $('body').on('click', '.flyoutPanelClose', function(e){
         e.preventDefault();
+        $('html, body').animate({
+            scrollTop: scrollPos
+        },'slow');
+        scrollPos = 0;
         $('#flyoutPanel').remove();
     });
 

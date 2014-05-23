@@ -114,7 +114,7 @@ include '../includes/nav.php';
                 </div>
                     <div class="large-12 paddingTop30 left text-center">
                         <a href="<?=$baseURL?>/vivid/gallery" class="button marginTop16">Go to #VividSydney Gallery</a>
-                        <h4 class="white"><span class="block">SHARE YOUR  EXPERIENCE</span> <br />Tag your Instagram photos with <span class="block green">#VIVIDSYDNEY</span></h4>
+                        <h4 class="white"><span class="block"><a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&competitionId=2&step=2&call_page=<?=$baseURL?>/vivid/?competitionId=2" class="reveal-init" style="color: #fff; text-decoration: underline">ENTER OUR COMPETITION</a></span> <br />Tag your Instagram photos with <span class="block green">#BEYONDTHEWHARF</span> and <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&competitionId=2&step=2&call_page=<?=$baseURL?>/vivid/?competitionId=2" class="reveal-init" style="color: #fff; text-decoration: underline">enter</a>.</h4>
                     </div>
             </div>
         </div>
@@ -131,7 +131,7 @@ include '../includes/nav.php';
                         <h2 class="block text-left">Lauren Bath</h2>
                         <span>Photographer Lauren Bath is hosting an Instameet event, to help all the budding photographers out there, join her to photograph VIVID SYDNEY.</span>
                         <p class="paddingTop10">
-                        Lauren had already accumulated close to 345,000 followers, and travels around the world, posting photos on her Instagram account to a huge market audience and getting paid big bucks to do it.
+                        Lauren had already accumulated over 350,000 followers, and travels around the world, posting photos on her Instagram account to a huge market audience and getting paid big bucks to do it.
                         </p>
                         <h4 class="block text-center">Join Lauren Bath<br /> on Board A Sydney<br /> FERRY DD/MM/YYYY</h4>
                         <div class="large-12 text-center paddingTop20">
@@ -1649,16 +1649,18 @@ function initialize() {
                         e.preventDefault();
                         var target = $('#'+$(this).attr('data-target'));
                         var id = $(this).attr('data-location');
+                        //set scroll position global variable
+                        scrollPos = $(window).scrollTop();
 
                         beforeLocationRetrieveHandler(target);
 
                         $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/');
                     });
 
-                    $('body').on('click', '.flyoutPanelClose', function(e){
+                   /* $('body').on('click', '.flyoutPanelClose', function(e){
                         e.preventDefault();
                         $('#flyoutPanel').remove();
-                    });
+                    });*/
 
                     function beforeLocationRetrieveHandler(target) {
                         if ($('#flyoutPanel').length > 0)

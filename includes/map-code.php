@@ -86,6 +86,7 @@ function initialize() {
 
     var stdGrey = '#272e35';
 
+
     var mapOptions = {
         center: new google.maps.LatLng(-33.836311,151.208267),
         zoom: 12,
@@ -440,10 +441,12 @@ function initialize() {
                     locationBubble.open(map, marker);
                 });
 
+
                 google.maps.event.addListener(locationBubble,'domready', function(){
                     $('.panelFlyoutTrigger').on('click', function(e) {
                         e.preventDefault();
-                        //console.log('here');
+                        //set scroll position global variable
+                        scrollPos = $(window).scrollTop();
                         var target = $('#'+$(this).attr('data-target'));
                         var id = $(this).attr('data-location');
 
@@ -452,10 +455,14 @@ function initialize() {
                         $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/');
                     });
 
-                    $('body').on('click', '.flyoutPanelClose', function(e){
+                    /*$('body').on('click', '.flyoutPanelClose', function(e){
                         e.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: scrollPos
+                        },'slow');
+                        scrollPos = 0;
                         $('#flyoutPanel').remove();
-                    });
+                    });*/
 
                     function beforeLocationRetrieveHandler(target) {
                         if ($('#flyoutPanel').length > 0)

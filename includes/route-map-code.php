@@ -604,15 +604,17 @@ function initialize() {
                         e.preventDefault();
                         var target = $('#'+$(this).attr('data-target'));
                         var id = $(this).attr('data-location');
+                        //set scroll position global variable
+                        scrollPos = $(window).scrollTop();
 
                         beforeLocationRetrieveHandler(target);
                         $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/');
                     });
 
-                    $('body').on('click', '.flyoutPanelClose', function(e){
+                    /*$('body').on('click', '.flyoutPanelClose', function(e){
                         e.preventDefault();
                         $('#flyoutPanel').remove();
-                    });
+                    });*/
 
                     function beforeLocationRetrieveHandler(target) {
                         if ($('#flyoutPanel').length > 0)

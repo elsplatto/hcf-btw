@@ -443,7 +443,8 @@ function initialize() {
                 google.maps.event.addListener(locationBubble,'domready', function(){
                     $('.panelFlyoutTrigger').on('click', function(e) {
                         e.preventDefault();
-                        //console.log('here');
+                        //set scroll position global variable
+                        scrollPos = $(window).scrollTop();
                         var target = $('#'+$(this).attr('data-target'));
                         var id = $(this).attr('data-location');
 
@@ -452,10 +453,10 @@ function initialize() {
                         $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/');
                     });
 
-                    $('body').on('click', '.flyoutPanelClose', function(e){
+                    /*$('body').on('click', '.flyoutPanelClose', function(e){
                         e.preventDefault();
                         $('#flyoutPanel').remove();
-                    });
+                    });*/
 
                     function beforeLocationRetrieveHandler(target) {
                         if ($('#flyoutPanel').length > 0)
