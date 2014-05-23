@@ -215,6 +215,12 @@ video {
   .button.verboten:hover {
     background-color: #c0565a; }
 
+.button.pink {
+  background-color: #fd0083;
+  color: white; }
+  .button.pink:hover {
+    background-color: #cf066e; }
+
 .button.play {
   padding-left: 3rem !important; }
   .button.play:before {
