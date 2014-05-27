@@ -12,7 +12,7 @@ function getEvents($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
     $query .= 'tiles.image_thumb, tiles.image_thumb_med, tiles.tile_size, tiles.alt, tiles.id FROM tiles ';
     $query .= 'JOIN types ON (tiles.type_id = types.id) ';
     $query .= 'LEFT OUTER JOIN categories ON (tiles.category_id = categories.id) ';
-    $query .= 'WHERE types.title = ? AND tiles.start_date > ' . time() .' OR tiles.end_date > '. time() .' ORDER BY tiles.start_date';
+    $query .= 'WHERE types.title = ? AND tiles.start_date > ' . time() .' OR tiles.end_date > '. time() .' AND tiles.is_live = 1 ORDER BY tiles.start_date';
     //echo 'query['.$query.']';
     $mysqli = new mysqli($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
     $stmt = $mysqli->prepare($query);

@@ -41,7 +41,7 @@ include '../includes/nav.php';
                       Vivid Sydney extends onto the harbour for the first time in 2014 with the spectacular Harbour Lights.
                   </p>
                   <p>
-                      During Vivid, make the most of your experience by exploring Sydney Harbour’s best kept secrets with Beyond the Wharf.
+                      During Vivid Sydney, make the most of your experience by exploring Sydney Harbour’s best kept secrets with Beyond the Wharf.
                   </p>
                   <p class="sponsor">
                       Presented by 32 Hundred Lighting, Intel and Destination NSW.
@@ -54,7 +54,7 @@ include '../includes/nav.php';
                   <div class="large-9 lightPurpleBackground paddingLeft32 paddingRight32 floated">
                       <h3 class="block white">Harbour Lights</h3>
                       <p>
-                          Many of the cruise vessels, ferries and water taxis that regularly travel around the harbour will become part of Vivid Lights this year when
+                          Many of the cruise vessels, ferries and water taxis that regularly travel around the harbour will become part of Vivid Sydney this year when
                           they are decorated with brilliant LED lights that change colour as they enter different parts of the harbour. These 'colour precincts' will be
                           computer-controlled using Intel technology and the latest in sat-nav geo-positioning.
                       </p>
@@ -68,12 +68,12 @@ include '../includes/nav.php';
 
 <!--section class="darkPurpleBackground paddingTopBottom20">
     <div class="row marginBottomStandard">
-        <h3 class="text-center">Vivid App</h3>
+        <h3 class="text-center">Vivid Sydney App</h3>
         <div class="large-12 columns">
             <div class="large-12">
                 <div class="large-12 lightPurpleBackground padding32 overflow">
                     <div class="large-6 left paddingRight32">
-                        <h3 class="block">Vivid Trails</h3>
+                        <h3 class="block">Vivid Sydney Trails</h3>
                         <span>interactive itinerary and guide app</span>
                         <p class="paddingTop10">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -157,7 +157,7 @@ include '../includes/nav.php';
                     <div class="large-6 left paddingRight32">
                         <h2 class="block text-left">UNDERSTAND DOWN UNDER</h2>
                         <h3 class="block text-left">NIGHT PHOTOGRAPHY CLASS</h3>
-                        <span class="spreadMed">Make the most of VIVID festival by learning how to master night photography and long exposures. Enjoy the art of playing with light, and create magical images with writing and drawing or sublime studio style portraits... using only a torch!</span>
+                        <span class="spreadMed">Make the most of Vivid Sydney festival by learning how to master night photography and long exposures. Enjoy the art of playing with light, and create magical images with writing and drawing or sublime studio style portraits... using only a torch!</span>
 
                         <h4 class="block text-center paddingTopBottom20">Duration: 90 Minutes <br />From AUD $50.00</h4>
                         <p>
@@ -181,10 +181,10 @@ include '../includes/nav.php';
         <h3 class="text-center">Competitions</h3>
         <div class="large-12 columns">
             <div class="large-6 medium-12 small-12 standardDarkGrey padding32 left setHeight">
-                <h2 class="block text-left tightHeight">BEYOND THE WHARF VIVID PHOTO COMPETITION</h2>
+                <h2 class="block text-left tightHeight">BEYOND THE WHARF VIVID SYDNEY PHOTO COMPETITION</h2>
                 <span>The competition runs between 23<sup>rd</sup> May 2014 to 9<sup>th</sup> June 2014.</span>
                 <p style="margin-top: 1rem">
-                    Take a great shot of VIVID SYDNEY 2014, share it on Instagram & WIN.
+                    Take a great shot of Vivid Sydney 2014, share it on Instagram & WIN.
                 </p>
                 <p>
                     Don't forget to check out our professional night <a href="#phototips">photography tips</a> and share your images with your friends to improve your chances.
@@ -223,7 +223,7 @@ include '../includes/nav.php';
                     <!--h4 class="marginTop10">Vivid Photo Locations From a Ferry</h4-->
                     <img src="../img/iHaig.jpg" class="circle" alt="Iain Haig" />
                     <p style="line-height: 1.5rem;">
-                        <span>Haig Gilchrist, Ferry Crew: With a modern point to shoot camera and or smart phone, you can get good quality photos and videos of Vivid. Around icons such as the Harbour Bridge and Opera House, ferries travel at slow speeds which will allow you to get great shots.</span>
+                        <span>Haig Gilchrist, Ferry Crew: With a modern point to shoot camera and or smart phone, you can get good quality photos and videos of Vivid Sydney. Around icons such as the Harbour Bridge and Opera House, ferries travel at slow speeds which will allow you to get great shots.</span>
                     </p>
                 </div>
             </div>
@@ -305,26 +305,26 @@ include '../includes/nav.php';
     </div>
 </section>
 
-<!--section class="paddingTopBottom20 themeFeature">
+<section class="paddingTopBottom20 themeFeature">
     <div class="row marginBottomStandard">
         <h3 class="text-center">Behind the Scenes</h3>
 
         <div class="large-12 columns">
-            <div class="text-center large-6 medium-12 small-12 standardDarkGrey themedPromoText left">
+            <div class="text-center large-6 medium-12 small-12 standardDarkGrey themedPromoText left fixedHeight">
 
-                <span>The Back Story.</span>
+                <span>A Ferry Perspective.</span>
 
-                <h2 class="block tightHeight">Behind the Scenes Vivid Harbour Lights</h2>
-                <h3>Take a look at how it's done, a journey with the ferry crew. Behind the scenes preparing for the spectacular event.</h3>
-                <a href="<?=$baseURL?>/overlays/show-video.php?src=//player.vimeo.com/video/87308642&title=Behind%20The%20Scenes" class="button red play tungsten small reveal-init hide-for-large" data-size="medium">Watch the video</a>
-                <img src="../img/dhoward.jpg" class="circle" />
-                <span class="clearfix">Don Howard tells the story</span>
+                <h2 class="block tightHeight">Vivid Sydney Harbour Lights</h2>
+                <h3>Take a behind the scenes look at how we lit-up the Ferries for the first time this year and manage the big crowds that flock to the Harbour  for Vivid Sydney.</h3>
+                <a href="<?=$baseURL?>/overlays/show-video.php?src=//player.vimeo.com/video/96462131" class="button red play tungsten small reveal-init hide-for-large" data-size="medium">Watch the video</a>
+                <img src="../img/mia-champley.jpg" class="circle" alt="Image of video author, Mia Champley" />
+                <span class="clearfix">Video by Mia Champley, Ferry Crew.</span>
             </div>
 
-                <div class="large-6 hide-for-medium hide-for-small themedPromoImage">
-                    <img src="../img/themedPromos/ferryLights.jpg" alt="Harbour ferry with Vivid lighting." />
+                <div class="large-6 hide-for-medium hide-for-small themedPromoImage fixedHeight">
+                    <img src="../img/themedPromos/ferryLights-2.jpg" alt="Harbour ferry with Vivid lighting." />
                     <div class="large-6 medium-6 small-6 themedPromoOverlay">
-                        <a href="<?=$baseURL?>/overlays/show-video.php?src=//player.vimeo.com/video/87308642&title=Behind%20The%20Scenes" class="button red play tungsten small reveal-init" data-size="medium">Watch the video</a>
+                        <a href="<?=$baseURL?>/overlays/show-video.php?src=//player.vimeo.com/video/96462131" class="button red play tungsten small reveal-init" data-size="medium">Watch the video</a>
 
                     </div>
                 </div>
@@ -332,7 +332,7 @@ include '../includes/nav.php';
         </div>
 
     </div>
-</section-->
+</section>
 
 <?php
 include '../includes/footer.php';
@@ -1377,7 +1377,7 @@ function initialize() {
             lng: 151.23955202200932,
             height: 320,
             icon: iconBase + 'lightCameraMarker.png',
-            content: '<p>One of the least busiest ferry routes during Vivid, take the 40 minute round trip in the early evening with the local commuters to get a great overview of Harbour Lights on the Ferries to the east of Circular Quay.</p>'
+            content: '<p>One of the least busiest ferry routes during Vivid Sydney, take the 40 minute round trip in the early evening with the local commuters to get a great overview of Harbour Lights on the Ferries to the east of Circular Quay.</p>'
         },
         {
             routeFrom: "Circular Quay",
