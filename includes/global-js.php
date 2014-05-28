@@ -103,11 +103,20 @@ $(function(){
 
         var target = $('#'+$(this).attr('data-target'));
         var id = $(this).attr('data-location');
+        var href = $(this).attr('href');
+        if (href === '#' || href === '')
+        {
+            href = '<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/';
+        }
+        else
+        {
+            href = href + '?id='+id +'&relPath=<?=$baseURL?>/';
+        }
 
         scrollPos = $(window).scrollTop();
 
         beforeLocationRetrieveHandler(target);
-        $('#flyoutPanel').load('<?=$baseURL?>/services/load-location.php?id='+id +'&relPath=<?=$baseURL?>/');
+        $('#flyoutPanel').load(href);
     });
 
     $('body').on('click', '.flyoutPanelClose', function(e){

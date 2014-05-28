@@ -56,16 +56,16 @@ function getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
 
 
 
-            <aside class="left-off-canvas-menu">
-                <ul class="off-canvas-list section-nav">
-                    <!--li><label>Foundation</label></li-->
-                    <li><a href="<?=$baseURL?>/page/explore-our-harbour">Explore Our Harbour</a></li>
-                    <li><a href="<?=$baseURL?>/events">Events</a></li>
-                    <li><a href="<?=$baseURL?>/gallery">Gallery</a></li>
-                    <li><a href="<?=$baseURL?>/page/local-insights">Local Insights</a></li>
-                    <li><a href="<?=$baseURL?>/vivid" class="vivid">Vivid Sydney</a></li>
-                </ul>
-            </aside>
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list section-nav">
+                <!--li><label>Foundation</label></li-->
+                <li><a href="<?=$baseURL?>/page/explore-our-harbour">Explore Our Harbour</a></li>
+                <li><a href="<?=$baseURL?>/events">Events</a></li>
+                <li><a href="<?=$baseURL?>/gallery">Gallery</a></li>
+                <li><a href="<?=$baseURL?>/page/local-knowledge">Local Knowledge</a></li>
+                <li><a href="<?=$baseURL?>/vivid" class="vivid">Vivid Sydney</a></li>
+            </ul>
+        </aside>
 
 
         <aside class="right-off-canvas-menu">
@@ -127,7 +127,7 @@ function getRouteNav($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE)
                                 <li><a href="<?=$baseURL?>/page/explore-our-harbour">Explore Our Harbour</a></li>
                                 <li><a href="<?=$baseURL?>/events">Events</a></li>
                                 <li><a href="<?=$baseURL?>/gallery">Gallery</a></li>
-                                <li><a href="<?=$baseURL?>/page/local-insights">Local Insights</a></li>
+                                <li><a href="<?=$baseURL?>/page/local-knowledge">Local Knowledge</a></li>
                                 <li><a href="<?=$baseURL?>/vivid" class="vivid">Vivid Sydney</a></li>
                             </ul>
 
