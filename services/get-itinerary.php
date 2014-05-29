@@ -35,7 +35,7 @@ if (isset($itineraryId))
             <div class="large-12 medium-12 small-12 standardDarkGrey paddingBottom20">
                 <div class="large-7 medium-7 small-12 columns left"><img src="<?=$baseURL?>/img/itineraries/<?=$img?>" alt=""></div>
                 <div class="large-5 medium-5 small-12 columns left">
-                    <p>Download PDF: <strong><a href="<?=$baseURL?>/docs/itneraries/<?=$doc?>" target="_blank" style="text-transform: capitalize"><?=$title?></a></strong></p>
+                    <p>Download PDF: <strong><a href="<?=$baseURL?>/docs/itineraries/<?=$doc?>" target="_blank" style="text-transform: capitalize"><?=$title?></a></strong></p>
                 </div>
             </div>
 
