@@ -22,9 +22,10 @@ else if (($_SERVER['SERVER_NAME'] == 'www.harbourcityferries.com.au') || ($_SERV
 }
 else
 {
-    $baseURL = 'http://'.$_SERVER['SERVER_NAME'];
-    $adminEmailAddress = 'admin@beyondthewharf.com.au';
+    $baseURL = 'http://localhost/~jasontaikato/hcf-btw';
+    $adminEmailAddress = 'jason.taikato@tobiasandtobias.com';
 }
+
 
 if(!isset($_SESSION)) {
     session_start();

@@ -28,8 +28,6 @@ if (isset($username) && isset($password))
             $_SESSION['adminRole'] = $data["role"];
         }
     }
-
-    ;
 }
 
 if (isset($_SESSION['adminUserId']))
