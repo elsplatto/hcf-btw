@@ -100,22 +100,32 @@ include 'includes/nav.php';
 
                 <div class="large-3 medium-3 small-12 promoTile columns<?=$deviceClass?>">
                     <div class="imgHolder">
-                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=2&competitionId=2" id="competitionPromo" class="reveal-init" data-size="small" onClick="trackInternalLink('Homepage promo panel - mobile click', 'Competition 2 - Win the new CANON EOS 1200D'); return false;"><img src="img/promoImages/<?=$folder?>vivid-sydney-competition.jpg" alt="WIN THE NEW CANON EOS 1200D SINGLE KIT WITH EF-S 18-55MM F/3.5-5.6 III LENS RRP $649" /></a>
+                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=1&competitionId=1" class="reveal-init" data-size="small" onClick="trackInternalLink('Homepage promo panel - mobile click', 'Competition 1 - Win Art Print'); return false;"><img src="img/promoImages/<?=$folder?>sm-silk.jpg" alt="Saltmotion image of wave - by Joel Coleman" /></a>
 
                     </div>
                     <div class="textHolder">
                         <span>Photo Competition</span>
-                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=2&competitionId=2" id="competitionPromo" class="reveal-init button pink" data-size="small" onClick="trackInternalLink('Homepage promo panel - mobile click', 'Competition 2 - Win the new CANON EOS 1200D'); return false;">Win a CANON EOS 1200D</a>
+                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=1&competitionId=1" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - mobile click', 'ompetition 1 - Win Art Print'); return false;">Win This Art Print</a>
                     </div>
                 </div>
 
+                <!--div class="large-3 medium-3 small-12 promoTile columns">
+                    <div class="imgHolder">
+                        <img src="img/promoImages/sm-silk.jpg" alt="Saltmotion image of wave - by Joel Coleman" />
+                    </div>
+                    <div class="textHolder">
+                        <span>Photo Competition</span>
+                        <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=1&competitionId=1" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - click', 'Competition  - Win Art Print'); return false;">Win This Art Print</a>
+                    </div>
+                </div-->
+
                 <div class="large-3 medium-3 small-12  promoTile columns<?=$deviceClass?>">
                     <div class="imgHolder">
-                        <a href="<?=$baseURL?>/vivid"><img src="img/promoImages/<?=$folder?>vivid-sydney-light-waves.jpg" alt="Vivid Sydney - Light waves." /></a>
+                        <a href="<?=$baseURL?>/vivid"><img src="img/promoImages/<?=$folder?>sydney-film-festival-2014.jpg" alt="Sydney Film Festival 2014." /></a>
                     </div>
                     <div class="textHolder">
                         <span>Events</span>
-                        <h5><a href="<?=$baseURL?>/vivid">Vivid Sydney 2014</a></h5>
+                        <h5><a href="#" class="panelFlyoutTrigger" data-location="140" data-target="promoFlyoutHolder" title="Sydney Film Festival" onclick="trackInternalLink('Homepage promo panel - mobile click', 'Sydney Film Festival'); return false;">Sydney Film Festival</a></h5>
                     </div>
                 </div>
 
@@ -147,13 +157,15 @@ include 'includes/nav.php';
                 </ul>
             </div>
 
+
+
             <div class="large-3 medium-3 small-12 promoTile columns">
                 <div class="imgHolder">
-                    <img src="img/promoImages/vivid-sydney-competition.jpg" alt="WIN THE NEW CANON EOS 1200D SINGLE KIT WITH EF-S 18-55MM F/3.5-5.6 III LENS RRP $649" />
+                    <img src="img/promoImages/sm-silk.jpg" alt="Saltmotion image of wave - by Joel Coleman" />
                 </div>
                 <div class="textHolder">
-                    <span>Vivid Sydney Photo Competition</span>
-                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=2&competitionId=2" id="competitionPromo" class="reveal-init button pink" data-size="small" onClick="trackInternalLink('Homepage promo panel - click', 'Competition 2 - Win the new CANON EOS 1200D'); return false;">Win a CANON EOS 1200D</a>
+                    <span>Photo Competition</span>
+                    <a href="<?=$baseURL?>/<?=$competitionURL?>&mode=competition&step=2&call_page=<?=$baseURL?>/?competitionId=1&competitionId=1" id="competitionPromo" class="reveal-init button verboten" data-size="small" onClick="trackInternalLink('Homepage promo panel - click', 'Competition  - Win Art Print'); return false;">Win This Art Print</a>
                 </div>
             </div>
 
@@ -169,11 +181,11 @@ include 'includes/nav.php';
 
             <div class="large-3 medium-3 small-12 columns hide-for-small-only">
                 <div class="imgHolder">
-                    <img src="img/promoImages/vivid-sydney-light-waves.jpg" alt="Vivid Sydney - Light waves." />
+                    <img src="img/promoImages/sydney-film-festival-2014.jpg" alt="Sydney Film Festival 2014." />
                 </div>
                 <div class="textHolder">
                     <span>Events</span>
-                    <h5><a href="<?=$baseURL?>/vivid">Vivid Sydney 2014</a></h5>
+                    <h5><a href="#" class="panelFlyoutTrigger" data-location="140" data-target="promoFlyoutHolder" title="Sydney Film Festival" onclick="trackInternalLink('Homepage promo panel - click', 'Sydney Film Festival'); return false;">Sydney Film Festival</a></h5>
                 </div>
             </div>
 
@@ -285,7 +297,7 @@ if ($deviceType != 'phone')
 <?php
 }
 ?>
-
+<a id="shotOfTheDay"></a>
 <?php
 include 'includes/instagram-shot-of-the-day.php';
 include 'includes/footer.php';
