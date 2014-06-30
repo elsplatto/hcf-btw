@@ -26,13 +26,13 @@ include 'includes/nav.php';
                     bullets: false;
                     slide_number: false;">
         <li>
-            <img src="img/featureImages/vivid-sydney-cityscape.jpg" data-url="#" data-linkType="internal" data-location="136" data-directive="View more" data-latlng="33 50 47.67 S, 151 13 47.0856 E" data-place="Cremorne" data-route="Mosman Bay" data-class="mosman" data-credit="Andy Richards" />
+            <img src="img/featureImages/tracey-hero.jpg" data-directive="Read more" data-latlng="33 48 46 S, 151 16 22 E" data-place="Dobroyd Heads" data-route="Manly" data-class="manly" data-credit="Andrew McLean" />
             <div class="headerText">
                 <div class="inner text-left">
-                    <h2 class="sub">Vivid Sydney</h2><br />
-                    <h2>Beyond the Wharf</h2><br />
+                    <h2 class="sub">Discover</h2><br />
+                    <h2>Ancestral Spirit</h2><br />
                     <h3>Discover. Share. Experience.</h3><br />
-                    <a href="<?=$baseURL?>/vivid/" class="button block med verboten">Read More</a>
+                    <a href="<?=$baseURL?>/page/aboriginal-harbour-journeys" class="button block med verboten">Read More</a>
                 </div>
             </div>
         </li>
@@ -50,13 +50,13 @@ include 'includes/nav.php';
                     bullets: false;
                     slide_number: false;">
         <li>
-            <img src="img/featureImages/phone/vivid-sydney-cityscape.jpg" data-url="<?=$baseURL?>/vivid/gallery-pro" data-directive="View more" data-latlng="33 50 47.67 S, 151 13 47.0856 E" data-place="Cremorne" data-route="Mosman Bay" data-class="mosman" data-credit="Andy Richards" />
+            <img src="img/featureImages/phone/tracey-hero.jpg" data-url="#" data-directive="Read more" data-latlng="33 48 46 S, 151 16 22 E" data-place="Dobroyd Heads" data-route="Manly" data-class="manly" data-credit="Andrew McLean" />
             <div class="headerText">
                 <div class="inner text-center">
                     <h2 class="sub">Secrets</h2><br />
                     <h2>Beyond the Wharf</h2><br />
                     <h3>Discover. Share. Experience.</h3><br />
-                    <a href="<?=$baseURL?>/vivid/" class="button block med verboten">Read More</a>
+                    <a href="<?=$baseURL?>/page/aboriginal-harbour-journeys" class="button block med verboten">Read More</a>
                 </div>
             </div>
         </li>
@@ -83,11 +83,11 @@ include 'includes/nav.php';
         </div>
     </a>
     <div id="featureCreditPanel" class="creditPanel">
-        <span class="latLng">33 50 47.67 S, 151 13 47.0856 E</span>
-        <span class="location">Cremorne Point</span>
-        <span class="routes mosman">Mosman Bay</span>
-        <span class="credit">Photo by Andy Richards - Understand Down Under</span>
-        <span><a href="<?=$baseURL?>/vivid/gallery-pro">View details</a></span>
+        <span class="latLng">33 48 46 S, 151 16 22 E</span>
+        <span class="location">Doboyd Heads</span>
+        <span class="routes manly">Manly</span>
+        <span class="credit">Photo by Adrew McLeanr</span>
+        <!--span><a href="<?=$baseURL?>/vivid/gallery-pro">View details</a></span-->
     </div>
     <section class="promoHolder">
         <div class="row">
@@ -181,11 +181,11 @@ include 'includes/nav.php';
 
             <div class="large-3 medium-3 small-12 columns hide-for-small-only">
                 <div class="imgHolder">
-                    <img src="img/promoImages/sydney-film-festival-2014.jpg" alt="Sydney Film Festival 2014." />
+                    <img src="img/promoImages/naidoc-past.gif" alt="NAIDOC's 2009 poster" />
                 </div>
                 <div class="textHolder">
-                    <span>Events</span>
-                    <h5><a href="#" class="panelFlyoutTrigger" data-location="140" data-target="promoFlyoutHolder" title="Sydney Film Festival" onclick="trackInternalLink('Homepage promo panel - click', 'Sydney Film Festival'); return false;">Sydney Film Festival</a></h5>
+                    <span>History</span>
+                    <h5><a href="docs/NAIDOC-History-Timeline.pdf" target="_blank">History of NAIDOC Week</a></h5>
                 </div>
             </div>
 
@@ -203,11 +203,11 @@ include 'includes/nav.php';
 
             <div class="large-3 medium-3 small-12 columns hide-for-small-only">
                 <div class="imgHolder">
-                    <img src="img/promoImages/after-dark-tours.jpg" alt="After Dark Tours." />
+                    <img src="img/promoImages/naidoc-service.gif" alt="NAIDOC - Image of servicement" />
                 </div>
                 <div class="textHolder">
-                    <span>Experiences</span>
-                    <h5><a href="#" class="panelFlyoutTrigger" data-location="136" data-target="promoFlyoutHolder" onclick="trackInternalLink('Photo credit panel - click', 'After dark tours'); return false;">After Dark Tours</a></h5>
+                    <span>Invitation</span>
+                    <h5><a href="docs/NAIDOC-Invitation.pdf" target="_blank">Flag Raising Ceremony</a></h5>
                 </div>
             </div>
             <?php
