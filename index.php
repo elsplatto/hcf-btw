@@ -109,6 +109,16 @@ include 'includes/nav.php';
                     </div>
                 </div>
 
+                <div class="large-3 medium-3 small-12  promoTile columns<?=$deviceClass?>">
+                    <div class="imgHolder">
+                        <a href="<?=$baseURL?>/services/get-itinerary.php" class="panelFlyoutTrigger" data-location="1" data-target="promoFlyoutHolder" onclick="trackInternalLink('Itinerary (On Mobile from homepage) - click', 'Cheap eats on the waterfront'); return false;"><img src="img/promoImages/<?=$folder?>itinerary-cheap-eats.jpg" alt="Affordable meals on the waterfront" /></a>
+                    </div>
+                    <div class="textHolder">
+                        <span>Itinerary</span>
+                        <h5><a href="<?=$baseURL?>/services/get-itinerary.php" class="panelFlyoutTrigger" data-location="1" data-target="promoFlyoutHolder" onclick="trackInternalLink('Itinerary (On Mobile from homepage) - click', 'Cheap eats on the waterfront'); return false;">Cheap eats on the waterfront</a></h5>
+                    </div>
+                </div>
+
                 <!--div class="large-3 medium-3 small-12 promoTile columns">
                     <div class="imgHolder">
                         <img src="img/promoImages/sm-silk.jpg" alt="Saltmotion image of wave - by Joel Coleman" />
@@ -119,7 +129,7 @@ include 'includes/nav.php';
                     </div>
                 </div-->
 
-                <div class="large-3 medium-3 small-12  promoTile columns<?=$deviceClass?>">
+                <!--div class="large-3 medium-3 small-12  promoTile columns<?=$deviceClass?>">
                     <div class="imgHolder">
                         <a href="<?=$baseURL?>/vivid"><img src="img/promoImages/<?=$folder?>sydney-film-festival-2014.jpg" alt="Sydney Film Festival 2014." /></a>
                     </div>
@@ -127,7 +137,7 @@ include 'includes/nav.php';
                         <span>Events</span>
                         <h5><a href="#" class="panelFlyoutTrigger" data-location="140" data-target="promoFlyoutHolder" title="Sydney Film Festival" onclick="trackInternalLink('Homepage promo panel - mobile click', 'Sydney Film Festival'); return false;">Sydney Film Festival</a></h5>
                     </div>
-                </div>
+                </div-->
 
                 <!--div class="large-3 medium-3 small-12 tweetSlider">
                     <ul id="tweetList" data-orbit data-options="animation: slide; timer_speed: 10000;
@@ -181,11 +191,11 @@ include 'includes/nav.php';
 
             <div class="large-3 medium-3 small-12 columns hide-for-small-only">
                 <div class="imgHolder">
-                    <img src="img/promoImages/naidoc-past.gif" alt="NAIDOC's 2009 poster" />
+                    <img src="img/promoImages/itinerary-cheap-eats.jpg" alt="Affordable meals on the waterfront" />
                 </div>
                 <div class="textHolder">
-                    <span>History</span>
-                    <h5><a href="docs/NAIDOC-History-Timeline.pdf" target="_blank">History of NAIDOC Week</a></h5>
+                    <span>Itinerary</span>
+                    <h5><a href="<?=$baseURL?>/services/get-itinerary.php" class="panelFlyoutTrigger" data-location="1" data-target="promoFlyoutHolder" onclick="trackInternalLink('Itinerary (from homepage) - click', 'Cheap eats on the waterfront'); return false;">Cheap eats on the waterfront</a></h5>
                 </div>
             </div>
 
@@ -203,11 +213,11 @@ include 'includes/nav.php';
 
             <div class="large-3 medium-3 small-12 columns hide-for-small-only">
                 <div class="imgHolder">
-                    <img src="img/promoImages/naidoc-service.gif" alt="NAIDOC - Image of servicement" />
+                    <img src="img/promoImages/naidoc-flag.jpg" alt="NAIDOC - Image of flag raising on ferry" />
                 </div>
                 <div class="textHolder">
-                    <span>Invitation</span>
-                    <h5><a href="docs/NAIDOC-Invitation.pdf" target="_blank">Flag Raising Ceremony</a></h5>
+                    <span>Video</span>
+                    <h5><a href="<?=$baseURL?>/overlays/show-video.php?src=//player.vimeo.com/video/100477850" class="reveal-init" data-size="medium">Flag Raising Ceremony</a></h5>
                 </div>
             </div>
             <?php

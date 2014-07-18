@@ -175,7 +175,7 @@ $itineraries = getItineraries($DB_SERVER, $DB_USERNAME, $DB_PASSWORD, $DB_DATABA
                         <div class="inner">
                             <div class="textHolder">
                                 <span>Itinerary – <?=$itinerary['citation']?></span>
-                                <h3><a href="<?=$baseURL?>/services/get-itinerary.php" class="panelFlyoutTrigger" data-location="<?=$itinerary['id']?>" data-target="itineraryHolder"><?=$itinerary['title']?></a></h3>
+                                <h3><a href="<?=$baseURL?>/services/get-itinerary.php" class="panelFlyoutTrigger" data-location="<?=$itinerary['id']?>" data-target="itineraryHolder"onClick="trackInternalLink('Itinerary (from local knowledge) - click', '<?=$itinerary['title']?>'); return false;"><?=$itinerary['title']?></a></h3>
                             </div>
                         </div>
                     </div>
